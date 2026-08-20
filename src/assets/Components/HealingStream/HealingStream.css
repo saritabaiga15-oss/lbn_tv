@@ -3,188 +3,290 @@
    Background: Deep Navy/Midnight Blue to Dark Rich Violet Purple Gradient
 ========================================================= */
 
+/* =========================================================
+   HEALING STREAM SECTION
+========================================================= */
+
 .healingStream {
   width: 100%;
   min-height: 100vh;
-  box-sizing: border-box;
-  font-family: "Montserrat", system-ui, -apple-system, sans-serif;
-  overflow: hidden;
-  position: relative;
-  padding: 40px 0 80px;
 
-  /* Deep Navy Blue (left) → Rich Purple/Violet (right) — matching reference */
-  background-color: #1a1f4d;
-  background:
-    radial-gradient(ellipse at 80% 60%, rgba(87, 34, 120, 0.75) 0%, transparent 55%),
-    radial-gradient(ellipse at 20% 40%, rgba(25, 30, 75, 0.85) 0%, transparent 55%),
-    linear-gradient(135deg, #1a1f4d 0%, #1e1a55 30%, #2a1a5e 55%, #3b1768 78%, #4a1875 100%);
+  padding: 55px 6% 65px;
+
+  box-sizing: border-box;
+
+  background: linear-gradient(110deg,
+      #07164f 0%,
+      #101d61 35%,
+      #211c68 65%,
+      #4b1765 100%);
+
   color: #ffffff;
 }
 
 
 /* =========================================================
-   HEADER
-========================================================= */
-
-.healingHeader {
-  width: 100%;
-  padding: 30px 20px 20px;
-  box-sizing: border-box;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-.healingHeader h2 {
-  margin: 0;
-  color: #ffffff;
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
-}
-
-/* =========================================================
-   MAIN CONTENT GRID
+   MAIN CONTENT
+   IMAGE LEFT + TEXT RIGHT
 ========================================================= */
 
 .healingContent {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1500px;
+
   margin: 0 auto;
-  padding: 40px 24px 20px;
-  box-sizing: border-box;
+
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+
+  grid-template-columns: 52% 48%;
+
+  gap: 45px;
+
   align-items: center;
-  position: relative;
-  z-index: 2;
+
+  box-sizing: border-box;
 }
 
+
 /* =========================================================
-   IMAGE SLIDER CONTAINER
+   IMAGE AREA
 ========================================================= */
 
 .healingImage {
-  width: 100%;
-  height: 480px;
   position: relative;
+
+  width: 100%;
+
+  height: 670px;
+
+  border-radius: 28px;
+
   overflow: hidden;
-  border-radius: 24px;
+
+  background: #101b4f;
+
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-  background: rgba(16, 28, 61, 0.6);
+    0 20px 45px rgba(0, 0, 0, 0.3);
+
+  box-sizing: border-box;
 }
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.healingImage img,
+.healingPhoto {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+
+/* =========================================================
+   AUTO SLIDER IMAGES
+========================================================= */
 
 .healingPhoto {
   position: absolute;
+
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+
   opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-  pointer-events: none;
+
+  transform: scale(1.02);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .healingPhoto.active {
   opacity: 1;
+
   transform: scale(1);
-  pointer-events: auto;
 }
+
 
 /* =========================================================
-   SLIDER DOTS
-========================================================= */
-
-.sliderDots {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 5;
-  background: rgba(10, 16, 38, 0.55);
-  padding: 8px 16px;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: scale(1.2);
-}
-
-.dot.activeDot {
-  width: 26px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, #ffc837, #ff8008);
-  box-shadow: 0 0 10px rgba(255, 200, 55, 0.6);
-}
-
-/* =========================================================
-   TEXT CONTENT
+   RIGHT SIDE CONTENT
 ========================================================= */
 
 .healingText {
   width: 100%;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
 
-.articleText p {
-  margin: 0 0 18px;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 15.5px;
-  line-height: 1.75;
-  letter-spacing: 0.2px;
-}
+  align-items: flex-start;
 
-.articleText p:last-child {
-  margin-bottom: 24px;
+  padding: 0 35px 0 0;
+
+  margin: 0;
+
+  box-sizing: border-box;
+
+  font-size: 11px;
 }
 
 /* =========================================================
-   SEE MORE / ACTION BUTTON
+   HEADING
+========================================================= */
+
+.healingHeader {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.healingHeader h2 {
+  width: 100%;
+  max-width: 620px;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 42px;
+  font-weight: 900;
+
+  line-height: 1.18;
+  letter-spacing: 0.5px;
+
+  text-align: left;
+  text-transform: uppercase;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADING UNDERLINE
+========================================================= */
+
+.healingHeader::after {
+  content: "";
+
+  display: block;
+
+  width: 112px;
+
+  height: 6px;
+
+  margin-top: 20px;
+
+  border-radius: 10px;
+
+  background: linear-gradient(90deg,
+      #fbbf24 0%,
+      #f59e0b 35%,
+      #a855f7 100%);
+}
+
+
+/* =========================================================
+   ARTICLE TEXT
+========================================================= */
+
+.articleText {
+  width: 100%;
+
+  padding-top: 18px;
+
+  box-sizing: border-box;
+}
+
+.articleText p {
+  width: 100%;
+
+  margin: 0 0 18px;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  font-size: 16px;
+
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  letter-spacing: 0.1px;
+
+  text-align: left;
+
+  box-sizing: border-box;
+}
+
+.articleText p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SEE MORE BUTTON
 ========================================================= */
 
 .readmoreButton {
-  align-self: flex-start;
-  padding: 14px 36px;
+  align-self: center;
+
+  margin-top: 28px;
+
+  padding: 15px 34px;
+
   border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+
+  border-radius: 999px;
+
+  background: linear-gradient(135deg,
+      #a855f7 0%,
+      #7e22ce 100%);
+
   color: #ffffff;
+
   font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.4px;
+
+  text-transform: uppercase;
+
   cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
   box-shadow:
     0 10px 25px rgba(147, 51, 234, 0.35),
     0 0 0 1px rgba(255, 255, 255, 0.15) inset;
-  transition: all 0.3s ease;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .readmoreButton:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
+  transform: translateY(-3px);
+
+  background: linear-gradient(135deg,
+      #c084fc 0%,
+      #9333ea 100%);
+
   box-shadow:
     0 14px 30px rgba(168, 85, 247, 0.45),
     0 0 15px rgba(192, 132, 252, 0.4);
@@ -192,6 +294,236 @@
 
 .readmoreButton:active {
   transform: translateY(0);
+}
+
+
+/* =========================================================
+   SLIDER DOTS
+========================================================= */
+
+.sliderDots {
+  position: absolute;
+
+  bottom: -40px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 24px;
+
+  z-index: 5;
+}
+
+.dot {
+  width: 16px;
+
+  height: 16px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  padding: 0;
+
+  background: #ffffff;
+
+  opacity: 0.95;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+.dot:hover {
+  transform: scale(1.15);
+}
+
+.activeDot {
+  width: 38px;
+
+  height: 14px;
+
+  border-radius: 999px;
+
+  background: #fbbf24;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .healingStream {
+    padding: 50px 5% 60px;
+  }
+
+  .healingContent {
+    grid-template-columns: 50% 50%;
+
+    gap: 30px;
+  }
+
+  .healingImage {
+    height: 560px;
+  }
+
+  .healingText {
+    padding-right: 20px;
+  }
+
+  .healingHeader h2 {
+    font-size: 32px;
+  }
+
+  .articleText p {
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  .readmoreButton {
+    margin-top: 22px;
+
+    padding: 13px 28px;
+
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .healingStream {
+    padding: 45px 20px 65px;
+  }
+
+  .healingContent {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .healingImage {
+    height: 420px;
+
+    border-radius: 22px;
+  }
+
+  .healingText {
+    padding: 0;
+
+    align-items: flex-start;
+  }
+
+  .healingHeader {
+    margin-bottom: 18px;
+  }
+
+  .healingHeader h2 {
+    max-width: 100%;
+
+    font-size: 28px;
+
+    line-height: 1.2;
+  }
+
+  .healingHeader::after {
+    width: 90px;
+
+    height: 5px;
+
+    margin-top: 16px;
+  }
+
+  .articleText {
+    padding-top: 12px;
+  }
+
+  .articleText p {
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 14px;
+  }
+
+  .readmoreButton {
+    margin-top: 20px;
+
+    padding: 12px 28px;
+
+    font-size: 13px;
+  }
+
+  .sliderDots {
+    bottom: -35px;
+
+    gap: 18px;
+  }
+
+  .dot {
+    width: 13px;
+
+    height: 13px;
+  }
+
+  .activeDot {
+    width: 32px;
+
+    height: 12px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .healingStream {
+    padding: 35px 16px 55px;
+  }
+
+  .healingImage {
+    height: 330px;
+
+    border-radius: 18px;
+  }
+
+  .healingHeader h2 {
+    font-size: 23px;
+  }
+
+  .articleText p {
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  .readmoreButton {
+    padding: 11px 24px;
+
+    font-size: 12px;
+  }
 }
 
 /* =========================================================

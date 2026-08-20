@@ -56,11 +56,9 @@ const HealingStream = () => {
           HEALING STREAM SECTION
       ===================================================== */}
       <section className="healingStream">
-        <div className="healingHeader">
-          <h2>HEALING STREAMS LIVE HEALING SERVICES WITH PASTOR CHRIS</h2>
-        </div>
 
         <div className="healingContent">
+
           {/* IMAGE SLIDER */}
           <div className="healingImage">
             {photos.map((photo, index) => (
@@ -82,7 +80,9 @@ const HealingStream = () => {
                 <span
                   key={index}
                   className={
-                    currentPhoto === index ? "dot activeDot" : "dot"
+                    currentPhoto === index
+                      ? "dot activeDot"
+                      : "dot"
                   }
                   onClick={() => setCurrentPhoto(index)}
                   title={`Go to photo ${index + 1}`}
@@ -91,9 +91,21 @@ const HealingStream = () => {
             </div>
           </div>
 
-          {/* TEXT */}
+
+          {/* RIGHT SIDE CONTENT */}
           <div className="healingText">
+
+            {/* HEADING - NOW ON RIGHT SIDE */}
+            <div className="healingHeader">
+              <h2>
+                HEALING STREAMS LIVE HEALING SERVICES WITH PASTOR CHRIS
+              </h2>
+            </div>
+
+
+            {/* TEXT */}
             <div className="articleText">
+
               <p>
                 This July, the world, again, stands expectant for another
                 extraordinary outpouring of miracles, signs, wonders, and the
@@ -121,15 +133,10 @@ const HealingStream = () => {
                 and more through the power of God's Word and Spirit.
               </p>
 
-              <p>
-                Registration is completely free and open to people of every
-                nation, race, language, and background at healingstreams.org.
-                During registration, participants seeking healing for themselves
-                or loved ones are encouraged to indicate their specific healing
-                needs...
-              </p>
             </div>
 
+
+            {/* SEE MORE */}
             <button
               type="button"
               className="readmoreButton"
@@ -137,8 +144,11 @@ const HealingStream = () => {
             >
               See More
             </button>
+
           </div>
+
         </div>
+
       </section>
 
       {/* =====================================================
