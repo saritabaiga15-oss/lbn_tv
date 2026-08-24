@@ -90,7 +90,7 @@
 }
 
 .goldGradient {
-  color: #8f00ff;
+  color: #f2b735;
   font-weight: 900;
   text-shadow: 0 0 24px rgba(242, 183, 53, 0.25);
 }
@@ -197,7 +197,10 @@
   display: none;
 }
 
-/* Program Card */
+/* =========================================================
+   PROGRAM CARD — ALIGNMENT ONLY
+========================================================= */
+
 .programmeCard {
   flex: 0 0 440px;
   background: rgba(26, 16, 48, 0.72);
@@ -222,15 +225,27 @@
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(242, 183, 53, 0.2);
 }
 
-/* Card Left Content */
+/* =========================
+   LEFT CONTENT
+========================= */
+
 .cardContent {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+
+  text-align: left;
 }
 
 .cardTagWrapper {
+  width: 100%;
   margin-bottom: 8px;
+  text-align: left;
 }
 
 .cardTag {
@@ -246,49 +261,73 @@
 }
 
 .cardTitle {
+  width: 100%;
+
   font-size: 18px;
   font-weight: 800;
   line-height: 1.2;
   color: #ffffff;
   margin: 0 0 8px 0;
   letter-spacing: 0.2px;
+
+  text-align: left;
 }
 
 .cardSubtitle {
   display: block;
+  width: 100%;
+
   font-size: 12px;
   font-weight: 500;
   color: rgba(220, 215, 240, 0.65);
   margin-top: 2px;
+
+  text-align: left;
 }
 
 .cardDesc {
+  width: 100%;
+
   font-size: 12px;
   color: rgba(226, 220, 245, 0.72);
   line-height: 1.55;
   margin: 0 0 16px 0;
+
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  text-align: left;
 }
 
 .cardFooter {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+
   gap: 6px;
+
+  text-align: left;
 }
 
 .cardActionBtn {
   background: none;
   border: none;
   padding: 0;
+
   color: var(--accent-color, #8f00ff);
   font-size: 12px;
   font-weight: 700;
+
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
+
   gap: 4px;
+
   cursor: pointer;
   transition: gap 0.2s ease;
 }
@@ -302,23 +341,33 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* Card Right Image */
+/* =========================
+   RIGHT IMAGE
+========================= */
+
 .cardImageWrapper {
   position: relative;
   width: 100%;
   height: 160px;
+
   border-radius: 14px;
   overflow: hidden;
+
   background: #090514;
   border: 1px solid rgba(255, 255, 255, 0.1);
+
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .cardImg {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+  object-position: center;
+
   display: block;
+
   transition: transform 0.4s ease;
 }
 
@@ -329,7 +378,11 @@
 .imageGlow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(10, 5, 20, 0.6) 100%);
+
+  background: linear-gradient(180deg,
+      transparent 60%,
+      rgba(10, 5, 20, 0.6) 100%);
+
   pointer-events: none;
 }
 
