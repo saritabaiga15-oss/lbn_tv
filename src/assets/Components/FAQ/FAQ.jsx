@@ -7,28 +7,28 @@ const FAQ = () => {
   const faqData = [
     {
       id: 1,
-      question: 'What is LBNTV?',
-      answer: 'LoveWorld India Broadcasting Network (LBNTV) is a premier Christian media and broadcasting organization dedicated to delivering value-based, inspirational programming across India, Asia, and the world. We offer spiritual guidance, hope, and worship slots 24/7.'
+      question: 'What is LoveWorld India Broadcasting Network?',
+      answer: 'LoveWorld India Broadcasting Network is a Christian media network dedicated to spreading the Gospel through inspiring and faith-filled programmes.'
     },
     {
       id: 2,
-      question: 'Is LBNTV free to watch?',
-      answer: 'Yes! LBNTV is a free-to-air broadcasting network. All our live streams, daily programs, and global live events are completely free of charge. There are no subscriptions, memberships, or hidden fees required to stream our programs.'
+      question: 'What programmes can I watch on LBN?',
+      answer: 'LBN offers inspiring content including teachings, worship, prayer, family, lifestyle, youth, and children\'s programmes.'
     },
     {
       id: 3,
-      question: 'Where can I watch LBNTV?',
-      answer: 'You can watch LBNTV live on our website using the "WATCH LIVE" option. You can also stream our feeds on our mobile apps (available on iOS and Android), major satellite networks, and regional cable networks across multiple states in India.'
+      question: 'Can I watch LBN online?',
+      answer: 'Yes, you can watch LBN programmes online anytime and from anywhere.'
     },
     {
       id: 4,
-      question: 'What kinds of programs are broadcast on LBNTV?',
-      answer: 'Our broadcast schedule includes a rich variety of faith-building segments: live communion services, worship programs (like Song of Praise and Praise Nights), regional ministry teachings, suspenseful cinematic drama series (like Logan), and dedicated blocks for teenagers (Ignite Show) and children.'
+      question: 'Does LBN have programmes for children and youth?',
+      answer: 'Yes, LBN provides engaging and purpose-driven content specially created for children and young people.'
     },
     {
       id: 5,
-      question: 'How can I support LBNTV?',
-      answer: 'You can support LBNTV through prayers, volunteering at our New Delhi and regional studios, sharing our live broadcast links with your family, or giving voluntary partner donations to help us expand satellite transponder feeds and regional language translations.'
+      question: 'How can I support LoveWorld India Broadcasting Network?',
+      answer: 'You can support LBN by partnering with the network and helping advance its mission of spreading the Gospel through broadcasting.'
     }
   ];
 

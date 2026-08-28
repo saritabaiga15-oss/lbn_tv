@@ -1,0 +1,308 @@
+/* Services Page Container */
+.services-page-section {
+  background-color: var(--bg-main, #0d0d14);
+  color: var(--text-primary, #ffffff);
+  padding: 60px 20px 100px;
+  min-height: 100vh;
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Hero Section */
+.services-hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.6) 0%, transparent 70%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 20px;
+}
+
+.services-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(207, 168, 96, 0.1);
+  color: var(--accent-gold, #cfa860);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  border: 1px solid rgba(207, 168, 96, 0.3);
+}
+
+.services-title {
+  font-family: var(--font-title, 'Inter', sans-serif);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  background: linear-gradient(to right, #ffffff, #aaaaaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.services-hero-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.services-btn {
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.services-btn.primary {
+  background: var(--accent-gold, #cfa860);
+  color: #000;
+  border: 1px solid var(--accent-gold, #cfa860);
+}
+
+.services-btn.primary:hover {
+  background: #b5924a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(207, 168, 96, 0.2);
+}
+
+.services-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.services-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.services-btn.outline {
+  background: transparent;
+}
+
+/* Service Categories */
+.service-category {
+  padding: 20px 0;
+}
+
+.service-category-header {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.service-category-title {
+  font-family: var(--font-title, 'Inter', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.service-category-line {
+  height: 1px;
+  background: linear-gradient(to right, rgba(255,255,255,0.1), transparent);
+  flex-grow: 1;
+}
+
+/* Cards Grid (Video, Audio, Facilities) */
+.service-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(207, 168, 96, 0.3);
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+  font-family: var(--font-title, 'Inter', sans-serif);
+  font-size: 1.25rem;
+  color: var(--accent-gold, #cfa860);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  color: #aaaaaa;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Equipment Lease Tags */
+.service-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.service-tag {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: #e2e8f0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.service-tag:hover {
+  background: rgba(207, 168, 96, 0.1);
+  border-color: var(--accent-gold, #cfa860);
+  color: var(--accent-gold, #cfa860);
+}
+
+/* Props Gallery */
+.props-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.prop-card {
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: #1a1a24;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.prop-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+  transition: all 0.3s ease;
+}
+
+.prop-card:hover .prop-placeholder {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(207, 168, 96, 0.1) 0%, rgba(207, 168, 96, 0.2) 100%);
+}
+
+/* Custom Packages */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.package-card {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(207, 168, 96, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.package-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.package-card h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.package-card p {
+  color: #aaa;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Bottom CTA */
+.services-cta-section {
+  margin-top: 40px;
+}
+
+.services-cta-box {
+  background: linear-gradient(135deg, rgba(207, 168, 96, 0.15) 0%, rgba(207, 168, 96, 0.02) 100%);
+  border: 1px solid rgba(207, 168, 96, 0.3);
+  border-radius: 24px;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.services-cta-box h2 {
+  font-family: var(--font-title, 'Inter', sans-serif);
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.services-cta-box p {
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-cta-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-title {
+    font-size: 2.5rem;
+  }
+  
+  .services-cta-box h2 {
+    font-size: 2rem;
+  }
+
+  .service-cards-grid, 
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+}

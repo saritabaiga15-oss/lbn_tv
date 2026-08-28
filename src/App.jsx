@@ -8,6 +8,7 @@ import AboutUs from "./assets/Components/AboutUs/AboutUs";
 import Programmes from "./assets/Components/Programmes/Programm";
 
 import Schedule from "./assets/Components/Schedule/Schedule";
+import Services from "./assets/Components/Services/Services";
 import TeensProgrammes from "./assets/Components/TeensProgrammes/TeensProgrammes";
 import KidsProgrammes from "./assets/Components/KidsProgrammes/KidsProgrammes";
 import ImageGallery from "./assets/Components/ImageGallery/ImageGallery";
@@ -36,6 +37,7 @@ function App() {
         {activeTab === 'about-us' && <AboutUs />}
         {activeTab === 'programmes' && <Programmes />}
         {activeTab === 'epg' && <Schedule />}
+        {activeTab === 'services' && <Services />}
         {activeTab === 'teens-programs' && <TeensProgrammes />}
         {activeTab === 'kids-programs' && <KidsProgrammes />}
         {activeTab === 'join-our-mission' && <JoinOurMission />}

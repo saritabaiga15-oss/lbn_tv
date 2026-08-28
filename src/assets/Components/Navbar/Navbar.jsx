@@ -150,6 +150,16 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 </li>
               </ul>
             </li>
+
+            <li className="nav-item">
+              <a
+                href="#services"
+                onClick={(e) => { e.preventDefault(); handleNavClick('services'); }}
+                className={`nav-link ${activeTab === 'services' ? 'active' : ''}`}
+              >
+                SERVICES
+              </a>
+            </li>
           </ul>
         </nav>
 
@@ -255,6 +265,15 @@ const Navbar = ({ activeTab, onTabChange }) => {
                     </li>
                   </ul>
                 )}
+              </li>
+
+              <li>
+                <a
+                  href="#services"
+                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('services'); }}
+                >
+                  SERVICES
+                </a>
               </li>
 
               <li>

@@ -104,7 +104,7 @@ const Footer = () => {
                 />
                 <span className="footer-logo-fallback" style={{ display: 'none' }}>LW</span>
               </div>
-              <h3 className="footer-brand-title">LOVEWORLD STUDIO</h3>
+              <h3 className="footer-brand-title">LOVE INDIA ENTERTAINMENT PVT LTD</h3>
             </div>
             
             <div className="footer-address-details">
@@ -127,6 +127,7 @@ const Footer = () => {
               <ul>
                 <li><a href="#home">Homepage</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#contacts">Contacts</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#faq">FAQ</a></li>
@@ -159,7 +160,7 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="footer-bottom">
-          <p className="copyright-text">Copyright &copy; 2025 LoveWorld India. All rights reserved.</p>
+          <p className="copyright-text">Copyright &copy; 2025 Love India Entertainment Pvt Ltd. All rights reserved.</p>
           <div className="footer-bottom-links">
             <a href="#privacy">Privacy Policy</a>
             <span className="footer-bar-sep">|</span>

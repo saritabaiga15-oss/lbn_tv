@@ -54,8 +54,8 @@ const TeensProgrammes = () => {
         {/* Show Cards Grid */}
         <div className="teens-grid">
           {programs.map((show) => (
-            <div 
-              key={show.id} 
+            <div
+              key={show.id}
               className="teen-card"
               onClick={() => setSelectedShow(show)}
             >
@@ -64,7 +64,7 @@ const TeensProgrammes = () => {
                 <div className="teen-card-overlay"></div>
                 <span className="teen-card-duration">{show.duration}</span>
               </div>
-              
+
               <div className="teen-card-content">
                 <span className="teen-card-schedule">{show.schedule}</span>
                 <h3 className="teen-card-title">{show.title}</h3>
@@ -91,7 +91,7 @@ const TeensProgrammes = () => {
                 <h4 className="modal-show-subtitle">{selectedShow.subtitle}</h4>
                 <p className="modal-show-tagline">"{selectedShow.tagline}"</p>
                 <p className="modal-show-desc">{selectedShow.description}</p>
-                
+
                 <div className="modal-actions-container">
                   <button className="modal-action-watch" onClick={() => setSelectedShow(null)}>
                     WATCH LATEST EPISODE

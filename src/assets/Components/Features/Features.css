@@ -36,6 +36,14 @@
   text-transform: uppercase;
 }
 
+.features-subtitle {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1rem;
+  color: #aaaaaa;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
 /* 4-column Grid layout */
 .features-grid {
   display: grid;

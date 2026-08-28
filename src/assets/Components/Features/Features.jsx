@@ -6,7 +6,7 @@ const Features = () => {
     {
       id: 1,
       title: 'Stream Anywhere',
-      desc: 'Watch live satellite streams and continuous broadcasts on your phone, tablet, laptop, and smart TV.',
+      desc: 'Watch your favourite LBNTV programmes anytime, anywhere, on any device.',
       accent: 'blue',
       icon: (
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -20,7 +20,7 @@ const Features = () => {
     {
       id: 2,
       title: 'Interactive EPG',
-      desc: 'Browse our detailed weekly guide, check timeslots, hosts, and configure reminders for your favorite live slots.',
+      desc: 'Easily explore programmes, schedules, and upcoming shows so you never miss what matters.',
       accent: 'gold',
       icon: (
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -34,8 +34,8 @@ const Features = () => {
     },
     {
       id: 3,
-      title: 'Youth & Kids Hubs',
-      desc: 'Explore faith-building animated stories, talent programs, and interactive talk shows tailored for kids and teenagers.',
+      title: 'Youth & Kids Hubs and Educational',
+      desc: 'Discover engaging, uplifting content created to inspire children and young people in their faith and purpose.',
       accent: 'red',
       icon: (
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -50,7 +50,7 @@ const Features = () => {
     {
       id: 4,
       title: 'Faith & Renewal',
-      desc: 'Access continuous, value-based Christian programming and live global prayer slots designed to nurture your soul.',
+      desc: 'Be refreshed through powerful teachings, worship, prayers, and messages that strengthen your faith and renew your spirit.',
       accent: 'gold',
       icon: (
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -71,6 +71,7 @@ const Features = () => {
         <div className="features-header">
           <span className="features-label">WHY LBNTV</span>
           <h2 className="features-title">MORE REASONS TO WATCH</h2>
+          <p className="features-subtitle">Experience inspiring, faith-filled content designed to inform, encourage, and transform lives.</p>
         </div>
 
         {/* 4-column Grid matching reference style */}
