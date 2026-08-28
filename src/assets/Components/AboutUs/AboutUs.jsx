@@ -1,0 +1,182 @@
+import React, { useState } from 'react';
+import './AboutUs.css';
+import LWS from '../../images/LWS.jpeg';
+
+const AboutUs = () => {
+  const [glanceExpanded, setGlanceExpanded] = useState(false);
+  const [valueExpanded, setValueExpanded] = useState(false);
+
+  const stats = [
+    { id: '01', number: '25+', label: 'Years of Broadcasting', value: 'Over two decades of dedication, spiritual impact, and excellence.' },
+    { id: '02', number: '10+', label: 'Digital Channels', value: 'Multi-language feeds broadcasting hope 24/7 across various platforms.' },
+    { id: '03', number: '5', label: 'Regional Studios', value: 'State-of-the-art production studios located across major Indian hubs.' },
+    { id: '04', number: '260+', label: 'Global Live Events', value: 'Massive broadcasts connecting millions in prayer, worship, and healing.' }
+  ];
+
+  const partners = [
+    'LoveWorld India', 'Christ Embassy', 'Rhapsody of Realities', 'Healing Streams',
+    'KingsChat', 'LTM Network', 'LoveWorld Youth Hub', 'LoveWorld Kids',
+    'InnerCity Mission', 'Pastor Chris Online', 'Loveworld Singers', 'FALA Foundation'
+  ];
+
+  const milestones = [
+    { year: '2003', title: 'Foundation of LBNTV', desc: 'Started as a regional media initiative in New Delhi.' },
+    { year: '2008', title: '24/7 Satellite Launch', desc: 'Acquired satellite transponder space for continuous broadcasting.' },
+    { year: '2012', title: '50 Million Reach', desc: 'Reached a milestone of 50 million active households across Asia.' },
+    { year: '2018', title: 'Digital Expansion', desc: 'Launched web streams and custom mobile apps for global convenience.' },
+    { year: '2025', title: 'HD regional feeds', desc: 'Broadcasting in 8 regional languages with advanced streaming feeds.' }
+  ];
+
+  return (
+    <section id="about-us-page" className="about-us-page-section">
+      <div className="about-us-page-container">
+
+        {/* ── LBN AT A GLANCE ── */}
+        <div className="about-glance-block">
+          <div className="about-glance-label-col">
+            <span className="about-section-tag">LBN AT A GLANCE</span>
+          </div>
+          <div className="about-glance-content-col">
+            <p className={`about-glance-text ${glanceExpanded ? 'expanded' : 'clamped'}`}>
+              LoveWorld Broadcasting Network has the mandate to impact India and Asia at large with the Gospel
+              of our Lord and Saviour Jesus Christ through various faith-filled programmes centred on lifestyle,
+              teachings, leadership, family, prayer, worship, and much more. You were created for a purpose,
+              on purpose. Everything we do is designed to help you recognise your God-given purpose, develop
+              your potential, and achieve all that God has destined for you. Are you ready to go on this journey
+              with us? Let's get started! To make sure you don't miss a thing, be sure to subscribe to our
+              newsletter and stay connected to inspiring programmes, uplifting messages, and life-changing
+              content. Let's get going!
+            </p>
+            <button
+              className="about-readmore-btn"
+              onClick={() => setGlanceExpanded(!glanceExpanded)}
+            >
+              {glanceExpanded ? 'SHOW LESS ▲' : 'READ MORE ▼'}
+            </button>
+          </div>
+        </div>
+
+        {/* Decorative divider */}
+        <div className="about-divider"></div>
+
+        {/* ── YOUR VALUE ── */}
+        <div className="about-glance-block">
+          <div className="about-glance-label-col">
+            <span className="about-section-tag accent-gold">YOUR VALUE</span>
+          </div>
+          <div className="about-glance-content-col">
+            <p className={`about-glance-text ${valueExpanded ? 'expanded' : 'clamped'}`}>
+              You were created for a purpose, and your life carries tremendous value. We are here to help you
+              discover and fulfil that purpose by providing rich, inspiring, and faith-filled content to strengthen
+              your faith and deepen your understanding of God's Word. Everything we're about is designed to help
+              you recognise who you are in Christ, develop your God-given potential, and achieve all that God has
+              prepared for you. Your purpose matters, your potential matters, and your destiny matters.
+            </p>
+            <button
+              className="about-readmore-btn accent-gold"
+              onClick={() => setValueExpanded(!valueExpanded)}
+            >
+              {valueExpanded ? 'SHOW LESS ▲' : 'READ MORE ▼'}
+            </button>
+          </div>
+        </div>
+
+        {/* Decorative divider */}
+        <div className="about-divider"></div>
+
+        {/* Section 1: Hero Block */}
+        <div className="about-hero-block">
+          <div className="about-hero-title-col">
+            <h1 className="about-hero-large-title">
+              ABO<br />UT <span className="title-us-block">US</span>
+            </h1>
+          </div>
+          
+          <div className="about-hero-desc-col">
+            <span className="about-hero-label">OUR JOURNEY &amp; VISION</span>
+            <p className="about-hero-p1">
+              LoveWorld India Broadcasting Network (LBNTV) was founded with a profound vision: 
+              to deliver high-quality, value-based Christian programming that brings faith, hope, 
+              and spiritual renewal to millions of lives daily.
+            </p>
+            <p className="about-hero-p2">
+              LBNTV has grown to deliver an integrated multi-platform broadcasting solution, working 
+              collaboratively with global ministries, live satellite productions, and innovative digital streams. 
+              We leverage state-of-the-art technology to ensure that the message of Christ reaches every corner 
+              of India and beyond, creating a community centered on love, healing, and truth.
+            </p>
+            <button className="about-hero-cta">READ OUR CONSTITUTION</button>
+          </div>
+          
+          <div className="about-hero-img-col" style={{ backgroundImage: `url("${LWS}")` }}>
+            <div className="about-hero-img-overlay"></div>
+          </div>
+        </div>
+
+        {/* Section 2: Metrics Grid */}
+        <div className="about-metrics-intro">
+          <div className="metrics-intro-left">
+            <span className="metric-box-num-tag">01</span>
+          </div>
+          <div className="metrics-intro-right">
+            <h3 className="metrics-intro-heading">
+              We bring together the perfect blend of <span className="txt-gold">deep spiritual impact</span>, 
+              beautiful <span className="txt-blue">broadcast quality</span>, and optimized <span className="txt-red">digital accessibility</span>.
+            </h3>
+          </div>
+        </div>
+
+        <div className="about-metrics-grid">
+          {stats.map((stat) => (
+            <div key={stat.id} className="metric-card">
+              <span className="metric-card-id">{stat.id}</span>
+              <div className="metric-card-content">
+                <span className="metric-card-number">{stat.number}</span>
+                <h4 className="metric-card-label">{stat.label}</h4>
+                <p className="metric-card-desc">{stat.value}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Section 3: Brand Partners */}
+        <div className="about-partners-block">
+          <div className="partners-title-wrapper">
+            <h3 className="partners-block-title">WE PARTNER WITH AMAZING MINISTRIES</h3>
+          </div>
+          <div className="partners-grid">
+            {partners.map((partner, idx) => (
+              <div key={idx} className="partner-logo-box">
+                <span className="partner-logo-text">{partner.toUpperCase()}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Section 4: Milestones Footer */}
+        <div className="about-milestones-block">
+          <div className="milestones-left">
+            <span className="milestones-big-stat">260+</span>
+          </div>
+          <div className="milestones-right">
+            <h3 className="milestones-block-heading">MILESTONES OF GLOBAL BROADCASTING</h3>
+            <div className="milestones-list">
+              {milestones.map((item, idx) => (
+                <div key={idx} className="milestone-row">
+                  <span className="milestone-year">{item.year}</span>
+                  <div className="milestone-details">
+                    <h4 className="milestone-title">{item.title}</h4>
+                    <p className="milestone-desc">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default AboutUs;

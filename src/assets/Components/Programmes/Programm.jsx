@@ -1,318 +1,200 @@
-import React, { useRef, useState, useEffect } from "react";
-import "./Programm.css";
-
-// Program image imports
-import trumpetImg from "./ProgrammImage/trumpet.png";
-import craftingFaithImg from "./ProgrammImage/crafting_faith.png";
-import reflectionTimeImg from "./ProgrammImage/reflection_time.png";
-import longTimeAgoImg from "./ProgrammImage/long_time_ago.png";
-import moneyMattersImg from "./ProgrammImage/money_matters.png";
-import igniteImg from "./ProgrammImage/ignite.png";
-import jiotvLogo from "./jiotv.png";
-
-const PROGRAMMES_DATA = [
-  {
-    id: "trumpet",
-    title: "THE TRUMPET",
-    subtitle: "Sounding Truth & Faith",
-    tag: "Flagship Broadcast",
-    host: "Deacon Vijay Bansode",
-    description: "An uplifting broadcast sounding the trumpet of truth, miracles, faith, and inspiration across nations.",
-    schedule: "Every Sunday at 7:00 PM",
-    image: trumpetImg,
-    color: "#f59e0b",
-  },
-  {
-    id: "crafting-faith",
-    title: "CRAFTING FAITH",
-    subtitle: "Art, Creativity & Faith",
-    tag: "Creative & Spiritual",
-    host: "Jerilee Pinheiro",
-    description: "Explore the depths of God's Word through creative expression, art, heartfelt conversations, and practical faith building.",
-    schedule: "Thursdays at 5:30 PM",
-    image: craftingFaithImg,
-    color: "#d8b4fe",
-  },
-  {
-    id: "reflection-time",
-    title: "REFLECTION TIME",
-    subtitle: "with Abha",
-    tag: "Youth & Inspiration",
-    host: "Abha",
-    description: "Deep, heartfelt reflections on everyday life, faith discoveries, and the transformative presence of the Holy Spirit.",
-    schedule: "Wednesdays at 4:00 PM",
-    image: reflectionTimeImg,
-    color: "#a855f7",
-  },
-  {
-    id: "long-time-ago",
-    title: "LONG TIME AGO",
-    subtitle: "Stories of Faith",
-    tag: "History & Heroes",
-    host: "Loveworld Kids & Teens",
-    description: "Journey through time exploring biblical history, timeless testimonies, and the heroic men and women of God.",
-    schedule: "Saturdays at 11:00 AM",
-    image: longTimeAgoImg,
-    color: "#60a5fa",
-  },
-  {
-    id: "money-matters",
-    title: "MONEY MATTERS",
-    subtitle: "Kingdom Finance & Growth",
-    tag: "Finance & Prosperity",
-    host: "Loveworld India",
-    description: "Master biblical principles of financial prosperity, wealth creation, stewardship, and economic dominion in your daily life and career.",
-    schedule: "Tuesdays at 6:30 PM",
-    image: moneyMattersImg,
-    color: "#34d399",
-  },
-  {
-    id: "ignite",
-    title: "IGNITE",
-    subtitle: "Youth Group & Life Discussions",
-    tag: "Youth & Community",
-    host: "Loveworld Youth",
-    description: "An engaging youth talk show discussing contemporary culture, spiritual freedom, overcoming challenges, and walking in divine purpose.",
-    schedule: "Fridays at 5:00 PM",
-    image: igniteImg,
-    color: "#fb923c",
-  },
-];
+import React, { useState } from 'react';
+import './Programm.css';
+import LWS from '../../images/LWS.jpeg';
+import img2 from '../../images/image2.png';
+import img3 from '../../images/image3.png';
+import img4 from '../../images/image4.png';
+import global1 from '../../images/global1.png';
+import global2 from '../../images/global2.jpeg';
+import global3 from '../../images/global3.png';
+import global4 from '../../images/global4.png';
 
 const Programmes = () => {
-  const scrollRef = useRef(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [selectedProg, setSelectedProg] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('ALL');
+  const [selectedShow, setSelectedShow] = useState(null);
 
-  // Smooth continuous auto-scroll logic
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
+  const filters = ['ALL', 'WORSHIP', 'TALK SHOWS', 'TEENS & KIDS', 'SPECIALS'];
 
-    let animationFrameId;
-    const speed = 0.75; // Scroll speed in pixels per frame
-
-    const step = () => {
-      if (!isPaused && scrollContainer) {
-        scrollContainer.scrollLeft += speed;
-        // Seamless loop when reaching half of the duplicated list
-        if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-          scrollContainer.scrollLeft = 0;
-        }
-      }
-      animationFrameId = requestAnimationFrame(step);
-    };
-
-    animationFrameId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
-
-  // Manual scroll buttons
-  const handleScroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = direction === "left" ? -420 : 420;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  const programList = [
+    {
+      id: 1,
+      title: 'SONG OF PRAISE',
+      category: 'WORSHIP',
+      image: img2,
+      schedule: 'Saturdays at 7:00 PM',
+      duration: '45 mins',
+      tagline: 'Behind every song, there’s a story worth singing.',
+      description: 'Discover the personal experiences, scripture connects, and deep stories that shape these melodies of worship. Host and artists share raw testimonies that will enrich your soul.'
+    },
+    {
+      id: 2,
+      title: 'IGNITE SHOW',
+      category: 'TALK SHOWS',
+      image: img3,
+      schedule: 'Sundays at 6:00 PM',
+      duration: '60 mins',
+      tagline: 'Always keep the hope alive.',
+      description: 'Ignite explores the real-life intersection of youth culture, adolescence, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'
+    },
+    {
+      id: 3,
+      title: 'LWS CINEMA SHOW',
+      category: 'SPECIALS',
+      image: LWS,
+      schedule: 'Fridays at 9:00 PM',
+      duration: '90 mins',
+      tagline: 'Thrilling adventure that will keep you on edge.',
+      description: 'Following the journeys of characters navigating life\'s most intense crossroads. A gripping storytelling experience that combines cinematic visuals with redemptive, faith-filled narratives.'
+    },
+    {
+      id: 4,
+      title: 'LOVEWORLD PRAISE NIGHT',
+      category: 'WORSHIP',
+      image: global1,
+      schedule: 'Live Events',
+      duration: '120 mins',
+      tagline: 'Praising God in the beauty of holiness.',
+      description: 'A global music event celebrating faith, praise, and victorious worship. Featuring live choirs, instruments, and deep sermons on praise.'
+    },
+    {
+      id: 5,
+      title: 'GLOBAL COMMUNION SERVICE',
+      category: 'SPECIALS',
+      image: global2,
+      schedule: 'First Sunday of the Month',
+      duration: '180 mins',
+      tagline: 'Deepening fellowship and grace.',
+      description: 'Monthly live services led by Pastor Chris, containing deep spiritual revelations, global prayer directives, and communion rites.'
+    },
+    {
+      id: 6,
+      title: 'RHAPATHON',
+      category: 'SPECIALS',
+      image: global3,
+      schedule: 'Quarterly Broadcast',
+      duration: '150 mins',
+      tagline: 'Celebrating the impact of the Word.',
+      description: 'A special broadcasting campaign detailing the global outreach, translation testimonies, and distributions of the daily devotional Rhapsody of Realities.'
+    },
+    {
+      id: 7,
+      title: 'HEALING STREAMS Services',
+      category: 'SPECIALS',
+      image: global4,
+      schedule: 'Seasonal Global Events',
+      duration: '180 mins',
+      tagline: 'Where miracles happen live.',
+      description: 'Live healing services broadcasting miracles, divine restorations, and testimonies of healing from across the globe.'
+    },
+    {
+      id: 8,
+      title: 'TEENS TALENT HUB',
+      category: 'TEENS & KIDS',
+      image: img4,
+      schedule: 'Saturdays at 11:30 AM',
+      duration: '90 mins',
+      tagline: 'Unleashing the gifts of grace.',
+      description: 'Spotlighting young teenagers using their musical, artistic, and spoken word talents to express faith and build character.'
+    },
+    {
+      id: 9,
+      title: 'KIDDIES RHAPSODY SHOW',
+      category: 'TEENS & KIDS',
+      image: img2,
+      schedule: 'Fridays at 3:00 PM',
+      duration: '45 mins',
+      tagline: 'Growing in grace and scripture wisdom.',
+      description: 'Fun animations, illustrations, and memory verses built around the Kiddies Rhapsody devotional, helping children learn faith foundations.'
+    },
+    {
+      id: 10,
+      title: 'BIBLE ADVENTURES',
+      category: 'TEENS & KIDS',
+      image: img3,
+      schedule: 'Thursdays at 3:00 PM',
+      duration: '60 mins',
+      tagline: 'Heroes of faith come to life.',
+      description: 'High-quality 3D animated films depicting classical biblical tales of Esther, David, and Daniel, teaching values and character to kids.'
     }
-  };
+  ];
 
-  // Duplicate items for infinite seamless scroll
-  const displayItems = [...PROGRAMMES_DATA, ...PROGRAMMES_DATA];
+  const filteredPrograms = activeFilter === 'ALL'
+    ? programList
+    : programList.filter(prog => prog.category === activeFilter);
 
   return (
-    <section className="programmesSection" id="programmes">
-      {/* Ambient background glows */}
-      <div className="progGlow progGlowLeft"></div>
-      <div className="progGlow progGlowRight"></div>
-
-      <div className="programmesContainer">
-        {/* ================= SECTION HEADER ================= */}
-        <div className="programmesHeader">
-          <div className="headerLeft">
-            <span className="sectionBadge">FEATURED BROADCASTS</span>
-            <h2 className="sectionTitle">
-              Our Inspiring <span className="goldGradient">Programmes</span>
-            </h2>
-            <p className="sectionSubtext">
-              Tune into life-changing programs, powerful worship, youth insights, and dynamic ministry broadcasts.
-            </p>
-          </div>
-
-          <div className="headerActions">
-            <div className="carouselNav">
-              <button
-                className="navBtn"
-                onClick={() => handleScroll("left")}
-                aria-label="Scroll left"
-              >
-                ‹
-              </button>
-              <button
-                className="navBtn"
-                onClick={() => handleScroll("right")}
-                aria-label="Scroll right"
-              >
-                ›
-              </button>
-            </div>
-
-            <a href="#all-programmes" className="exploreAllBtn">
-              <span>EXPLORE ALL PROGRAMMES</span>
-              <span className="btnArrow">→</span>
-            </a>
-          </div>
+    <section id="programmes" className="programmes-section">
+      <div className="programmes-container">
+        <div className="programmes-header">
+          <span className="programmes-label">NETWORK GUIDE</span>
+          <h2 className="programmes-title">OUR PROGRAMMES</h2>
+          <p className="programmes-desc">
+            Explore our rich collection of Christian programming. Filter by category to find your favorite shows and schedules.
+          </p>
         </div>
 
-        {/* ================= AUTO-SCROLL CAROUSEL ================= */}
-        <div
-          className="carouselTrackWrapper"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)}
-          onTouchEnd={() => setIsPaused(false)}
-        >
-          <div className="carouselTrack" ref={scrollRef}>
-            {displayItems.map((prog, index) => (
-              <div
-                key={`${prog.id}-${index}`}
-                className="programmeCard"
-                onClick={() => setSelectedProg(prog)}
-                style={{ "--accent-color": prog.color }}
+        {/* Filter categories tabs */}
+        <div className="programmes-filters-wrapper">
+          <div className="programmes-filters">
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                onClick={() => setActiveFilter(filter)}
               >
-                <div className="cardContent">
-                  <div className="cardTagWrapper">
-                    <span className="cardTag">{prog.tag}</span>
-                  </div>
-
-                  <h3 className="cardTitle">
-                    {prog.title}
-                    {prog.subtitle && (
-                      <span className="cardSubtitle">{prog.subtitle}</span>
-                    )}
-                  </h3>
-
-                  <p className="cardDesc">{prog.description}</p>
-
-                  <div className="cardFooter">
-                    <button className="cardActionBtn">
-                      <span>Learn More</span>
-                      <span className="miniArrow">→</span>
-                    </button>
-                    <span className="autoscrollHint">● Live on Loveworld</span>
-                  </div>
-                </div>
-
-                <div className="cardImageWrapper">
-                  <img
-                    src={prog.image}
-                    alt={prog.title}
-                    className="cardImg"
-                    loading="lazy"
-                  />
-                  <div className="imageGlow"></div>
-                </div>
-              </div>
+                {filter}
+              </button>
             ))}
           </div>
         </div>
 
-        {/* ================= BOTTOM EXPLORE BAR ================= */}
-        <div className="bottomExploreBar">
-          <div className="autoscrollStatus">
-            <span className="pulseDot"></span>
-            <span>Auto-scrolling broadcasts • Hover to pause</span>
-          </div>
-
-          <a href="#all-programmes" className="bottomExploreLink">
-            EXPLORE ALL PROGRAMMES <span className="goldArrow">→</span>
-          </a>
-        </div>
-
-        {/* ================= AVAILABLE ON SECTION ================= */}
-        <div className="availableOnSection">
-          <div className="availableOnCard">
-            {/* Left: 24/7 Broadcast Badge & Title */}
-            <div className="availableLeft">
-              <span className="availablePill">24/7 BROADCAST</span>
-              <h3 className="availableTitle">
-                Available On <span className="goldHighlight">JioTV</span>
-              </h3>
-            </div>
-
-            {/* Center: Tune In Live Description */}
-            <div className="availableCenter">
-              <p className="availableDesc">
-                Tune in live and stream all Loveworld India
-                <br />
-                programmes seamlessly across your Smart TV,
-                <br />
-                mobile, and tablet devices.
-              </p>
-            </div>
-
-            {/* Right: JioTV Logo Badge Group */}
-            <div className="availableRight">
-              <div className="availableBadgeGroup">
-                <div className="logoCard">
-                  <img src={jiotvLogo} alt="JioTV Logo" className="jiotvLogoImage" />
-                </div>
-                <div className="channelDetails">
-                  <span className="channelNum">Channel 4080</span>
-                  <span className="liveStatus"><span className="liveDot"></span>LIVE NOW</span>
-                </div>
+        {/* Dynamic Grid */}
+        <div className="programmes-grid">
+          {filteredPrograms.map((prog) => (
+            <div 
+              key={prog.id} 
+              className="programme-card"
+              onClick={() => setSelectedShow(prog)}
+            >
+              <div className="programme-card-img-wrapper">
+                <img src={prog.image} alt={prog.title} className="programme-card-img" />
+                <div className="programme-card-overlay"></div>
+                <span className={`programme-card-category cat-${prog.category.toLowerCase().replace(' & ', '-')}`}>{prog.category}</span>
+              </div>
+              <div className="programme-card-content">
+                <span className="programme-card-schedule">{prog.schedule}</span>
+                <h3 className="programme-card-title">{prog.title}</h3>
+                <p className="programme-card-tagline">"{prog.tagline}"</p>
+                <button className="programme-card-btn">VIEW DETAILS</button>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* ================= PROGRAM DETAIL MODAL ================= */}
-      {selectedProg && (
-        <div
-          className="progModalBackdrop"
-          onClick={() => setSelectedProg(null)}
-        >
-          <div
-            className="progModalBox"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-          >
-            <button
-              className="modalCloseBtn"
-              onClick={() => setSelectedProg(null)}
-              aria-label="Close modal"
-            >
-              ✕
-            </button>
-
-            <div className="modalGrid">
-              <div className="modalImgCol">
-                <img
-                  src={selectedProg.image}
-                  alt={selectedProg.title}
-                  className="modalImage"
-                />
+      {/* Details Modal */}
+      {selectedShow && (
+        <div className="programmes-modal" onClick={() => setSelectedShow(null)}>
+          <div className="programmes-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="programmes-modal-close" onClick={() => setSelectedShow(null)}>&times;</button>
+            <div className="programmes-modal-grid">
+              <div className="programmes-modal-img-col" style={{ backgroundImage: `url("${selectedShow.image}")` }}>
+                <div className="programmes-modal-img-overlay"></div>
               </div>
-
-              <div className="modalInfoCol">
-                <span className="modalTag">{selectedProg.tag}</span>
-                <h3 className="modalTitle">{selectedProg.title}</h3>
-                <h4 className="modalHost">Host: {selectedProg.host}</h4>
-                <p className="modalDesc">{selectedProg.description}</p>
-
-                <div className="modalSchedule">
-                  <strong>Broadcast Time:</strong> {selectedProg.schedule}
-                </div>
-
-                <div className="modalBtnRow">
-                  <a
-                    href="https://healingstreams.tv"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="watchLiveBtn"
-                  >
-                    ▶ Watch Live Broadcast
-                  </a>
+              <div className="programmes-modal-info-col">
+                <span className="programmes-modal-schedule-tag">{selectedShow.schedule} &bull; {selectedShow.duration}</span>
+                <h2 className="programmes-modal-show-title">{selectedShow.title}</h2>
+                <h4 className="programmes-modal-show-subtitle">{selectedShow.category} CATEGORY</h4>
+                <p className="programmes-modal-show-tagline">"{selectedShow.tagline}"</p>
+                <p className="programmes-modal-show-desc">{selectedShow.description}</p>
+                
+                <div className="programmes-modal-actions-container">
+                  <button className="programmes-modal-action-watch" onClick={() => setSelectedShow(null)}>
+                    WATCH LATEST
+                  </button>
+                  <button className="programmes-modal-action-back" onClick={() => setSelectedShow(null)}>
+                    BACK
+                  </button>
                 </div>
               </div>
             </div>

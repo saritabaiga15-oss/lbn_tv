@@ -1,0 +1,332 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: var(--transition-smooth);
+  padding: 24px 0;
+}
+
+/* Scrolled style for sticky navbar */
+.site-header.scrolled {
+  background-color: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(10px);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.header-logo .logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.header-logo .logo-link:hover .navbar-logo-img {
+  transform: scale(1.04);
+}
+
+/* Desktop Nav */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
+  opacity: 0.8;
+  padding: 8px 0;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: var(--accent-gold);
+}
+
+/* Active link underline indicator */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent-gold);
+  transition: var(--transition-smooth);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  opacity: 1;
+  color: var(--accent-gold);
+}
+
+/* Actions: CTA & Hamburger */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Live dot – used inside WATCH LIVE button and mobile CTA */
+.live-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ff3b30;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff3b30;
+  animation: blink-live-dot 1.2s infinite ease-in-out;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@keyframes blink-live-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 10px #ff3b30, 0 0 18px rgba(255, 59, 48, 0.8);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px #ff3b30;
+  }
+}
+
+.cta-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 24px;
+  border-radius: 0;
+  background-color: transparent;
+  transition: var(--transition-smooth);
+}
+
+.cta-button:hover {
+  background-color: var(--text-primary);
+  color: #000000;
+  border-color: var(--text-primary);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: var(--transition-smooth);
+}
+
+.hamburger-menu:hover .hamburger-line {
+  background-color: var(--accent-gold);
+}
+
+/* Open menu transform into X icon */
+.hamburger-menu.open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Drawer Styles */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  visibility: hidden;
+  transition: visibility 0.4s;
+}
+
+.mobile-drawer.open {
+  visibility: visible;
+}
+
+.mobile-drawer-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.mobile-drawer.open .mobile-drawer-backdrop {
+  opacity: 1;
+}
+
+.mobile-drawer-content {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  background-color: var(--bg-card);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-drawer.open .mobile-drawer-content {
+  right: 0;
+}
+
+.mobile-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.mobile-drawer-header .logo-link {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+}
+
+.mobile-drawer-header .close-btn {
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.mobile-drawer-header .close-btn:hover {
+  opacity: 1;
+  color: var(--accent-gold);
+}
+
+.mobile-nav {
+  margin-top: 20px;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 30px;
+}
+
+.mobile-nav-list a {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+}
+
+.mobile-nav-list a:hover {
+  color: var(--accent-gold);
+  padding-left: 10px;
+}
+
+.mobile-nav-list .mobile-cta {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  padding: 12px 30px;
+  transition: var(--transition-smooth);
+}
+
+.mobile-nav-list .mobile-cta:hover {
+  background-color: var(--accent-gold);
+  color: #000000;
+  padding-left: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .header-container {
+    padding: 0 24px;
+  }
+  .desktop-nav {
+    display: none;
+  }
+  .hamburger-menu {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-button {
+    display: none; /* Hide ticket button on very small screens, drawer handles it */
+  }
+  .header-logo .logo-link {
+    font-size: 1.25rem;
+  }
+}

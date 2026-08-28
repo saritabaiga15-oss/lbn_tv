@@ -1,57 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Navbar from "./assets/Components/Navbar/Navbar";
 import Hero from "./assets/Components/Hero/Hero";
-import Marquee from "./assets/Components/Marquee/Marquee";
 import Features from "./assets/Components/Features/Features";
-import HealingStream from "./assets/Components/HealingStream/HealingStream";
-import Programm from "./assets/Components/Programmes/Programm";
-import Messages from "./assets/Components/Messages/Messages";
+import AboutUs from "./assets/Components/AboutUs/AboutUs";
+
+import Programmes from "./assets/Components/Programmes/Programm";
+
+import Schedule from "./assets/Components/Schedule/Schedule";
+import TeensProgrammes from "./assets/Components/TeensProgrammes/TeensProgrammes";
+import KidsProgrammes from "./assets/Components/KidsProgrammes/KidsProgrammes";
+import ImageGallery from "./assets/Components/ImageGallery/ImageGallery";
+import GlobalProgrammes from "./assets/Components/GlobalProgrammes/GlobalProgrammes";
+import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
-import HealingStreamPage from "./Pages/HealingStreamPage/HealingStreamPage";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(() => {
-    return window.location.hash === "#healing-streams" ? "healing-streams" : "home";
-  });
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      if (window.location.hash === "#healing-streams") {
-        setCurrentPage("healing-streams");
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else if (window.location.hash === "#home" || window.location.hash === "") {
-        setCurrentPage("home");
-      }
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  const navigateTo = (page) => {
-    setCurrentPage(page);
-    window.location.hash = page === "healing-streams" ? "healing-streams" : "home";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const [activeTab, setActiveTab] = useState('home');
 
   return (
-    <>
-      <Navbar activePage={currentPage} onNavigate={navigateTo} />
-      {currentPage === "healing-streams" ? (
-        <HealingStreamPage onNavigateHome={() => navigateTo("home")} />
-      ) : (
-        <>
-          <Hero />
-          <Marquee />
-          <Features />
-          <HealingStream />
-          <Programm />
-          <Messages />
-          <Footer onNavigate={navigateTo} />
-        </>
-      )}
-    </>
+    <div className="App">
+      <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
+      <main style={{ minHeight: '80vh', paddingTop: '80px' }}>
+        {activeTab === 'home' && (
+          <>
+            <Hero />
+            <Features />
+            <ImageGallery />
+            <GlobalProgrammes />
+            <FAQ />
+          </>
+        )}
+        {activeTab === 'about-us' && <AboutUs />}
+        {activeTab === 'programmes' && <Programmes />}
+        {activeTab === 'epg' && <Schedule />}
+        {activeTab === 'teens-programs' && <TeensProgrammes />}
+        {activeTab === 'kids-programs' && <KidsProgrammes />}
+      </main>
+      <Footer />
+    </div>
   );
 }
 

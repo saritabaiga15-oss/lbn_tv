@@ -1,22 +1,22 @@
-.programmes-section {
+.teens-section {
   background-color: var(--bg-dark);
   padding: 100px 0;
   width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.programmes-container {
+.teens-container {
   max-width: 1720px;
   margin: 0 auto;
   padding: 0 60px;
 }
 
-.programmes-header {
+.teens-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
-.programmes-label {
+.teens-label {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
@@ -27,7 +27,7 @@
   text-transform: uppercase;
 }
 
-.programmes-title {
+.teens-title {
   font-family: var(--font-title);
   font-size: 2.75rem;
   font-weight: 700;
@@ -37,7 +37,7 @@
   text-transform: uppercase;
 }
 
-.programmes-desc {
+.teens-desc {
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--text-muted);
@@ -46,67 +46,14 @@
   line-height: 1.6;
 }
 
-/* Filters Tabs */
-.programmes-filters-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 10px;
-}
-
-.programmes-filters {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.programmes-filters::-webkit-scrollbar {
-  display: none;
-}
-
-.filter-btn {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--text-primary);
-  opacity: 0.6;
-  padding: 12px 28px;
-  position: relative;
-  transition: var(--transition-smooth);
-}
-
-.filter-btn:hover {
-  opacity: 1;
-  color: var(--accent-gold);
-}
-
-.filter-btn.active {
-  opacity: 1;
-  color: var(--accent-gold);
-}
-
-.filter-btn.active::after {
-  content: '';
-  position: absolute;
-  bottom: -11px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--accent-gold);
-  box-shadow: 0 0 10px rgba(207, 168, 96, 0.5);
-}
-
-/* Programmes Grid */
-.programmes-grid {
+/* Teens Grid */
+.teens-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 
-.programme-card {
+.teen-card {
   background-color: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 4px;
@@ -115,36 +62,36 @@
   transition: var(--transition-smooth);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.programme-card:hover {
+.teen-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-gold);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 
-              -5px 5px 15px rgba(30, 90, 212, 0.12), 
-              5px -5px 15px rgba(199, 40, 40, 0.12);
+              -5px 5px 15px rgba(30, 90, 212, 0.15), 
+              5px -5px 15px rgba(199, 40, 40, 0.15);
 }
 
-.programme-card-img-wrapper {
+.teen-card-img-wrapper {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 250px;
   overflow: hidden;
 }
 
-.programme-card-img {
+.teen-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.programme-card:hover .programme-card-img {
+.teen-card:hover .teen-card-img {
   transform: scale(1.05);
 }
 
-.programme-card-overlay {
+.teen-card-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -153,46 +100,29 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 
-.programme-card-category {
+.teen-card-duration {
   position: absolute;
   top: 15px;
-  left: 20px;
+  right: 15px;
+  background-color: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
   border-radius: 2px;
+  letter-spacing: 0.05em;
 }
 
-.programme-card-category.cat-worship {
-  background-color: var(--accent-gold);
-  color: #000000;
-}
-
-.programme-card-category.cat-talk-shows {
-  background-color: var(--accent-blue);
-  color: #ffffff;
-}
-
-.programme-card-category.cat-specials {
-  background-color: var(--accent-red);
-  color: #ffffff;
-}
-
-.programme-card-category.cat-teens-kids {
-  background-color: var(--accent-gold);
-  color: #000000;
-}
-
-.programme-card-content {
+.teen-card-content {
   padding: 25px 30px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.programme-card-schedule {
+.teen-card-schedule {
   font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 600;
@@ -202,26 +132,25 @@
   text-transform: uppercase;
 }
 
-.programme-card-title {
+.teen-card-title {
   font-family: var(--font-title);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 10px;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
-.programme-card-tagline {
+.teen-card-tagline {
   font-family: var(--font-serif);
   font-size: 0.95rem;
   font-style: italic;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 20px;
   line-height: 1.4;
 }
 
-.programme-card-btn {
+.teen-card-btn {
   margin-top: auto;
   align-self: flex-start;
   font-family: var(--font-sans);
@@ -234,13 +163,13 @@
   transition: var(--transition-smooth);
 }
 
-.programme-card:hover .programme-card-btn {
+.teen-card:hover .teen-card-btn {
   color: var(--accent-gold);
   padding-left: 5px;
 }
 
 /* Modals */
-.programmes-modal {
+.teens-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -253,10 +182,10 @@
   align-items: center;
   justify-content: center;
   padding: 40px;
-  animation: prog-modal-bg-fade 0.3s forwards;
+  animation: modal-bg-fade 0.3s forwards;
 }
 
-.programmes-modal-content {
+.teens-modal-content {
   background-color: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
@@ -265,10 +194,10 @@
   overflow: hidden;
   position: relative;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  animation: prog-modal-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: modal-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.programmes-modal-close {
+.teens-modal-close {
   position: absolute;
   top: 20px;
   right: 25px;
@@ -279,24 +208,24 @@
   transition: var(--transition-smooth);
 }
 
-.programmes-modal-close:hover {
+.teens-modal-close:hover {
   opacity: 1;
   color: var(--accent-gold);
 }
 
-.programmes-modal-grid {
+.teens-modal-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   min-height: 500px;
 }
 
-.programmes-modal-img-col {
+.teens-modal-img-col {
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
-.programmes-modal-img-overlay {
+.teens-modal-img-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -305,14 +234,14 @@
   background: linear-gradient(to right, rgba(0,0,0,0) 40%, var(--bg-card) 100%);
 }
 
-.programmes-modal-info-col {
+.teens-modal-info-col {
   padding: 60px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.programmes-modal-schedule-tag {
+.modal-schedule-tag {
   font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 600;
@@ -322,7 +251,7 @@
   text-transform: uppercase;
 }
 
-.programmes-modal-show-title {
+.modal-show-title {
   font-family: var(--font-title);
   font-size: 2.5rem;
   font-weight: 700;
@@ -332,7 +261,7 @@
   letter-spacing: 0.02em;
 }
 
-.programmes-modal-show-subtitle {
+.modal-show-subtitle {
   font-family: var(--font-sans);
   font-size: 1rem;
   font-weight: 500;
@@ -341,7 +270,7 @@
   letter-spacing: 0.05em;
 }
 
-.programmes-modal-show-tagline {
+.modal-show-tagline {
   font-family: var(--font-serif);
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.9);
@@ -351,7 +280,7 @@
   line-height: 1.4;
 }
 
-.programmes-modal-show-desc {
+.modal-show-desc {
   font-family: var(--font-sans);
   font-size: 0.95rem;
   line-height: 1.75;
@@ -359,12 +288,12 @@
   margin-bottom: 40px;
 }
 
-.programmes-modal-actions-container {
+.modal-actions-container {
   display: flex;
   gap: 15px;
 }
 
-.programmes-modal-action-watch {
+.modal-action-watch {
   background-color: var(--accent-gold);
   color: #000000;
   font-family: var(--font-sans);
@@ -375,13 +304,13 @@
   transition: var(--transition-smooth);
 }
 
-.programmes-modal-action-watch:hover {
+.modal-action-watch:hover {
   background-color: var(--accent-gold-hover);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(207, 168, 96, 0.3);
 }
 
-.programmes-modal-action-back {
+.modal-action-back {
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-primary);
@@ -393,73 +322,73 @@
   transition: var(--transition-smooth);
 }
 
-.programmes-modal-action-back:hover {
+.modal-action-back:hover {
   border-color: var(--text-primary);
   background-color: rgba(255, 255, 255, 0.05);
   transform: translateY(-2px);
 }
 
-@keyframes prog-modal-bg-fade {
+@keyframes modal-bg-fade {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes prog-modal-slide-up {
+@keyframes modal-slide-up {
   from { transform: translateY(40px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
 
 /* Responsive */
 @media (max-width: 1199px) {
-  .programmes-grid {
+  .teens-grid {
     gap: 25px;
   }
 }
 
 @media (max-width: 991px) {
-  .programmes-container {
+  .teens-container {
     padding: 0 30px;
   }
 
-  .programmes-grid {
+  .teens-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .programmes-modal-grid {
+  .teens-modal-grid {
     grid-template-columns: 1fr;
   }
 
-  .programmes-modal-img-col {
+  .teens-modal-img-col {
     height: 250px;
   }
 
-  .programmes-modal-img-overlay {
+  .teens-modal-img-overlay {
     background: linear-gradient(to top, var(--bg-card) 10%, rgba(0,0,0,0) 100%);
   }
 
-  .programmes-modal-info-col {
+  .teens-modal-info-col {
     padding: 40px 30px;
   }
 }
 
 @media (max-width: 768px) {
-  .programmes-grid {
+  .teens-grid {
     grid-template-columns: 1fr;
   }
 
-  .programmes-title {
+  .teens-title {
     font-size: 2.2rem;
   }
 
-  .programmes-modal {
+  .teens-modal {
     padding: 15px;
   }
 
-  .programmes-modal-show-title {
+  .modal-show-title {
     font-size: 2rem;
   }
 
-  .programmes-modal-actions-container {
+  .modal-actions-container {
     flex-direction: column;
     gap: 10px;
   }
