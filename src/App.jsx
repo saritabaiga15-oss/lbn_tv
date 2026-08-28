@@ -12,6 +12,8 @@ import TeensProgrammes from "./assets/Components/TeensProgrammes/TeensProgrammes
 import KidsProgrammes from "./assets/Components/KidsProgrammes/KidsProgrammes";
 import ImageGallery from "./assets/Components/ImageGallery/ImageGallery";
 import GlobalProgrammes from "./assets/Components/GlobalProgrammes/GlobalProgrammes";
+import JoinOurMission from "./assets/Components/JoinOurMission/JoinOurMission";
+import OneTimeGift from "./assets/Components/OneTimeGift/OneTimeGift";
 import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
 
@@ -36,6 +38,8 @@ function App() {
         {activeTab === 'epg' && <Schedule />}
         {activeTab === 'teens-programs' && <TeensProgrammes />}
         {activeTab === 'kids-programs' && <KidsProgrammes />}
+        {activeTab === 'join-our-mission' && <JoinOurMission />}
+        {activeTab === 'one-time-gift' && <OneTimeGift />}
       </main>
       <Footer />
     </div>

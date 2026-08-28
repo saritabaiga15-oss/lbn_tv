@@ -16,23 +16,23 @@ const GlobalPrograms = () => {
     },
     {
       id: 2,
-      image: global2, // Square top-left: Communion Service
-      title: 'Global Communion Service',
-      badge: 'MONTHLY SERVICE',
+      image: global2, // Square top-left: Wholeness
+      title: 'Wholeness',
+      badge: 'HEALTH',
       gridClass: 'card-square-1'
     },
     {
       id: 3,
       image: global3, // Square top-right: Rhapathon
-      title: 'Rhapathon',
-      badge: 'SPECIAL CONTENT',
+      title: 'Trumpet',
+      badge: 'MORNING BOO',
       gridClass: 'card-square-2'
     },
     {
       id: 4,
-      image: global4, // Wide bottom: Healing Streams
-      title: 'Healing Streams Live Healing Services',
-      badge: 'HEALING SERVICE',
+      image: global4, // Wide bottom: Word At Work
+      title: 'Word At Work',
+      badge: 'TALK SHOW',
       gridClass: 'card-wide'
     }
   ];
@@ -44,7 +44,7 @@ const GlobalPrograms = () => {
           <span className="global-programs-label">LIVE BROADCASTS</span>
           <h2 className="global-programs-title">UPCOMING GLOBAL PROGRAMS</h2>
           <p className="global-programs-desc">
-            Join millions of viewers worldwide for our premier live services, communion feeds, and global healing crusades. 
+            Join millions of viewers worldwide for our premier live services, communion feeds, and global healing crusades.
             These special broadcasts bring together international ministries to share messages of faith, hope, and spiritual renewal.
           </p>
         </div>
@@ -52,8 +52,8 @@ const GlobalPrograms = () => {
         {/* Bento Grid layout */}
         <div className="bento-grid">
           {programs.map((prog) => (
-            <div 
-              key={prog.id} 
+            <div
+              key={prog.id}
               className={`bento-card ${prog.gridClass}`}
               style={{ backgroundImage: `url("${prog.image}")` }}
             >

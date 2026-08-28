@@ -1,12 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Navbar.css';
 import image from '../../images/LWI_logo.png';
 
 const Navbar = ({ activeTab, onTabChange }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [partnerDropdownOpen, setPartnerDropdownOpen] = useState(false);
+  const [mobilePartnerOpen, setMobilePartnerOpen] = useState(false);
 
-  // Add scroll class to navbar when scrolled for premium feel
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on outside click if clicked
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setPartnerDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Add scroll class to navbar when scrolled
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -25,6 +40,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
 
   const handleNavClick = (tab, hash = null) => {
     onTabChange(tab);
+    setPartnerDropdownOpen(false);
     if (hash) {
       setTimeout(() => {
         const element = document.getElementById(hash);
@@ -36,6 +52,8 @@ const Navbar = ({ activeTab, onTabChange }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
+
+  const isPartnerActive = activeTab === 'join-our-mission' || activeTab === 'one-time-gift';
 
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
@@ -85,6 +103,52 @@ const Navbar = ({ activeTab, onTabChange }) => {
               >
                 EPG
               </a>
+            </li>
+
+            {/* Partner with Us Dropdown (Hover triggered, arrow removed) */}
+            <li
+              className="nav-item nav-dropdown"
+              ref={dropdownRef}
+              onMouseEnter={() => setPartnerDropdownOpen(true)}
+              onMouseLeave={() => setPartnerDropdownOpen(false)}
+            >
+              <button
+                type="button"
+                className={`nav-link dropdown-toggle ${isPartnerActive || partnerDropdownOpen ? 'active' : ''}`}
+                onClick={() => setPartnerDropdownOpen(!partnerDropdownOpen)}
+              >
+                <span>PARTNER WITH US</span>
+              </button>
+
+              <ul className={`dropdown-menu ${partnerDropdownOpen ? 'show' : ''}`}>
+                <li className="dropdown-item-wrapper">
+                  <a
+                    href="#join-our-mission"
+                    className={`dropdown-item-btn ${activeTab === 'join-our-mission' ? 'active' : ''}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick('join-our-mission');
+                    }}
+                  >
+                    <span className="dropdown-item-title">Join Our Mission</span>
+                    <span className="dropdown-item-desc">Become a monthly kingdom partner</span>
+                  </a>
+                </li>
+                <li className="dropdown-divider-line"></li>
+                <li className="dropdown-item-wrapper">
+                  <a
+                    href="#one-time-gift"
+                    className={`dropdown-item-btn ${activeTab === 'one-time-gift' ? 'active' : ''}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick('one-time-gift');
+                    }}
+                  >
+                    <span className="dropdown-item-title">One time gift</span>
+                    <span className="dropdown-item-desc">Support our global broadcasts</span>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
@@ -151,6 +215,48 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   EPG
                 </a>
               </li>
+
+              {/* Mobile Partner With Us Accordion */}
+              <li className="mobile-partner-accordion">
+                <div
+                  className="mobile-partner-header"
+                  onClick={() => setMobilePartnerOpen(!mobilePartnerOpen)}
+                >
+                  <span>PARTNER WITH US</span>
+                  <span className="accordion-indicator">{mobilePartnerOpen ? '−' : '+'}</span>
+                </div>
+                {mobilePartnerOpen && (
+                  <ul className="mobile-submenu">
+                    <li>
+                      <a
+                        href="#join-our-mission"
+                        className="mobile-submenu-btn"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleMobileMenu();
+                          handleNavClick('join-our-mission');
+                        }}
+                      >
+                        Join Our Mission
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="#one-time-gift"
+                        className="mobile-submenu-btn"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleMobileMenu();
+                          handleNavClick('one-time-gift');
+                        }}
+                      >
+                        One time gift
+                      </a>
+                    </li>
+                  </ul>
+                )}
+              </li>
+
               <li>
                 <a href="#live" className="mobile-cta" onClick={toggleMobileMenu}>
                   <span className="live-dot"></span> WATCH LIVE

@@ -1,0 +1,453 @@
+.gift-page-section {
+  background-color: var(--bg-dark, #000000);
+  color: var(--text-primary, #ffffff);
+  padding: 80px 0 120px 0;
+  width: 100%;
+  min-height: 90vh;
+}
+
+.gift-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.gift-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.gift-badge {
+  display: inline-block;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold, #cfa860);
+  background: rgba(207, 168, 96, 0.1);
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(207, 168, 96, 0.3);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.gift-title {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.gift-subtitle {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1.1rem;
+  color: #aaaaaa;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.gift-statement-box {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 30px 36px;
+}
+
+.gift-statement-p {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  color: #ffffff;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 400;
+}
+
+.gift-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 36px;
+  align-items: start;
+}
+
+.gift-card-block {
+  background: #0d0d14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 35px 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.card-block-title {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+/* Amount Pills Grid */
+.amount-pills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.amount-pill {
+  padding: 16px 12px;
+  background: #13131c;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.25s ease;
+}
+
+.amount-pill:hover {
+  border-color: rgba(207, 168, 96, 0.6);
+  transform: translateY(-2px);
+}
+
+.amount-pill.active {
+  background: var(--accent-gold, #cfa860);
+  border-color: var(--accent-gold, #cfa860);
+  color: #000000;
+  box-shadow: 0 4px 18px rgba(207, 168, 96, 0.4);
+}
+
+.pill-curr {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.pill-val {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.custom-amt-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.custom-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.curr-icon {
+  position: absolute;
+  left: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-gold, #cfa860);
+}
+
+.custom-field {
+  width: 100%;
+  padding: 14px 16px 14px 40px;
+  background: #13131c;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.custom-field:focus {
+  outline: none;
+  border-color: var(--accent-gold, #cfa860);
+}
+
+/* Impact Options Grid */
+.impact-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.impact-card {
+  background: #13131c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.impact-card:hover {
+  border-color: rgba(207, 168, 96, 0.4);
+}
+
+.impact-card.active {
+  border-color: var(--accent-gold, #cfa860);
+  background: #171724;
+  box-shadow: 0 0 16px rgba(207, 168, 96, 0.2);
+}
+
+.impact-radio {
+  padding-top: 2px;
+}
+
+.radio-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: block;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.radio-dot.checked {
+  border-color: var(--accent-gold, #cfa860);
+}
+
+.radio-dot.checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-gold, #cfa860);
+}
+
+.impact-title {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.impact-card.active .impact-title {
+  color: var(--accent-gold, #cfa860);
+}
+
+.impact-desc {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  color: #999999;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Donor Form */
+.gift-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.gift-input, .gift-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: #13131c;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.gift-input:focus, .gift-textarea:focus {
+  outline: none;
+  border-color: var(--accent-gold, #cfa860);
+  box-shadow: 0 0 15px rgba(207, 168, 96, 0.2);
+}
+
+.gift-submit-btn {
+  padding: 16px 36px;
+  background: var(--accent-gold, #cfa860);
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(207, 168, 96, 0.35);
+  margin-top: 10px;
+}
+
+.gift-submit-btn:hover {
+  background: #dfb96f;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(207, 168, 96, 0.5);
+}
+
+/* Side Column: Summary & Bank */
+.gift-summary-card {
+  position: sticky;
+  top: 100px;
+  background: #0d0d14;
+  border: 1px solid rgba(207, 168, 96, 0.35);
+  border-radius: 14px;
+  padding: 32px 28px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.summary-title {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-gold, #cfa860);
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.summary-amount-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.sum-lbl, .desig-lbl {
+  font-size: 0.75rem;
+  color: #888888;
+  text-transform: uppercase;
+}
+
+.sum-val {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.summary-designation {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.desig-val {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-gold, #cfa860);
+}
+
+.gift-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin: 24px 0;
+}
+
+.side-bank-heading {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--accent-gold, #cfa860);
+  margin-bottom: 12px;
+}
+
+.side-bank-info {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.82rem;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.side-bank-info p {
+  margin: 4px 0;
+}
+
+.upi-highlight {
+  color: var(--accent-gold, #cfa860) !important;
+  font-weight: 600;
+  margin-top: 8px !important;
+}
+
+.blessing-quote {
+  margin-top: 24px;
+  padding: 16px;
+  background: rgba(207, 168, 96, 0.08);
+  border-left: 3px solid var(--accent-gold, #cfa860);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--font-serif, 'Georgia', serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #dddddd;
+  line-height: 1.5;
+}
+
+/* Success Card */
+.gift-success-card {
+  background: #0d0d14;
+  border: 1px solid var(--accent-gold, #cfa860);
+  border-radius: 16px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(207, 168, 96, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .gift-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .gift-summary-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .gift-container {
+    padding: 0 20px;
+  }
+  .gift-title {
+    font-size: 2.4rem;
+  }
+  .amount-pills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .impact-options-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}

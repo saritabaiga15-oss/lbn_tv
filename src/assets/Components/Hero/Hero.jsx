@@ -2,40 +2,91 @@ import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import img2 from '../../images/image2.png';
 import img3 from '../../images/image3.png';
+import drPrashanti from '../../images/dr_prashanti.jpg';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Auto-play slider every 3 seconds as requested
+  const slides = [
+    { id: 1, image: img2, title: 'Song of Praise' },
+    { id: 2, image: img3, title: 'Ignite Show' },
+    { id: 3, image: drPrashanti, title: 'Dr. Prashanti' }
+  ];
+
+  // Auto-play slider every 4 seconds (pauses on user hover)
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev === 0 ? 1 : 0));
-    }, 3000);
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused, slides.length]);
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
   const setSlide = (index) => {
     setCurrentSlide(index);
   };
 
   return (
-    <div id="home" className="hero-slider">
-      <div className="slider-track" style={{ transform: `translateX(-${currentSlide * 50}%)` }}>
-        {/* Slide 1: SONG OF PRAISE */}
-        <div className="slide" style={{ backgroundImage: `url("${img2}")` }}>
-          {/* No text overlay - using baked-in image design */}
-        </div>
+    <div
+      id="home"
+      className="hero-slider"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      {/* Navigation Arrows */}
+      <button className="hero-arrow prev" onClick={handlePrev} aria-label="Previous Slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
 
-        {/* Slide 2: IGNITE TALK SHOW */}
-        <div className="slide" style={{ backgroundImage: `url("${img3}")` }}>
-          {/* No text overlay - using baked-in image design */}
-        </div>
+      <button className="hero-arrow next" onClick={handleNext} aria-label="Next Slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      {/* Slider Track with all 3 slides */}
+      <div
+        className="slider-track"
+        style={{
+          width: `${slides.length * 100}%`,
+          transform: `translateX(-${(currentSlide * 100) / slides.length}%)`
+        }}
+      >
+        {slides.map((slide) => (
+          <div
+            key={slide.id}
+            className="slide"
+            style={{
+              width: `${100 / slides.length}%`,
+              backgroundImage: `url("${slide.image}")`
+            }}
+          >
+            {/* Clean presentation with baked-in flyer artwork */}
+          </div>
+        ))}
       </div>
 
       {/* Slide Indicators: Dots */}
       <div className="slider-dots">
-        <button className={`dot ${currentSlide === 0 ? 'active' : ''}`} onClick={() => setSlide(0)} aria-label="Go to Slide 1"></button>
-        <button className={`dot ${currentSlide === 1 ? 'active' : ''}`} onClick={() => setSlide(1)} aria-label="Go to Slide 2"></button>
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            className={`dot ${currentSlide === index ? 'active' : ''}`}
+            onClick={() => setSlide(index)}
+            aria-label={`Go to Slide ${index + 1}`}
+          ></button>
+        ))}
       </div>
     </div>
   );

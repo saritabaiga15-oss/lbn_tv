@@ -1,49 +1,38 @@
 import React, { useState } from 'react';
 import './ImageGallery.css';
-import praiseimage from '../../images/praiseimage.jpeg';
-import comm_image from '../../images/comm_image.jpeg';
-import healingimage from '../../images/healingimage.jpeg';
-import LWS from '../../images/LWS.jpeg';
-import image2 from '../../images/image2.png';
-import image3 from '../../images/image3.png';
-import image4 from '../../images/image4.png';
-import image5 from '../../images/image5.png';
-import global3 from '../../images/global3.png';
+import theTrumpet from '../../images/the_trumpet.jpg';
+import timelessParagon from '../../images/timeless_paragon.jpg';
+import wordAtWork from '../../images/word_at_work.jpg';
+import drPrashanti from '../../images/dr_prashanti.jpg';
+import prayWithMe from '../../images/pray_with_me.jpg';
+import duskTillDawn from '../../images/dusk_till_dawn.jpg';
 import craftingBeads from '../../images/crafting_beads.jpg';
 import craftingFaithHost from '../../images/crafting_faith_host.jpg';
 import moneyMatters from '../../images/money_matters.jpg';
-import herbalHealing from '../../images/herbal_healing.jpg';
 
 const ImageGallery = () => {
-  const [activeCategory, setActiveCategory] = useState('ALL');
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   const galleryItems = [
-    { id: 1, src: praiseimage, title: 'Praise Night Live Concert', category: 'WORSHIP', caption: 'Thousands gather in high worship and global celebration.' },
-    { id: 2, src: comm_image, title: 'Global Communion Service', category: 'EVENTS', caption: 'Pastor Chris leading millions in communion and word revelation.' },
-    { id: 3, src: healingimage, title: 'Healing Streams Live Miracle Service', category: 'EVENTS', caption: 'Demonstration of divine healing power broadcast worldwide.' },
-    { id: 4, src: LWS, title: 'LoveWorld Studio (LWS) Special', category: 'STUDIOS', caption: 'State-of-the-art HD broadcasting suite and production set.' },
-    { id: 5, src: craftingBeads, title: 'Crafting Faith – Creative Workshop', category: 'PROGRAMMES', caption: 'Inspiring craft sessions that blend creativity with faith.' },
-    { id: 6, src: craftingFaithHost, title: 'Crafting Faith – Studio Show', category: 'PROGRAMMES', caption: 'Create · Inspire · Glorify — faith through art and craft.' },
-    { id: 7, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship and financial freedom on LBN.' },
-    { id: 8, src: herbalHealing, title: 'Herbal Healing Garden – Wellness Show', category: 'PROGRAMMES', caption: 'Holistic health and wellness from a faith-based perspective.' },
-    { id: 9, src: global3, title: 'Rhapathon Global Broadcast', category: 'EVENTS', caption: 'Celebrating global impact and distribution of Rhapsody of Realities.' },
-    { id: 10, src: image2, title: 'Song of Praise Studio Session', category: 'WORSHIP', caption: 'Behind the scenes at LoveWorld India Production Studio.' },
-    { id: 11, src: image3, title: 'Ignite Youth Broadcast', category: 'TALK SHOWS', caption: 'Youth leaders engaging in interactive discussions on faith.' },
-    { id: 12, src: image4, title: 'Teens Talent & Art Festival', category: 'STUDIOS', caption: 'Teenagers expressing faith through music, art, and poetry.' },
-    { id: 13, src: image5, title: 'LoveWorld Digital Media Center', category: 'STUDIOS', caption: 'Satellite transponder transmission and digital control center.' }
+    { id: 1, src: theTrumpet, title: 'The Trumpet – Deacon Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
+    { id: 2, src: timelessParagon, title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
+    { id: 3, src: wordAtWork, title: 'Word At Work – Studio Broadcast', category: 'TALK SHOWS', caption: 'Inspired, equipped, and empowered — panel discussions exploring God’s Word in action.' },
+    { id: 4, src: drPrashanti, title: 'Dr. Prashanti – Health & Wellness', category: 'HEALTH', caption: 'Inspiring health, wellness, and medical guidance from a faith-filled perspective.' },
+    { id: 5, src: prayWithMe, title: 'Pray With Me – Global Intercession', category: 'PRAYER', caption: 'Lifting nations in fervent prayer and spiritual intercession across the globe.' },
+    { id: 6, src: duskTillDawn, title: 'Dusk Till Dawn Studio Talk Show', category: 'TALK SHOWS', caption: 'Engaging conversations, uplifting testimonies, and late-night heart-to-heart discussions.' },
+    { id: 7, src: craftingBeads, title: 'Crafting Faith – Creative Workshop', category: 'PROGRAMMES', caption: 'Inspiring craft sessions that blend creativity with faith.' },
+    { id: 8, src: craftingFaithHost, title: 'Crafting Faith – Studio Show', category: 'PROGRAMMES', caption: 'Create · Inspire · Glorify — faith through art and craft.' },
+    { id: 9, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship and financial freedom on LBN.' }
   ];
 
-  const categories = ['ALL', 'WORSHIP', 'EVENTS', 'PROGRAMMES', 'STUDIOS', 'TALK SHOWS'];
-
-  const filteredItems = activeCategory === 'ALL'
-    ? galleryItems
-    : galleryItems.filter(item => item.category === activeCategory);
+  // 2 rows with 3 columns = 6 items displayed initially
+  const visibleItems = showAll ? galleryItems : galleryItems.slice(0, 6);
 
   return (
     <section id="gallery" className="gallery-section">
       <div className="gallery-container">
-        
+
         {/* Header */}
         <div className="gallery-header">
           <span className="gallery-badge">NETWORK GALLERY</span>
@@ -53,22 +42,9 @@ const ImageGallery = () => {
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="gallery-filters">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`gallery-filter-btn ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
         {/* Image Grid */}
         <div className="gallery-grid">
-          {filteredItems.map((item) => (
+          {visibleItems.map((item) => (
             <div
               key={item.id}
               className="gallery-card"
@@ -85,6 +61,31 @@ const ImageGallery = () => {
             </div>
           ))}
         </div>
+
+        {/* See More / See Less Button */}
+        {galleryItems.length > 6 && (
+          <div className="gallery-more-container">
+            <button
+              className="gallery-see-more-btn"
+              onClick={() => setShowAll((prev) => !prev)}
+            >
+              <span>{showAll ? 'SEE LESS' : 'SEE MORE'}</span>
+              <svg
+                className={`see-more-arrow ${showAll ? 'expanded' : ''}`}
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
+        )}
 
       </div>
 
