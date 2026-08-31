@@ -188,7 +188,7 @@ const AirtimeAnchorcrest = () => {
 
   return (
     <div className="airtime-anchorcrest-page">
-      
+
       {/* Hero Section */}
       <section className="aa-hero">
         <div className="aa-hero-glow"></div>
@@ -212,14 +212,14 @@ const AirtimeAnchorcrest = () => {
             <div className="ecosystem-icon-box">🌟</div>
             <div className="ecosystem-text">
               <h3>An Opportunity to Work in the LoveWorld Ecosystem</h3>
-              <p>Graduates gain direct pathways to intern, produce, and work across LoveWorld India &amp; global media facilities.</p>
+              <p>Graduates gain direct pathways to intern, produce, and work across Loveworld India &amp; global media facilities.</p>
             </div>
           </div>
 
           <div className="aa-hero-actions">
             <a href="#sponsor-section" className="aa-btn primary">
               <span>SPONSOR A STUDENT</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </a>
             <a href="#courses-section" className="aa-btn secondary">
               EXPLORE 15 COURSES
@@ -248,7 +248,7 @@ const AirtimeAnchorcrest = () => {
           </div>
           <div className="ribbon-item">
             <div className="ribbon-num">GLOBAL</div>
-            <div className="ribbon-label">LoveWorld Network Career Pathway</div>
+            <div className="ribbon-label">Loveworld Network Career Pathway</div>
           </div>
         </div>
       </section>
@@ -310,7 +310,7 @@ const AirtimeAnchorcrest = () => {
             <div className="pathway-header">
               <span className="pathway-pill">CAREER GATEWAY</span>
               <h2>HOW ANCHORCREST TRANSFORMS LIVES</h2>
-              <p>From underprivileged talent to certified broadcast professionals in the global LoveWorld network.</p>
+              <p>From underprivileged talent to certified broadcast professionals in the global Loveworld network.</p>
             </div>
 
             <div className="pathway-steps-grid">
@@ -342,7 +342,7 @@ const AirtimeAnchorcrest = () => {
                 <div className="step-badge">STEP 4</div>
                 <div className="step-icon">🚀</div>
                 <h4>Ecosystem Placement</h4>
-                <p>Direct hiring and career placements within LoveWorld media productions across India &amp; globally.</p>
+                <p>Direct hiring and career placements within Loveworld media productions across India &amp; globally.</p>
               </div>
             </div>
           </div>
@@ -356,16 +356,16 @@ const AirtimeAnchorcrest = () => {
             <span className="section-subtitle">BECOME A KINGDOM SPONSOR</span>
             <h2 className="section-title">SPONSOR A YOUTH TODAY</h2>
             <p className="section-desc">
-              Your seed empowers eager young minds to learn high-income digital and broadcast skills for free.
+              Your donation empowers eager young minds to learn high-income digital and broadcast skills for free.
             </p>
           </div>
 
           <div className="sponsor-layout-grid">
-            
+
             {/* Left: Interactive Tiers */}
             <div className="sponsor-tiers-col">
               <h3 className="tiers-heading">1. Select A Sponsorship Seed</h3>
-              
+
               <div className="tiers-grid">
                 {sponsorshipTiers.map((tier) => (
                   <div
@@ -416,7 +416,7 @@ const AirtimeAnchorcrest = () => {
                 </p>
 
                 <div className="bank-data-list">
-                  
+
                   <div className="bank-data-row">
                     <div className="bank-data-label">Account Name</div>
                     <div className="bank-data-value-group">
@@ -510,7 +510,7 @@ const AirtimeAnchorcrest = () => {
       <section id="airtime-section" className="aa-airtime-section">
         <div className="aa-container">
           <div className="airtime-feature-card">
-            
+
             <div className="airtime-left-content">
               <div className="airtime-icon-badge">
                 <span className="broadcast-icon">📺</span>

@@ -8,9 +8,9 @@
 }
 
 .global-programs-container {
-  max-width: 1720px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 40px;
 }
 
 .global-programs-header {
@@ -47,143 +47,83 @@
   line-height: 1.6;
 }
 
-/* Bento Grid System (3 Columns, 2 Rows) */
-.bento-grid {
+/* 2-Column Grid Layout */
+.global-programs-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 380px);
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.bento-card {
+.global-program-card {
   position: relative;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.6s ease, 
-              border-color 0.6s ease;
-  z-index: 1;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 26, 0.7);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease,
+              border-color 0.5s ease;
+  display: flex;
+  flex-direction: column;
 }
 
-.bento-card:hover {
-  transform: scale(1.025);
+.global-program-card:hover {
+  transform: translateY(-8px) scale(1.02);
   border-color: var(--accent-gold);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 
-              -6px 6px 20px rgba(30, 90, 212, 0.15), 
-              6px -6px 20px rgba(199, 40, 40, 0.15);
-  z-index: 5;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(230, 180, 80, 0.2);
 }
 
-/* Bento Grid Placement Rules */
-.card-large {
-  grid-column: 1 / 2;
-  grid-row: 1 / 3; /* Spans full height across 2 rows */
+.global-program-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  background: #000;
 }
 
-.card-square-1 {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
+.global-program-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card-square-2 {
-  grid-column: 3 / 4;
-  grid-row: 1 / 2;
-}
-
-.card-wide {
-  grid-column: 2 / 4;
-  grid-row: 2 / 3; /* Spans 2 columns wide */
+.global-program-card:hover .global-program-img {
+  transform: scale(1.04);
 }
 
 /* ========================================= */
 /* RESPONSIVE DESIGN ADJUSTMENTS            */
 /* ========================================= */
 
-@media (max-width: 1199px) {
-  .global-programs-container {
-    padding: 0 40px;
-  }
-
-  .bento-grid {
-    grid-template-rows: repeat(2, 300px);
-    gap: 20px;
-  }
-}
-
 @media (max-width: 991px) {
-  .bento-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    gap: 24px;
-  }
-
-  .card-large {
-    grid-column: 1 / 3;
-    grid-row: auto;
-    height: 500px;
-  }
-
-  .card-square-1 {
-    grid-column: 1 / 2;
-    grid-row: auto;
-    height: 320px;
-  }
-
-  .card-square-2 {
-    grid-column: 2 / 3;
-    grid-row: auto;
-    height: 320px;
-  }
-
-  .card-wide {
-    grid-column: 1 / 3;
-    grid-row: auto;
-    height: 360px;
+  .global-programs-grid {
+    gap: 30px;
   }
 }
 
 @media (max-width: 768px) {
   .global-programs-section {
-    padding: 80px 0 100px 0;
+    padding: 70px 0 90px 0;
   }
 
-  .global-programs-container {
-    padding: 0 30px;
-  }
-
-  .bento-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .card-large {
-    grid-column: 1;
-    height: 400px;
-  }
-
-  .card-square-1 {
-    grid-column: 1;
-    height: 280px;
-  }
-
-  .card-square-2 {
-    grid-column: 1;
-    height: 280px;
-  }
-
-  .card-wide {
-    grid-column: 1;
-    height: 280px;
-  }
-}
-
-@media (max-width: 480px) {
   .global-programs-container {
     padding: 0 20px;
+  }
+
+  .global-programs-title {
+    font-size: 1.9rem;
+  }
+
+  .global-programs-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    gap: 30px;
   }
 }

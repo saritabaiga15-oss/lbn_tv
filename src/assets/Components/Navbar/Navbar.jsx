@@ -1,25 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import image from '../../images/LWI_logo.png';
 
 const Navbar = ({ activeTab, onTabChange }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [partnerDropdownOpen, setPartnerDropdownOpen] = useState(false);
-  const [mobilePartnerOpen, setMobilePartnerOpen] = useState(false);
-
-  const dropdownRef = useRef(null);
-
-  // Close dropdown on outside click if clicked
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setPartnerDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   // Add scroll class to navbar when scrolled
   useEffect(() => {
@@ -40,7 +25,6 @@ const Navbar = ({ activeTab, onTabChange }) => {
 
   const handleNavClick = (tab, hash = null) => {
     onTabChange(tab);
-    setPartnerDropdownOpen(false);
     if (hash) {
       setTimeout(() => {
         const element = document.getElementById(hash);
@@ -52,8 +36,6 @@ const Navbar = ({ activeTab, onTabChange }) => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
-
-  const isPartnerActive = activeTab === 'join-our-mission' || activeTab === 'one-time-gift';
 
   return (
     <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
@@ -104,53 +86,6 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 EPG
               </a>
             </li>
-
-            {/* Partner with Us Dropdown */}
-            <li
-              className="nav-item nav-dropdown"
-              ref={dropdownRef}
-              onMouseEnter={() => setPartnerDropdownOpen(true)}
-              onMouseLeave={() => setPartnerDropdownOpen(false)}
-            >
-              <button
-                type="button"
-                className={`nav-link dropdown-toggle ${isPartnerActive || partnerDropdownOpen ? 'active' : ''}`}
-                onClick={() => setPartnerDropdownOpen(!partnerDropdownOpen)}
-              >
-                <span>PARTNER WITH US</span>
-              </button>
-
-              <ul className={`dropdown-menu ${partnerDropdownOpen ? 'show' : ''}`}>
-                <li className="dropdown-item-wrapper">
-                  <a
-                    href="#join-our-mission"
-                    className={`dropdown-item-btn ${activeTab === 'join-our-mission' ? 'active' : ''}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick('join-our-mission');
-                    }}
-                  >
-                    <span className="dropdown-item-title">Join Our Mission</span>
-                    <span className="dropdown-item-desc">Become a monthly kingdom partner</span>
-                  </a>
-                </li>
-                <li className="dropdown-divider-line"></li>
-                <li className="dropdown-item-wrapper">
-                  <a
-                    href="#one-time-gift"
-                    className={`dropdown-item-btn ${activeTab === 'one-time-gift' ? 'active' : ''}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick('one-time-gift');
-                    }}
-                  >
-                    <span className="dropdown-item-title">One time gift</span>
-                    <span className="dropdown-item-desc">Support our global broadcasts</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
             <li className="nav-item">
               <a
                 href="#services"
@@ -160,14 +95,22 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 SERVICES
               </a>
             </li>
-
             <li className="nav-item">
               <a
-                href="#airtime-anchorcrest"
-                onClick={(e) => { e.preventDefault(); handleNavClick('airtime-anchorcrest'); }}
-                className={`nav-link ${activeTab === 'airtime-anchorcrest' ? 'active' : ''}`}
+                href="#airtime-on-lbn"
+                onClick={(e) => { e.preventDefault(); handleNavClick('airtime-on-lbn'); }}
+                className={`nav-link ${activeTab === 'airtime-on-lbn' ? 'active' : ''}`}
               >
                 Airtime On LBN
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                href="#anchorcrest-foundation"
+                onClick={(e) => { e.preventDefault(); handleNavClick('anchorcrest-foundation'); }}
+                className={`nav-link ${activeTab === 'anchorcrest-foundation' ? 'active' : ''}`}
+              >
+                Anchorcrest foundation
               </a>
             </li>
           </ul>
@@ -207,6 +150,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 <a
                   href="#home"
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('home'); }}
+                  className={activeTab === 'home' ? 'active' : ''}
                 >
                   HOME
                 </a>
@@ -215,6 +159,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 <a
                   href="#about-us"
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('about-us'); }}
+                  className={activeTab === 'about-us' ? 'active' : ''}
                 >
                   ABOUT US
                 </a>
@@ -223,6 +168,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 <a
                   href="#programmes"
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('programmes'); }}
+                  className={activeTab === 'programmes' ? 'active' : ''}
                 >
                   PROGRAMMES
                 </a>
@@ -231,52 +177,11 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 <a
                   href="#epg"
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('epg'); }}
+                  className={activeTab === 'epg' ? 'active' : ''}
                 >
                   EPG
                 </a>
               </li>
-
-              {/* Mobile Partner With Us Accordion */}
-              <li className="mobile-partner-accordion">
-                <div
-                  className="mobile-partner-header"
-                  onClick={() => setMobilePartnerOpen(!mobilePartnerOpen)}
-                >
-                  <span>PARTNER WITH US</span>
-                  <span className="accordion-indicator">{mobilePartnerOpen ? '−' : '+'}</span>
-                </div>
-                {mobilePartnerOpen && (
-                  <ul className="mobile-submenu">
-                    <li>
-                      <a
-                        href="#join-our-mission"
-                        className="mobile-submenu-btn"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          toggleMobileMenu();
-                          handleNavClick('join-our-mission');
-                        }}
-                      >
-                        Join Our Mission
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#one-time-gift"
-                        className="mobile-submenu-btn"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          toggleMobileMenu();
-                          handleNavClick('one-time-gift');
-                        }}
-                      >
-                        One time gift
-                      </a>
-                    </li>
-                  </ul>
-                )}
-              </li>
-
               <li>
                 <a
                   href="#services"
@@ -286,17 +191,24 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   SERVICES
                 </a>
               </li>
-
               <li>
                 <a
-                  href="#airtime-anchorcrest"
-                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('airtime-anchorcrest'); }}
-                  className={activeTab === 'airtime-anchorcrest' ? 'active' : ''}
+                  href="#airtime-on-lbn"
+                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('airtime-on-lbn'); }}
+                  className={activeTab === 'airtime-on-lbn' ? 'active' : ''}
                 >
                   Airtime On LBN
                 </a>
               </li>
-
+              <li>
+                <a
+                  href="#anchorcrest-foundation"
+                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('anchorcrest-foundation'); }}
+                  className={activeTab === 'anchorcrest-foundation' ? 'active' : ''}
+                >
+                  Anchorcrest foundation
+                </a>
+              </li>
               <li>
                 <a href="#live" className="mobile-cta" onClick={toggleMobileMenu}>
                   <span className="live-dot"></span> WATCH LIVE

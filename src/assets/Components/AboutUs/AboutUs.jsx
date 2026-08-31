@@ -7,10 +7,10 @@ const AboutUs = () => {
   const [valueExpanded, setValueExpanded] = useState(false);
 
   const stats = [
-    { id: '01', number: '25+', label: 'Years of Broadcasting', value: 'Over two decades of dedication, spiritual impact, and excellence.' },
-    { id: '02', number: '10+', label: 'Digital Channels', value: 'Multi-language feeds broadcasting hope 24/7 across various platforms.' },
-    { id: '03', number: '5', label: 'Regional Studios', value: 'State-of-the-art production studios located across major Indian hubs.' },
-    { id: '04', number: '260+', label: 'Global Live Events', value: 'Massive broadcasts connecting millions in prayer, worship, and healing.' }
+    { id: '01', number: '30+', label: 'Years of Broadcasting', value: 'Over two decades of dedication, spiritual impact, and excellence.' },
+    { id: '02', number: '250+', label: 'Digital Channels', value: 'Multi-language feeds broadcasting hope 24/7 across various platforms.' },
+    { id: '03', number: '50+', label: 'Studios', value: 'State-of-the-art production studios located across major Indian hubs.' },
+    { id: '04', number: '1000+', label: 'Global Live Events', value: 'Massive broadcasts connecting millions in prayer, worship, and healing.' }
   ];
 
   const milestones = [
@@ -42,7 +42,7 @@ const AboutUs = () => {
               </div>
               <div className="about-glance-content-col">
                 <p className={`about-glance-text ${glanceExpanded ? 'expanded' : 'clamped'}`}>
-                  LoveWorld Broadcasting Network has the mandate to impact India and Asia at large with the Gospel of our Lord and Saviour Jesus Christ through various faith-filled programmes centred on lifestyle, teachings, leadership, family, prayer, worship, and much more. You were created for a purpose, on purpose. Everything we do is designed to help you recognise your God-given purpose, develop your potential, and achieve all that God has destined for you. Are you ready to go on this journey with us? Let's get started! To make sure you don't miss a thing, be sure to subscribe to our newsletter and stay connected to inspiring programmes, uplifting messages, and life-changing content. Let's get going!
+                  Loveworld Broadcasting Network has the mandate to impact India and Asia at large with the Gospel of our Lord and Saviour Jesus Christ through various faith-filled programmes centred on lifestyle, teachings, leadership, family, prayer, worship, and much more. You were created for a purpose, on purpose. Everything we do is designed to help you recognise your God-given purpose, develop your potential, and achieve all that God has destined for you. Are you ready to go on this journey with us? Let's get started! To make sure you don't miss a thing, be sure to subscribe to our newsletter and stay connected to inspiring programmes, uplifting messages, and life-changing content. Let's get going!
                 </p>
                 <button
                   className="about-readmore-btn"
@@ -88,7 +88,7 @@ const AboutUs = () => {
           </div>
           <div className="metrics-intro-right">
             <h3 className="metrics-intro-heading">
-              We bring together the perfect blend of <span className="txt-gold">deep spiritual impact</span>, 
+              We bring together the perfect blend of <span className="txt-gold">deep spiritual impact</span>,
               beautiful <span className="txt-blue">broadcast quality</span>, and optimized <span className="txt-red">digital accessibility</span>.
             </h3>
           </div>

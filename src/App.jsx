@@ -4,9 +4,7 @@ import Navbar from "./assets/Components/Navbar/Navbar";
 import Hero from "./assets/Components/Hero/Hero";
 import Features from "./assets/Components/Features/Features";
 import AboutUs from "./assets/Components/AboutUs/AboutUs";
-
 import Programmes from "./assets/Components/Programmes/Programm";
-
 import Schedule from "./assets/Components/Schedule/Schedule";
 import Services from "./assets/Components/Services/Services";
 import TeensProgrammes from "./assets/Components/TeensProgrammes/TeensProgrammes";
@@ -15,7 +13,8 @@ import ImageGallery from "./assets/Components/ImageGallery/ImageGallery";
 import GlobalProgrammes from "./assets/Components/GlobalProgrammes/GlobalProgrammes";
 import JoinOurMission from "./assets/Components/JoinOurMission/JoinOurMission";
 import OneTimeGift from "./assets/Components/OneTimeGift/OneTimeGift";
-import AirtimeAnchorcrest from "./assets/Components/AirtimeAnchorcrest/AirtimeAnchorcrest";
+import AirtimeOnLBN from "./assets/Components/AirtimeOnLBN/AirtimeOnLBN";
+import AnchorcrestFoundation from "./assets/Components/AnchorcrestFoundation/AnchorcrestFoundation";
 import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
 
@@ -43,7 +42,8 @@ function App() {
         {activeTab === 'kids-programs' && <KidsProgrammes />}
         {activeTab === 'join-our-mission' && <JoinOurMission />}
         {activeTab === 'one-time-gift' && <OneTimeGift />}
-        {activeTab === 'airtime-anchorcrest' && <AirtimeAnchorcrest />}
+        {activeTab === 'airtime-on-lbn' && <AirtimeOnLBN />}
+        {activeTab === 'anchorcrest-foundation' && <AnchorcrestFoundation />}
       </main>
       <Footer />
     </div>

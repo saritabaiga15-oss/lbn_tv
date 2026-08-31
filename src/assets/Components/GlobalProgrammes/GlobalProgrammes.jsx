@@ -1,39 +1,21 @@
 import React from 'react';
 import './GlobalProgrammes.css';
-import craftingFaithHost from '../../images/crafting_faith_host.jpg';
-import global2 from '../../images/global2.jpeg';
-import global3 from '../../images/global3.png';
-import global4 from '../../images/global4.png';
+import globalCommunion from '../../images/global_communion.png';
+import praiseNight27 from '../../images/praise_night_27.jpg';
 
 const GlobalPrograms = () => {
   const programs = [
     {
       id: 1,
-      image: craftingFaithHost, // Large vertical: Crafting Faith host
-      title: 'Crafting Faith',
-      badge: 'LIFESTYLE SHOW',
-      gridClass: 'card-large'
+      image: globalCommunion,
+      title: 'Global Communion Service with Pastor Chris',
+      badge: 'LIVE BROADCAST'
     },
     {
       id: 2,
-      image: global2, // Square top-left: Wholeness
-      title: 'Wholeness',
-      badge: 'HEALTH',
-      gridClass: 'card-square-1'
-    },
-    {
-      id: 3,
-      image: global3, // Square top-right: Rhapathon
-      title: 'Trumpet',
-      badge: 'MORNING BOO',
-      gridClass: 'card-square-2'
-    },
-    {
-      id: 4,
-      image: global4, // Wide bottom: Word At Work
-      title: 'Word At Work',
-      badge: 'TALK SHOW',
-      gridClass: 'card-wide'
+      image: praiseNight27,
+      title: 'Praise Night 27 with Pastor Chris',
+      badge: 'LIVE SPECIAL'
     }
   ];
 
@@ -44,20 +26,21 @@ const GlobalPrograms = () => {
           <span className="global-programs-label">LIVE BROADCASTS</span>
           <h2 className="global-programs-title">UPCOMING GLOBAL PROGRAMS</h2>
           <p className="global-programs-desc">
-            Join millions of viewers worldwide for our premier live services, communion feeds, and global healing crusades.
+            Join millions of viewers worldwide for our premier live services, communion feeds, and global praise nights.
             These special broadcasts bring together international ministries to share messages of faith, hope, and spiritual renewal.
           </p>
         </div>
 
-        {/* Bento Grid layout */}
-        <div className="bento-grid">
+        {/* 2-Column Showcase Grid */}
+        <div className="global-programs-grid">
           {programs.map((prog) => (
             <div
               key={prog.id}
-              className={`bento-card ${prog.gridClass}`}
-              style={{ backgroundImage: `url("${prog.image}")` }}
+              className="global-program-card"
             >
-              {/* Clean layout - flyer artwork has baked-in typography */}
+              <div className="global-program-img-wrapper">
+                <img src={prog.image} alt={prog.title} className="global-program-img" />
+              </div>
             </div>
           ))}
         </div>

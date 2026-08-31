@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import './Programm.css';
-import img2 from '../../images/image2.png';
 import img3 from '../../images/image3.png';
-import img4 from '../../images/image4.png';
-import global4 from '../../images/global4.png';
-import herbalHealing from '../../images/herbal_healing.jpg';
 import moneyMatters from '../../images/money_matters.jpg';
 import craftingBeads from '../../images/crafting_beads.jpg';
 import theTrumpet from '../../images/the_trumpet.jpg';
@@ -19,14 +15,15 @@ const Programmes = () => {
   const [selectedShow, setSelectedShow] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  const filters = ['ALL', 'TALK SHOWS', 'WORSHIP', 'HEALTH', 'TEENS & YOUTH', 'KIDS'];
+  const filters = ['ALL', 'TALK SHOWS', 'PRAYER', 'HEALTH', 'TEENS & YOUTH', 'KIDS',];
 
   const programList = [
     {
       id: 1,
       title: 'THE TRUMPET – DEACON VIJAY BANSODE',
-      category: 'TALK SHOWS',
+      category: 'TALK SHOW',
       image: theTrumpet,
+      video: '/Vidoes/THE_TRUMPET_NEW.mp4',
       schedule: 'Wednesdays at 8:00 PM',
       duration: '60 mins',
       tagline: 'Prophetic conversations, truth, and faith.',
@@ -57,25 +54,25 @@ const Programmes = () => {
       title: 'DR. PRASHANTI – HEALTH & WELLNESS',
       category: 'HEALTH',
       image: drPrashanti,
-      schedule: 'Tuesdays at 5:00 PM',
-      duration: '45 mins',
+      schedule: 'Tuesdays at 9:30 AM',
+      duration: '30 mins',
       tagline: 'Divine health guidance from a faith perspective.',
       description: 'Inspiring health, wellness, and medical guidance from a faith-filled perspective with Dr. Prashanti, equipping you to live in divine vitality.'
     },
     {
       id: 5,
       title: 'PRAY WITH ME – GLOBAL INTERCESSION',
-      category: 'WORSHIP',
+      category: 'PRAYER',
       image: prayWithMe,
-      schedule: 'Fridays at 10:00 PM',
-      duration: '90 mins',
+      schedule: 'Thursdays at 12:00 PM',
+      duration: '30 mins',
       tagline: 'Fervent prayer shaking the nations.',
       description: 'Lifting nations, families, and churches in fervent prayer and spiritual intercession across the globe alongside devoted prayer leaders.'
     },
     {
       id: 6,
       title: 'DUSK TILL DAWN STUDIO TALK SHOW',
-      category: 'TALK SHOWS',
+      category: 'TEENS & YOUTH',
       image: duskTillDawn,
       schedule: 'Fridays at 11:30 PM',
       duration: '60 mins',
@@ -84,88 +81,19 @@ const Programmes = () => {
     },
     {
       id: 7,
-      title: 'SONG OF PRAISE',
-      category: 'WORSHIP',
-      image: img2,
-      schedule: 'Saturdays at 7:00 PM',
-      duration: '45 mins',
-      tagline: 'Behind every song, there’s a story worth singing.',
-      description: 'Discover the personal experiences, scripture connects, and deep stories that shape these melodies of worship. Host and artists share raw testimonies that will enrich your soul.'
-    },
-    {
-      id: 8,
       title: 'IGNITE SHOW',
-      category: 'TALK SHOWS',
+      category: 'TEENS & YOUTH',
       image: img3,
-      schedule: 'Sundays at 6:00 PM',
+      video: '/Vidoes/Ignite.mp4',
+      schedule: 'Sundays at 3:00 PM',
       duration: '60 mins',
-      tagline: 'Always keep the hope alive.',
+      tagline: 'We Burn.',
       description: 'Ignite explores the real-life intersection of culture, lifestyle, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'
     },
     {
-      id: 9,
-      title: 'HERBAL HEALING GARDEN',
-      category: 'HEALTH',
-      image: herbalHealing,
-      schedule: 'Tuesdays & Thursdays at 4:00 PM',
-      duration: '45 mins',
-      tagline: 'Holistic wellness rooted in scripture and nature.',
-      description: 'Explore natural wellness, nutrition, and holistic wellbeing from a faith-based perspective. Learn how biblical principles combine with healthy lifestyle choices to promote divine health.'
-    },
-    {
-      id: 10,
-      title: 'DIVINE HEALTH REALITIES',
-      category: 'HEALTH',
-      image: global4,
-      schedule: 'Daily at 8:00 AM',
-      duration: '30 mins',
-      tagline: 'Walking in divine health and wholeness every day.',
-      description: 'Daily faith-building broadcasts focused on healing confessions, wellness revelations, and living a vibrant, healthy life through the Word of God.'
-    },
-    {
-      id: 11,
-      title: 'TEENS TALENT HUB',
-      category: 'TEENS & YOUTH',
-      image: img4,
-      schedule: 'Saturdays at 11:30 AM',
-      duration: '90 mins',
-      tagline: 'Unleashing the gifts of grace.',
-      description: 'Spotlighting teenagers and youth expressing their faith through music, creative arts, and spoken word to build character and purpose.'
-    },
-    {
-      id: 12,
-      title: 'YOUTH IGNITE BROADCAST',
-      category: 'TEENS & YOUTH',
-      image: img3,
-      schedule: 'Sundays at 5:00 PM',
-      duration: '60 mins',
-      tagline: 'Igniting purpose and passion in the next generation.',
-      description: 'Interactive panels, inspiring stories, and real discussions guiding teens and young adults through faith, relationships, and modern challenges.'
-    },
-    {
-      id: 13,
-      title: 'KIDDIES RHAPSODY SHOW',
-      category: 'KIDS',
-      image: img2,
-      schedule: 'Fridays at 3:00 PM',
-      duration: '45 mins',
-      tagline: 'Growing in grace and scripture wisdom.',
-      description: 'Fun animations, illustrations, and memory verses built around the Kiddies Rhapsody devotional, helping children learn faith foundations.'
-    },
-    {
-      id: 14,
-      title: 'BIBLE ADVENTURES 3D',
-      category: 'KIDS',
-      image: img3,
-      schedule: 'Thursdays at 3:00 PM',
-      duration: '60 mins',
-      tagline: 'Heroes of faith come to life.',
-      description: 'High-quality 3D animated films depicting classical biblical tales of Esther, David, and Daniel, teaching values and character to kids.'
-    },
-    {
-      id: 15,
-      title: 'CRAFTING FAITH FOR KIDS',
-      category: 'KIDS',
+      id: 8,
+      title: 'CRAFTING FAITH ',
+      category: 'TALK SHOW',
       image: craftingBeads,
       schedule: 'Wednesdays at 4:00 PM',
       duration: '30 mins',
@@ -173,7 +101,7 @@ const Programmes = () => {
       description: 'Inspiring craft workshops where kids create faith-inspired art projects while learning scripture stories in fun, memorable ways.'
     },
     {
-      id: 16,
+      id: 9,
       title: 'MONEY MATTERS',
       category: 'TALK SHOWS',
       image: moneyMatters,
@@ -207,12 +135,10 @@ const Programmes = () => {
           <span className="programmes-label">NETWORK GUIDE</span>
           <h2 className="programmes-title">OUR PROGRAMMES</h2>
           <p className="programmes-desc">
-            Explore our rich collection of Christian programming. Filter by category to find your favorite shows and schedules.
+            Explore our diverse slate of faith-filled television programming designed to inspire, educate, and empower viewers across all generations.
           </p>
-        </div>
 
-        {/* Filter categories tabs */}
-        <div className="programmes-filters-wrapper">
+          {/* Dynamic Filter Categories Bar */}
           <div className="programmes-filters">
             {filters.map((filter) => (
               <button
@@ -229,8 +155,8 @@ const Programmes = () => {
         {/* Dynamic Grid: 2 rows (6 cards) initially */}
         <div className="programmes-grid">
           {displayedPrograms.map((prog) => (
-            <div 
-              key={prog.id} 
+            <div
+              key={prog.id}
               className="programme-card"
               onClick={() => setSelectedShow(prog)}
             >
@@ -240,12 +166,19 @@ const Programmes = () => {
                 <span className={`programme-card-category ${getCategoryClass(prog.category)}`}>
                   {prog.category}
                 </span>
+                {prog.video && (
+                  <span className="programme-video-badge">
+                    <span className="play-triangle">▶</span> VIDEO PROMO
+                  </span>
+                )}
               </div>
               <div className="programme-card-content">
                 <span className="programme-card-schedule">{prog.schedule}</span>
                 <h3 className="programme-card-title">{prog.title}</h3>
                 <p className="programme-card-tagline">"{prog.tagline}"</p>
-                <button className="programme-card-btn">VIEW DETAILS</button>
+                <button className="programme-card-btn">
+                  {prog.video ? '▶ WATCH PROMO' : 'VIEW DETAILS'}
+                </button>
               </div>
             </div>
           ))}
@@ -277,31 +210,70 @@ const Programmes = () => {
         )}
       </div>
 
-      {/* Details Modal */}
+      {/* Details & Video Player Modal */}
       {selectedShow && (
         <div className="programmes-modal" onClick={() => setSelectedShow(null)}>
           <div className="programmes-modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="programmes-modal-close" onClick={() => setSelectedShow(null)}>&times;</button>
             <div className="programmes-modal-grid">
-              <div className="programmes-modal-img-col" style={{ backgroundImage: `url("${selectedShow.image}")` }}>
-                <div className="programmes-modal-img-overlay"></div>
+
+              <div className="programmes-modal-img-col">
+                {selectedShow.video ? (
+                  <div className="programmes-modal-video-wrapper">
+                    <video
+                      key={selectedShow.video}
+                      src={selectedShow.video}
+                      poster={selectedShow.image}
+                      controls
+                      autoPlay
+                      playsInline
+                      className="programmes-modal-video-player"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ) : (
+                  <div
+                    className="programmes-modal-bg-cover"
+                    style={{ backgroundImage: `url("${selectedShow.image}")` }}
+                  >
+                    <div className="programmes-modal-img-overlay"></div>
+                  </div>
+                )}
               </div>
+
               <div className="programmes-modal-info-col">
                 <span className="programmes-modal-schedule-tag">{selectedShow.schedule} &bull; {selectedShow.duration}</span>
                 <h2 className="programmes-modal-show-title">{selectedShow.title}</h2>
                 <h4 className="programmes-modal-show-subtitle">{selectedShow.category} CATEGORY</h4>
                 <p className="programmes-modal-show-tagline">"{selectedShow.tagline}"</p>
                 <p className="programmes-modal-show-desc">{selectedShow.description}</p>
-                
+
                 <div className="programmes-modal-actions-container">
-                  <button className="programmes-modal-action-watch" onClick={() => setSelectedShow(null)}>
-                    WATCH LATEST
-                  </button>
+                  {selectedShow.video ? (
+                    <button
+                      className="programmes-modal-action-watch"
+                      onClick={() => {
+                        const v = document.querySelector('.programmes-modal-video-player');
+                        if (v) {
+                          v.currentTime = 0;
+                          v.play();
+                        }
+                      }}
+                    >
+                      ▶ REPLAY PROMO
+                    </button>
+                  ) : (
+                    <button className="programmes-modal-action-watch" onClick={() => setSelectedShow(null)}>
+                      WATCH LATEST
+                    </button>
+                  )}
                   <button className="programmes-modal-action-back" onClick={() => setSelectedShow(null)}>
                     BACK
                   </button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

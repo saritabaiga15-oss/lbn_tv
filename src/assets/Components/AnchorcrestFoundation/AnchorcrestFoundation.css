@@ -1,0 +1,608 @@
+.anchorcrest-page {
+  background-color: #07070a;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.anchorcrest-hero {
+  position: relative;
+  padding: 120px 20px 80px;
+  text-align: center;
+  background: radial-gradient(circle at 50% 25%, rgba(207, 168, 96, 0.16), transparent 75%), #090910;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.anchorcrest-hero-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(207, 168, 96, 0.22), transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.anchorcrest-hero-container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.anchorcrest-badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(207, 168, 96, 0.12);
+  border: 1px solid rgba(207, 168, 96, 0.3);
+  color: #cfa860;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.anchorcrest-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #ffe082, #cfa860, #b08d43);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.anchorcrest-subtitle {
+  font-size: 1.2rem;
+  color: #c5c5d8;
+  line-height: 1.7;
+  max-width: 780px;
+  margin: 0 auto 35px;
+}
+
+/* Ecosystem Banner in Hero */
+.hero-ecosystem-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(90deg, rgba(207, 168, 96, 0.15), rgba(30, 90, 212, 0.12));
+  border: 1px solid rgba(207, 168, 96, 0.35);
+  border-radius: 12px;
+  padding: 18px 26px;
+  text-align: left;
+  max-width: 750px;
+  margin: 0 auto 35px;
+  backdrop-filter: blur(10px);
+}
+
+.eco-star {
+  font-size: 2.2rem;
+}
+
+.eco-info h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+  color: #ffe082;
+  margin-bottom: 4px;
+}
+
+.eco-info p {
+  font-size: 0.95rem;
+  color: #c0c0d2;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hero-action-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.sponsor-btn-main {
+  background: linear-gradient(135deg, #cfa860, #a8823c);
+  color: #000;
+  font-weight: 800;
+  padding: 15px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 24px rgba(207, 168, 96, 0.35);
+}
+
+.sponsor-btn-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(207, 168, 96, 0.55);
+}
+
+.explore-btn-main {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-weight: 700;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.explore-btn-main:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #cfa860;
+  color: #cfa860;
+}
+
+/* Container */
+.anchorcrest-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Sections Head */
+.section-head-box {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #cfa860;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  color: #9ea0b2;
+  font-size: 1.05rem;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Courses Grid */
+.courses-section {
+  padding: 90px 0;
+}
+
+.courses-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.course-card-item {
+  background: #11111a;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.course-card-item:hover {
+  border-color: rgba(207, 168, 96, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(207, 168, 96, 0.1);
+}
+
+.course-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.course-number {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #7a7a90;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 1px;
+}
+
+.course-card-icon {
+  font-size: 1.8rem;
+}
+
+.course-card-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.course-card-desc {
+  color: #9292a8;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.course-card-footer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.course-meta-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #cfa860;
+  background: rgba(207, 168, 96, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(207, 168, 96, 0.2);
+}
+
+/* Ecosystem Spotlight */
+.ecosystem-spotlight {
+  padding: 40px 0 90px;
+}
+
+.ecosystem-card-box {
+  background: linear-gradient(135deg, #161626, #0e0e18);
+  border: 1px solid rgba(207, 168, 96, 0.35);
+  border-radius: 16px;
+  padding: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+.eco-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #cfa860;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.eco-left h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  color: #ffe082;
+}
+
+.eco-left p {
+  color: #b0b0c8;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+.eco-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.perk-item {
+  color: #e0e0f0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.eco-sponsor-btn {
+  background: linear-gradient(135deg, #cfa860, #a8823c);
+  color: #000;
+  font-weight: 800;
+  padding: 16px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  display: inline-block;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(207, 168, 96, 0.35);
+}
+
+.eco-sponsor-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(207, 168, 96, 0.55);
+}
+
+/* Sponsorship Section */
+.sponsorship-section {
+  padding: 90px 0 130px;
+  background: #090910;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sponsorship-grid-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 36px;
+}
+
+.tier-box-heading {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  color: #ffe082;
+  margin-bottom: 16px;
+}
+
+.tiers-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.tier-card-btn {
+  background: #12121c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 18px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tier-card-btn:hover {
+  border-color: rgba(207, 168, 96, 0.4);
+  background: #161624;
+}
+
+.tier-card-btn.active {
+  border-color: #cfa860;
+  background: linear-gradient(145deg, rgba(207, 168, 96, 0.15), #141420);
+  box-shadow: 0 6px 20px rgba(207, 168, 96, 0.2);
+}
+
+.tier-tag-pill {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #cfa860;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.tier-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.currency {
+  font-size: 1.1rem;
+  color: #cfa860;
+  font-weight: 700;
+}
+
+.amount-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.tier-title-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #e5e5f5;
+  margin-bottom: 6px;
+}
+
+.tier-impact-text {
+  font-size: 0.78rem;
+  color: #88889c;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.custom-seed-box label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #a5a5bc;
+  margin-bottom: 8px;
+}
+
+.custom-input-group {
+  display: flex;
+  align-items: center;
+  background: #111118;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 4px 16px;
+}
+
+.currency-symbol {
+  color: #cfa860;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-right: 8px;
+}
+
+.custom-input-group input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* Bank Details Box */
+.bank-details-box {
+  background: linear-gradient(145deg, #131320, #0f0f18);
+  border: 1px solid rgba(207, 168, 96, 0.3);
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.bank-sub-text {
+  color: #a5a5b5;
+  font-size: 0.92rem;
+  margin-bottom: 20px;
+}
+
+.bank-info-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.bank-row-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.b-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #88889c;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.b-val-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.b-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.b-val.highlight {
+  color: #ffe082;
+  font-size: 0.9rem;
+}
+
+.b-val.mono-num {
+  font-family: monospace;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #cfa860;
+}
+
+.copy-btn {
+  background: rgba(207, 168, 96, 0.12);
+  border: 1px solid rgba(207, 168, 96, 0.3);
+  color: #cfa860;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #cfa860;
+  color: #000;
+}
+
+.copy-btn.copied {
+  background: #1e5ad4;
+  color: #fff;
+  border-color: #1e5ad4;
+}
+
+.whatsapp-receipt-box {
+  text-align: center;
+  padding-top: 8px;
+}
+
+.wa-confirm-btn {
+  display: block;
+  background: #25d366;
+  color: #000;
+  font-weight: 800;
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+}
+
+.wa-confirm-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+}
+
+.wa-help-note {
+  display: block;
+  font-size: 0.78rem;
+  color: #88889c;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .courses-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sponsorship-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .anchorcrest-title {
+    font-size: 2.6rem;
+  }
+  .courses-grid-cards {
+    grid-template-columns: 1fr;
+  }
+  .tiers-list-grid {
+    grid-template-columns: 1fr;
+  }
+  .ecosystem-card-box {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+}
