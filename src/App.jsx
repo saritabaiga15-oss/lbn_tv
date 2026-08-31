@@ -15,6 +15,7 @@ import ImageGallery from "./assets/Components/ImageGallery/ImageGallery";
 import GlobalProgrammes from "./assets/Components/GlobalProgrammes/GlobalProgrammes";
 import JoinOurMission from "./assets/Components/JoinOurMission/JoinOurMission";
 import OneTimeGift from "./assets/Components/OneTimeGift/OneTimeGift";
+import AirtimeAnchorcrest from "./assets/Components/AirtimeAnchorcrest/AirtimeAnchorcrest";
 import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
 
@@ -29,7 +30,7 @@ function App() {
           <>
             <Hero />
             <Features />
-            <ImageGallery />
+            <ImageGallery onNavigateProgrammes={() => { setActiveTab('programmes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
             <GlobalProgrammes />
             <FAQ />
           </>
@@ -42,6 +43,7 @@ function App() {
         {activeTab === 'kids-programs' && <KidsProgrammes />}
         {activeTab === 'join-our-mission' && <JoinOurMission />}
         {activeTab === 'one-time-gift' && <OneTimeGift />}
+        {activeTab === 'airtime-anchorcrest' && <AirtimeAnchorcrest />}
       </main>
       <Footer />
     </div>

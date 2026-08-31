@@ -1,27 +1,89 @@
 import React, { useState } from 'react';
 import './Programm.css';
-import LWS from '../../images/LWS.jpeg';
 import img2 from '../../images/image2.png';
 import img3 from '../../images/image3.png';
 import img4 from '../../images/image4.png';
-import global1 from '../../images/global1.png';
-import global2 from '../../images/global2.jpeg';
-import global3 from '../../images/global3.png';
 import global4 from '../../images/global4.png';
 import herbalHealing from '../../images/herbal_healing.jpg';
 import moneyMatters from '../../images/money_matters.jpg';
 import craftingBeads from '../../images/crafting_beads.jpg';
+import theTrumpet from '../../images/the_trumpet.jpg';
+import timelessParagon from '../../images/timeless_paragon.jpg';
+import wordAtWork from '../../images/word_at_work.jpg';
+import drPrashanti from '../../images/dr_prashanti.jpg';
+import prayWithMe from '../../images/pray_with_me.jpg';
+import duskTillDawn from '../../images/dusk_till_dawn.jpg';
 
 const Programmes = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [selectedShow, setSelectedShow] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  const filters = ['ALL', 'WORSHIP', 'TALK SHOWS', 'HEALTH', 'TEENS & YOUTH', 'KIDS', 'SPECIALS'];
+  const filters = ['ALL', 'TALK SHOWS', 'WORSHIP', 'HEALTH', 'TEENS & YOUTH', 'KIDS'];
 
   const programList = [
     {
       id: 1,
+      title: 'THE TRUMPET – DEACON VIJAY BANSODE',
+      category: 'TALK SHOWS',
+      image: theTrumpet,
+      schedule: 'Wednesdays at 8:00 PM',
+      duration: '60 mins',
+      tagline: 'Prophetic conversations, truth, and faith.',
+      description: 'Inspiring insights and prophetic conversations on faith, ministry, and current events hosted by Deacon Vijay Bansode with anointed guest speakers.'
+    },
+    {
+      id: 2,
+      title: 'TIMELESS PARAGON – KIDS SHOW',
+      category: 'KIDS',
+      image: timelessParagon,
+      schedule: 'Saturdays at 10:00 AM',
+      duration: '45 mins',
+      tagline: 'Empowering children with scripture wisdom.',
+      description: 'Fun, engaging studio episodes empowering children with scripture wisdom, character-building stories, and timeless faith values for growing minds.'
+    },
+    {
+      id: 3,
+      title: 'WORD AT WORK – STUDIO BROADCAST',
+      category: 'TALK SHOWS',
+      image: wordAtWork,
+      schedule: 'Thursdays at 6:30 PM',
+      duration: '60 mins',
+      tagline: 'Inspired, equipped, and empowered.',
+      description: 'Panel discussions exploring God’s Word in action, equipping believers with practical application of biblical truths and life-transforming revelations.'
+    },
+    {
+      id: 4,
+      title: 'DR. PRASHANTI – HEALTH & WELLNESS',
+      category: 'HEALTH',
+      image: drPrashanti,
+      schedule: 'Tuesdays at 5:00 PM',
+      duration: '45 mins',
+      tagline: 'Divine health guidance from a faith perspective.',
+      description: 'Inspiring health, wellness, and medical guidance from a faith-filled perspective with Dr. Prashanti, equipping you to live in divine vitality.'
+    },
+    {
+      id: 5,
+      title: 'PRAY WITH ME – GLOBAL INTERCESSION',
+      category: 'WORSHIP',
+      image: prayWithMe,
+      schedule: 'Fridays at 10:00 PM',
+      duration: '90 mins',
+      tagline: 'Fervent prayer shaking the nations.',
+      description: 'Lifting nations, families, and churches in fervent prayer and spiritual intercession across the globe alongside devoted prayer leaders.'
+    },
+    {
+      id: 6,
+      title: 'DUSK TILL DAWN STUDIO TALK SHOW',
+      category: 'TALK SHOWS',
+      image: duskTillDawn,
+      schedule: 'Fridays at 11:30 PM',
+      duration: '60 mins',
+      tagline: 'Heart-to-heart late-night faith talks.',
+      description: 'Engaging conversations, uplifting real-life testimonies, and late-night heart-to-heart discussions exploring faith and triumph over difficulties.'
+    },
+    {
+      id: 7,
       title: 'SONG OF PRAISE',
       category: 'WORSHIP',
       image: img2,
@@ -31,7 +93,7 @@ const Programmes = () => {
       description: 'Discover the personal experiences, scripture connects, and deep stories that shape these melodies of worship. Host and artists share raw testimonies that will enrich your soul.'
     },
     {
-      id: 2,
+      id: 8,
       title: 'IGNITE SHOW',
       category: 'TALK SHOWS',
       image: img3,
@@ -41,7 +103,7 @@ const Programmes = () => {
       description: 'Ignite explores the real-life intersection of culture, lifestyle, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'
     },
     {
-      id: 3,
+      id: 9,
       title: 'HERBAL HEALING GARDEN',
       category: 'HEALTH',
       image: herbalHealing,
@@ -51,7 +113,7 @@ const Programmes = () => {
       description: 'Explore natural wellness, nutrition, and holistic wellbeing from a faith-based perspective. Learn how biblical principles combine with healthy lifestyle choices to promote divine health.'
     },
     {
-      id: 4,
+      id: 10,
       title: 'DIVINE HEALTH REALITIES',
       category: 'HEALTH',
       image: global4,
@@ -61,7 +123,7 @@ const Programmes = () => {
       description: 'Daily faith-building broadcasts focused on healing confessions, wellness revelations, and living a vibrant, healthy life through the Word of God.'
     },
     {
-      id: 5,
+      id: 11,
       title: 'TEENS TALENT HUB',
       category: 'TEENS & YOUTH',
       image: img4,
@@ -71,7 +133,7 @@ const Programmes = () => {
       description: 'Spotlighting teenagers and youth expressing their faith through music, creative arts, and spoken word to build character and purpose.'
     },
     {
-      id: 6,
+      id: 12,
       title: 'YOUTH IGNITE BROADCAST',
       category: 'TEENS & YOUTH',
       image: img3,
@@ -81,7 +143,7 @@ const Programmes = () => {
       description: 'Interactive panels, inspiring stories, and real discussions guiding teens and young adults through faith, relationships, and modern challenges.'
     },
     {
-      id: 7,
+      id: 13,
       title: 'KIDDIES RHAPSODY SHOW',
       category: 'KIDS',
       image: img2,
@@ -91,7 +153,7 @@ const Programmes = () => {
       description: 'Fun animations, illustrations, and memory verses built around the Kiddies Rhapsody devotional, helping children learn faith foundations.'
     },
     {
-      id: 8,
+      id: 14,
       title: 'BIBLE ADVENTURES 3D',
       category: 'KIDS',
       image: img3,
@@ -101,7 +163,7 @@ const Programmes = () => {
       description: 'High-quality 3D animated films depicting classical biblical tales of Esther, David, and Daniel, teaching values and character to kids.'
     },
     {
-      id: 9,
+      id: 15,
       title: 'CRAFTING FAITH FOR KIDS',
       category: 'KIDS',
       image: craftingBeads,
@@ -111,47 +173,7 @@ const Programmes = () => {
       description: 'Inspiring craft workshops where kids create faith-inspired art projects while learning scripture stories in fun, memorable ways.'
     },
     {
-      id: 10,
-      title: 'LWS CINEMA SHOW',
-      category: 'SPECIALS',
-      image: LWS,
-      schedule: 'Fridays at 9:00 PM',
-      duration: '90 mins',
-      tagline: 'Thrilling adventure that will keep you on edge.',
-      description: 'Following the journeys of characters navigating life\'s most intense crossroads. A gripping storytelling experience that combines cinematic visuals with redemptive, faith-filled narratives.'
-    },
-    {
-      id: 11,
-      title: 'LOVEWORLD PRAISE NIGHT',
-      category: 'WORSHIP',
-      image: global1,
-      schedule: 'Live Events',
-      duration: '120 mins',
-      tagline: 'Praising God in the beauty of holiness.',
-      description: 'A global music event celebrating faith, praise, and victorious worship. Featuring live choirs, instruments, and deep sermons on praise.'
-    },
-    {
-      id: 12,
-      title: 'GLOBAL COMMUNION SERVICE',
-      category: 'SPECIALS',
-      image: global2,
-      schedule: 'First Sunday of the Month',
-      duration: '180 mins',
-      tagline: 'Deepening fellowship and grace.',
-      description: 'Monthly live services led by Pastor Chris, containing deep spiritual revelations, global prayer directives, and communion rites.'
-    },
-    {
-      id: 13,
-      title: 'RHAPATHON GLOBAL BROADCAST',
-      category: 'SPECIALS',
-      image: global3,
-      schedule: 'Quarterly Broadcast',
-      duration: '150 mins',
-      tagline: 'Celebrating the impact of the Word.',
-      description: 'A special broadcasting campaign detailing the global outreach, translation testimonies, and distributions of the daily devotional Rhapsody of Realities.'
-    },
-    {
-      id: 14,
+      id: 16,
       title: 'MONEY MATTERS',
       category: 'TALK SHOWS',
       image: moneyMatters,

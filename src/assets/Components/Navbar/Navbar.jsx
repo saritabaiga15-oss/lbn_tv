@@ -105,7 +105,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
               </a>
             </li>
 
-            {/* Partner with Us Dropdown (Hover triggered, arrow removed) */}
+            {/* Partner with Us Dropdown */}
             <li
               className="nav-item nav-dropdown"
               ref={dropdownRef}
@@ -158,6 +158,16 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 className={`nav-link ${activeTab === 'services' ? 'active' : ''}`}
               >
                 SERVICES
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a
+                href="#airtime-anchorcrest"
+                onClick={(e) => { e.preventDefault(); handleNavClick('airtime-anchorcrest'); }}
+                className={`nav-link ${activeTab === 'airtime-anchorcrest' ? 'active' : ''}`}
+              >
+                Airtime On LBN
               </a>
             </li>
           </ul>
@@ -271,8 +281,19 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 <a
                   href="#services"
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('services'); }}
+                  className={activeTab === 'services' ? 'active' : ''}
                 >
                   SERVICES
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#airtime-anchorcrest"
+                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('airtime-anchorcrest'); }}
+                  className={activeTab === 'airtime-anchorcrest' ? 'active' : ''}
+                >
+                  Airtime On LBN
                 </a>
               </li>
 

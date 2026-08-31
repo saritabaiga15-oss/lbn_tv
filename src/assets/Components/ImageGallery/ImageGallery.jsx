@@ -10,9 +10,8 @@ import craftingBeads from '../../images/crafting_beads.jpg';
 import craftingFaithHost from '../../images/crafting_faith_host.jpg';
 import moneyMatters from '../../images/money_matters.jpg';
 
-const ImageGallery = () => {
+const ImageGallery = ({ onNavigateProgrammes }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [showAll, setShowAll] = useState(false);
 
   const galleryItems = [
     { id: 1, src: theTrumpet, title: 'The Trumpet – Deacon Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
@@ -26,8 +25,19 @@ const ImageGallery = () => {
     { id: 9, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship and financial freedom on LBN.' }
   ];
 
-  // 2 rows with 3 columns = 6 items displayed initially
-  const visibleItems = showAll ? galleryItems : galleryItems.slice(0, 6);
+  // 4 in a row highlight display on the homepage
+  const visibleItems = galleryItems.slice(0, 4);
+
+  const handleSeeMore = () => {
+    if (onNavigateProgrammes) {
+      onNavigateProgrammes();
+    } else {
+      const progSection = document.getElementById('programmes');
+      if (progSection) {
+        progSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <section id="gallery" className="gallery-section">
@@ -35,14 +45,14 @@ const ImageGallery = () => {
 
         {/* Header */}
         <div className="gallery-header">
-          <span className="gallery-badge">NETWORK GALLERY</span>
+          <span className="gallery-badge">NETWORK HIGHLIGHTS</span>
           <h2 className="gallery-title">BROADCAST MOMENTS &amp; HIGHLIGHTS</h2>
           <p className="gallery-subtitle">
-            Explore photos from our live broadcasts, global crusades, production studios, and special ministry events.
+            Explore snapshots from our live broadcasts, talk shows, kids specials, and uplifting faith programs.
           </p>
         </div>
 
-        {/* Image Grid */}
+        {/* 4 In A Row Grid */}
         <div className="gallery-grid">
           {visibleItems.map((item) => (
             <div
@@ -62,30 +72,30 @@ const ImageGallery = () => {
           ))}
         </div>
 
-        {/* See More / See Less Button */}
-        {galleryItems.length > 6 && (
-          <div className="gallery-more-container">
-            <button
-              className="gallery-see-more-btn"
-              onClick={() => setShowAll((prev) => !prev)}
+        {/* See More connected directly to Programmes Section Page */}
+        <div className="gallery-more-container">
+          <button
+            className="gallery-see-more-btn"
+            onClick={handleSeeMore}
+            title="Explore all broadcast programmes and guide"
+          >
+            <span>SEE MORE IN PROGRAMMES</span>
+            <svg
+              className="see-more-arrow-right"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <span>{showAll ? 'SEE LESS' : 'SEE MORE'}</span>
-              <svg
-                className={`see-more-arrow ${showAll ? 'expanded' : ''}`}
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-          </div>
-        )}
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
 
       </div>
 
@@ -99,6 +109,9 @@ const ImageGallery = () => {
               <span className="lightbox-cat">{selectedImage.category}</span>
               <h3 className="lightbox-title">{selectedImage.title}</h3>
               <p className="lightbox-caption">{selectedImage.caption}</p>
+              <button className="lightbox-programme-link" onClick={() => { setSelectedImage(null); handleSeeMore(); }}>
+                View in Programmes Guide &rarr;
+              </button>
             </div>
           </div>
         </div>
