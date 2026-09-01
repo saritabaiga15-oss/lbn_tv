@@ -8,9 +8,22 @@
   position: relative;
   padding: 120px 20px 80px;
   text-align: center;
-  background: radial-gradient(circle at 50% 25%, rgba(207, 168, 96, 0.16), transparent 75%), #090910;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* Dark gradient overlay on top of logo background — keeps text legible */
+.anchorcrest-hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 8, 0.92) 0%,
+    rgba(7, 7, 12, 0.87) 40%,
+    rgba(5, 5, 8, 0.95) 100%
+  );
+  z-index: 1;
 }
 
 .anchorcrest-hero-glow {
@@ -23,13 +36,14 @@
   background: radial-gradient(circle, rgba(207, 168, 96, 0.22), transparent 70%);
   filter: blur(60px);
   pointer-events: none;
+  z-index: 2;
 }
 
 .anchorcrest-hero-container {
   max-width: 960px;
   margin: 0 auto;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .anchorcrest-badge {
@@ -195,8 +209,38 @@
 
 .courses-grid-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
+  margin: 0 auto 28px;
+  max-width: 1200px;
+}
+
+.courses-grid-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 30px;
+}
+
+.courses-grid-cta {
+  appearance: none;
+  border: 1px solid rgba(207, 168, 96, 0.7);
+  background: rgba(207, 168, 96, 0.08);
+  color: #f5d9a1;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.courses-grid-cta:hover {
+  background: rgba(207, 168, 96, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(207, 168, 96, 0.15);
 }
 
 /* Programme Card Structure */
@@ -239,63 +283,92 @@
 }
 
 .programme-card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(12, 12, 20, 0.95) 0%, rgba(12, 12, 20, 0.2) 60%, rgba(0, 0, 0, 0.4) 100%);
-  pointer-events: none;
+  display: none;
 }
 
 .programme-card-category {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 4px 12px;
-  letter-spacing: 0.1em;
-  border-radius: 4px;
-  text-transform: uppercase;
-  z-index: 2;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  display: none;
 }
 
 .course-card-badge-num {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  color: #cfa860;
-  border: 1px solid rgba(207, 168, 96, 0.4);
-  padding: 2px 10px;
-  border-radius: 4px;
-  z-index: 2;
-  letter-spacing: 1px;
+  display: none;
 }
 
 /* Category Color Palettes */
-.cat-camera-visual { background-color: #1e5ad4; color: #ffffff; }
-.cat-post-production { background-color: #8b5cf6; color: #ffffff; }
-.cat-audio-sound { background-color: #059669; color: #ffffff; }
-.cat-studio-rigs { background-color: #d97706; color: #ffffff; }
-.cat-lighting-vfx { background-color: #eab308; color: #000000; }
-.cat-stage-set { background-color: #ec4899; color: #ffffff; }
-.cat-executive { background-color: #cfa860; color: #000000; }
-.cat-control-room { background-color: #dc2626; color: #ffffff; }
-.cat-content-craft { background-color: #06b6d4; color: #000000; }
-.cat-logistics { background-color: #64748b; color: #ffffff; }
-.cat-vocal-arts { background-color: #10b981; color: #000000; }
-.cat-on-camera-host { background-color: #f43f5e; color: #ffffff; }
-.cat-streaming-ott { background-color: #3b82f6; color: #ffffff; }
-.cat-digital-media { background-color: #a855f7; color: #ffffff; }
-.cat-cinematic-sfx { background-color: #f97316; color: #000000; }
+.cat-camera-visual {
+  background-color: #1e5ad4;
+  color: #ffffff;
+}
+
+.cat-post-production {
+  background-color: #8b5cf6;
+  color: #ffffff;
+}
+
+.cat-audio-sound {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+.cat-studio-rigs {
+  background-color: #d97706;
+  color: #ffffff;
+}
+
+.cat-lighting-vfx {
+  background-color: #eab308;
+  color: #000000;
+}
+
+.cat-stage-set {
+  background-color: #ec4899;
+  color: #ffffff;
+}
+
+.cat-executive {
+  background-color: #cfa860;
+  color: #000000;
+}
+
+.cat-control-room {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.cat-content-craft {
+  background-color: #06b6d4;
+  color: #000000;
+}
+
+.cat-logistics {
+  background-color: #64748b;
+  color: #ffffff;
+}
+
+.cat-vocal-arts {
+  background-color: #10b981;
+  color: #000000;
+}
+
+.cat-on-camera-host {
+  background-color: #f43f5e;
+  color: #ffffff;
+}
+
+.cat-streaming-ott {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.cat-digital-media {
+  background-color: #a855f7;
+  color: #ffffff;
+}
+
+.cat-cinematic-sfx {
+  background-color: #f97316;
+  color: #000000;
+}
 
 .programme-card-content {
   padding: 24px 26px 26px;
@@ -407,6 +480,7 @@
   .courses-grid-cards {
     grid-template-columns: 1fr;
   }
+
   .course-modal-curriculum ul {
     grid-template-columns: 1fr;
   }
@@ -728,6 +802,7 @@
   .courses-grid-cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .sponsorship-grid-layout {
     grid-template-columns: 1fr;
   }
@@ -737,25 +812,32 @@
   .anchorcrest-title {
     font-size: 2.6rem;
   }
+
   .courses-grid-cards {
     grid-template-columns: 1fr;
   }
+
   .tiers-list-grid {
     grid-template-columns: 1fr;
   }
+
   .ecosystem-card-box {
     flex-direction: column;
     padding: 30px 20px;
   }
+
   .programmes-modal-grid {
     grid-template-columns: 1fr !important;
   }
+
   .programmes-modal-img-col {
     height: 220px;
   }
+
   .programmes-modal-info-col {
     padding: 30px 20px !important;
   }
+
   .programmes-modal-show-title {
     font-size: 1.8rem !important;
   }
@@ -779,8 +861,13 @@
 }
 
 @keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .programmes-modal-content {
@@ -797,8 +884,15 @@
 }
 
 @keyframes modalSlideUp {
-  from { opacity: 0; transform: translateY(25px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .programmes-modal-close {
@@ -852,7 +946,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0,0,0,0) 30%, #0c0c14 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0) 30%, #0c0c14 100%);
 }
 
 .programmes-modal-info-col {

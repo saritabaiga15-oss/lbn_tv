@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AnchorcrestFoundation.css';
+import anchorcrestLogo from '../../images/anchorcrest_logo.png';
 import videography from '../../images/videography.png';
 import Editing from '../../images/Editing.png';
 import SoundProduction from '../../images/SoundProduction.png';
@@ -22,6 +23,7 @@ const AnchorcrestFoundation = () => {
   const [customAmount, setCustomAmount] = useState('');
   const [copiedField, setCopiedField] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [showAllCourses, setShowAllCourses] = useState(false);
 
   const copyToClipboard = (text, fieldName) => {
     navigator.clipboard.writeText(text);
@@ -240,6 +242,7 @@ const AnchorcrestFoundation = () => {
   ];
 
   const activeAmount = customAmount ? customAmount : selectedTier;
+  const visibleCourses = showAllCourses ? courses : courses.slice(0, 9);
 
   const getCategoryClass = (category) => {
     return 'cat-' + category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -248,7 +251,16 @@ const AnchorcrestFoundation = () => {
   return (
     <div className="anchorcrest-page">
       {/* Hero Section */}
-      <section className="anchorcrest-hero">
+      <section
+        className="anchorcrest-hero"
+        style={{
+          backgroundImage: `url(${anchorcrestLogo})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="anchorcrest-hero-bg-overlay"></div>
         <div className="anchorcrest-hero-glow"></div>
         <div className="anchorcrest-hero-container">
           <span className="anchorcrest-badge">EMPOWERING THE NEXT GENERATION</span>
@@ -279,55 +291,72 @@ const AnchorcrestFoundation = () => {
         </div>
       </section>
 
-      {/* Courses Section - Structured like Programmes Container */}
-      <section id="courses-grid" className="courses-section">
-        <div className="anchorcrest-container">
-          <div className="section-head-box">
-            <span className="section-tag">FREE VOCATIONAL MEDIA TRAINING</span>
-            <h2 className="section-title">COURSES INCLUDED</h2>
-            <p className="section-desc">
-              Industry-standard, hands-on training equipping youth with high-value technical and creative broadcast skills.
-            </p>
-          </div>
+      <div id="courses-grid" className="courses-grid-cards">
+        {visibleCourses.map((course) => (
+          <div
+            key={course.id}
+            className="programme-card course-program-card"
+            onClick={() => setSelectedCourse(course)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSelectedCourse(course);
+              }
+            }}
+          >
+            <div className="programme-card-img-wrapper">
+              <img
+                src={course.image}
+                alt={course.title}
+                className="programme-card-img"
+              />
+            </div>
 
-          <div className="courses-grid-cards">
-            {courses.map((course, idx) => (
-              <div
-                key={course.id}
-                className="programme-card course-program-card"
-                onClick={() => setSelectedCourse(course)}
-              >
-                <div className="programme-card-img-wrapper">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="programme-card-img"
-                  />
-                  <div className="programme-card-overlay"></div>
-                  <span className={`programme-card-category ${getCategoryClass(course.category)}`}>
-                    {course.category}
-                  </span>
-                  <span className="course-card-badge-num">
-                    #{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
-                  </span>
-                </div>
+            <div className="programme-card-content">
+              <span className="programme-card-schedule">
+                ⏳ {course.duration} &bull; 🎯 {course.level}
+              </span>
 
-                <div className="programme-card-content">
-                  <span className="programme-card-schedule">
-                    ⏳ {course.duration} &bull; 🎯 {course.level}
-                  </span>
-                  <h3 className="programme-card-title">{course.title}</h3>
-                  <p className="programme-card-tagline">"{course.tagline}"</p>
-                  <p className="course-card-brief">{course.desc}</p>
-                  <button className="programme-card-btn">
-                    VIEW COURSE DETAILS &rarr;
-                  </button>
-                </div>
-              </div>
-            ))}
+              <h3 className="programme-card-title">
+                {course.title}
+              </h3>
+
+              <p className="programme-card-tagline">
+                "{course.tagline}"
+              </p>
+
+              <p className="course-card-brief">
+                {course.desc}
+              </p>
+            </div>
           </div>
+        ))}
+      </div>
+
+      {!showAllCourses && (
+        <div className="courses-grid-cta-wrap">
+          <button
+            className="courses-grid-cta"
+            onClick={() => setShowAllCourses(true)}
+          >
+            EXPLORE MORE
+          </button>
         </div>
-      </section>
+      )}
+
+      {showAllCourses && courses.length > 9 && (
+        <div className="courses-grid-cta-wrap">
+          <button
+            className="courses-grid-cta"
+            onClick={() => setShowAllCourses(false)}
+          >
+            SHOW LESS
+          </button>
+        </div>
+      )}
+
 
       {/* LoveWorld Ecosystem Highlight */}
       <section className="ecosystem-spotlight">
@@ -553,8 +582,10 @@ const AnchorcrestFoundation = () => {
             </div>
           )}
         </div>
-        );
+      </section>
+    </div>
+  );
 };
 
-        export default AnchorcrestFoundation;
+export default AnchorcrestFoundation;
 

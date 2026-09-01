@@ -1,6 +1,19 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Services.css';
 import serviceHeroBg from '../../images/service_hero_bg.jpg';
+import propCustomSets from '../../images/prop_custom_sets.jpg';
+import propFurnitureDecor from '../../images/prop_furniture_decor.png';
+import propLightingRigs from '../../images/prop_lighting_rigs.jpg';
+import propBackdrops from '../../images/prop_backdrops.png';
+import package24hr from '../../images/package_24hr_operations.jpg';
+import packageMovie from '../../images/package_movie_production.png';
+import packageShortMovie from '../../images/package_short_movie.png';
+import serviceVideoStudio from '../../images/service_video_studio.png';
+import serviceChromaStudio from '../../images/service_chroma_studio.png';
+import servicePodcastStudio from '../../images/service_podcast_studio.jpg';
+import serviceAcousticDubbing from '../../images/service_acoustic_dubbing.png';
+import serviceSoundMixing from '../../images/service_sound_mixing.jpg';
+import Voiceover from '../../images/Voiceover.png';
 
 const Services = () => {
   const videoRef = useRef(null);
@@ -95,27 +108,42 @@ const Services = () => {
           <div className="service-cards-grid">
 
             <div className="service-card">
-              <h3>Studio</h3>
-              <p>
-                State-of-the-art video recording studios equipped
-                for any scale of production.
-              </p>
+              <div className="service-card-img-wrap">
+                <img src={serviceVideoStudio} alt="Video Production Studios" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-body">
+                <h3>Video Production Studios</h3>
+                <p>
+                  Multi-camera broadcast stages configured for live shows, talk shows, and high-end studio productions.
+                </p>
+              </div>
             </div>
 
             <div className="service-card">
-              <h3>Chroma</h3>
-              <p>
-                High-quality green screen facilities for immersive
-                virtual backgrounds and VFX.
-              </p>
+              <div className="service-card-img-wrap">
+                <img src={serviceChromaStudio} alt="Chroma Recording Studio" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-body">
+                <h3>Chroma Recording Studio</h3>
+                <p>
+                  High-grade green screen facilities with full overhead truss lighting for seamless VFX and virtual sets.
+                </p>
+              </div>
             </div>
 
             <div className="service-card">
-              <h3>Podcast</h3>
-              <p>
-                Dedicated acoustic-treated podcast setups for
-                professional audio-visual recording.
-              </p>
+              <div className="service-card-img-wrap">
+                <img src={servicePodcastStudio} alt="Podcast Recording Studio" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-body">
+                <h3>Podcast Recording Studio</h3>
+                <p>
+                  Acoustic-treated studio with multi-angle 4K cameras and broadcast mics for audio-visual podcasts.
+                </p>
+              </div>
             </div>
 
           </div>
@@ -134,27 +162,42 @@ const Services = () => {
           <div className="service-cards-grid">
 
             <div className="service-card">
-              <h3>Dubbing</h3>
-              <p>
-                Professional dubbing and ADR services across
-                multiple languages.
-              </p>
+              <div className="service-card-img-wrap">
+                <img src={serviceAcousticDubbing} alt="Acoustic Sound Proof Audio Dubbing Studio" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-body">
+                <h3>Acoustic Sound Proof Audio Dubbing Studio</h3>
+                <p>
+                  Isolated acoustic recording environment with premium studio microphones and pristine monitoring.
+                </p>
+              </div>
             </div>
 
             <div className="service-card">
-              <h3>Mixing</h3>
-              <p>
-                Industry-standard audio mixing and mastering
-                for broadcast and film.
-              </p>
+              <div className="service-card-img-wrap">
+                <img src={serviceSoundMixing} alt="Sound Dubbing and Mixing Studio" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-body">
+                <h3>Sound Dubbing and Mixing Studio</h3>
+                <p>
+                  Multi-track mixing consoles and professional DAWs for mastering, dialogue sync, and broadcast audio.
+                </p>
+              </div>
             </div>
 
             <div className="service-card">
-              <h3>Voice Over</h3>
-              <p>
-                Crystal clear voice-over recording booths with
-                premium microphones.
-              </p>
+              <div className="service-card-img-wrap">
+                <img src={Voiceover} alt="Voice Over Recording Studio" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-body">
+                <h3>Voice Over Recording Studio</h3>
+                <p>
+                  Crystal clear voice-over recording booth for narration, commercials, podcasts, and character dubbing.
+                </p>
+              </div>
             </div>
 
           </div>
@@ -227,8 +270,8 @@ const Services = () => {
               onPause={() => setIsPlaying(false)}
             >
               <source
-                src="/Videos/ProductionVideo.mp4"
-                type="video/mp4"
+                src="C:\Users\admin\Downloads\Production Vidoe.mp4"
+
               />
 
               Your browser does not support the video tag.
@@ -294,26 +337,30 @@ const Services = () => {
           <div className="props-gallery">
 
             <div className="prop-card">
-              <div className="prop-placeholder">
-                Custom Sets
+              <img src={propFurnitureDecor} alt="Custom Sets" className="prop-card-img" />
+              <div className="prop-card-overlay">
+                <span className="prop-title">Custom Sets</span>
               </div>
             </div>
 
             <div className="prop-card">
-              <div className="prop-placeholder">
-                Furniture & Decor
+              <img src={propBackdrops} alt="Furniture & Decor" className="prop-card-img" />
+              <div className="prop-card-overlay">
+                <span className="prop-title">Furniture & Decor</span>
               </div>
             </div>
 
             <div className="prop-card">
-              <div className="prop-placeholder">
-                Lighting Rigs
+              <img src={propLightingRigs} alt="Lighting Rigs" className="prop-card-img" />
+              <div className="prop-card-overlay">
+                <span className="prop-title">Lighting Rigs</span>
               </div>
             </div>
 
             <div className="prop-card">
-              <div className="prop-placeholder">
-                Backdrops
+              <img src={propCustomSets} alt="Backdrops" className="prop-card-img" />
+              <div className="prop-card-overlay">
+                <span className="prop-title">Backdrops</span>
               </div>
             </div>
 
@@ -376,42 +423,51 @@ const Services = () => {
           <div className="packages-grid">
 
             <div className="package-card">
-              <div className="package-icon">
-                ⏱️
+              <div className="package-card-img-wrap">
+                <img src={package24hr} alt="24-Hour Operations" className="package-card-img" />
+                <div className="package-card-overlay"></div>
+                <span className="package-badge-icon">⏱️</span>
               </div>
 
-              <h3>24-Hour Operations</h3>
-
-              <p>
-                Round-the-clock facility access for tight
-                production schedules.
-              </p>
+              <div className="package-card-body">
+                <h3>24-Hour Operations</h3>
+                <p>
+                  Round-the-clock facility access for tight
+                  production schedules.
+                </p>
+              </div>
             </div>
 
             <div className="package-card">
-              <div className="package-icon">
-                🎬
+              <div className="package-card-img-wrap">
+                <img src={packageMovie} alt="Movie Production" className="package-card-img" />
+                <div className="package-card-overlay"></div>
+                <span className="package-badge-icon">🎬</span>
               </div>
 
-              <h3>Movie Production</h3>
-
-              <p>
-                End-to-end support and facilities for
-                feature-length films.
-              </p>
+              <div className="package-card-body">
+                <h3>Movie Production</h3>
+                <p>
+                  End-to-end support and facilities for
+                  feature-length films.
+                </p>
+              </div>
             </div>
 
             <div className="package-card">
-              <div className="package-icon">
-                🎥
+              <div className="package-card-img-wrap">
+                <img src={packageShortMovie} alt="Short Movie Production" className="package-card-img" />
+                <div className="package-card-overlay"></div>
+                <span className="package-badge-icon">🎥</span>
               </div>
 
-              <h3>Short Movie Production</h3>
-
-              <p>
-                Tailored, cost-effective packages for
-                short films and indie projects.
-              </p>
+              <div className="package-card-body">
+                <h3>Short Movie Production</h3>
+                <p>
+                  Tailored, cost-effective packages for
+                  short films and indie projects.
+                </p>
+              </div>
             </div>
 
           </div>
