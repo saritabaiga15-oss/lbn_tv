@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
+import Shows from '../../images/Shows.jpeg';
 import img2 from '../../images/image2.png';
 import img3 from '../../images/image3.png';
 import drPrashanti from '../../images/dr_prashanti.jpg';
@@ -9,6 +10,7 @@ const Hero = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
+    { id: 0, image: Shows, title: 'Showing Now' },
     { id: 1, image: img2, title: 'Song of Praise' },
     { id: 2, image: img3, title: 'Ignite Show' },
     { id: 3, image: drPrashanti, title: 'Dr. Prashanti' }

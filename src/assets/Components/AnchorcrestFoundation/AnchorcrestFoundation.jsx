@@ -1,10 +1,27 @@
 import React, { useState } from 'react';
 import './AnchorcrestFoundation.css';
+import videography from '../../images/videography.png';
+import Editing from '../../images/Editing.png';
+import SoundProduction from '../../images/SoundProduction.png';
+import CameraOperartor from '../../images/CameraOperator.png';
+import Lighting from '../../images/Lighting.png';
+import StageDesign from '../../images/StageDesign.png';
+import MediaProduction from '../../images/MediaProduction.png';
+import MixingPCR from '../../images/MixingPCR.png';
+import Scripting from '../../images/Scripting.jpeg';
+import Casting from '../../images/Casting.png';
+import Voiceover from '../../images/Voiceover.png';
+import VideoPresenter from '../../images/VideoPresenter.jpeg';
+import TechPodcast from '../../images/Tech&Podcast.png';
+import SocialMedia from '../../images/SocialMedia.jpeg';
+// Makeupartist image not yet uploaded - card will show emoji icon instead
+
 
 const AnchorcrestFoundation = () => {
   const [selectedTier, setSelectedTier] = useState('5000');
   const [customAmount, setCustomAmount] = useState('');
   const [copiedField, setCopiedField] = useState(null);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const copyToClipboard = (text, fieldName) => {
     navigator.clipboard.writeText(text);
@@ -16,122 +33,182 @@ const AnchorcrestFoundation = () => {
     {
       id: 1,
       title: 'Videography',
+      category: 'CAMERA & VISUAL',
       icon: '📹',
+      image: videography,
       duration: '8 Weeks',
       level: 'Beginner to Pro',
-      desc: 'Cinematic framing, camera movement, composition, lens selection, and dynamic visual storytelling techniques.'
+      tagline: 'Master cinematic framing and camera artistry.',
+      desc: 'Cinematic framing, camera movement, composition, lens selection, and dynamic visual storytelling techniques for broadcast.',
+      topics: ['Cinematic Composition & Framing', 'Camera Movement & Gimbal Stabilizing', 'Lens Selection & Depth of Field', 'Studio & Location Filming']
     },
     {
       id: 2,
       title: 'Editing',
+      category: 'POST-PRODUCTION',
       icon: '✂️',
+      image: Editing,
       duration: '8 Weeks',
       level: 'Industry Standard',
-      desc: 'Non-linear editing in Premiere & DaVinci, pacing, multi-camera syncing, color grading, and broadcast mastering.'
+      tagline: 'Craft compelling stories in the cutting room.',
+      desc: 'Non-linear editing in Premiere & DaVinci, pacing, multi-camera syncing, color grading, and broadcast mastering.',
+      topics: ['Premiere Pro & DaVinci Resolve', 'Multi-Cam Syncing & Cutting', 'Color Grading & LUT Workflows', 'Broadcast Export Deliverables']
     },
     {
       id: 3,
       title: 'Sound Production',
+      category: 'AUDIO & SOUND',
       icon: '🎧',
+      image: SoundProduction,
       duration: '6 Weeks',
       level: 'Studio & Live',
-      desc: 'Studio acoustic capturing, field audio recording, wireless mic rigging, multi-track mixing, and compression.'
+      tagline: 'Capturing and sculpting pristine broadcast audio.',
+      desc: 'Studio acoustic capturing, field audio recording, wireless mic rigging, multi-track mixing, and compression techniques.',
+      topics: ['Wireless Mic Rigging & Frequency Sync', 'Studio Acoustic Isolation', 'Multi-Track Mixing & EQ', 'Live Broadcast Audio Mastering']
     },
     {
       id: 4,
       title: 'Camera Operations',
+      category: 'STUDIO RIGS',
       icon: '🎥',
+      image: CameraOperartor,
       duration: '6 Weeks',
       level: 'Hands-on Rigging',
-      desc: 'Multi-cam broadcast pedestal rigs, PTZ operations, robotic jibs, handheld gimbal stabilization, and live feeds.'
+      tagline: 'Operate professional broadcast pedestal rigs.',
+      desc: 'Multi-cam broadcast pedestal rigs, PTZ operations, robotic jibs, handheld gimbal stabilization, and live multi-angle feeds.',
+      topics: ['Heavy Pedestal Camera Rigging', 'PTZ Remote Operations', 'Robotic Jib & Crane Moves', 'Live Tally & Director Cueing']
     },
     {
       id: 5,
       title: 'Studio Lighting',
+      category: 'LIGHTING & VFX',
       icon: '💡',
+      image: Lighting,
       duration: '4 Weeks',
       level: 'Cinematic Grid',
-      desc: 'Three-point lighting, overhead grid rigging, RGB LED panel mapping, DMX controllers, and mood design.'
+      tagline: 'Illuminate scenes with dramatic atmosphere.',
+      desc: 'Three-point lighting, overhead grid rigging, RGB LED panel mapping, DMX controllers, and cinematic mood design.',
+      topics: ['Three-Point Cinematic Setup', 'Overhead Grid Rigging & Safety', 'DMX Lighting Console Control', 'Color Temperature & Diffusion']
     },
     {
       id: 6,
-      title: 'Stage Design and Setup',
+      title: 'Stage Design & Setup',
+      category: 'STAGE & SET',
       icon: '🎭',
+      image: StageDesign,
       duration: '6 Weeks',
       level: 'Creative Set',
-      desc: 'Broadcast set architecture, acoustic backdrop installations, LED video wall setup, and spatial aesthetics.'
+      tagline: 'Build immersive sets for television and film.',
+      desc: 'Broadcast set architecture, acoustic backdrop installations, LED video wall setup, and spatial stage aesthetics.',
+      topics: ['Television Set Architecture', 'LED Video Wall Setup & Mapping', 'Acoustic Backdrop Design', 'Spatial Layout & Prop Placement']
     },
     {
       id: 7,
       title: 'Media Production',
+      category: 'EXECUTIVE',
       icon: '🎬',
+      image: MediaProduction,
       duration: '10 Weeks',
       level: 'Executive Workflow',
-      desc: 'End-to-end production workflow, live show directing, floor management, rundown timing, and broadcast delivery.'
+      tagline: 'Direct and produce high-end TV broadcasts.',
+      desc: 'End-to-end production workflow, live show directing, floor management, rundown timing, and broadcast delivery.',
+      topics: ['Floor Management & Live Cueing', 'Rundown Timing & Script Execution', 'Multi-Camera Live Switching', 'Executive Media Workflow']
     },
     {
       id: 8,
-      title: 'Mixing MCR/PCR',
+      title: 'Mixing MCR / PCR',
+      category: 'CONTROL ROOM',
       icon: '🎛️',
+      image: MixingPCR,
       duration: '8 Weeks',
       level: 'Advanced Control Room',
-      desc: 'Master Control Room (MCR) & Production Control Room (PCR) live vision switching, automation, and stream routing.'
+      tagline: 'The heartbeat of live satellite television.',
+      desc: 'Master Control Room (MCR) & Production Control Room (PCR) live vision switching, automation, and stream routing.',
+      topics: ['Vision Mixer Board Operations', 'Automation & Media Playout Servers', 'Satellite & OTT Uplink Routing', 'Live Graphics & Lower Thirds Sync']
     },
     {
       id: 9,
-      title: 'Scripting',
+      title: 'Scripting & Narrative',
+      category: 'CONTENT CRAFT',
       icon: '✍️',
+      image: Scripting,
       duration: '4 Weeks',
       level: 'Narrative Craft',
-      desc: 'TV talk show scripting, teleprompter drafting, documentary storyboarding, and faith-based narrative writing.'
+      tagline: 'Write words that captivate global audiences.',
+      desc: 'TV talk show scripting, teleprompter drafting, documentary storyboarding, and faith-based narrative writing.',
+      topics: ['Talk Show & Panel Scripting', 'Teleprompter Formatting', 'Documentary Storyboarding', 'Interview Questionnaire Design']
     },
     {
       id: 10,
-      title: 'Casting and Operations',
+      title: 'Casting & Operations',
+      category: 'LOGISTICS',
       icon: '👥',
+      image: Casting,
       duration: '4 Weeks',
       level: 'Studio Logistics',
-      desc: 'Talent scouting, on-camera audition coordination, production scheduling, call sheets, and studio crew logistics.'
+      tagline: 'Coordinate talent and seamless production schedules.',
+      desc: 'Talent scouting, on-camera audition coordination, production scheduling, call sheets, and studio crew logistics.',
+      topics: ['Talent Scouting & Auditions', 'Call Sheets & Crew Management', 'Production Scheduling', 'Studio Operations Protocols']
     },
     {
       id: 11,
       title: 'Voice Over Artist',
+      category: 'VOCAL ARTS',
       icon: '🎙️',
+      image: Voiceover,
       duration: '6 Weeks',
       level: 'Vocal Mastery',
-      desc: 'Vocal modulation, diction, accent training, commercial voiceovers, documentary narration, and booth techniques.'
+      tagline: 'Find your voice and command the microphone.',
+      desc: 'Vocal modulation, diction, accent training, commercial voiceovers, documentary narration, and booth techniques.',
+      topics: ['Microphone Technique & Proximity', 'Diction & Accent Modulation', 'Commercial & Promo Reads', 'Documentary Narration Pacing']
     },
     {
       id: 12,
       title: 'Video Presenter',
+      category: 'ON-CAMERA HOST',
       icon: '📺',
+      image: VideoPresenter,
       duration: '6 Weeks',
       level: 'On-Camera Hosting',
-      desc: 'On-screen confidence, live show hosting, teleprompter mastery, interview agility, and body language coaching.'
+      tagline: 'Exude poise and charisma on live television.',
+      desc: 'On-screen confidence, live show hosting, teleprompter mastery, interview agility, and body language coaching.',
+      topics: ['Teleprompter Reading Naturalness', 'Live Interview Moderation', 'Body Language & Posture', 'Handling Live On-Air Changes']
     },
     {
       id: 13,
-      title: 'New Media Technology / Podcast',
+      title: 'New Media / Podcast',
+      category: 'STREAMING & OTT',
       icon: '📡',
+      image: TechPodcast,
       duration: '6 Weeks',
       level: 'Digital & Streaming',
-      desc: 'Live streaming OTT infrastructure, podcast acoustic booth setup, multi-platform simulcasting, and AI tools.'
+      tagline: 'Pioneer the future of digital broadcasts.',
+      desc: 'Live streaming OTT infrastructure, podcast acoustic booth setup, multi-platform simulcasting, and AI production tools.',
+      topics: ['Podcast Studio Audio Rigging', 'Multi-Platform RTMP Streaming', 'OTT & YouTube Channel Setup', 'AI Tools for Media Production']
     },
     {
       id: 14,
-      title: 'Social Media',
+      title: 'Social Media Strategy',
+      category: 'DIGITAL MEDIA',
       icon: '📱',
+      image: SocialMedia,
       duration: '4 Weeks',
       level: 'Viral Growth',
-      desc: 'Short-form viral content (Reels/Shorts), algorithm optimization, digital branding, community engagement, and analytics.'
+      tagline: 'Drive engagement with high-impact short-form media.',
+      desc: 'Short-form viral content (Reels/Shorts), algorithm optimization, digital branding, community engagement, and analytics.',
+      topics: ['Vertical Video (Reels/Shorts/TikTok)', 'Thumbnail & Hook Architecture', 'Algorithm & SEO Strategies', 'Analytics & Campaign Scaling']
     },
     {
       id: 15,
-      title: 'Make Artist and Movie Scene Makeup',
+      title: 'Movie Scene & Studio Makeup',
+      category: 'CINEMATIC SFX',
       icon: '💄',
+      image: Lighting,
       duration: '6 Weeks',
       level: 'HD & Cinematic SFX',
-      desc: 'HD broadcast studio makeup, cinematic character transformation, prosthetic FX, lighting-compatible cosmetics, and touch-ups.'
+      tagline: 'Transform actors for high-definition broadcast.',
+      desc: 'HD broadcast studio makeup, cinematic character transformation, prosthetic FX, lighting-compatible cosmetics, and touch-ups.',
+      topics: ['HD Lighting-Compatible Makeup', 'Character & Aging Transformations', 'SFX & Minor Prosthetics', 'On-Set Touch-Up Protocols']
     }
   ];
 
@@ -163,6 +240,10 @@ const AnchorcrestFoundation = () => {
   ];
 
   const activeAmount = customAmount ? customAmount : selectedTier;
+
+  const getCategoryClass = (category) => {
+    return 'cat-' + category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  };
 
   return (
     <div className="anchorcrest-page">
@@ -198,7 +279,7 @@ const AnchorcrestFoundation = () => {
         </div>
       </section>
 
-      {/* Courses Section */}
+      {/* Courses Section - Structured like Programmes Container */}
       <section id="courses-grid" className="courses-section">
         <div className="anchorcrest-container">
           <div className="section-head-box">
@@ -211,16 +292,36 @@ const AnchorcrestFoundation = () => {
 
           <div className="courses-grid-cards">
             {courses.map((course, idx) => (
-              <div key={course.id} className="course-card-item">
-                <div className="course-card-header">
-                  <span className="course-number">#{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
-                  <span className="course-card-icon">{course.icon}</span>
+              <div
+                key={course.id}
+                className="programme-card course-program-card"
+                onClick={() => setSelectedCourse(course)}
+              >
+                <div className="programme-card-img-wrapper">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="programme-card-img"
+                  />
+                  <div className="programme-card-overlay"></div>
+                  <span className={`programme-card-category ${getCategoryClass(course.category)}`}>
+                    {course.category}
+                  </span>
+                  <span className="course-card-badge-num">
+                    #{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                  </span>
                 </div>
-                <h3 className="course-card-title">{course.title}</h3>
-                <p className="course-card-desc">{course.desc}</p>
-                <div className="course-card-footer">
-                  <span className="course-meta-tag">⏳ {course.duration}</span>
-                  <span className="course-meta-tag">🎯 {course.level}</span>
+
+                <div className="programme-card-content">
+                  <span className="programme-card-schedule">
+                    ⏳ {course.duration} &bull; 🎯 {course.level}
+                  </span>
+                  <h3 className="programme-card-title">{course.title}</h3>
+                  <p className="programme-card-tagline">"{course.tagline}"</p>
+                  <p className="course-card-brief">{course.desc}</p>
+                  <button className="programme-card-btn">
+                    VIEW COURSE DETAILS &rarr;
+                  </button>
                 </div>
               </div>
             ))}
@@ -391,10 +492,69 @@ const AnchorcrestFoundation = () => {
             </div>
 
           </div>
+          {/* Course Details Modal (Programmes Modal Style) */}
+          {selectedCourse && (
+            <div className="programmes-modal" onClick={() => setSelectedCourse(null)}>
+              <div className="programmes-modal-content" onClick={(e) => e.stopPropagation()}>
+                <button
+                  className="programmes-modal-close"
+                  onClick={() => setSelectedCourse(null)}
+                  aria-label="Close modal"
+                >
+                  &times;
+                </button>
+                <div className="programmes-modal-grid">
+
+                  <div className="programmes-modal-img-col">
+                    <div
+                      className="programmes-modal-bg-cover"
+                      style={{ backgroundImage: `url("${selectedCourse.image}")` }}
+                    >
+                      <div className="programmes-modal-img-overlay"></div>
+                    </div>
+                  </div>
+
+                  <div className="programmes-modal-info-col">
+                    <span className="programmes-modal-schedule-tag">
+                      ⏳ {selectedCourse.duration} &bull; 🎯 {selectedCourse.level}
+                    </span>
+                    <h2 className="programmes-modal-show-title">{selectedCourse.title}</h2>
+                    <h4 className="programmes-modal-show-subtitle">{selectedCourse.category} SPECIALIZATION</h4>
+                    <p className="programmes-modal-show-tagline">"{selectedCourse.tagline}"</p>
+                    <p className="programmes-modal-show-desc">{selectedCourse.desc}</p>
+
+                    {selectedCourse.topics && (
+                      <div className="course-modal-curriculum">
+                        <h5>Key Practical Competencies:</h5>
+                        <ul>
+                          {selectedCourse.topics.map((topic, i) => (
+                            <li key={i}>✓ {topic}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div className="programmes-modal-actions-container">
+                      <a
+                        href="#sponsor-section"
+                        className="programmes-modal-action-watch"
+                        onClick={() => setSelectedCourse(null)}
+                      >
+                        SPONSOR THIS COURSE &rarr;
+                      </a>
+                      <button className="programmes-modal-action-back" onClick={() => setSelectedCourse(null)}>
+                        CLOSE
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      </section>
-    </div>
-  );
+        );
 };
 
-export default AnchorcrestFoundation;
+        export default AnchorcrestFoundation;
+

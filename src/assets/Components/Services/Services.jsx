@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Services.css';
+import serviceHeroBg from '../../images/service_hero_bg.jpg';
 
 const Services = () => {
   const videoRef = useRef(null);
@@ -54,23 +55,30 @@ const Services = () => {
       <div className="services-container">
 
         {/* Hero Section */}
-        <div className="services-hero">
-          <span className="services-badge">OUR SERVICES</span>
+        <div
+          className="services-hero"
+          style={{
+            backgroundImage: `linear-gradient(rgba(13, 13, 20, 0.72), rgba(13, 13, 20, 0.86)), url(${serviceHeroBg})`
+          }}
+        >
+          <div className="services-hero-content">
+            <span className="services-badge">OUR SERVICES</span>
 
-          <h1 className="services-title">
-            Everything You Need.
-            <br />
-            One Production Facility.
-          </h1>
+            <h1 className="services-title">
+              Everything You Need.
+              <br />
+              One Production Facility.
+            </h1>
 
-          <div className="services-hero-actions">
-            <a href="#contact" className="services-btn primary">
-              Book a Studio
-            </a>
+            <div className="services-hero-actions">
+              <a href="#contact" className="services-btn primary">
+                Book a Studio
+              </a>
 
-            <a href="#contact" className="services-btn secondary">
-              Contact Us
-            </a>
+              <a href="#contact" className="services-btn secondary">
+                Contact Us
+              </a>
+            </div>
           </div>
         </div>
 
@@ -207,7 +215,7 @@ const Services = () => {
 
             <video
               ref={videoRef}
-              src="/Videos/Production Video.mp4"
+              src="/Videos/ProductionVideo.mp4"
               className="service-hd-video-player"
               autoPlay
               muted
