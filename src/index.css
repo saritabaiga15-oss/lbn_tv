@@ -16,6 +16,7 @@
   --font-serif: 'Cinzel', serif;
   --font-sans: 'Outfit', sans-serif;
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --site-grid-width: min(1800px, calc(100% - 120px));
 }
 
 /* Base resets */
@@ -60,6 +61,47 @@ button {
   cursor: pointer;
   color: inherit;
   font-family: inherit;
+}
+
+/* Master container rule tied to navbar boundaries */
+.header-container,
+[class*='container'],
+[class*='Container'],
+section,
+main,
+#root,
+.App {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.header-container,
+[class*='container'],
+[class*='Container'] {
+  width: var(--site-grid-width) !important;
+  max-width: var(--site-grid-width) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --site-grid-width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --site-grid-width: calc(100% - 28px);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --site-grid-width: calc(100% - 20px);
+  }
 }
 
 /* Animation utilities */

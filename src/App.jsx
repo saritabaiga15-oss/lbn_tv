@@ -17,9 +17,18 @@ import AirtimeOnLBN from "./assets/Components/AirtimeOnLBN/AirtimeOnLBN";
 import AnchorcrestFoundation from "./assets/Components/AnchorcrestFoundation/AnchorcrestFoundation";
 import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
+// import ChatWidget from "./assets/Components/Chatbot/Chatbot";
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+
+  const handleChatNavigate = (tab, hash) => {
+    setActiveTab(tab);
+    window.setTimeout(() => {
+      if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 0);
+  };
 
   return (
     <div className="App">
@@ -46,6 +55,7 @@ function App() {
         {activeTab === 'anchorcrest-foundation' && <AnchorcrestFoundation />}
       </main>
       <Footer />
+      {/* <ChatWidget onNavigate={handleChatNavigate} /> */}
     </div>
   );
 }

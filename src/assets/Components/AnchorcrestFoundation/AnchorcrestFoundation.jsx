@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AnchorcrestFoundation.css';
-import anchorcrestLogo from '../../images/anchorcrest_logo.png';
+import anchorcrestLogo from '../../images/AC_logo.png';
 import videography from '../../images/videography.png';
 import Editing from '../../images/Editing.png';
 import SoundProduction from '../../images/SoundProduction.png';
@@ -268,8 +268,7 @@ const AnchorcrestFoundation = () => {
             ANCHORCREST <span className="gold-text">FOUNDATION</span>
           </h1>
           <p className="anchorcrest-subtitle">
-            Join us to impact young people all over by sponsoring them to attend our media training courses for free.
-          </p>
+            Join us in making an impact across the Loveworld Network by sponsoring young people to attend our media training courses for free          </p>
 
           <div className="hero-ecosystem-banner">
             <div className="eco-star">🌟</div>
@@ -512,7 +511,7 @@ const AnchorcrestFoundation = () => {
                   rel="noopener noreferrer"
                   className="wa-confirm-btn"
                 >
-                  <span>💬 Share Transfer Receipt on WhatsApp</span>
+                  <span>Receipt </span>
                 </a>
                 <span className="wa-help-note">
                   Click to notify our foundation coordinator for your official acknowledgement and certificate of sponsorship.

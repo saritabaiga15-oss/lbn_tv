@@ -541,7 +541,7 @@ const AirtimeAnchorcrest = () => {
                   <div className="contact-line-item">
                     <span className="contact-icon">💬</span>
                     <div className="contact-detail">
-                      <strong>SMS or WhatsApp:</strong>{' '}
+                      <strong>SMS:</strong>{' '}
                       <a href="https://wa.me/919529607156" target="_blank" rel="noopener noreferrer">+91 9529607156</a>
                     </div>
                   </div>

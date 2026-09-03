@@ -62,7 +62,7 @@ const Footer = () => {
 
   return (
     <footer className="site-footer">
-      <div className="footer-card-container">
+      <div id="contacts" className="footer-card-container">
         {/* Top: Partner with us */}
         <div className="footer-top">
           <h2 className="footer-partner-title">Partner with us</h2>
@@ -115,7 +115,7 @@ const Footer = () => {
               </p>
               <div className="contact-lines">
                 <p><strong>Phone:</strong> +919529607156 / +234 9085900344</p>
-                <p><strong>WhatsApp:</strong> +919529607156</p>
+                <p><strong>Chat:</strong> +919529607156</p>
                 <p><strong>Web:</strong> <a href="https://www.lbntv.org" target="_blank" rel="noopener noreferrer">www.lbntv.org</a></p>
               </div>
             </div>
@@ -129,17 +129,14 @@ const Footer = () => {
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contacts">Contacts</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#faq">FAQ</a></li>
               </ul>
             </div>
             
             <div className="footer-links-col">
               <ul>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#donation">Donation</a></li>
-                <li><a href="#volunteering">Volunteering</a></li>
-                <li><a href="#partner">Become a partner</a></li>
+                  <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#events">Anchorcrest Foundation</a></li>
               </ul>
             </div>
           </div>
@@ -160,7 +157,7 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="footer-bottom">
-          <p className="copyright-text">Copyright &copy; 2025 Love India Entertainment Pvt Ltd. All rights reserved.</p>
+          <p className="copyright-text">Copyright &copy; 2026 Love India Entertainment Pvt Ltd. All rights reserved.</p>
           <div className="footer-bottom-links">
             <a href="#privacy">Privacy Policy</a>
             <span className="footer-bar-sep">|</span>
