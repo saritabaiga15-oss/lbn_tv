@@ -14,6 +14,7 @@ import servicePodcastStudio from '../../images/service_podcast_studio.jpg';
 import serviceAcousticDubbing from '../../images/service_acoustic_dubbing.png';
 import serviceSoundMixing from '../../images/service_sound_mixing.jpg';
 import Voiceover from '../../images/Voiceover.png';
+import studioVideo from '../../studio.mp4';
 
 const Services = () => {
   const videoRef = useRef(null);
@@ -21,25 +22,33 @@ const Services = () => {
   const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
+    const video = videoRef.current;
+    if (!video) return;
 
-      const playPromise = videoRef.current.play();
+    video.muted = isMuted;
 
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch((err) => {
+              console.log('Autoplay on scroll prevented:', err);
+            });
             setIsPlaying(true);
-          })
-          .catch((err) => {
-            console.log(
-              'Autoplay prevented or waiting for interaction:',
-              err
-            );
+          } else {
+            video.pause();
             setIsPlaying(false);
-          });
-      }
-    }
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const toggleSound = () => {
@@ -203,99 +212,53 @@ const Services = () => {
           </div>
         </section>
 
-        {/* HD Production Video Showcase */}
-        <section className="service-video-showcase">
+      </div>
 
-          <div className="service-video-glow"></div>
+      {/* Cinematic Video Showcase (Full 100% x 90vh) */}
+      <section className="service-video-showcase">
+        {/* Cinematic Gradient Vignettes for smooth top/bottom color transitions */}
+        <div className="service-video-gradient-top"></div>
+        <div className="service-video-gradient-bottom"></div>
 
-          <div className="service-video-header">
+        <div className="service-video-frame">
+          <video
+            ref={videoRef}
+            src={studioVideo}
+            className="service-hd-video-player"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+          >
+            <source
+              src={studioVideo}
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
 
-            <div className="service-video-title-wrap">
+          {/* Floating Sound Toggle */}
+          <button
+            type="button"
+            className="video-float-sound-btn"
+            onClick={toggleSound}
+            title={
+              isMuted
+                ? 'Click to enable sound'
+                : 'Click to mute'
+            }
+          >
+            {isMuted
+              ? '🔇 Unmute Audio'
+              : '🔊 Sound On'}
+          </button>
+        </div>
+      </section>
 
-              <div className="service-video-badge">
-                <span className="hd-tag">
-                  HD 1080p
-                </span>
-
-                <span>
-                  PRODUCTION SHOWCASE
-                </span>
-              </div>
-
-              <h2 className="service-video-title">
-                SEE OUR PRODUCTION FACILITY IN ACTION
-              </h2>
-
-              <p className="service-video-subtitle">
-                Take an exclusive high-definition look at our
-                state-of-the-art studios, equipment, and
-                broadcast operations.
-              </p>
-
-            </div>
-
-            <div className="service-video-controls-quick">
-
-              <button
-                type="button"
-                className="service-sound-toggle-btn"
-                onClick={toggleSound}
-                aria-label={
-                  isMuted ? 'Unmute Audio' : 'Mute Audio'
-                }
-              >
-                {isMuted
-                  ? '🔇 Unmute Audio'
-                  : '🔊 Sound On'}
-              </button>
-
-            </div>
-
-          </div>
-
-          {/* Video */}
-          <div className="service-video-frame">
-
-            <video
-              ref={videoRef}
-              src="/Videos/ProductionVideo.mp4"
-              className="service-hd-video-player"
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls
-              preload="auto"
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-            >
-              <source
-                src="C:\Users\admin\Downloads\Production Vidoe.mp4"
-
-              />
-
-              Your browser does not support the video tag.
-            </video>
-
-            {/* Floating Sound Button */}
-            <button
-              type="button"
-              className="video-float-sound-btn"
-              onClick={toggleSound}
-              title={
-                isMuted
-                  ? 'Click to enable sound'
-                  : 'Click to mute'
-              }
-            >
-              {isMuted
-                ? '🔇 Tap for Sound'
-                : '🔊 Audio Active'}
-            </button>
-
-          </div>
-
-        </section>
+      <div className="services-container">
 
         {/* Equipment Lease */}
         <section className="service-category">
