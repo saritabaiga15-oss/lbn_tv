@@ -2,9 +2,25 @@ import React from 'react';
 import './Footer.css';
 import footerLogo from '../../images/LWI_logo.png';
 
-const Footer = () => {
+const Footer = ({ onNavigate }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLinkClick = (e, tab, hash = null) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(tab, hash);
+    } else {
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
   };
 
   const socials = [
@@ -91,7 +107,12 @@ const Footer = () => {
         <div className="footer-middle">
           {/* Logo & Address info */}
           <div className="footer-info-col">
-            <div className="footer-brand-header">
+            <div 
+              className="footer-brand-header"
+              onClick={(e) => handleLinkClick(e, 'home')}
+              style={{ cursor: 'pointer' }}
+              title="Back to Homepage"
+            >
               <div className="footer-logo-circle">
                 <img 
                   src={footerLogo} 
@@ -125,18 +146,46 @@ const Footer = () => {
           <div className="footer-links-layout">
             <div className="footer-links-col">
               <ul>
-                <li><a href="#home">Homepage</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contacts">Contacts</a></li>
+                <li>
+                  <a href="#home" onClick={(e) => handleLinkClick(e, 'home')}>
+                    Homepage
+                  </a>
+                </li>
+                <li>
+                  <a href="#about-us" onClick={(e) => handleLinkClick(e, 'about-us')}>
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#services" onClick={(e) => handleLinkClick(e, 'services')}>
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a href="#contacts" onClick={(e) => handleLinkClick(e, null, 'contacts')}>
+                    Contacts
+                  </a>
+                </li>
               </ul>
             </div>
             
             <div className="footer-links-col">
               <ul>
-                  <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#events">Anchorcrest Foundation</a></li>
+                <li>
+                  <a href="#gallery" onClick={(e) => handleLinkClick(e, 'home', 'gallery')}>
+                    Gallery
+                  </a>
+                </li>
+                <li>
+                  <a href="#faq" onClick={(e) => handleLinkClick(e, 'home', 'faq')}>
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a href="#anchorcrest-foundation" onClick={(e) => handleLinkClick(e, 'anchorcrest-foundation')}>
+                    Anchorcrest Foundation
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

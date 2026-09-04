@@ -22,13 +22,32 @@ import Footer from "./assets/Components/Footer/Footer";
 function App() {
   const [activeTab, setActiveTab] = useState('home');
 
-  const handleChatNavigate = (tab, hash) => {
-    setActiveTab(tab);
-    window.setTimeout(() => {
-      if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
-      else window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 0);
+  const handleNavigate = (tab, hash = null) => {
+    if (tab && activeTab !== tab) {
+      setActiveTab(tab);
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 120);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
   };
+
+  const handleChatNavigate = handleNavigate;
 
   return (
     <div className="App">
@@ -54,7 +73,7 @@ function App() {
         {activeTab === 'airtime-on-lbn' && <AirtimeOnLBN />}
         {activeTab === 'anchorcrest-foundation' && <AnchorcrestFoundation />}
       </main>
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
       {/* <ChatWidget onNavigate={handleChatNavigate} /> */}
     </div>
   );
