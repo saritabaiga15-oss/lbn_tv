@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ImageGallery.css';
+import ScrollRow from '../ScrollRow/ScrollRow';
 import theTrumpet from '../../images/the_trumpet.jpg';
 import timelessParagon from '../../images/timeless_paragon.jpg';
 import wordAtWork from '../../images/word_at_work.jpg';
@@ -25,8 +26,8 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
     { id: 9, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship and financial freedom on LBN.' }
   ];
 
-  // 4 in a row highlight display on the homepage
-  const visibleItems = galleryItems.slice(0, 4);
+  // All items visible in horizontal scroll row
+  const visibleItems = galleryItems;
 
   const handleSeeMore = () => {
     if (onNavigateProgrammes) {
@@ -45,15 +46,19 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
 
         {/* Header */}
         <div className="gallery-header">
-          <span className="gallery-badge">NETWORK HIGHLIGHTS</span>
-          <h2 className="gallery-title">BROADCAST MOMENTS &amp; HIGHLIGHTS</h2>
-          <p className="gallery-subtitle">
-            Explore snapshots from our live broadcasts, talk shows, kids specials, and uplifting faith programs.
-          </p>
+          <div className="gallery-header-row">
+            <div>
+              <span className="gallery-badge">NETWORK HIGHLIGHTS</span>
+              <h2 className="gallery-title">BROADCAST MOMENTS &amp; HIGHLIGHTS</h2>
+              <p className="gallery-subtitle">
+                Explore snapshots from our live broadcasts, talk shows, kids specials, and uplifting faith programs.
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* 4 In A Row Grid */}
-        <div className="gallery-grid">
+        {/* 4 In A Row Scroll Row with OTT Arrow Navigation */}
+        <ScrollRow className="gallery-grid">
           {visibleItems.map((item) => (
             <div
               key={item.id}
@@ -70,7 +75,7 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
               </div>
             </div>
           ))}
-        </div>
+        </ScrollRow>
 
         {/* See More connected directly to Programmes Section Page */}
         <div className="gallery-more-container">

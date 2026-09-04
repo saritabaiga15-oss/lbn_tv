@@ -12,9 +12,18 @@
 }
 
 .gallery-header {
-  text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
+
+/* Row with title on left, scroll hint on right */
+.gallery-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 
 .gallery-badge {
   display: inline-block;
@@ -47,11 +56,37 @@
   line-height: 1.6;
 }
 
-/* Grid Layout - 4 columns in a row */
+/* ── Netflix-style horizontal scroll row ── */
+.gallery-scroll-row {
+  position: relative;
+}
+
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;        /* room for scroll-shadow */
+  cursor: grab;
+}
+
+.gallery-grid:active {
+  cursor: grabbing;
+}
+
+/* Completely hide scrollbars - navigation is handled by OTT circular arrow buttons and touch */
+.gallery-grid {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.gallery-grid::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .gallery-card {
@@ -64,6 +99,9 @@
   animation: fadeInCard 0.4s ease-out;
   display: flex;
   flex-direction: column;
+  /* Fixed width so cards peek at the edge */
+  flex: 0 0 280px;
+  scroll-snap-align: start;
 }
 
 @keyframes fadeInCard {
@@ -289,9 +327,8 @@
 
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  .gallery-card {
+    flex: 0 0 240px;
   }
   .gallery-title {
     font-size: 2.4rem;
@@ -300,19 +337,47 @@
 
 @media (max-width: 768px) {
   .gallery-section {
-    padding: 60px 16px 50px;
+    padding: 60px 0px 50px;
+  }
+  .gallery-container {
+    padding: 0;
+  }
+  .gallery-header {
+    padding: 0 16px;
+    margin-bottom: 24px;
+  }
+  .gallery-more-container {
+    padding: 0 16px;
+    margin-top: 32px;
   }
   .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
+    padding-left: 16px;
+    padding-right: 16px;
+    scroll-padding: 0 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Show ~1–1.5 images at a time on mobile to invite swipe interaction */
+  .gallery-card {
+    flex: 0 0 72vw;
+    max-width: 310px;
+    scroll-snap-align: start;
+    border-radius: 10px;
   }
   .gallery-title {
-    font-size: clamp(2rem, 6vw, 2.4rem);
+    font-size: clamp(1.8rem, 5.5vw, 2.3rem);
+  }
+  .gallery-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.5;
   }
   .gallery-see-more-btn {
     width: 100%;
+    min-height: 48px;
     justify-content: center;
     padding: 14px 20px;
+    font-size: 0.95rem;
   }
   .lightbox-content {
     max-height: 90vh;
@@ -322,13 +387,38 @@
 
 @media (max-width: 480px) {
   .gallery-section {
-    padding: 45px 12px 35px;
+    padding: 45px 0px 35px;
+  }
+  .gallery-header {
+    padding: 0 14px;
+    margin-bottom: 20px;
+  }
+  .gallery-grid {
+    gap: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+    scroll-padding: 0 14px;
+  }
+  /* Show ~1.3 images on small screens */
+  .gallery-card {
+    flex: 0 0 76vw;
+    max-width: 280px;
+    border-radius: 8px;
   }
   .gallery-title {
-    font-size: 1.8rem;
+    font-size: 1.65rem;
   }
   .gallery-subtitle {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
+  }
+  .gallery-card-title {
+    font-size: 1.05rem;
+  }
+  .gallery-card-caption {
+    font-size: 0.76rem;
+  }
+  .gallery-overlay {
+    padding: 12px;
   }
   .lightbox-info {
     padding: 16px 14px;
@@ -341,5 +431,14 @@
   }
   .lightbox-img {
     max-height: 45vh;
+  }
+}
+
+@media (max-width: 360px) {
+  .gallery-card {
+    flex: 0 0 80vw;
+  }
+  .gallery-title {
+    font-size: 1.45rem;
   }
 }

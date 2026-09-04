@@ -529,13 +529,6 @@ const AnchorcrestFoundation = () => {
           {selectedCourse && (
             <div className="programmes-modal" onClick={() => setSelectedCourse(null)}>
               <div className="programmes-modal-content" onClick={(e) => e.stopPropagation()}>
-                <button
-                  className="programmes-modal-close"
-                  onClick={() => setSelectedCourse(null)}
-                  aria-label="Close modal"
-                >
-                  &times;
-                </button>
                 <div className="programmes-modal-grid">
 
                   <div className="programmes-modal-img-col">

@@ -39,6 +39,15 @@ html, body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+::-webkit-scrollbar:horizontal {
+  height: 0 !important;
+  display: none !important;
+}
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
 ::-webkit-scrollbar-track {
   background: #0d0d0f;
 }
@@ -127,6 +136,12 @@ iframe {
   height: auto;
 }
 
+.app-main {
+  min-height: 80vh;
+  padding-top: 80px;
+  width: 100%;
+}
+
 @media (max-width: 1024px) {
   :root {
     --site-grid-width: calc(100% - 48px);
@@ -137,11 +152,17 @@ iframe {
   :root {
     --site-grid-width: calc(100% - 32px);
   }
+  .app-main {
+    padding-top: 70px;
+  }
 }
 
 @media (max-width: 480px) {
   :root {
     --site-grid-width: calc(100% - 24px);
+  }
+  .app-main {
+    padding-top: 60px;
   }
 }
 

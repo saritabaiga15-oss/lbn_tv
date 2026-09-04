@@ -142,7 +142,6 @@ const Navbar = ({ activeTab, onTabChange }) => {
             <a href="#home" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('home'); }} className="logo-link">
               <img src={image} alt="LoveWorld India LBNTV" className="navbar-logo-img" />
             </a>
-            <button className="close-btn" onClick={toggleMobileMenu}>&times;</button>
           </div>
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">

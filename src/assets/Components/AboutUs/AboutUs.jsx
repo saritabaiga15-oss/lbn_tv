@@ -107,7 +107,8 @@ const AboutUs = () => {
           ))}
         </div>
 
-        {/* Section 3: Milestones Footer */}
+        {/*
+        Section 3: Milestones Footer
         <div className="about-milestones-block">
           <div className="milestones-left">
             <span className="milestones-big-stat">260+</span>
@@ -124,9 +125,11 @@ const AboutUs = () => {
                   </div>
                 </div>
               ))}
+
             </div>
           </div>
         </div>
+        */}
 
       </div>
     </section>

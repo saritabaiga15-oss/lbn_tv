@@ -52,7 +52,7 @@ function App() {
   return (
     <div className="App">
       <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
-      <main style={{ minHeight: '80vh', paddingTop: '80px' }}>
+      <main className="app-main">
         {activeTab === 'home' && (
           <>
             <Hero />

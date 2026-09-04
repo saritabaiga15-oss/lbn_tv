@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AboutNetwork.css';
 import img1 from '../../images/image1.png';
 import img2 from '../../images/image2.png';
-import img3 from '../../images/image3.png';
+import igniteImg from '../../images/ignite.jpg';
 
 const AboutNetwork = () => {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -23,10 +23,10 @@ const AboutNetwork = () => {
       id: 2,
       title: 'IGNITE SHOW',
       subtitle: 'Adolescence and Faith',
-      image: img3,
+      image: igniteImg,
       tagline: 'Always keep the hope alive.',
       description: 'Ignite explores the real-life intersection of youth culture, adolescence, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials. Watch full episodes weekly as we keep hope alive. We tackle tough subjects like identity, pressure, and finding purpose with honesty, depth, and scriptural backing.',
-      schedule: 'Sundays at 6:00 PM',
+      schedule: 'Sundays at 3:00 PM',
       duration: '60 mins'
     },
     {
@@ -40,14 +40,6 @@ const AboutNetwork = () => {
       duration: '90 mins'
     }
   ];
-
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? programs.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev === programs.length - 1 ? 0 : prev + 1));
-  };
 
   const handleCardClick = (index, program) => {
     if (index === activeIndex) {
@@ -81,26 +73,10 @@ const AboutNetwork = () => {
 
       {/* Program Carousel Section */}
       <div className="programs-carousel-container">
-        {/* Slider Navigation Arrows */}
-        <button className="carousel-arrow prev-arrow" onClick={handlePrev} aria-label="Previous Program">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-        
-        <button className="carousel-arrow next-arrow" onClick={handleNext} aria-label="Next Program">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-
         {/* Carousel Slider Track */}
         <div className="carousel-view">
           <div 
-            className="carousel-track" 
-            style={{ 
-              transform: `translateX(calc(50% - (var(--card-width) + (var(--card-margin) * 2)) * ${activeIndex} - (var(--card-width) + (var(--card-margin) * 2)) / 2))` 
-            }}
+            className="carousel-track"
           >
             {programs.map((prog, idx) => {
               const isActive = idx === activeIndex;

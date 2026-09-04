@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Programm.css';
+import igniteImg from '../../images/ignite.jpg';
 import img3 from '../../images/image3.png';
 import moneyMatters from '../../images/money_matters.jpg';
 import craftingBeads from '../../images/crafting_beads.jpg';
@@ -14,6 +15,15 @@ const Programmes = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [selectedShow, setSelectedShow] = useState(null);
   const [showAll, setShowAll] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const filters = ['ALL', 'TALK SHOWS', 'PRAYER', 'HEALTH', 'TEENS & YOUTH', 'KIDS',];
 
@@ -24,7 +34,7 @@ const Programmes = () => {
       category: 'TALK SHOW',
       image: theTrumpet,
       video: '/Videos/THE_TRUMPET_NEW.mp4',
-      schedule: 'Wednesdays at 8:00 PM',
+      schedule: 'Tuesday to Friday at 11:00 AM',
       duration: '60 mins',
       tagline: 'Prophetic conversations, truth, and faith.',
       description: 'Inspiring insights and prophetic conversations on faith, ministry, and current events hosted by Deacon Vijay Bansode with anointed guest speakers.'
@@ -44,7 +54,7 @@ const Programmes = () => {
       title: 'WORD AT WORK – STUDIO BROADCAST',
       category: 'TALK SHOWS',
       image: wordAtWork,
-      schedule: 'Thursdays at 6:30 PM',
+      schedule: 'Thursdays at 8:30 PM',
       duration: '60 mins',
       tagline: 'Inspired, equipped, and empowered.',
       description: 'Panel discussions exploring God’s Word in action, equipping believers with practical application of biblical truths and life-transforming revelations.'
@@ -74,8 +84,8 @@ const Programmes = () => {
       title: 'DUSK TILL DAWN STUDIO TALK SHOW',
       category: 'TEENS & YOUTH',
       image: duskTillDawn,
-      schedule: 'Fridays at 11:30 PM',
-      duration: '60 mins',
+      schedule: 'Wednesdays at 4:00 PM',
+      duration: '30 mins',
       tagline: 'Heart-to-heart late-night faith talks.',
       description: 'Engaging conversations, uplifting real-life testimonies, and late-night heart-to-heart discussions exploring faith and triumph over difficulties.'
     },
@@ -83,7 +93,7 @@ const Programmes = () => {
       id: 7,
       title: 'IGNITE SHOW',
       category: 'TEENS & YOUTH',
-      image: img3,
+      image: igniteImg,
       video: '/Videos/Ignite.mp4',
       schedule: 'Sundays at 3:00 PM',
       duration: '60 mins',
@@ -121,8 +131,9 @@ const Programmes = () => {
     ? programList
     : programList.filter(prog => prog.category === activeFilter);
 
-  // Keep two rows (3 columns * 2 rows = 6 items) initially
-  const displayedPrograms = showAll ? filteredPrograms : filteredPrograms.slice(0, 6);
+  // 4 items on mobile (2x2) initially, 6 items on desktop (2x3) initially
+  const initialLimit = isMobile ? 4 : 6;
+  const displayedPrograms = showAll ? filteredPrograms : filteredPrograms.slice(0, initialLimit);
 
   const getCategoryClass = (category) => {
     return 'cat-' + category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -139,20 +150,22 @@ const Programmes = () => {
           </p>
 
           {/* Dynamic Filter Categories Bar */}
-          <div className="programmes-filters">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
-                onClick={() => handleFilterChange(filter)}
-              >
-                {filter}
-              </button>
-            ))}
+          <div className="programmes-filters-wrapper">
+            <div className="programmes-filters">
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                  onClick={() => handleFilterChange(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Dynamic Grid: 2 rows (6 cards) initially */}
+        {/* Dynamic Grid */}
         <div className="programmes-grid">
           {displayedPrograms.map((prog) => (
             <div
@@ -185,7 +198,7 @@ const Programmes = () => {
         </div>
 
         {/* See More / See Less Button */}
-        {filteredPrograms.length > 6 && (
+        {filteredPrograms.length > initialLimit && (
           <div className="programmes-more-container">
             <button
               className="programmes-see-more-btn"
@@ -208,6 +221,7 @@ const Programmes = () => {
             </button>
           </div>
         )}
+
       </div>
 
       {/* Details & Video Player Modal */}

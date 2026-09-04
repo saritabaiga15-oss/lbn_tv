@@ -1,6 +1,6 @@
 .features-section {
   background-color: var(--bg-dark);
-  padding: 60px 0 100px 0;
+  padding: 120px 0 100px 0;
   width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -139,54 +139,149 @@
 
 @media (max-width: 768px) {
   .features-section {
-    padding: 60px 0;
+    padding: 70px 0 55px 0;
   }
 
   .features-container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .features-title {
-    font-size: 2.2rem;
+  /* Hide 'WHY LBNTV' label on mobile — already displayed in Hero section at bottom */
+  .features-label {
+    display: none !important;
   }
 
   .features-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .features-title {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    letter-spacing: 0.03em;
+  }
+
+  .features-subtitle {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-top: 8px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 2 × 2 Grid on Mobile */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .features-card {
+    padding: 18px 14px;
+    min-height: 200px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .features-card-title {
+    font-size: 0.98rem;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .features-card-desc {
+    font-size: 0.78rem;
+    line-height: 1.42;
+    color: #a8a8b3;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .features-card-icon-box {
+    margin-top: 12px;
+    align-self: flex-end;
+    opacity: 0.35;
+  }
+
+  .features-card-icon-box svg {
+    width: 28px;
+    height: 28px;
   }
 }
 
 @media (max-width: 480px) {
   .features-section {
-    padding: 45px 0;
+    padding: 55px 0 45px 0;
   }
 
   .features-container {
-    padding: 0 14px;
+    padding: 0 12px;
   }
 
   .features-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .features-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  /* 2 × 2 Grid on smaller mobile */
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .features-card {
-    padding: 24px 20px;
-    min-height: unset;
+    padding: 14px 10px;
+    min-height: 185px;
+    border-radius: 6px;
   }
 
   .features-card-title {
-    font-size: 1.25rem;
+    font-size: 0.88rem;
+    margin-bottom: 6px;
   }
 
   .features-card-desc {
-    font-size: 0.88rem;
+    font-size: 0.74rem;
+    line-height: 1.38;
+    -webkit-line-clamp: 4;
+  }
+
+  .features-card-icon-box {
+    margin-top: 8px;
+  }
+
+  .features-card-icon-box svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 360px) {
+  .features-grid {
+    gap: 8px;
+  }
+
+  .features-card {
+    padding: 12px 8px;
+    min-height: 175px;
+  }
+
+  .features-card-title {
+    font-size: 0.82rem;
+  }
+
+  .features-card-desc {
+    font-size: 0.7rem;
+    -webkit-line-clamp: 3;
   }
 }

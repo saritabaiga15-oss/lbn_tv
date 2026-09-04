@@ -337,32 +337,63 @@
   }
   
   .footer-card-container {
-    padding: 0 20px;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .footer-top {
+    margin-bottom: 35px;
+  }
+
+  .footer-partner-title {
+    font-size: clamp(2rem, 6vw, 2.6rem);
+    margin-bottom: 30px;
+  }
+
+  .footer-social-circles {
+    gap: 16px;
+  }
+
+  .social-circle-button {
+    width: 58px;
+    height: 58px;
   }
 
   .footer-middle {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .footer-links-layout {
-    gap: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .footer-links-col a {
+    display: inline-block;
+    padding: 6px 0;
+    min-height: 36px;
   }
 
   .footer-scroll-col {
     grid-column: 1;
+    justify-content: center;
+    margin-top: 15px;
   }
 
   .footer-bottom {
     flex-direction: column;
-    gap: 15px;
+    gap: 14px;
     text-align: center;
+    margin-top: 40px;
   }
 }
 
 @media (max-width: 480px) {
   .site-footer {
-    padding: 35px 0 20px 0;
+    padding: 35px 0 25px 0;
   }
 
   .footer-card-container {
@@ -370,8 +401,8 @@
   }
 
   .footer-partner-title {
-    font-size: clamp(1.8rem, 6vw, 2.2rem);
-    margin-bottom: 25px;
+    font-size: 1.8rem;
+    margin-bottom: 22px;
   }
 
   .footer-social-circles {
@@ -379,8 +410,8 @@
   }
 
   .social-circle-button {
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
   }
 
   .social-circle-button svg {
@@ -392,6 +423,10 @@
     font-size: 0.68rem;
   }
 
+  .footer-divider {
+    margin: 30px 0;
+  }
+
   .footer-brand-title {
     font-size: 0.88rem;
   }
@@ -399,16 +434,25 @@
   .address-line,
   .contact-lines {
     font-size: 0.82rem;
+    word-break: break-word;
   }
 
   .footer-links-layout {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 36px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
-  .footer-divider {
-    margin: 35px 0;
+  .footer-links-col ul {
+    gap: 8px;
+  }
+
+  .footer-links-col a {
+    font-size: 0.85rem;
+  }
+
+  .scroll-top-btn {
+    width: 48px;
+    height: 48px;
   }
 }
 
@@ -418,12 +462,12 @@
   }
 
   .social-circle-button {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
   }
 
   .footer-links-layout {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './TeensProgrammes.css';
-import img3 from '../../images/image3.png';
+import igniteImg from '../../images/ignite.jpg';
 import img4 from '../../images/image4.png';
 import LWS from '../../images/LWS.jpeg';
 
@@ -12,8 +12,8 @@ const TeensProgrammes = () => {
       id: 1,
       title: 'IGNITE SHOW',
       subtitle: 'Adolescence and Faith',
-      image: img3,
-      schedule: 'Sundays at 6:00 PM',
+      image: igniteImg,
+      schedule: 'Sundays at 3:00 PM',
       duration: '60 mins',
       tagline: 'Always keep the hope alive.',
       description: 'Ignite explores the real-life intersection of youth culture, adolescence, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'

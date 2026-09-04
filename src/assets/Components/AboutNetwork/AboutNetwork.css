@@ -96,53 +96,25 @@
   --card-margin: 20px;
 }
 
-/* Navigation Arrow overlays */
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  backdrop-filter: blur(5px);
-}
-
-.carousel-arrow:hover {
-  background-color: var(--accent-gold);
-  border-color: var(--accent-gold);
-  color: #000000;
-  box-shadow: 0 0 15px rgba(207, 168, 96, 0.3);
-}
-
-.carousel-arrow.prev-arrow {
-  left: 60px;
-}
-
-.carousel-arrow.next-arrow {
-  right: 60px;
-}
-
 /* Carousel Track & Viewport */
 .carousel-view {
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 20px 0;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.carousel-view::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .carousel-track {
   display: flex;
   width: max-content;
-  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
 }
 
 /* Program Cards styling */
@@ -522,14 +494,6 @@
 
   .about-right-col {
     padding-top: 0;
-  }
-
-  .carousel-arrow.prev-arrow {
-    left: 20px;
-  }
-
-  .carousel-arrow.next-arrow {
-    right: 20px;
   }
 
   .drawer-body {

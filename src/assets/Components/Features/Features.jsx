@@ -64,7 +64,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="features-section">
+    <section className="features-section" id="why-lbntv">
       <div className="features-container">
         
         {/* Header */}
