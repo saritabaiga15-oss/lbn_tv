@@ -339,19 +339,14 @@
 }
 
 /* Responsive */
-@media (max-width: 1199px) {
-  .teens-grid {
-    gap: 25px;
-  }
-}
-
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .teens-container {
-    padding: 0 30px;
+    padding: 0 24px;
   }
 
   .teens-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
 
   .teens-modal-grid {
@@ -367,29 +362,83 @@
   }
 
   .teens-modal-info-col {
-    padding: 40px 30px;
+    padding: 36px 28px;
   }
 }
 
 @media (max-width: 768px) {
+  .teens-section {
+    padding: 60px 0;
+  }
+
+  .teens-container {
+    padding: 0 16px;
+  }
+
   .teens-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .teens-title {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 6vw, 2.4rem);
   }
 
   .teens-modal {
-    padding: 15px;
+    padding: 12px;
+  }
+
+  .teens-modal-box {
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .modal-show-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .modal-actions-container {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .modal-action-watch,
+  .modal-action-back {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .teens-section {
+    padding: 45px 0;
+  }
+
+  .teens-title {
+    font-size: 1.8rem;
+  }
+
+  .teens-desc {
+    font-size: 0.88rem;
+  }
+
+  .teen-card-info {
+    padding: 20px 16px;
+  }
+
+  .teen-card-title {
+    font-size: 1.25rem;
+  }
+
+  .modal-show-title {
+    font-size: 1.5rem;
+  }
+
+  .teens-modal-img-col {
+    height: 200px;
+  }
+
+  .teens-modal-info-col {
+    padding: 24px 16px;
   }
 }

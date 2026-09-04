@@ -447,7 +447,7 @@
   }
 
   .milestones-big-stat {
-    font-size: 7.5rem;
+    font-size: clamp(5rem, 12vw, 7.5rem);
   }
 
   .about-milestones-block {
@@ -475,7 +475,7 @@
   }
 
   .about-hero-large-title {
-    font-size: 3.6rem;
+    font-size: clamp(2.8rem, 8vw, 3.6rem);
   }
 
   .about-metrics-intro {
@@ -486,6 +486,10 @@
     grid-template-columns: 1fr;
   }
 
+  .milestones-big-stat {
+    font-size: clamp(3.8rem, 13vw, 5.5rem);
+  }
+
   .partners-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -493,5 +497,50 @@
   .milestone-row {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us-page-container {
+    padding: 0 14px;
+  }
+
+  .about-us-page-section {
+    padding: 40px 0 80px 0;
+  }
+
+  .about-hero-block {
+    margin-bottom: 50px;
+    gap: 25px;
+  }
+
+  .about-hero-large-title {
+    font-size: clamp(2.4rem, 11vw, 3.2rem);
+  }
+
+  .about-hero-img-col {
+    height: 240px;
+  }
+
+  .about-glance-text,
+  .about-value-text {
+    font-size: 0.95rem;
+  }
+
+  .milestones-big-stat {
+    font-size: clamp(3rem, 15vw, 4.2rem);
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .metric-card {
+    padding: 24px 18px;
+  }
+
+  .milestone-card {
+    padding: 18px 16px;
   }
 }

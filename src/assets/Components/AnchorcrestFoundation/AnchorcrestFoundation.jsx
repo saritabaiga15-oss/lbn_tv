@@ -290,71 +290,76 @@ const AnchorcrestFoundation = () => {
         </div>
       </section>
 
-      <div id="courses-grid" className="courses-grid-cards">
-        {visibleCourses.map((course) => (
-          <div
-            key={course.id}
-            className="programme-card course-program-card"
-            onClick={() => setSelectedCourse(course)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setSelectedCourse(course);
-              }
-            }}
-          >
-            <div className="programme-card-img-wrapper">
-              <img
-                src={course.image}
-                alt={course.title}
-                className="programme-card-img"
-              />
-            </div>
+      {/* Media Courses Section */}
+      <section className="courses-section">
+        <div className="anchorcrest-container">
+          <div id="courses-grid" className="courses-grid-cards">
+            {visibleCourses.map((course) => (
+              <div
+                key={course.id}
+                className="programme-card course-program-card"
+                onClick={() => setSelectedCourse(course)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedCourse(course);
+                  }
+                }}
+              >
+                <div className="programme-card-img-wrapper">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="programme-card-img"
+                  />
+                </div>
 
-            <div className="programme-card-content">
-              <span className="programme-card-schedule">
-                ⏳ {course.duration} &bull; 🎯 {course.level}
-              </span>
+                <div className="programme-card-content">
+                  <span className="programme-card-schedule">
+                    ⏳ {course.duration} &bull; 🎯 {course.level}
+                  </span>
 
-              <h3 className="programme-card-title">
-                {course.title}
-              </h3>
+                  <h3 className="programme-card-title">
+                    {course.title}
+                  </h3>
 
-              <p className="programme-card-tagline">
-                "{course.tagline}"
-              </p>
+                  <p className="programme-card-tagline">
+                    "{course.tagline}"
+                  </p>
 
-              <p className="course-card-brief">
-                {course.desc}
-              </p>
-            </div>
+                  <p className="course-card-brief">
+                    {course.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {!showAllCourses && (
-        <div className="courses-grid-cta-wrap">
-          <button
-            className="courses-grid-cta"
-            onClick={() => setShowAllCourses(true)}
-          >
-            EXPLORE MORE
-          </button>
-        </div>
-      )}
+          {!showAllCourses && (
+            <div className="courses-grid-cta-wrap">
+              <button
+                className="courses-grid-cta"
+                onClick={() => setShowAllCourses(true)}
+              >
+                EXPLORE MORE
+              </button>
+            </div>
+          )}
 
-      {showAllCourses && courses.length > 9 && (
-        <div className="courses-grid-cta-wrap">
-          <button
-            className="courses-grid-cta"
-            onClick={() => setShowAllCourses(false)}
-          >
-            SHOW LESS
-          </button>
+          {showAllCourses && courses.length > 9 && (
+            <div className="courses-grid-cta-wrap">
+              <button
+                className="courses-grid-cta"
+                onClick={() => setShowAllCourses(false)}
+              >
+                SHOW LESS
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      </section>
 
 
       {/* LoveWorld Ecosystem Highlight */}

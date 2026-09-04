@@ -258,21 +258,91 @@
   border-color: #1e5ad4;
 }
 
+@media (max-width: 1024px) {
+  .epg-container {
+    padding: 0 20px;
+  }
+}
+
 @media (max-width: 768px) {
+  .epg-section {
+    padding: 60px 16px 50px;
+  }
+
+  .epg-title {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+  }
+
+  .epg-days-bar {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .epg-day-btn {
+    padding: 8px 14px;
+    min-width: 70px;
+  }
+
   .epg-slot-card {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    padding: 18px 16px;
   }
+
   .epg-slot-time-col {
     flex-direction: row;
     gap: 12px;
     align-items: center;
   }
+
   .epg-slot-action-col {
     width: 100%;
   }
+
   .reminder-btn {
     width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .epg-section {
+    padding: 45px 12px 40px;
+  }
+
+  .epg-title {
+    font-size: 1.8rem;
+  }
+
+  .epg-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .epg-days-bar {
+    gap: 6px;
+  }
+
+  .epg-day-btn {
+    padding: 6px 10px;
+    min-width: 54px;
+    border-radius: 6px;
+  }
+
+  .day-name {
+    font-size: 0.9rem;
+  }
+
+  .day-full {
+    font-size: 0.65rem;
+  }
+
+  .epg-filter-chip {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .slot-title {
+    font-size: 1.1rem;
   }
 }

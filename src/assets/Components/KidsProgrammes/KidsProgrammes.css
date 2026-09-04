@@ -350,19 +350,14 @@
 }
 
 /* Responsive */
-@media (max-width: 1199px) {
-  .kids-grid {
-    gap: 25px;
-  }
-}
-
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .kids-container {
-    padding: 0 30px;
+    padding: 0 24px;
   }
 
   .kids-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
 
   .kids-modal-grid {
@@ -378,29 +373,83 @@
   }
 
   .kids-modal-info-col {
-    padding: 40px 30px;
+    padding: 36px 28px;
   }
 }
 
 @media (max-width: 768px) {
+  .kids-section {
+    padding: 60px 0;
+  }
+
+  .kids-container {
+    padding: 0 16px;
+  }
+
   .kids-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .kids-title {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 6vw, 2.4rem);
   }
 
   .kids-modal {
-    padding: 15px;
+    padding: 12px;
+  }
+
+  .kids-modal-box {
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .kids-modal-show-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .kids-modal-actions-container {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .kids-modal-action-watch,
+  .kids-modal-action-back {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .kids-section {
+    padding: 45px 0;
+  }
+
+  .kids-title {
+    font-size: 1.8rem;
+  }
+
+  .kids-desc {
+    font-size: 0.88rem;
+  }
+
+  .kid-card-info {
+    padding: 20px 16px;
+  }
+
+  .kid-card-title {
+    font-size: 1.25rem;
+  }
+
+  .kids-modal-show-title {
+    font-size: 1.5rem;
+  }
+
+  .kids-modal-img-col {
+    height: 200px;
+  }
+
+  .kids-modal-info-col {
+    padding: 24px 16px;
   }
 }

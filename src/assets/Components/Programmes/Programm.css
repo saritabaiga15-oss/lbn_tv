@@ -544,19 +544,14 @@
 }
 
 /* Responsive */
-@media (max-width: 1199px) {
-  .programmes-grid {
-    gap: 25px;
-  }
-}
-
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .programmes-container {
-    padding: 0 30px;
+    padding: 0 24px;
   }
 
   .programmes-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
   }
 
   .programmes-modal-grid {
@@ -572,29 +567,59 @@
   }
 
   .programmes-modal-info-col {
-    padding: 40px 30px;
+    padding: 36px 28px;
   }
 }
 
 @media (max-width: 768px) {
+  .programmes-section {
+    padding: 60px 0;
+  }
+
   .programmes-container {
-    padding: 0 20px;
+    padding: 0 16px;
+  }
+
+  .programmes-filters-wrapper {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 30px;
+  }
+
+  .programmes-filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    padding: 10px 18px;
+    font-size: 0.75rem;
+    flex-shrink: 0;
   }
 
   .programmes-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .programmes-title {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 6vw, 2.4rem);
   }
 
   .programmes-modal {
-    padding: 15px;
+    padding: 12px;
+  }
+
+  .programmes-modal-box {
+    max-height: 90vh;
+    overflow-y: auto;
   }
 
   .programmes-modal-show-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .programmes-modal-actions-container {
@@ -602,8 +627,40 @@
     gap: 10px;
   }
 
+  .programmes-modal-action-watch,
+  .programmes-modal-action-back {
+    width: 100%;
+    text-align: center;
+  }
+
   .programmes-see-more-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .programmes-section {
+    padding: 45px 0;
+  }
+
+  .programmes-title {
+    font-size: 1.8rem;
+  }
+
+  .programmes-desc {
+    font-size: 0.88rem;
+  }
+
+  .programmes-modal-info-col {
+    padding: 24px 16px;
+  }
+
+  .programmes-modal-show-title {
+    font-size: 1.5rem;
+  }
+
+  .programmes-modal-img-col {
+    height: 200px;
   }
 }

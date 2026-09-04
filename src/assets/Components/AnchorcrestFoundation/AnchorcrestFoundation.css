@@ -809,8 +809,34 @@
 }
 
 @media (max-width: 768px) {
+  .anchorcrest-hero {
+    padding: 60px 16px 50px;
+  }
+
   .anchorcrest-title {
-    font-size: 2.6rem;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+  }
+
+  .anchorcrest-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-ecosystem-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .hero-cta-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-primary-btn,
+  .hero-secondary-btn {
+    width: 100%;
+    text-align: center;
   }
 
   .courses-grid-cards {
@@ -819,6 +845,10 @@
 
   .tiers-list-grid {
     grid-template-columns: 1fr;
+  }
+
+  .bank-details-box {
+    padding: 20px 16px;
   }
 
   .ecosystem-card-box {
@@ -843,13 +873,53 @@
   }
 }
 
+@media (max-width: 480px) {
+  .anchorcrest-hero {
+    padding: 40px 12px 35px;
+  }
+
+  .anchorcrest-title {
+    font-size: 1.8rem;
+  }
+
+  .anchorcrest-subtitle {
+    font-size: 0.88rem;
+  }
+
+  .course-card-content {
+    padding: 18px 14px;
+  }
+
+  .course-card-title {
+    font-size: 1.25rem;
+  }
+
+  .b-val-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .b-val {
+    word-break: break-all;
+  }
+
+  .copy-btn {
+    align-self: flex-start;
+  }
+
+  .tier-card-btn {
+    padding: 14px 16px;
+  }
+}
+
 /* Modal Popup (Identical to Programmes Modal) */
 .programmes-modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.88);
   backdrop-filter: blur(12px);
   z-index: 3000;

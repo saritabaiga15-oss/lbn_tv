@@ -56,6 +56,13 @@ button {
   font-family: inherit;
 }
 
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 16px; /* Prevents auto-zoom on iOS/Android */
+}
+
 .app {
   width: 100%;
   max-width: none;

@@ -126,20 +126,24 @@
 .features-card.accent-gold:hover .features-card-icon-box { color: var(--accent-gold); }
 
 /* Responsive adjustments */
-@media (max-width: 1199px) {
+@media (max-width: 1024px) {
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
+  }
+
+  .features-container {
+    padding: 0 24px;
   }
 }
 
 @media (max-width: 768px) {
   .features-section {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .features-container {
-    padding: 0 30px;
+    padding: 0 20px;
   }
 
   .features-grid {
@@ -149,5 +153,40 @@
 
   .features-title {
     font-size: 2.2rem;
+  }
+
+  .features-header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-section {
+    padding: 45px 0;
+  }
+
+  .features-container {
+    padding: 0 14px;
+  }
+
+  .features-title {
+    font-size: 1.8rem;
+  }
+
+  .features-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .features-card {
+    padding: 24px 20px;
+    min-height: unset;
+  }
+
+  .features-card-title {
+    font-size: 1.25rem;
+  }
+
+  .features-card-desc {
+    font-size: 0.88rem;
   }
 }

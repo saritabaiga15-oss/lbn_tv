@@ -6,8 +6,8 @@
 
 .airtime-hero {
   position: relative;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 80vh;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,11 +278,55 @@
   transform: translateX(4px);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .airtime-hero {
+    padding: 90px 20px 60px;
+    min-height: 70vh;
+  }
+  .airtime-container {
+    padding: 0 20px;
+  }
   .airtime-grid-showcase {
     grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .airtime-hero {
+    padding: 60px 16px 50px;
+    min-height: auto;
   }
   .airtime-hero-title {
-    font-size: 2.6rem;
+    font-size: clamp(2rem, 7vw, 2.6rem);
+  }
+  .airtime-hero-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .airtime-primary-btn,
+  .airtime-secondary-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .airtime-grid-showcase {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .airtime-hero {
+    padding: 40px 12px 35px;
+  }
+  .airtime-hero-title {
+    font-size: 1.8rem;
+  }
+  .airtime-hero-desc {
+    font-size: 0.95rem;
+  }
+  .airtime-contact-card,
+  .package-card {
+    padding: 20px 16px;
   }
 }

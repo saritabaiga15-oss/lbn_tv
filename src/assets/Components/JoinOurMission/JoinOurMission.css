@@ -593,7 +593,10 @@
 }
 
 /* Responsive */
-@media (max-width: 1199px) {
+@media (max-width: 1024px) {
+  .mission-container {
+    padding: 0 24px;
+  }
   .tiers-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -603,17 +606,20 @@
 }
 
 @media (max-width: 768px) {
+  .mission-page-section {
+    padding: 50px 0 80px 0;
+  }
   .mission-container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
   .mission-section-block {
-    padding: 30px 20px;
+    padding: 30px 18px;
   }
   .mission-statement-box {
-    padding: 20px 18px;
+    padding: 20px 16px;
   }
   .mission-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 7vw, 2.5rem);
   }
   .tiers-grid {
     grid-template-columns: 1fr;
@@ -626,5 +632,39 @@
   }
   .bank-item.full-width {
     grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .mission-page-section {
+    padding: 40px 0 60px 0;
+  }
+  .mission-title {
+    font-size: 1.8rem;
+  }
+  .mission-lead-p {
+    font-size: 0.95rem;
+  }
+  .mission-mid-p {
+    font-size: 0.9rem;
+  }
+  .mission-cta-p {
+    font-size: 0.85rem;
+  }
+  .mission-statement-box {
+    padding: 16px 12px;
+  }
+  .mission-section-block {
+    padding: 22px 14px;
+  }
+  .tier-card {
+    padding: 18px 14px;
+  }
+  .tier-amount {
+    font-size: 1.6rem;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 14px 20px;
   }
 }

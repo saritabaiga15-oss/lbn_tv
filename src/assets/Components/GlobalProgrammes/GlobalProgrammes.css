@@ -102,7 +102,7 @@
 /* RESPONSIVE DESIGN ADJUSTMENTS            */
 /* ========================================= */
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .global-programs-grid {
     gap: 30px;
   }
@@ -110,20 +110,43 @@
 
 @media (max-width: 768px) {
   .global-programs-section {
-    padding: 70px 0 90px 0;
+    padding: 60px 0 75px 0;
   }
 
   .global-programs-container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 
   .global-programs-title {
-    font-size: 1.9rem;
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
   }
 
   .global-programs-grid {
     grid-template-columns: 1fr;
-    max-width: 520px;
-    gap: 30px;
+    max-width: 480px;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .global-programs-section {
+    padding: 45px 0 55px 0;
+  }
+
+  .global-programs-container {
+    padding: 0 12px;
+  }
+
+  .global-programs-header {
+    margin-bottom: 30px;
+  }
+
+  .global-programs-title {
+    font-size: 1.7rem;
+  }
+
+  .global-programs-desc {
+    font-size: 0.88rem;
+    margin-top: 12px;
   }
 }

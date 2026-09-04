@@ -75,9 +75,27 @@ main,
   overflow-x: hidden;
 }
 
+/* Master container rule tied to navbar boundaries */
 .header-container,
-[class*='container'],
-[class*='Container'] {
+[class$='-container'],
+[class$='-page-container'],
+.footer-card-container,
+.features-container,
+.about-us-page-container,
+.programmes-container,
+.epg-container,
+.services-container,
+.teens-container,
+.kids-container,
+.gallery-container,
+.global-programs-container,
+.mission-container,
+.gift-container,
+.airtime-hero-container,
+.airtime-container,
+.anchorcrest-hero-container,
+.anchorcrest-container,
+.faq-container {
   width: var(--site-grid-width) !important;
   max-width: var(--site-grid-width) !important;
   margin-left: auto !important;
@@ -86,21 +104,50 @@ main,
   padding-right: 0 !important;
 }
 
+/* Reset sub-containers from outer container forcing */
+.modal-actions-container,
+.programmes-modal-actions-container,
+.kids-modal-actions-container,
+.service-tags-container,
+.mission-form-container,
+.gallery-more-container,
+.programmes-more-container,
+.programs-carousel-container,
+.drawer-content-container {
+  width: auto !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
 @media (max-width: 1024px) {
   :root {
-    --site-grid-width: calc(100% - 40px);
+    --site-grid-width: calc(100% - 48px);
   }
 }
 
 @media (max-width: 768px) {
   :root {
-    --site-grid-width: calc(100% - 28px);
+    --site-grid-width: calc(100% - 32px);
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --site-grid-width: calc(100% - 20px);
+    --site-grid-width: calc(100% - 24px);
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --site-grid-width: calc(100% - 16px);
   }
 }
 
