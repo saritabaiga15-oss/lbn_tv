@@ -189,9 +189,11 @@ const Programmes = () => {
                 <span className="programme-card-schedule">{prog.schedule}</span>
                 <h3 className="programme-card-title">{prog.title}</h3>
                 <p className="programme-card-tagline">"{prog.tagline}"</p>
-                <button className="programme-card-btn">
-                  {prog.video ? '▶ WATCH PROMO' : 'VIEW DETAILS'}
-                </button>
+                {prog.video && (
+                  <button className="programme-card-btn">
+                    ▶ WATCH PROMO
+                  </button>
+                )}
               </div>
             </div>
           ))}

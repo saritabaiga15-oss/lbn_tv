@@ -74,36 +74,35 @@ const Services = () => {
 
   return (
     <div className="services-page-section">
-      <div className="services-container">
+      {/* Full-Width Hero Section */}
+      <div
+        className="services-hero"
+        style={{
+          backgroundImage: `linear-gradient(rgba(13, 13, 20, 0.72), rgba(13, 13, 20, 0.86)), url(${serviceHeroBg})`
+        }}
+      >
+        <div className="services-hero-content">
+          <span className="services-badge">OUR SERVICES</span>
 
-        {/* Hero Section */}
-        <div
-          className="services-hero"
-          style={{
-            backgroundImage: `linear-gradient(rgba(13, 13, 20, 0.72), rgba(13, 13, 20, 0.86)), url(${serviceHeroBg})`
-          }}
-        >
-          <div className="services-hero-content">
-            <span className="services-badge">OUR SERVICES</span>
+          <h1 className="services-title">
+            Everything You Need.
+            <br />
+            One Production Facility.
+          </h1>
 
-            <h1 className="services-title">
-              Everything You Need.
-              <br />
-              One Production Facility.
-            </h1>
+          <div className="services-hero-actions">
+            <a href="#contact" className="services-btn primary">
+              Book a Studio
+            </a>
 
-            <div className="services-hero-actions">
-              <a href="#contact" className="services-btn primary">
-                Book a Studio
-              </a>
-
-              <a href="#contact" className="services-btn secondary">
-                Contact Us
-              </a>
-            </div>
+            <a href="#contact" className="services-btn secondary">
+              Contact Us
+            </a>
           </div>
         </div>
+      </div>
 
+      <div className="services-container">
         {/* Video Production */}
         <section className="service-category">
           <div className="service-category-header">
@@ -121,10 +120,11 @@ const Services = () => {
                 <img src={serviceVideoStudio} alt="Video Production Studios" className="service-card-img" />
                 <div className="service-card-overlay"></div>
               </div>
-              <div className="service-card-body">
-                <h3>Video Production Studios</h3>
-                <p>
-                  Multi-camera broadcast stages configured for live shows, talk shows, and high-end studio productions.
+              <div className="service-card-content">
+                <span className="service-card-meta">STUDIO BROADCAST</span>
+                <h3 className="service-card-title">Video Production Studios</h3>
+                <p className="service-card-tagline">
+                  "Multi-camera broadcast stages configured for live shows, talk shows, and high-end studio productions."
                 </p>
               </div>
             </div>
@@ -134,10 +134,11 @@ const Services = () => {
                 <img src={serviceChromaStudio} alt="Chroma Recording Studio" className="service-card-img" />
                 <div className="service-card-overlay"></div>
               </div>
-              <div className="service-card-body">
-                <h3>Chroma Recording Studio</h3>
-                <p>
-                  High-grade green screen facilities with full overhead truss lighting for seamless VFX and virtual sets.
+              <div className="service-card-content">
+                <span className="service-card-meta">VFX & GREEN SCREEN</span>
+                <h3 className="service-card-title">Chroma Recording Studio</h3>
+                <p className="service-card-tagline">
+                  "High-grade green screen facilities with full overhead truss lighting for seamless VFX and virtual sets."
                 </p>
               </div>
             </div>
@@ -147,10 +148,11 @@ const Services = () => {
                 <img src={servicePodcastStudio} alt="Podcast Recording Studio" className="service-card-img" />
                 <div className="service-card-overlay"></div>
               </div>
-              <div className="service-card-body">
-                <h3>Podcast Recording Studio</h3>
-                <p>
-                  Acoustic-treated studio with multi-angle 4K cameras and broadcast mics for audio-visual podcasts.
+              <div className="service-card-content">
+                <span className="service-card-meta">4K AUDIO-VISUAL</span>
+                <h3 className="service-card-title">Podcast Recording Studio</h3>
+                <p className="service-card-tagline">
+                  "Acoustic-treated studio with multi-angle 4K cameras and broadcast mics for audio-visual podcasts."
                 </p>
               </div>
             </div>
@@ -175,10 +177,11 @@ const Services = () => {
                 <img src={serviceAcousticDubbing} alt="Acoustic Sound Proof Audio Dubbing Studio" className="service-card-img" />
                 <div className="service-card-overlay"></div>
               </div>
-              <div className="service-card-body">
-                <h3>Acoustic Sound Proof Audio Dubbing Studio</h3>
-                <p>
-                  Isolated acoustic recording environment with premium studio microphones and pristine monitoring.
+              <div className="service-card-content">
+                <span className="service-card-meta">SOUNDPROOF BOOTH</span>
+                <h3 className="service-card-title">Acoustic Dubbing Studio</h3>
+                <p className="service-card-tagline">
+                  "Isolated acoustic recording environment with premium studio microphones and pristine monitoring."
                 </p>
               </div>
             </div>
@@ -188,10 +191,11 @@ const Services = () => {
                 <img src={serviceSoundMixing} alt="Sound Dubbing and Mixing Studio" className="service-card-img" />
                 <div className="service-card-overlay"></div>
               </div>
-              <div className="service-card-body">
-                <h3>Sound Dubbing and Mixing Studio</h3>
-                <p>
-                  Multi-track mixing consoles and professional DAWs for mastering, dialogue sync, and broadcast audio.
+              <div className="service-card-content">
+                <span className="service-card-meta">MASTERING & DAWS</span>
+                <h3 className="service-card-title">Sound Dubbing & Mixing</h3>
+                <p className="service-card-tagline">
+                  "Multi-track mixing consoles and professional DAWs for mastering, dialogue sync, and broadcast audio."
                 </p>
               </div>
             </div>
@@ -201,10 +205,11 @@ const Services = () => {
                 <img src={Voiceover} alt="Voice Over Recording Studio" className="service-card-img" />
                 <div className="service-card-overlay"></div>
               </div>
-              <div className="service-card-body">
-                <h3>Voice Over Recording Studio</h3>
-                <p>
-                  Crystal clear voice-over recording booth for narration, commercials, podcasts, and character dubbing.
+              <div className="service-card-content">
+                <span className="service-card-meta">VOICE NARRATION</span>
+                <h3 className="service-card-title">Voice Over Recording Studio</h3>
+                <p className="service-card-tagline">
+                  "Crystal clear voice-over recording booth for narration, commercials, podcasts, and character dubbing."
                 </p>
               </div>
             </div>
@@ -271,17 +276,31 @@ const Services = () => {
             <div className="service-category-line"></div>
           </div>
 
-          <div className="service-tags-container">
-
-            <span className="service-tag">Cameras</span>
-            <span className="service-tag">Audio</span>
-            <span className="service-tag">Lights</span>
-            <span className="service-tag">Genset</span>
-            <span className="service-tag">Video Editing</span>
-            <span className="service-tag">Grip Equipment</span>
-            <span className="service-tag">Lenses</span>
-            <span className="service-tag">Monitors</span>
-
+          <div className="equipment-lease-grid">
+            <div className="equipment-lease-card">
+              <h3>Cameras</h3>
+            </div>
+            <div className="equipment-lease-card">
+              <h3>Audio</h3>
+            </div>
+            <div className="equipment-lease-card">
+              <h3>Lights</h3>
+            </div>
+            <div className="equipment-lease-card">
+              <h3>Genset</h3>
+            </div>
+            <div className="equipment-lease-card">
+              <h3>Video Editing</h3>
+            </div>
+            <div className="equipment-lease-card">
+              <h3>Grip Equipment</h3>
+            </div>
+            <div className="equipment-lease-card">
+              <h3>Lenses</h3>
+            </div>
+            <div className="equipment-lease-card">
+              <h3>Monitors</h3>
+            </div>
           </div>
 
         </section>
@@ -297,33 +316,61 @@ const Services = () => {
             <div className="service-category-line"></div>
           </div>
 
-          <div className="props-gallery">
+          <div className="service-cards-grid">
 
-            <div className="prop-card">
-              <img src={propFurnitureDecor} alt="Custom Sets" className="prop-card-img" />
-              <div className="prop-card-overlay">
-                <span className="prop-title">Custom Sets</span>
+            <div className="service-card">
+              <div className="service-card-img-wrap">
+                <img src={propCustomSets} alt="Custom Sets" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-content">
+                <span className="service-card-meta">STAGE ARCHITECTURE</span>
+                <h3 className="service-card-title">Custom Sets</h3>
+                <p className="service-card-tagline">
+                  "Tailored broadcast stage designs and architectural studio setups for any production."
+                </p>
               </div>
             </div>
 
-            <div className="prop-card">
-              <img src={propBackdrops} alt="Furniture & Decor" className="prop-card-img" />
-              <div className="prop-card-overlay">
-                <span className="prop-title">Furniture & Decor</span>
+            <div className="service-card">
+              <div className="service-card-img-wrap">
+                <img src={propFurnitureDecor} alt="Furniture & Decor" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-content">
+                <span className="service-card-meta">STUDIO STYLING</span>
+                <h3 className="service-card-title">Furniture & Decor</h3>
+                <p className="service-card-tagline">
+                  "Curated executive armchairs, interview tables, and bespoke set furnishings."
+                </p>
               </div>
             </div>
 
-            <div className="prop-card">
-              <img src={propLightingRigs} alt="Lighting Rigs" className="prop-card-img" />
-              <div className="prop-card-overlay">
-                <span className="prop-title">Lighting Rigs</span>
+            <div className="service-card">
+              <div className="service-card-img-wrap">
+                <img src={propLightingRigs} alt="Lighting Rigs" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-content">
+                <span className="service-card-meta">OVERHEAD TRUSS</span>
+                <h3 className="service-card-title">Lighting Rigs</h3>
+                <p className="service-card-tagline">
+                  "Heavy-duty motorized trussing and dynamic RGB stage illumination grids."
+                </p>
               </div>
             </div>
 
-            <div className="prop-card">
-              <img src={propCustomSets} alt="Backdrops" className="prop-card-img" />
-              <div className="prop-card-overlay">
-                <span className="prop-title">Backdrops</span>
+            <div className="service-card">
+              <div className="service-card-img-wrap">
+                <img src={propBackdrops} alt="Backdrops" className="service-card-img" />
+                <div className="service-card-overlay"></div>
+              </div>
+              <div className="service-card-content">
+                <span className="service-card-meta">SCENIC BACKGROUNDS</span>
+                <h3 className="service-card-title">Backdrops</h3>
+                <p className="service-card-tagline">
+                  "High-resolution seamless scenic cycloramas, acoustic curtains, and custom prints."
+                </p>
               </div>
             </div>
 
@@ -344,28 +391,52 @@ const Services = () => {
 
           <div className="service-cards-grid">
 
-            <div className="service-card">
-              <h3>Green Room</h3>
-              <p>
-                Comfortable, private spaces for talent
-                preparation and relaxation.
-              </p>
+            <div className="service-card accent-gold">
+              <div className="service-card-content">
+                <h3 className="service-card-title">Green Room</h3>
+                <p className="service-card-desc">
+                  Comfortable, private spaces for talent preparation and relaxation.
+                </p>
+              </div>
+              <div className="service-card-icon-box">
+                <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                  <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" fill="currentColor" fillOpacity="0.2" />
+                  <line x1="6" y1="1" x2="6" y2="4" strokeLinecap="round" />
+                  <line x1="10" y1="1" x2="10" y2="4" strokeLinecap="round" />
+                  <line x1="14" y1="1" x2="14" y2="4" strokeLinecap="round" />
+                </svg>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Backup</h3>
-              <p>
-                Uninterrupted power and secure data backup
-                systems for peace of mind.
-              </p>
+            <div className="service-card accent-gold">
+              <div className="service-card-content">
+                <h3 className="service-card-title">Backup Power & Data</h3>
+                <p className="service-card-desc">
+                  Uninterrupted power and secure data backup systems for peace of mind.
+                </p>
+              </div>
+              <div className="service-card-icon-box">
+                <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polygon points="13 6 8 13 12 13 11 18 16 11 12 11" fill="currentColor" fillOpacity="0.25" />
+                </svg>
+              </div>
             </div>
 
-            <div className="service-card">
-              <h3>Parking</h3>
-              <p>
-                Ample secure parking space for cast, crew,
-                and production vehicles.
-              </p>
+            <div className="service-card accent-gold">
+              <div className="service-card-content">
+                <h3 className="service-card-title">Dedicated Parking</h3>
+                <p className="service-card-desc">
+                  Ample secure parking space for cast, crew, and production vehicles.
+                </p>
+              </div>
+              <div className="service-card-icon-box">
+                <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="4" />
+                  <path d="M9 17V7h4a3 3 0 0 1 0 6H9" strokeLinecap="round" fill="currentColor" fillOpacity="0.2" />
+                </svg>
+              </div>
             </div>
 
           </div>

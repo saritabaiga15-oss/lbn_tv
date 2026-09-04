@@ -242,11 +242,7 @@ const AnchorcrestFoundation = () => {
   ];
 
   const activeAmount = customAmount ? customAmount : selectedTier;
-  const visibleCourses = showAllCourses ? courses : courses.slice(0, 9);
-
-  const getCategoryClass = (category) => {
-    return 'cat-' + category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  };
+  const visibleCourses = showAllCourses ? courses : courses.slice(0, 6);
 
   return (
     <div className="anchorcrest-page">
@@ -255,7 +251,7 @@ const AnchorcrestFoundation = () => {
         className="anchorcrest-hero"
         style={{
           backgroundImage: `url(${anchorcrestLogo})`,
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat'
         }}
@@ -268,7 +264,8 @@ const AnchorcrestFoundation = () => {
             ANCHORCREST <span className="gold-text">FOUNDATION</span>
           </h1>
           <p className="anchorcrest-subtitle">
-            Join us in making an impact across the Loveworld Network by sponsoring young people to attend our media training courses for free          </p>
+            Join us in making an impact across the Loveworld Network by sponsoring young people to attend our media training courses for free
+          </p>
 
           <div className="hero-ecosystem-banner">
             <div className="eco-star">🌟</div>
@@ -281,17 +278,17 @@ const AnchorcrestFoundation = () => {
           <div className="hero-action-row">
             <a href="#sponsor-section" className="sponsor-btn-main">
               <span>SPONSOR A YOUTH TODAY</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              <span className="btn-arrow">&rarr;</span>
             </a>
-            <a href="#courses-grid" className="explore-btn-main">
+            <a href="#courses-section" className="explore-btn-main">
               VIEW 15 MEDIA COURSES
             </a>
           </div>
         </div>
       </section>
 
-      {/* Media Courses Section */}
-      <section className="courses-section">
+      {/* Media Courses Section - 2 Columns Grid, 3 Rows + EXPLORE MORE */}
+      <section id="courses-section" className="courses-section">
         <div className="anchorcrest-container">
           <div id="courses-grid" className="courses-grid-cards">
             {visibleCourses.map((course) => (
@@ -332,32 +329,24 @@ const AnchorcrestFoundation = () => {
                   <p className="course-card-brief">
                     {course.desc}
                   </p>
+
+                  <button type="button" className="programme-card-btn">
+                    VIEW DETAILS
+                  </button>
                 </div>
               </div>
             ))}
           </div>
 
-          {!showAllCourses && (
-            <div className="courses-grid-cta-wrap">
-              <button
-                className="courses-grid-cta"
-                onClick={() => setShowAllCourses(true)}
-              >
-                EXPLORE MORE
-              </button>
-            </div>
-          )}
-
-          {showAllCourses && courses.length > 9 && (
-            <div className="courses-grid-cta-wrap">
-              <button
-                className="courses-grid-cta"
-                onClick={() => setShowAllCourses(false)}
-              >
-                SHOW LESS
-              </button>
-            </div>
-          )}
+          <div className="courses-grid-cta-wrap">
+            <button
+              type="button"
+              className="courses-grid-cta"
+              onClick={() => setShowAllCourses(!showAllCourses)}
+            >
+              {showAllCourses ? 'SHOW LESS' : 'EXPLORE MORE'}
+            </button>
+          </div>
         </div>
       </section>
 

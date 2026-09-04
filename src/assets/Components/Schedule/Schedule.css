@@ -1,7 +1,7 @@
 .epg-section {
-  padding: 100px 20px 80px;
+  padding: 90px 20px 80px;
   background-color: #07070a;
-  min-height: 80vh;
+  min-height: 85vh;
   color: #ffffff;
 }
 
@@ -12,120 +12,170 @@
 
 .epg-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .epg-badge {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 2px;
-  color: var(--accent-gold, #cfa860);
-  background: rgba(207, 168, 96, 0.1);
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(207, 168, 96, 0.3);
-  margin-bottom: 12px;
+  color: #d4a34b;
+  background: rgba(212, 163, 75, 0.08);
+  padding: 6px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 163, 75, 0.35);
+  margin-bottom: 18px;
   text-transform: uppercase;
 }
 
 .epg-title {
   font-family: var(--font-title, 'Oswald', sans-serif);
-  font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+  color: #ffffff;
   text-transform: uppercase;
+  line-height: 1.15;
 }
 
 .epg-subtitle {
-  color: #a3a3a3;
-  max-width: 650px;
-  margin: 0 auto;
+  color: #9c9ca8;
+  max-width: 680px;
+  margin: 0 auto 36px;
   font-size: 1.05rem;
   line-height: 1.6;
 }
 
-/* Days Bar */
+/* Days Bar: Always in ONE line, horizontally scrollable */
 .epg-days-bar {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 6px 4px 14px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.epg-days-bar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .epg-days-bar {
+    justify-content: center;
+  }
 }
 
 .epg-day-btn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #cccccc;
-  padding: 12px 24px;
-  border-radius: 8px;
+  background: #14141a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+  padding: 14px 22px;
+  border-radius: 12px;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 100px;
+  min-width: 96px;
+  flex-shrink: 0 !important;
+  cursor: pointer;
 }
 
 .epg-day-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-
+  background: #1c1c24;
+  border-color: rgba(212, 163, 75, 0.35);
+  color: #ffffff;
 }
 
 .epg-day-btn.active {
-  background: linear-gradient(135deg, var(--accent-gold, #cfa860), #a37f37);
-  color: #000000;
-  border-color: var(--accent-gold, #cfa860);
-  box-shadow: 0 4px 16px rgba(207, 168, 96, 0.3);
+  background: #d4a34b;
+  color: #0d0d12;
+  border-color: #d4a34b;
+  box-shadow: 0 6px 22px rgba(212, 163, 75, 0.35);
 }
 
 .day-name {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
   font-family: var(--font-title, 'Oswald', sans-serif);
+  letter-spacing: 0.5px;
+}
+
+.epg-day-btn.active .day-name {
+  color: #0d0d12;
 }
 
 .day-full {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   opacity: 0.8;
+  margin-top: 2px;
 }
 
-/* Category Filters Bar */
+.epg-day-btn.active .day-full {
+  color: #1a1a24;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+/* Category Filters Bar: Always in ONE line, horizontally scrollable */
 .epg-filters-bar {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  justify-content: flex-start;
+  gap: 10px;
   margin-bottom: 40px;
-  flex-wrap: wrap;
+  padding: 6px 4px 14px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.epg-filters-bar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 1040px) {
+  .epg-filters-bar {
+    justify-content: center;
+  }
 }
 
 .epg-filter-chip {
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 0.85rem;
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-size: 0.82rem;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.05);
-  color: #999;
+  background: #14141a;
+  color: #888899;
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.25s ease;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
 .epg-filter-chip:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  background: #1c1c24;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .epg-filter-chip.active {
-  background: rgba(207, 168, 96, 0.2);
-  color: var(--accent-gold, #cfa860);
-  border-color: var(--accent-gold, #cfa860);
+  border: 1.5px solid #d4a34b;
+  color: #d4a34b;
+  background: rgba(212, 163, 75, 0.08);
+  box-shadow: 0 0 14px rgba(212, 163, 75, 0.15);
 }
 
-/* Timeline */
+/* Timeline Cards: Image and Reminder in the SAME horizontal line */
 .epg-timeline {
   display: flex;
   flex-direction: column;
@@ -134,19 +184,20 @@
 
 .epg-slot-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   background: #111116;
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 12px;
-  padding: 16px 24px;
-  gap: 24px;
+  padding: 16px 22px;
+  gap: 20px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
 .epg-slot-card:hover {
-  border-color: rgba(207, 168, 96, 0.4);
+  border-color: rgba(212, 163, 75, 0.4);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
@@ -159,7 +210,8 @@
 .epg-slot-time-col {
   display: flex;
   flex-direction: column;
-  min-width: 100px;
+  min-width: 90px;
+  flex-shrink: 0;
 }
 
 .slot-time {
@@ -175,8 +227,8 @@
 }
 
 .epg-slot-img-col {
-  width: 100px;
-  height: 70px;
+  width: 95px;
+  height: 66px;
   border-radius: 8px;
   background-size: cover;
   background-position: center;
@@ -198,18 +250,25 @@
   font-weight: 800;
   padding: 2px 6px;
   border-radius: 4px;
+  letter-spacing: 0.5px;
   animation: pulse-slow 2s infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 .epg-slot-info-col {
   flex: 1;
+  min-width: 0;
 }
 
 .epg-slot-meta {
   display: flex;
   gap: 12px;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .slot-category {
@@ -226,25 +285,29 @@
 
 .slot-title {
   font-family: var(--font-title, 'Oswald', sans-serif);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 0.5px;
+  margin: 0;
 }
 
 .epg-slot-action-col {
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .reminder-btn {
-  padding: 10px 18px;
+  padding: 9px 18px;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   background: transparent;
   color: var(--accent-gold, #cfa860);
   border: 1px solid var(--accent-gold, #cfa860);
   transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .reminder-btn:hover {
@@ -260,89 +323,126 @@
 
 @media (max-width: 1024px) {
   .epg-container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 }
 
+/* Mobile & Small Screens: Image and Reminder strictly on the SAME horizontal line */
 @media (max-width: 768px) {
   .epg-section {
-    padding: 60px 16px 50px;
+    padding: 50px 14px 40px;
   }
 
   .epg-title {
-    font-size: clamp(2rem, 6vw, 2.5rem);
-  }
-
-  .epg-days-bar {
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .epg-day-btn {
-    padding: 8px 14px;
-    min-width: 70px;
+    font-size: clamp(1.8rem, 6vw, 2.3rem);
   }
 
   .epg-slot-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 18px 16px;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    padding: 12px 14px !important;
+    gap: 12px !important;
   }
 
+  /* Compact header row with time inside the card */
   .epg-slot-time-col {
-    flex-direction: row;
-    gap: 12px;
-    align-items: center;
+    width: 100% !important;
+    min-width: 0 !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 10px !important;
+    padding-bottom: 6px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    margin-bottom: 2px !important;
   }
 
+  .slot-time {
+    font-size: 1.15rem !important;
+  }
+
+  .slot-duration {
+    font-size: 0.76rem !important;
+  }
+
+  /* Main row: Image, Info, and Reminder on the EXACT SAME LINE */
+  .epg-slot-img-col {
+    width: 80px !important;
+    height: 56px !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+  }
+
+  .epg-slot-info-col {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .epg-slot-meta {
+    gap: 8px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .slot-category {
+    font-size: 0.68rem !important;
+  }
+
+  .slot-host {
+    font-size: 0.72rem !important;
+  }
+
+  .slot-title {
+    font-size: 1rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Reminder button sits right on the same line on the right side */
   .epg-slot-action-col {
-    width: 100%;
+    flex-shrink: 0 !important;
+    margin-left: auto !important;
   }
 
   .reminder-btn {
-    width: 100%;
-    text-align: center;
+    padding: 7px 12px !important;
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    width: auto !important;
   }
 }
 
 @media (max-width: 480px) {
   .epg-section {
-    padding: 45px 12px 40px;
+    padding: 40px 10px 35px;
   }
 
   .epg-title {
-    font-size: 1.8rem;
+    font-size: 1.65rem;
   }
 
-  .epg-subtitle {
-    font-size: 0.9rem;
+  .epg-slot-card {
+    padding: 10px 10px !important;
+    gap: 8px !important;
   }
 
-  .epg-days-bar {
-    gap: 6px;
-  }
-
-  .epg-day-btn {
-    padding: 6px 10px;
-    min-width: 54px;
-    border-radius: 6px;
-  }
-
-  .day-name {
-    font-size: 0.9rem;
-  }
-
-  .day-full {
-    font-size: 0.65rem;
-  }
-
-  .epg-filter-chip {
-    padding: 6px 12px;
-    font-size: 0.75rem;
+  .epg-slot-img-col {
+    width: 68px !important;
+    height: 48px !important;
   }
 
   .slot-title {
-    font-size: 1.1rem;
+    font-size: 0.9rem !important;
+  }
+
+  .slot-category {
+    font-size: 0.64rem !important;
+  }
+
+  .slot-host {
+    font-size: 0.66rem !important;
+  }
+
+  .reminder-btn {
+    padding: 6px 8px !important;
+    font-size: 0.7rem !important;
   }
 }

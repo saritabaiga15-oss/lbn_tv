@@ -4,7 +4,6 @@ import './AirtimeOnLBN.css';
 const AirtimeOnLBN = () => {
   return (
     <div className="airtime-on-lbn-page">
-      {/* Hero Banner */}
       <section className="airtime-hero">
         <div className="airtime-hero-glow"></div>
         <div className="airtime-hero-container">
@@ -26,11 +25,9 @@ const AirtimeOnLBN = () => {
         </div>
       </section>
 
-      {/* Main Broadcast Offerings */}
       <section className="airtime-details-section">
         <div className="airtime-container">
           <div className="airtime-grid-showcase">
-
             <div className="airtime-info-card">
               <div className="airtime-badge-label">LBN MARKETING SERVICES</div>
               <h2 className="airtime-heading">
@@ -105,3 +102,4 @@ const AirtimeOnLBN = () => {
 };
 
 export default AirtimeOnLBN;
+

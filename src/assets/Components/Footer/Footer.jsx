@@ -186,6 +186,11 @@ const Footer = ({ onNavigate }) => {
                     Anchorcrest Foundation
                   </a>
                 </li>
+                <li>
+                  <a href="#airtime-on-lbn" onClick={(e) => handleLinkClick(e, 'airtime-on-lbn')}>
+                    Airtime On LBN
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

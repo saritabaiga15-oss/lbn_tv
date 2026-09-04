@@ -201,46 +201,47 @@
   line-height: 1.6;
 }
 
-/* Courses Grid - Styled identically to Programmes Containers */
+/* Courses Grid - 2 Columns Grid */
 .courses-section {
-  padding: 100px 0;
+  padding: 50px 0 60px;
   width: 100%;
 }
 
 .courses-grid-cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
-  margin: 0 auto 28px;
-  max-width: 1200px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0 auto;
 }
 
 .courses-grid-cta-wrap {
   display: flex;
   justify-content: center;
-  margin: 0 auto 30px;
+  margin-top: 40px;
 }
 
 .courses-grid-cta {
   appearance: none;
-  border: 1px solid rgba(207, 168, 96, 0.7);
+  border: 1.5px solid var(--accent-gold, #cfa860);
   background: rgba(207, 168, 96, 0.08);
-  color: #f5d9a1;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.76rem;
-  font-weight: 800;
+  color: #ffe082;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 14px 28px;
+  padding: 13px 36px;
   border-radius: 999px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 18px rgba(207, 168, 96, 0.15);
 }
 
 .courses-grid-cta:hover {
-  background: rgba(207, 168, 96, 0.18);
+  background: var(--accent-gold, #cfa860);
+  color: #000000;
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(207, 168, 96, 0.15);
+  box-shadow: 0 8px 25px rgba(207, 168, 96, 0.35);
 }
 
 /* Programme Card Structure */
@@ -573,44 +574,53 @@
 
 .tier-box-heading {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #ffe082;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .tiers-list-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .tier-card-btn {
-  background: #12121c;
+  background: #111118;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 18px 16px;
+  border-radius: 12px;
+  padding: 22px 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .tier-card-btn:hover {
-  border-color: rgba(207, 168, 96, 0.4);
-  background: #161624;
+  border-color: rgba(207, 168, 96, 0.45);
+  background: #151522;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .tier-card-btn.active {
   border-color: #cfa860;
-  background: linear-gradient(145deg, rgba(207, 168, 96, 0.15), #141420);
-  box-shadow: 0 6px 20px rgba(207, 168, 96, 0.2);
+  background: linear-gradient(145deg, rgba(207, 168, 96, 0.12), #131320);
+  box-shadow: 0 8px 28px rgba(207, 168, 96, 0.22);
 }
 
 .tier-tag-pill {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 800;
   color: #cfa860;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
   margin-bottom: 6px;
 }
 
@@ -618,34 +628,36 @@
   display: flex;
   align-items: baseline;
   gap: 2px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .currency {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #cfa860;
   font-weight: 700;
 }
 
 .amount-num {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.95rem;
   font-weight: 700;
   color: #ffffff;
+  line-height: 1;
 }
 
 .tier-title-label {
-  font-size: 0.88rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #e5e5f5;
+  color: #ffffff;
   margin-bottom: 6px;
 }
 
 .tier-impact-text {
-  font-size: 0.78rem;
-  color: #88889c;
-  line-height: 1.45;
+  font-size: 0.84rem;
+  color: #9494a8;
+  line-height: 1.5;
   margin: 0;
+  flex-grow: 1;
 }
 
 .custom-seed-box label {
@@ -810,41 +822,204 @@
 
 @media (max-width: 768px) {
   .anchorcrest-hero {
-    padding: 60px 16px 50px;
+    padding: 50px 14px 40px !important;
+  }
+
+  .anchorcrest-badge {
+    font-size: 0.68rem;
+    padding: 5px 14px;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
   }
 
   .anchorcrest-title {
-    font-size: clamp(2rem, 7vw, 2.8rem);
+    font-size: clamp(1.8rem, 6.5vw, 2.4rem);
+    line-height: 1.15;
+    margin-bottom: 12px;
   }
 
   .anchorcrest-subtitle {
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 2.7vw, 0.96rem);
+    line-height: 1.6;
+    margin: 0 auto 20px;
   }
 
   .hero-ecosystem-banner {
-    flex-direction: column;
-    text-align: center;
-    padding: 16px;
-    gap: 12px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px 14px !important;
+    margin: 0 auto 22px !important;
+    border-radius: 12px;
+    gap: 8px;
+    background: linear-gradient(180deg, rgba(207, 168, 96, 0.12), rgba(16, 16, 26, 0.95)) !important;
+    border: 1px solid rgba(207, 168, 96, 0.35) !important;
   }
 
-  .hero-cta-btns {
-    flex-direction: column;
-    gap: 12px;
+  .eco-star {
+    font-size: 2.2rem;
+    margin-bottom: 2px;
   }
 
-  .hero-primary-btn,
-  .hero-secondary-btn {
-    width: 100%;
-    text-align: center;
+  .eco-info h3 {
+    font-size: 1.05rem;
+    color: #ffe082;
+    margin-bottom: 6px;
+    font-weight: 700;
   }
 
+  .eco-info p {
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: #c0c0d2;
+  }
+
+  .hero-action-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .sponsor-btn-main,
+  .explore-btn-main {
+    flex: 1 1 50% !important;
+    padding: 11px 6px !important;
+    font-size: clamp(0.68rem, 2.3vw, 0.78rem) !important;
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    border-radius: 6px !important;
+    box-sizing: border-box !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .sponsor-btn-main {
+    gap: 4px !important;
+  }
+
+  .courses-section {
+    padding: 40px 0 50px;
+  }
+
+  .section-head-box {
+    margin-bottom: 25px;
+  }
+
+  .section-title {
+    font-size: clamp(1.45rem, 5vw, 1.85rem);
+  }
+
+  .section-desc {
+    font-size: 0.85rem;
+  }
+
+  /* 2-Column Grid on Mobile */
   .courses-grid-cards {
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .courses-grid-cta-wrap {
+    margin-top: 25px;
+  }
+
+  .courses-grid-cta {
+    font-size: 0.82rem;
+    padding: 11px 28px;
+    letter-spacing: 0.1em;
+  }
+
+  .programme-card.course-program-card {
+    border-radius: 8px;
+  }
+
+  .programme-card-img-wrapper {
+    height: 155px;
+  }
+
+  .programme-card-content {
+    padding: 12px 10px 14px;
+  }
+
+  .programme-card-schedule {
+    font-size: 0.62rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .programme-card-title {
+    font-size: clamp(0.85rem, 2.8vw, 1.05rem);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .programme-card-tagline {
+    font-size: 0.74rem;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .course-card-brief {
+    display: none;
+  }
+
+  .programme-card-btn {
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-bottom: 1.5px solid #cfa860;
+    color: #ffffff;
+    padding: 0 0 2px 0;
+    margin-top: auto;
   }
 
   .tiers-list-grid {
-    grid-template-columns: 1fr;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .tier-card-btn {
+    padding: 16px 12px !important;
+    border-radius: 10px !important;
+  }
+
+  .tier-tag-pill {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.8px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .currency {
+    font-size: 1.05rem !important;
+  }
+
+  .amount-num {
+    font-size: 1.55rem !important;
+  }
+
+  .tier-title-label {
+    font-size: 0.88rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .tier-impact-text {
+    font-size: 0.72rem !important;
+    line-height: 1.4 !important;
   }
 
   .bank-details-box {
@@ -875,23 +1050,34 @@
 
 @media (max-width: 480px) {
   .anchorcrest-hero {
-    padding: 40px 12px 35px;
+    padding: 40px 10px 32px !important;
   }
 
-  .anchorcrest-title {
-    font-size: 1.8rem;
+  .hero-ecosystem-banner {
+    padding: 16px 12px !important;
   }
 
-  .anchorcrest-subtitle {
-    font-size: 0.88rem;
+  .sponsor-btn-main,
+  .explore-btn-main {
+    padding: 10px 4px !important;
+    font-size: 0.68rem !important;
   }
 
-  .course-card-content {
-    padding: 18px 14px;
+  .programme-card-img-wrapper {
+    height: 135px;
   }
 
-  .course-card-title {
-    font-size: 1.25rem;
+  .programme-card-content {
+    padding: 10px 8px 12px;
+  }
+
+  .programme-card-title {
+    font-size: 0.85rem;
+  }
+
+  .programme-card-tagline {
+    font-size: 0.7rem;
+    margin-bottom: 8px;
   }
 
   .b-val-group {
