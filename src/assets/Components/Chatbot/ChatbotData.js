@@ -26,7 +26,7 @@ export const CHATBOT_CONFIG = {
     { name: 'Crafting Faith', schedule: 'Wednesdays at 4:00 PM', category: 'Talk show' },
     { name: 'Money Matters', schedule: 'Mondays at 7:00 PM', category: 'Talk show' },
     { name: 'Timeless Paragon', schedule: 'Saturdays at 10:00 AM', category: 'Kids' },
-    { name: 'Dusk Till Dawn', schedule: 'Wednesdays at 4:00 PM', category: 'Teens & youth' },
+
     { name: 'Dr. Prashanti', schedule: 'Tuesdays at 9:30 AM', category: 'Health & wellness' },
   ],
 };

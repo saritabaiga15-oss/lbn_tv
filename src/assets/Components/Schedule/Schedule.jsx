@@ -7,7 +7,6 @@ import healingStreams from '../../images/healing_streams.png';
 import gytv from '../../images/gytv.png';
 import theTrumpet from '../../images/Trumpet.png';
 import prayWithMe from '../../images/pray_with_me.jpg';
-import duskTillDawn from '../../images/Dusk till dawn.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
 import chroniclesOfProphecy from '../../images/chronicles_of_prophecy.png';
 import loveworldExtra from '../../images/loveworld_extra.png';
@@ -90,7 +89,6 @@ const Schedule = () => {
       { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
       { time: '01:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
       { time: '02:30 PM', title: 'Rhapsody TV', category: 'ROR', duration: '90m', host: 'LBN', live: false, image: rhapsodyTv },
-      { time: '04:00 PM', title: 'Dusk Till Dawn', category: 'TEENS & KIDS', duration: '30m', host: 'LBN Youth', live: false, image: duskTillDawn },
       { time: '04:30 PM', title: 'Lovetoons', category: 'TEENS & KIDS', duration: '60m', host: 'LBN Kids', live: false, image: lovetoons },
       { time: '05:30 PM', title: 'GYTV', category: 'TEENS & KIDS', duration: '120m', host: 'LBN Youth', live: false, image: gytv },
       { time: '07:30 PM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },

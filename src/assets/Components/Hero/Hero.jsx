@@ -5,7 +5,6 @@ import wordAtWork from '../../images/Word at work.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
 import teevablaze from '../../images/TEEVABLAZE (1).png';
-import duskTillDawn from '../../images/Dusk till dawn.png';
 import wholeness from '../../images/Wholeness (1).png';
 
 const Hero = () => {
@@ -18,7 +17,6 @@ const Hero = () => {
     { id: 2, image: craftingFaith, title: 'Crafting Faith' },
     { id: 3, image: moneyMatters, title: 'Money Matters' },
     { id: 4, image: teevablaze, title: 'TEEV-Blaze' },
-    { id: 5, image: duskTillDawn, title: 'Dusk Till Dawn' },
     { id: 6, image: wholeness, title: 'Wholeness with Dr. Prashanti' }
   ];
 

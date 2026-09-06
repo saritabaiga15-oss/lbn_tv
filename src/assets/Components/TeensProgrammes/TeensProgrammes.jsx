@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './TeensProgrammes.css';
 import teevablazeImg from '../../images/TEEVABLAZE (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
-import duskTillDawn from '../../images/Dusk till dawn.png';
 
 const TeensProgrammes = () => {
   const [selectedShow, setSelectedShow] = useState(null);
@@ -28,16 +27,6 @@ const TeensProgrammes = () => {
       tagline: 'Always keep the hope alive.',
       description: 'Ignite explores the real-life intersection of youth culture, adolescence, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'
     },
-    {
-      id: 3,
-      title: 'DUSK TILL DAWN',
-      subtitle: 'Late-Night Heart-to-Heart',
-      image: duskTillDawn,
-      schedule: 'Wednesdays at 4:00 PM',
-      duration: '30 mins',
-      tagline: 'Heart-to-heart late-night faith talks.',
-      description: 'Engaging conversations, uplifting real-life testimonies, and late-night heart-to-heart discussions exploring faith and triumph over difficulties.'
-    }
   ];
 
   return (

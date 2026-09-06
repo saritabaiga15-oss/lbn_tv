@@ -5,7 +5,6 @@ import wordAtWork from '../../images/Word at work.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
 import teevablaze from '../../images/TEEVABLAZE (1).png';
-import duskTillDawn from '../../images/Dusk till dawn.png';
 import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
 import timelessParagon from '../../images/timeless_paragon.jpg';
@@ -20,7 +19,6 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
     { id: 3, src: craftingFaith, title: 'Crafting Faith – Studio & Creative Show', category: 'PROGRAMMES', caption: 'Create · Believe · Inspire — faith through art and hands-on creativity.' },
     { id: 4, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship, financial intelligence, and freedom on LBN.' },
     { id: 5, src: teevablaze, title: 'TEEV-Blaze – Youth Broadcast', category: 'TEENS & YOUTH', caption: 'Dynamic faith, contemporary discussions, and youth inspiration.' },
-    { id: 6, src: duskTillDawn, title: 'Dusk Till Dawn – Studio Talk Show', category: 'TALK SHOWS', caption: 'Engaging conversations, uplifting testimonies, and late-night heart-to-heart discussions.' },
     { id: 7, src: drPrashanti, title: 'Wholeness with Dr. Prashanti', category: 'HEALTH', caption: 'Mind · Body · Purpose — divine health and vitality from a faith-filled perspective.' },
     { id: 8, src: igniteImg, title: 'Ignite Show – Youth & Culture', category: 'TEENS & YOUTH', caption: 'Exploring the intersection of youth culture, adolescence, and vibrant faith.' },
     { id: 9, src: timelessParagon, title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
