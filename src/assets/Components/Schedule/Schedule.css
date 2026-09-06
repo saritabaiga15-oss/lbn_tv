@@ -227,13 +227,13 @@
 }
 
 .epg-slot-img-col {
-  width: 95px;
-  height: 66px;
+  width: 110px;
+  height: 62px;
   border-radius: 8px;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #0b0b12;
+  background-color: #050508;
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   flex-shrink: 0;
@@ -367,8 +367,12 @@
 
   /* Main row: Image, Info, and Reminder on the EXACT SAME LINE */
   .epg-slot-img-col {
-    width: 80px !important;
-    height: 56px !important;
+    width: 96px !important;
+    height: 54px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #050508 !important;
     flex-shrink: 0 !important;
     margin: 0 !important;
   }
@@ -425,8 +429,12 @@
   }
 
   .epg-slot-img-col {
-    width: 68px !important;
-    height: 48px !important;
+    width: 80px !important;
+    height: 45px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #050508 !important;
   }
 
   .slot-title {

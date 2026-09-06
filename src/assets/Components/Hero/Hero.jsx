@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
-import Shows from '../../images/Shows.jpeg';
-import img2 from '../../images/image2.png';
-import igniteImg from '../../images/ignite.jpg';
-import drPrashanti from '../../images/dr_prashanti.jpg';
+import theTrumpet from '../../images/Trumpet.png';
+import wordAtWork from '../../images/Word at work.png';
+import craftingFaith from '../../images/Crafting Faith.png';
+import moneyMatters from '../../images/MONEY MATTERS (1).png';
+import teevablaze from '../../images/TEEVABLAZE (1).png';
+import duskTillDawn from '../../images/Dusk till dawn.png';
+import wholeness from '../../images/Wholeness (1).png';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
-    { id: 0, image: Shows, title: 'Showing Now' },
-    { id: 1, image: img2, title: 'Song of Praise' },
-    { id: 2, image: igniteImg, title: 'Ignite Show' },
-    { id: 3, image: drPrashanti, title: 'Dr. Prashanti' }
+    { id: 0, image: theTrumpet, title: 'The Trumpet' },
+    { id: 1, image: wordAtWork, title: 'Word At Work' },
+    { id: 2, image: craftingFaith, title: 'Crafting Faith' },
+    { id: 3, image: moneyMatters, title: 'Money Matters' },
+    { id: 4, image: teevablaze, title: 'TEEV-Blaze' },
+    { id: 5, image: duskTillDawn, title: 'Dusk Till Dawn' },
+    { id: 6, image: wholeness, title: 'Wholeness with Dr. Prashanti' }
   ];
 
   // Auto-play slider every 4 seconds (pauses on user hover)

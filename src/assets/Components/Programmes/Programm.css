@@ -151,19 +151,24 @@
 .programme-card-img-wrapper {
   position: relative;
   width: 100%;
-  height: 240px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
+  background-color: #050508;
 }
 
 .programme-card-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background-color: #050508;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  display: block;
 }
 
 .programme-card:hover .programme-card-img {
-  transform: scale(1.06);
+  transform: scale(1.04);
 }
 
 .programme-card-overlay {
@@ -172,7 +177,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .programme-card-category {
@@ -383,8 +389,11 @@
 .programmes-modal-bg-cover {
   width: 100%;
   height: 100%;
-  background-size: cover;
+  min-height: 360px;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
+  background-color: #000000;
   position: relative;
 }
 
@@ -394,7 +403,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0,0,0,0) 30%, var(--bg-card, #0d0d12) 100%);
+  background: linear-gradient(to right, rgba(0,0,0,0) 60%, var(--bg-card, #0d0d12) 100%);
+  pointer-events: none;
 }
 
 .programmes-modal-video-wrapper {
@@ -714,17 +724,20 @@
 
   .programme-card-img-wrapper {
     width: 100%;
-    height: 130px;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
     position: relative;
     overflow: hidden;
+    background-color: #050508;
     border-radius: 8px 8px 0 0;
   }
 
   .programme-card-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 25%;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: contain !important;
+    background-color: #050508;
     display: block;
   }
 

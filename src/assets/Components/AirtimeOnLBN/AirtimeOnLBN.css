@@ -283,9 +283,11 @@
     padding: 90px 20px 60px;
     min-height: 70vh;
   }
+
   .airtime-container {
     padding: 0 20px;
   }
+
   .airtime-grid-showcase {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -298,22 +300,26 @@
     min-height: auto !important;
     display: block !important;
   }
+
   .airtime-hero-pill {
     font-size: 0.72rem;
     padding: 5px 14px;
     letter-spacing: 1.5px;
     margin-bottom: 14px;
   }
+
   .airtime-hero-title {
     font-size: clamp(2rem, 7vw, 2.6rem);
     line-height: 1.2;
     margin-bottom: 14px;
   }
+
   .airtime-hero-desc {
     font-size: clamp(0.9rem, 2.8vw, 1.05rem);
     line-height: 1.6;
     margin: 0 auto 24px;
   }
+
   .airtime-hero-btns {
     display: flex;
     flex-direction: row;
@@ -322,6 +328,7 @@
     gap: 10px;
     width: 100%;
   }
+
   .airtime-primary-btn,
   .airtime-secondary-btn {
     flex: 1 1 140px;
@@ -332,41 +339,51 @@
     border-radius: 8px;
     box-sizing: border-box;
   }
+
   .airtime-details-section {
     padding: 35px 14px 60px;
   }
+
   .airtime-container {
     padding: 0;
   }
+
   .airtime-grid-showcase {
     display: flex;
     flex-direction: column;
     gap: 24px;
   }
+
   .airtime-info-card {
     padding: 24px 18px;
     border-radius: 12px;
   }
+
   .airtime-heading {
     font-size: clamp(1.4rem, 5vw, 1.85rem);
     margin-bottom: 14px;
   }
+
   .airtime-body-text {
     font-size: clamp(0.85rem, 2.7vw, 0.95rem);
     line-height: 1.6;
     margin-bottom: 22px;
   }
+
   .airtime-contact-box {
     padding: 18px 14px;
     border-radius: 10px;
   }
+
   .airtime-contact-box h3 {
     font-size: clamp(0.88rem, 3vw, 1rem);
     margin-bottom: 14px;
   }
+
   .contact-list {
     gap: 12px;
   }
+
   .contact-item {
     display: flex;
     align-items: flex-start;
@@ -375,6 +392,7 @@
     line-height: 1.45;
     word-break: break-word;
   }
+
   .contact-item a {
     word-break: break-word;
   }
@@ -394,21 +412,25 @@
     border-radius: 10px;
     box-sizing: border-box;
   }
+
   .package-card .p-icon {
     font-size: 1.4rem;
     margin-bottom: 6px;
   }
+
   .package-card h3 {
     font-size: clamp(0.88rem, 2.8vw, 1.08rem);
     line-height: 1.25;
     margin-bottom: 6px;
   }
+
   .package-card p {
     font-size: clamp(0.72rem, 2.4vw, 0.82rem);
     line-height: 1.45;
     flex-grow: 1;
     margin: 0;
   }
+
   .package-card .custom-plan-btn {
     margin-top: 8px;
     font-size: clamp(0.72rem, 2.4vw, 0.82rem);
@@ -420,41 +442,52 @@
     padding: 45px 12px 32px !important;
     min-height: auto !important;
   }
+
   .airtime-hero-title {
     font-size: clamp(1.7rem, 6.5vw, 2.1rem);
   }
+
   .airtime-hero-btns {
     gap: 8px;
   }
+
   .airtime-primary-btn,
   .airtime-secondary-btn {
     padding: 10px 10px;
     font-size: 0.76rem;
     min-width: 130px;
   }
+
   .airtime-details-section {
     padding: 25px 10px 45px;
   }
+
   .airtime-info-card {
     padding: 18px 14px;
   }
+
   .airtime-contact-box {
     padding: 14px 10px;
   }
+
   .airtime-packages-col {
     gap: 8px !important;
   }
+
   .package-card {
     padding: 14px 10px;
     border-radius: 8px;
   }
+
   .package-card .p-icon {
     font-size: 1.25rem;
     margin-bottom: 4px;
   }
+
   .package-card h3 {
     font-size: 0.85rem;
   }
+
   .package-card p {
     font-size: 0.7rem;
     line-height: 1.4;

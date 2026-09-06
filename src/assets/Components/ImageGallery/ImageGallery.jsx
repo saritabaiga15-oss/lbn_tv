@@ -1,29 +1,30 @@
 import React, { useState } from 'react';
 import './ImageGallery.css';
-import ScrollRow from '../ScrollRow/ScrollRow';
-import theTrumpet from '../../images/the_trumpet.jpg';
+import theTrumpet from '../../images/Trumpet.png';
+import wordAtWork from '../../images/Word at work.png';
+import craftingFaith from '../../images/Crafting Faith.png';
+import moneyMatters from '../../images/MONEY MATTERS (1).png';
+import teevablaze from '../../images/TEEVABLAZE (1).png';
+import duskTillDawn from '../../images/Dusk till dawn.png';
+import drPrashanti from '../../images/Wholeness (1).png';
+import igniteImg from '../../images/YOUTHIgnite.png';
 import timelessParagon from '../../images/timeless_paragon.jpg';
-import wordAtWork from '../../images/word_at_work.jpg';
-import drPrashanti from '../../images/dr_prashanti.jpg';
 import prayWithMe from '../../images/pray_with_me.jpg';
-import duskTillDawn from '../../images/dusk_till_dawn.jpg';
-import craftingBeads from '../../images/crafting_beads.jpg';
-import craftingFaithHost from '../../images/crafting_faith_host.jpg';
-import moneyMatters from '../../images/money_matters.jpg';
 
 const ImageGallery = ({ onNavigateProgrammes }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const galleryItems = [
     { id: 1, src: theTrumpet, title: 'The Trumpet – Deacon Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
-    { id: 2, src: timelessParagon, title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
-    { id: 3, src: wordAtWork, title: 'Word At Work – Studio Broadcast', category: 'TALK SHOWS', caption: 'Inspired, equipped, and empowered — panel discussions exploring God’s Word in action.' },
-    { id: 4, src: drPrashanti, title: 'Dr. Prashanti – Health & Wellness', category: 'HEALTH', caption: 'Inspiring health, wellness, and medical guidance from a faith-filled perspective.' },
-    { id: 5, src: prayWithMe, title: 'Pray With Me – Global Intercession', category: 'PRAYER', caption: 'Lifting nations in fervent prayer and spiritual intercession across the globe.' },
-    { id: 6, src: duskTillDawn, title: 'Dusk Till Dawn Studio Talk Show', category: 'TALK SHOWS', caption: 'Engaging conversations, uplifting testimonies, and late-night heart-to-heart discussions.' },
-    { id: 7, src: craftingBeads, title: 'Crafting Faith – Creative Workshop', category: 'PROGRAMMES', caption: 'Inspiring craft sessions that blend creativity with faith.' },
-    { id: 8, src: craftingFaithHost, title: 'Crafting Faith – Studio Show', category: 'PROGRAMMES', caption: 'Create · Inspire · Glorify — faith through art and craft.' },
-    { id: 9, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship and financial freedom on LBN.' }
+    { id: 2, src: wordAtWork, title: 'Word At Work – Studio Broadcast', category: 'TALK SHOWS', caption: 'Inspired, equipped, and empowered — panel discussions exploring God’s Word in action.' },
+    { id: 3, src: craftingFaith, title: 'Crafting Faith – Studio & Creative Show', category: 'PROGRAMMES', caption: 'Create · Believe · Inspire — faith through art and hands-on creativity.' },
+    { id: 4, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship, financial intelligence, and freedom on LBN.' },
+    { id: 5, src: teevablaze, title: 'TEEV-Blaze – Youth Broadcast', category: 'TEENS & YOUTH', caption: 'Dynamic faith, contemporary discussions, and youth inspiration.' },
+    { id: 6, src: duskTillDawn, title: 'Dusk Till Dawn – Studio Talk Show', category: 'TALK SHOWS', caption: 'Engaging conversations, uplifting testimonies, and late-night heart-to-heart discussions.' },
+    { id: 7, src: drPrashanti, title: 'Wholeness with Dr. Prashanti', category: 'HEALTH', caption: 'Mind · Body · Purpose — divine health and vitality from a faith-filled perspective.' },
+    { id: 8, src: igniteImg, title: 'Ignite Show – Youth & Culture', category: 'TEENS & YOUTH', caption: 'Exploring the intersection of youth culture, adolescence, and vibrant faith.' },
+    { id: 9, src: timelessParagon, title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
+    { id: 10, src: prayWithMe, title: 'Pray With Me – Global Intercession', category: 'PRAYER', caption: 'Lifting nations in fervent prayer and spiritual intercession across the globe.' }
   ];
 
   // All items visible in horizontal scroll row
@@ -57,8 +58,8 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
           </div>
         </div>
 
-        {/* 4 In A Row Scroll Row with OTT Arrow Navigation */}
-        <ScrollRow className="gallery-grid">
+        {/* Horizontal Scroll Grid (Clean touch & mouse scroll, without floating arrow button) */}
+        <div className="gallery-grid">
           {visibleItems.map((item) => (
             <div
               key={item.id}
@@ -67,15 +68,15 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
             >
               <div className="gallery-img-wrapper">
                 <img src={item.src} alt={item.title} className="gallery-img" />
-                <div className="gallery-overlay">
-                  <span className="gallery-cat-pill">{item.category}</span>
-                  <h3 className="gallery-card-title">{item.title}</h3>
-                  <p className="gallery-card-caption">{item.caption}</p>
-                </div>
+                <span className="gallery-cat-pill-overlay">{item.category}</span>
+              </div>
+              <div className="gallery-card-info">
+                <h3 className="gallery-card-title">{item.title}</h3>
+                <p className="gallery-card-caption">{item.caption}</p>
               </div>
             </div>
           ))}
-        </ScrollRow>
+        </div>
 
         {/* See More connected directly to Programmes Section Page */}
         <div className="gallery-more-container">

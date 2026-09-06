@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Programm.css';
-import igniteImg from '../../images/ignite.jpg';
-import img3 from '../../images/image3.png';
-import moneyMatters from '../../images/money_matters.jpg';
-import craftingBeads from '../../images/crafting_beads.jpg';
-import theTrumpet from '../../images/the_trumpet.jpg';
+import theTrumpet from '../../images/Trumpet.png';
+import wordAtWork from '../../images/Word at work.png';
+import craftingFaith from '../../images/Crafting Faith.png';
+import moneyMatters from '../../images/MONEY MATTERS (1).png';
+import teevablaze from '../../images/TEEVABLAZE (1).png';
 import timelessParagon from '../../images/timeless_paragon.jpg';
-import wordAtWork from '../../images/word_at_work.jpg';
-import drPrashanti from '../../images/dr_prashanti.jpg';
+import drPrashanti from '../../images/Wholeness (1).png';
 import prayWithMe from '../../images/pray_with_me.jpg';
-import duskTillDawn from '../../images/dusk_till_dawn.jpg';
+import igniteImg from '../../images/YOUTHIgnite.png';
 
 const Programmes = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
@@ -31,7 +30,7 @@ const Programmes = () => {
     {
       id: 1,
       title: 'THE TRUMPET – DEACON VIJAY BANSODE',
-      category: 'TALK SHOW',
+      category: 'TALK SHOWS',
       image: theTrumpet,
       video: '/Videos/THE_TRUMPET_NEW.mp4',
       schedule: 'Tuesday to Friday at 11:00 AM',
@@ -61,13 +60,13 @@ const Programmes = () => {
     },
     {
       id: 4,
-      title: 'DR. PRASHANTI – HEALTH & WELLNESS',
+      title: 'WHOLENESS WITH DR. PRASHANTI',
       category: 'HEALTH',
       image: drPrashanti,
       schedule: 'Tuesdays at 9:30 AM',
       duration: '30 mins',
-      tagline: 'Divine health guidance from a faith perspective.',
-      description: 'Inspiring health, wellness, and medical guidance from a faith-filled perspective with Dr. Prashanti, equipping you to live in divine vitality.'
+      tagline: 'Mind. Body. Purpose.',
+      description: 'Inspiring health, wellness, and divine vitality from a faith-filled perspective with Dr. Prashanti, equipping you to live in wholeness across mind, body, and purpose.'
     },
     {
       id: 5,
@@ -79,16 +78,7 @@ const Programmes = () => {
       tagline: 'Fervent prayer shaking the nations.',
       description: 'Lifting nations, families, and churches in fervent prayer and spiritual intercession across the globe alongside devoted prayer leaders.'
     },
-    {
-      id: 6,
-      title: 'DUSK TILL DAWN STUDIO TALK SHOW',
-      category: 'TEENS & YOUTH',
-      image: duskTillDawn,
-      schedule: 'Wednesdays at 4:00 PM',
-      duration: '30 mins',
-      tagline: 'Heart-to-heart late-night faith talks.',
-      description: 'Engaging conversations, uplifting real-life testimonies, and late-night heart-to-heart discussions exploring faith and triumph over difficulties.'
-    },
+
     {
       id: 7,
       title: 'IGNITE SHOW',
@@ -102,13 +92,13 @@ const Programmes = () => {
     },
     {
       id: 8,
-      title: 'CRAFTING FAITH ',
-      category: 'TALK SHOW',
-      image: craftingBeads,
+      title: 'CRAFTING FAITH',
+      category: 'TALK SHOWS',
+      image: craftingFaith,
       schedule: 'Wednesdays at 4:00 PM',
       duration: '30 mins',
-      tagline: 'Creative faith through hands-on fun.',
-      description: 'Inspiring craft workshops where kids create faith-inspired art projects while learning scripture stories in fun, memorable ways.'
+      tagline: 'Create · Believe · Inspire — faith through art and craft.',
+      description: 'Inspiring craft workshops where faith and creativity unite. Create, believe, and inspire through practical artistic projects and scripture insights.'
     },
     {
       id: 9,
@@ -119,6 +109,16 @@ const Programmes = () => {
       duration: '45 mins',
       tagline: 'Biblical wisdom for financial growth.',
       description: 'Practical insights and spiritual guidance on stewardship, financial intelligence, and prosperity according to biblical principles.'
+    },
+    {
+      id: 10,
+      title: 'TEEV-BLAZE',
+      category: 'TEENS & YOUTH',
+      image: teevablaze,
+      schedule: 'Monday to Friday at 11:30 AM',
+      duration: '30 mins',
+      tagline: 'Igniting the youth with vibrant faith and purpose.',
+      description: 'An electrifying youth-centric broadcast celebrating youth culture, energetic discussions, faith testimonies, and talent for teens and young adults.'
     }
   ];
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './TeensProgrammes.css';
-import igniteImg from '../../images/ignite.jpg';
-import img4 from '../../images/image4.png';
-import LWS from '../../images/LWS.jpeg';
+import teevablazeImg from '../../images/TEEVABLAZE (1).png';
+import igniteImg from '../../images/YOUTHIgnite.png';
+import duskTillDawn from '../../images/Dusk till dawn.png';
 
 const TeensProgrammes = () => {
   const [selectedShow, setSelectedShow] = useState(null);
@@ -10,6 +10,16 @@ const TeensProgrammes = () => {
   const programs = [
     {
       id: 1,
+      title: 'TEEV-BLAZE',
+      subtitle: 'Youth, Faith & Dynamic Talks',
+      image: teevablazeImg,
+      schedule: 'Monday to Friday at 11:30 AM',
+      duration: '30 mins',
+      tagline: 'Igniting the youth with vibrant faith and purpose.',
+      description: 'An electrifying youth-centric broadcast celebrating youth culture, discussions, gospel faith testimonies, and creative talent for teens and young adults.'
+    },
+    {
+      id: 2,
       title: 'IGNITE SHOW',
       subtitle: 'Adolescence and Faith',
       image: igniteImg,
@@ -19,24 +29,14 @@ const TeensProgrammes = () => {
       description: 'Ignite explores the real-life intersection of youth culture, adolescence, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'
     },
     {
-      id: 2,
-      title: 'TEENS TALENT HUB',
-      subtitle: 'Music, Art & Spoken Word',
-      image: img4,
-      schedule: 'Saturdays at 11:30 AM',
-      duration: '90 mins',
-      tagline: 'Unleashing the gifts of grace.',
-      description: 'Spotlighting young instrumentalists, painters, spoken word poets, and vocalists. See how the next generation uses their artistic gifts to paint a brighter future and spread love.'
-    },
-    {
       id: 3,
-      title: 'YOUTH CONNECT',
-      subtitle: 'Bible Quiz & Talk Show',
-      image: LWS,
-      schedule: 'Tuesdays at 6:00 PM',
-      duration: '90 mins',
-      tagline: 'Connecting young minds with eternal truth.',
-      description: 'A lively and competitive Bible trivia show mixed with casual talks. Teenagers engage in friendly competition, demonstrating their knowledge of scriptures and sharing practical tips.'
+      title: 'DUSK TILL DAWN',
+      subtitle: 'Late-Night Heart-to-Heart',
+      image: duskTillDawn,
+      schedule: 'Wednesdays at 4:00 PM',
+      duration: '30 mins',
+      tagline: 'Heart-to-heart late-night faith talks.',
+      description: 'Engaging conversations, uplifting real-life testimonies, and late-night heart-to-heart discussions exploring faith and triumph over difficulties.'
     }
   ];
 

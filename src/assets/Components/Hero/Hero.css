@@ -17,9 +17,10 @@
 .slide {
   height: 100%;
   flex-shrink: 0;
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-color: #050507;
   position: relative;
 }
 
