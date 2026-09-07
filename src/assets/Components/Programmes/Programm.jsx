@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Programm.css';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/Word at work.png';
@@ -17,11 +17,42 @@ const Programmes = () => {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
+  const bgVideoRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // IntersectionObserver to guarantee background video autoplays smoothly when section enters viewport
+  useEffect(() => {
+    const video = bgVideoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.muted = true;
+            video.play().catch((err) => {
+              console.log('Programmes bg video play error:', err);
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const filters = ['ALL', 'TALK SHOWS', 'PRAYER', 'HEALTH', 'TEENS & YOUTH', 'KIDS',];
@@ -43,6 +74,7 @@ const Programmes = () => {
       title: 'TIMELESS PARAGON – KIDS SHOW',
       category: 'KIDS',
       image: timelessParagon,
+      video: '/Videos/TIMELESS.mp4',
       schedule: 'Saturdays at 10:00 AM',
       duration: '45 mins',
       tagline: 'Empowering children with scripture wisdom.',
@@ -53,6 +85,7 @@ const Programmes = () => {
       title: 'WORD AT WORK – STUDIO BROADCAST',
       category: 'TALK SHOWS',
       image: wordAtWork,
+      video: '/Videos/TheWordAtWork.mp4',
       schedule: 'Thursdays at 8:30 PM',
       duration: '60 mins',
       tagline: 'Inspired, equipped, and empowered.',
@@ -141,6 +174,23 @@ const Programmes = () => {
 
   return (
     <section id="programmes" className="programmes-section">
+      {/* Background Video with Gradient Overlay */}
+      <div className="programmes-bg-video-wrapper">
+        <video
+          ref={bgVideoRef}
+          src="/Videos/ENOCH_PROMO_FINAL.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="programmes-bg-video"
+        />
+        <div className="programmes-bg-gradient-top"></div>
+        <div className="programmes-bg-gradient-bottom"></div>
+        <div className="programmes-bg-overlay"></div>
+      </div>
+
       <div className="programmes-container">
         <div className="programmes-header">
           <span className="programmes-label">NETWORK GUIDE</span>

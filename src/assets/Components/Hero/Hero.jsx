@@ -61,7 +61,7 @@ const Hero = () => {
         </svg>
       </button>
 
-      {/* Slider Track with all 3 slides */}
+      {/* Slider Track with all 6 image slides */}
       <div
         className="slider-track"
         style={{

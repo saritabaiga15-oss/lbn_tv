@@ -14,14 +14,14 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const galleryItems = [
-    { id: 1, src: theTrumpet, title: 'The Trumpet – Deacon Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
-    { id: 2, src: wordAtWork, title: 'Word At Work – Studio Broadcast', category: 'TALK SHOWS', caption: 'Inspired, equipped, and empowered — panel discussions exploring God’s Word in action.' },
+    { id: 1, src: theTrumpet, video: '/Videos/THE_TRUMPET_NEW.mp4', title: 'The Trumpet – Deacon Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
+    { id: 2, src: wordAtWork, video: '/Videos/TheWordAtWork.mp4', title: 'Word At Work – Studio Broadcast', category: 'TALK SHOWS', caption: 'Inspired, equipped, and empowered — panel discussions exploring God’s Word in action.' },
     { id: 3, src: craftingFaith, title: 'Crafting Faith – Studio & Creative Show', category: 'PROGRAMMES', caption: 'Create · Believe · Inspire — faith through art and hands-on creativity.' },
     { id: 4, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship, financial intelligence, and freedom on LBN.' },
     { id: 5, src: teevablaze, title: 'TEEV-Blaze – Youth Broadcast', category: 'TEENS & YOUTH', caption: 'Dynamic faith, contemporary discussions, and youth inspiration.' },
     { id: 7, src: drPrashanti, title: 'Wholeness with Dr. Prashanti', category: 'HEALTH', caption: 'Mind · Body · Purpose — divine health and vitality from a faith-filled perspective.' },
-    { id: 8, src: igniteImg, title: 'Ignite Show – Youth & Culture', category: 'TEENS & YOUTH', caption: 'Exploring the intersection of youth culture, adolescence, and vibrant faith.' },
-    { id: 9, src: timelessParagon, title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
+    { id: 8, src: igniteImg, video: '/Videos/Ignite.mp4', title: 'Ignite Show – Youth & Culture', category: 'TEENS & YOUTH', caption: 'Exploring the intersection of youth culture, adolescence, and vibrant faith.' },
+    { id: 9, src: timelessParagon, video: '/Videos/TIMELESS.mp4', title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
     { id: 10, src: prayWithMe, title: 'Pray With Me – Global Intercession', category: 'PRAYER', caption: 'Lifting nations in fervent prayer and spiritual intercession across the globe.' }
   ];
 
@@ -67,6 +67,11 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
               <div className="gallery-img-wrapper">
                 <img src={item.src} alt={item.title} className="gallery-img" />
                 <span className="gallery-cat-pill-overlay">{item.category}</span>
+                {item.video && (
+                  <span className="gallery-video-badge">
+                    ▶ VIDEO PROMO
+                  </span>
+                )}
               </div>
               <div className="gallery-card-info">
                 <h3 className="gallery-card-title">{item.title}</h3>
@@ -108,7 +113,23 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
         <div className="gallery-lightbox" onClick={() => setSelectedImage(null)}>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <button className="lightbox-close" onClick={() => setSelectedImage(null)}>&times;</button>
-            <img src={selectedImage.src} alt={selectedImage.title} className="lightbox-img" />
+            {selectedImage.video ? (
+              <div className="lightbox-video-container">
+                <video
+                  key={selectedImage.video}
+                  src={selectedImage.video}
+                  poster={selectedImage.src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="lightbox-video-player"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            ) : (
+              <img src={selectedImage.src} alt={selectedImage.title} className="lightbox-img" />
+            )}
             <div className="lightbox-info">
               <span className="lightbox-cat">{selectedImage.category}</span>
               <h3 className="lightbox-title">{selectedImage.title}</h3>
