@@ -50,7 +50,7 @@ const Programmes = () => {
     },
     {
       id: 3,
-      title: 'WORD AT WORK – STUDIO BROADCAST',
+      title: 'THE WORD AT WORK – STUDIO BROADCAST',
       category: 'TALK SHOWS',
       image: wordAtWork,
       video: '/Videos/TheWordAtWork.mp4',
