@@ -4,10 +4,10 @@ import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/Word at work.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
-import teevablaze from '../../images/TEEVABLAZE (1).png';
+import teevablaze from '../../images/teevablaze_banner.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
-import timelessParagon from '../../images/timeless_paragon.jpg';
+import timelessParagon from '../../images/timeless_paragon_new.jpg';
 import prayWithMe from '../../images/pray_with_me.jpg';
 
 const ImageGallery = ({ onNavigateProgrammes }) => {

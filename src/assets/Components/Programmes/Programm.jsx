@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Programm.css';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/Word at work.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
-import teevablaze from '../../images/TEEVABLAZE (1).png';
-import timelessParagon from '../../images/timeless_paragon.jpg';
+import teevablazeBanner from '../../images/teevablaze_banner.jpg';
+import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
+import voiceOfPraise from '../../images/voice_of_praise.jpg';
+import healthyLiving from '../../images/healthy_living.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
 import prayWithMe from '../../images/pray_with_me.jpg';
 import igniteImg from '../../images/YOUTHIgnite.png';
@@ -41,7 +43,7 @@ const Programmes = () => {
       id: 2,
       title: 'TIMELESS PARAGON – KIDS SHOW',
       category: 'KIDS',
-      image: timelessParagon,
+      image: timelessParagonNew,
       video: '/Videos/TIMELESS.mp4',
       schedule: 'Saturdays at 10:00 AM',
       duration: '45 mins',
@@ -113,13 +115,33 @@ const Programmes = () => {
     },
     {
       id: 10,
-      title: 'TEEV-ABLAZE',
+      title: 'TEEVABLAZE',
       category: 'TEENS & YOUTH',
-      image: teevablaze,
+      image: teevablazeBanner,
       schedule: 'Monday to Friday at 11:30 AM',
       duration: '30 mins',
       tagline: 'Igniting the youth with vibrant faith and purpose.',
       description: 'An electrifying youth-centric broadcast celebrating youth culture, energetic discussions, faith testimonies, and talent for teens and young adults.'
+    },
+    {
+      id: 11,
+      title: 'VOICE OF PRAISE',
+      category: 'TALK SHOWS',
+      image: voiceOfPraise,
+      schedule: 'Weekly on LBN',
+      duration: '30 mins',
+      tagline: 'Where worship meets the heart.',
+      description: 'A soul-stirring worship and praise programme featuring anointed singers and musicians lifting voices in adoration and faith-filled music ministry.'
+    },
+    {
+      id: 12,
+      title: 'HEALTHY LIVING',
+      category: 'HEALTH',
+      image: healthyLiving,
+      schedule: 'Weekly on LBN',
+      duration: '30 mins',
+      tagline: 'Faith, wellness, and wholeness.',
+      description: 'Practical guidance on nutrition, natural health, and holistic wellness from a faith-based perspective — inspiring viewers to live well in spirit, soul, and body.'
     }
   ];
 
