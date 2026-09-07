@@ -17,57 +17,10 @@ const Programmes = () => {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
-  const bgVideoRef = useRef(null);
-
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // IntersectionObserver to guarantee background video autoplays smoothly when section enters viewport
-  // Ensure background video autoplays reliably on load and viewport intersection
-  useEffect(() => {
-    const video = bgVideoRef.current;
-    if (!video) return;
-
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-
-    const playVideo = () => {
-      if (video) {
-        video.muted = true;
-        const promise = video.play();
-        if (promise !== undefined) {
-          promise.catch((err) => {
-            console.log('Programmes background video autoplay deferred:', err);
-          });
-        }
-      }
-    };
-
-    playVideo();
-
-    video.addEventListener('canplay', playVideo);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            playVideo();
-          }
-        });
-      },
-      { threshold: 0.01 }
-    );
-
-    observer.observe(video);
-
-    return () => {
-      video.removeEventListener('canplay', playVideo);
-      observer.disconnect();
-    };
   }, []);
 
   const filters = ['ALL', 'TALK SHOWS', 'PRAYER', 'HEALTH', 'TEENS & YOUTH', 'KIDS',];
@@ -189,23 +142,6 @@ const Programmes = () => {
 
   return (
     <section id="programmes" className="programmes-section">
-      {/* Background Video with Gradient Overlay */}
-      <div className="programmes-bg-video-wrapper">
-        <video
-          ref={bgVideoRef}
-          src="/Videos/ENOCH_PROMO_FINAL.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="programmes-bg-video"
-        />
-        <div className="programmes-bg-gradient-top"></div>
-        <div className="programmes-bg-gradient-bottom"></div>
-        <div className="programmes-bg-overlay"></div>
-      </div>
-
       <div className="programmes-container">
         <div className="programmes-header">
           <span className="programmes-label">NETWORK GUIDE</span>
