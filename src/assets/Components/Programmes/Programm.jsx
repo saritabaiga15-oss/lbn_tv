@@ -26,31 +26,46 @@ const Programmes = () => {
   }, []);
 
   // IntersectionObserver to guarantee background video autoplays smoothly when section enters viewport
+  // Ensure background video autoplays reliably on load and viewport intersection
   useEffect(() => {
     const video = bgVideoRef.current;
     if (!video) return;
 
     video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      if (video) {
+        video.muted = true;
+        const promise = video.play();
+        if (promise !== undefined) {
+          promise.catch((err) => {
+            console.log('Programmes background video autoplay deferred:', err);
+          });
+        }
+      }
+    };
+
+    playVideo();
+
+    video.addEventListener('canplay', playVideo);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            video.muted = true;
-            video.play().catch((err) => {
-              console.log('Programmes bg video play error:', err);
-            });
-          } else {
-            video.pause();
+            playVideo();
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.01 }
     );
 
     observer.observe(video);
 
     return () => {
+      video.removeEventListener('canplay', playVideo);
       observer.disconnect();
     };
   }, []);
