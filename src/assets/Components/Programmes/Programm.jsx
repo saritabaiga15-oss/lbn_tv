@@ -29,7 +29,7 @@ const Programmes = () => {
   const programList = [
     {
       id: 1,
-      title: 'THE TRUMPET – DEACON VIJAY BANSODE',
+      title: 'THE TRUMPET –  VIJAY BANSODE',
       category: 'TALK SHOWS',
       image: theTrumpet,
       video: '/Videos/THE_TRUMPET_NEW.mp4',
