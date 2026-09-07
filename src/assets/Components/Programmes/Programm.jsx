@@ -36,7 +36,7 @@ const Programmes = () => {
       schedule: 'Tuesday to Friday at 11:00 AM',
       duration: '60 mins',
       tagline: 'Prophetic conversations, truth, and faith.',
-      description: 'Inspiring insights and prophetic conversations on faith, ministry, and current events hosted by Deacon Vijay Bansode with anointed guest speakers.'
+      description: 'Inspiring insights and prophetic conversations on faith, ministry, and current events hosted by  Vijay Bansode with anointed guest speakers.'
     },
     {
       id: 2,
@@ -112,7 +112,7 @@ const Programmes = () => {
     },
     {
       id: 10,
-      title: 'TEEV-BLAZE',
+      title: 'TEEV-ABLAZE',
       category: 'TEENS & YOUTH',
       image: teevablaze,
       schedule: 'Monday to Friday at 11:30 AM',
