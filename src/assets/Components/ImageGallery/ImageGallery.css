@@ -161,6 +161,25 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
+.gallery-video-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--accent-gold, #cfa860);
+  padding: 3px 8px;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .gallery-card-info {
   padding: 16px 18px;
   display: flex;
@@ -276,6 +295,22 @@
   width: 100%;
   max-height: 60vh;
   object-fit: cover;
+  display: block;
+}
+
+.lightbox-video-container {
+  width: 100%;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-video-player {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  background-color: #000000;
   display: block;
 }
 

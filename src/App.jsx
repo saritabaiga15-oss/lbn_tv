@@ -15,6 +15,7 @@ import JoinOurMission from "./assets/Components/JoinOurMission/JoinOurMission";
 import OneTimeGift from "./assets/Components/OneTimeGift/OneTimeGift";
 import AirtimeOnLBN from "./assets/Components/AirtimeOnLBN/AirtimeOnLBN";
 import AnchorcrestFoundation from "./assets/Components/AnchorcrestFoundation/AnchorcrestFoundation";
+import LiveTv from "./assets/Components/LiveTv/LiveTv";
 import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
 // import ChatWidget from "./assets/Components/Chatbot/Chatbot";
@@ -66,6 +67,7 @@ function App() {
         {activeTab === 'programmes' && <Programmes />}
         {activeTab === 'epg' && <Schedule />}
         {activeTab === 'services' && <Services />}
+        {activeTab === 'live' && <LiveTv onNavigate={handleNavigate} />}
         {activeTab === 'teens-programs' && <TeensProgrammes />}
         {activeTab === 'kids-programs' && <KidsProgrammes />}
         {activeTab === 'join-our-mission' && <JoinOurMission />}

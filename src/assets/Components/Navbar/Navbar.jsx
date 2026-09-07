@@ -122,7 +122,11 @@ const Navbar = ({ activeTab, onTabChange }) => {
 
         {/* Right Side: CTA Button & Hamburger */}
         <div className="header-actions">
-          <a href="#live" className="cta-button">
+          <a
+            href="#live"
+            onClick={(e) => { e.preventDefault(); handleNavClick('live'); }}
+            className={`cta-button ${activeTab === 'live' ? 'active' : ''}`}
+          >
             <span className="live-dot"></span>
             WATCH LIVE
           </a>
@@ -213,7 +217,11 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 </a>
               </li>
               <li>
-                <a href="#live" className="mobile-cta" onClick={toggleMobileMenu}>
+                <a
+                  href="#live"
+                  className="mobile-cta"
+                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('live'); }}
+                >
                   <span className="live-dot"></span> WATCH LIVE
                 </a>
               </li>
