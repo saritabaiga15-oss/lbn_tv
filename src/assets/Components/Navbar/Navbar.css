@@ -4,13 +4,19 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+  transition: background-color 0.35s ease, padding 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease;
+}
+
+/* Transparent background only for Home page at top */
+.site-header.is-transparent {
   background-color: transparent;
-  transition: var(--transition-smooth, all 0.3s ease);
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
   padding: 24px 0;
 }
 
-/* Scrolled style for sticky navbar */
-.site-header.scrolled {
+/* Solid black background for scrolled state or non-home pages */
+.site-header.is-solid {
   background-color: rgba(0, 0, 0, 0.94);
   backdrop-filter: blur(12px);
   padding: 16px 0;
@@ -487,7 +493,7 @@
   .site-header {
     padding: 16px 0;
   }
-  .site-header.scrolled {
+  .site-header.is-solid {
     padding: 12px 0;
   }
   .navbar-logo-img {
@@ -499,7 +505,7 @@
   .site-header {
     padding: 12px 0;
   }
-  .site-header.scrolled {
+  .site-header.is-solid {
     padding: 10px 0;
   }
   .header-container {

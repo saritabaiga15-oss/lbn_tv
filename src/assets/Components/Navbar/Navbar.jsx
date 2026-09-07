@@ -6,7 +6,6 @@ const Navbar = ({ activeTab, onTabChange }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Add scroll class to navbar when scrolled
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -15,7 +14,9 @@ const Navbar = ({ activeTab, onTabChange }) => {
         setScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -37,8 +38,11 @@ const Navbar = ({ activeTab, onTabChange }) => {
     }
   };
 
+  const isHomePage = activeTab === 'home';
+  const isTransparent = isHomePage && !scrolled;
+
   return (
-    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
+    <header className={`site-header ${isTransparent ? 'is-transparent' : 'is-solid'}`}>
       <div className="header-container">
         {/* Left Side: Brand Logo */}
         <div className="header-logo">

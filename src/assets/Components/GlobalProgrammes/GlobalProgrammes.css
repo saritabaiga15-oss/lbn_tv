@@ -110,7 +110,7 @@
 
 @media (max-width: 768px) {
   .global-programs-section {
-    padding: 60px 0 70px 0;
+    padding: 50px 0 60px 0;
   }
 
   .global-programs-container {
@@ -120,11 +120,11 @@
   }
 
   .global-programs-header {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 
   .global-programs-title {
-    font-size: clamp(1.7rem, 5.5vw, 2.2rem);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
     letter-spacing: 0.03em;
   }
 
@@ -135,10 +135,10 @@
   }
 
   .global-programs-grid {
-    grid-template-columns: 1fr;
-    max-width: 480px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
     width: 100%;
-    gap: 20px;
+    gap: 14px;
     box-sizing: border-box;
   }
 
@@ -150,15 +150,15 @@
 
 @media (max-width: 480px) {
   .global-programs-section {
-    padding: 45px 0 50px 0;
+    padding: 40px 0 45px 0;
   }
 
   .global-programs-container {
-    padding: 0 12px;
+    padding: 0 10px;
   }
 
   .global-programs-header {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 
   .global-programs-label {
@@ -168,7 +168,7 @@
   }
 
   .global-programs-title {
-    font-size: 1.55rem;
+    font-size: 1.45rem;
   }
 
   .global-programs-desc {
@@ -178,16 +178,21 @@
   }
 
   .global-programs-grid {
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 }
 
 @media (max-width: 360px) {
   .global-programs-container {
-    padding: 0 10px;
+    padding: 0 8px;
   }
 
   .global-programs-title {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+  }
+
+  .global-programs-grid {
+    gap: 8px;
   }
 }

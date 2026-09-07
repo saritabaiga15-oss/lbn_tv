@@ -1,9 +1,10 @@
 .hero-slider {
   position: relative;
-  width: 100%;
-  height: 85vh;
-  min-height: 550px;
-  max-height: 800px;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin-top: -80px;
   overflow: hidden;
   background-color: #050507;
 }
@@ -17,8 +18,8 @@
 .slide {
   height: 100%;
   flex-shrink: 0;
-  background-size: contain;
-  background-position: center center;
+  background-size: cover;
+  background-position: center 50%;
   background-repeat: no-repeat;
   background-color: #050507;
   position: relative;
@@ -30,8 +31,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 150px;
-  background: linear-gradient(to top, #000000, transparent);
+  height: 70px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
   pointer-events: none;
 }
 
@@ -74,7 +75,7 @@
 /* Slide Indicators: Dots */
 .slider-dots {
   position: absolute;
-  bottom: 30px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -111,123 +112,99 @@
 
 @media (max-width: 1024px) {
   .hero-slider {
-    height: calc(100vh - 80px);
-    height: calc(100dvh - 80px);
-    min-height: 500px;
-    max-height: none;
+    height: 52vw;
+    min-height: 380px;
+    max-height: 540px;
+    margin-top: 0;
+  }
+
+  .slide {
+    background-size: cover;
+    background-position: center 50%;
   }
 }
 
 @media (max-width: 768px) {
   .hero-slider {
-    height: calc(100vh - 70px);
-    height: calc(100dvh - 70px);
-    min-height: calc(100vh - 70px);
-    min-height: calc(100dvh - 70px);
-    max-height: none;
-    background: radial-gradient(ellipse at 50% 30%, rgba(15, 30, 60, 0.55) 0%, #050507 70%);
+    height: 56.25vw;
+    min-height: 250px;
+    max-height: 450px;
+    margin-top: 0;
+    background-color: #050507;
   }
 
-  /* Show FULL photo on mobile: no cropping or zooming */
+  /* Show crisp full banner on mobile without top/bottom empty space */
   .slide {
-    background-size: contain;
-    background-position: center 25%;
+    background-size: cover;
+    background-position: center 50%;
     background-repeat: no-repeat;
   }
 
-  /* Remove gradient overlay on mobile so full photo is 100% crisp */
+  /* Compact fade overlay at bottom */
   .slide::after {
-    display: none;
+    display: block;
+    height: 40px;
+    background: linear-gradient(to top, rgba(5, 5, 7, 0.7) 0%, transparent 100%);
   }
 
-  /* Keep hero uncluttered on mobile: hide prev arrow and dots, show next arrow */
+  /* Mobile arrow controls */
+  .hero-arrow {
+    width: 38px;
+    height: 38px;
+    top: 50%;
+  }
+
   .hero-arrow.prev {
-    display: none !important;
+    display: flex !important;
+    left: 10px;
   }
 
-  .slider-dots {
-    display: none !important;
-  }
-
-  /* Show circular OTT-style next arrow on mobile */
   .hero-arrow.next {
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(30, 30, 30, 0.82);
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    position: absolute;
-    right: 12px;
-    top: 38%;
-    transform: translateY(-50%);
-    z-index: 20;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.55);
+    right: 10px;
   }
 
-  /* Plain text 'WHY LBNTV' at the bottom of the first screen (no box/border) */
-  .hero-mobile-badge {
+  /* Compact slide dots on mobile */
+  .slider-dots {
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 25;
-    cursor: pointer;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    animation: none !important;
+    bottom: 10px;
+    gap: 8px;
   }
 
-  .hero-mobile-badge:active {
-    transform: translateX(-50%);
-    opacity: 0.75;
+  .dot {
+    width: 7px;
+    height: 7px;
   }
 
-  .hero-mobile-badge-text {
-    font-family: var(--font-sans, 'Inter', sans-serif);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    color: var(--accent-gold, #cfa860);
-    text-transform: uppercase;
-    white-space: nowrap;
+  .dot.active {
+    width: 20px;
   }
 
-  .hero-mobile-badge-chevron {
+  .hero-mobile-badge {
     display: none !important;
   }
 }
 
 @media (max-width: 480px) {
   .hero-slider {
-    height: calc(100vh - 60px);
-    height: calc(100dvh - 60px);
-    min-height: calc(100vh - 60px);
-    min-height: calc(100dvh - 60px);
-    max-height: none;
+    height: 56.25vw;
+    min-height: 220px;
+    max-height: 320px;
+    margin-top: 0;
   }
 
-  .hero-mobile-badge {
-    bottom: 24px;
-    padding: 0 !important;
+  .slide {
+    background-size: cover;
+    background-position: center 50%;
   }
 
-  .hero-mobile-badge-text {
-    font-size: 0.75rem;
-    letter-spacing: 0.22em;
+  .hero-arrow {
+    width: 32px;
+    height: 32px;
+    top: 50%;
+  }
+
+  .slider-dots {
+    bottom: 8px;
   }
 }
