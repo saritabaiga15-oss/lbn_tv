@@ -26,8 +26,7 @@ const GlobalPrograms = () => {
           <span className="global-programs-label">LIVE BROADCASTS</span>
           <h2 className="global-programs-title">UPCOMING GLOBAL PROGRAMS</h2>
           <p className="global-programs-desc">
-            Join millions of viewers worldwide for our premier live services, communion feeds, and global praise nights.
-            These special broadcasts bring together international ministries to share messages of faith, hope, and spiritual renewal.
+            Experience inspiring moments from around the world, featuring impactful messages, uplifting music, and special live events. Stay connected, stay inspired, and be part of what’s happening across our global network.
           </p>
         </div>
 
