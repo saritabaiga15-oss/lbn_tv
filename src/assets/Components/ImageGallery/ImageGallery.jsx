@@ -13,7 +13,7 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const galleryItems = [
-    { id: 1, src: theTrumpet, video: '/Videos/THE_TRUMPET_NEW.mp4', title: 'The Trumpet – Deacon Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
+    { id: 1, src: theTrumpet, video: '/Videos/THE_TRUMPET_NEW.mp4', title: 'The Trumpet – Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
     { id: 2, src: wordAtWork, video: '/Videos/TheWordAtWork.mp4', title: 'Word At Work – Studio Broadcast', category: 'TALK SHOWS', caption: 'Inspired, equipped, and empowered — panel discussions exploring God’s Word in action.' },
     { id: 3, src: craftingFaith, title: 'Crafting Faith – Studio & Creative Show', category: 'PROGRAMMES', caption: 'Create · Believe · Inspire — faith through art and hands-on creativity.' },
     { id: 4, src: moneyMatters, video: '/Videos/MoneyMatters.mp4', title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship, financial intelligence, and freedom on LBN.' },
