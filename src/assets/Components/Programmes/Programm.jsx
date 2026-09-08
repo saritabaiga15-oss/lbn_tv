@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './Programm.css';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/Word at work.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
-import teevablaze from '../../images/TEEVABLAZE (1).png';
-import timelessParagon from '../../images/timeless_paragon.jpg';
+import teevablazeBanner from '../../images/teevablaze_banner.jpg';
+import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
+import voiceOfPraise from '../../images/voice_of_praise.jpg';
+import healthyLiving from '../../images/healthy_living.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
 import prayWithMe from '../../images/pray_with_me.jpg';
 import igniteImg from '../../images/YOUTHIgnite.png';
@@ -17,8 +19,8 @@ const Programmes = () => {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
+  const [bgMuted, setBgMuted] = useState(true);
   const bgVideoRef = useRef(null);
-
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
@@ -60,20 +62,20 @@ const Programmes = () => {
   const programList = [
     {
       id: 1,
-      title: 'THE TRUMPET – DEACON VIJAY BANSODE',
+      title: 'THE TRUMPET –  VIJAY BANSODE',
       category: 'TALK SHOWS',
       image: theTrumpet,
       video: '/Videos/THE_TRUMPET_NEW.mp4',
       schedule: 'Tuesday to Friday at 11:00 AM',
       duration: '60 mins',
       tagline: 'Prophetic conversations, truth, and faith.',
-      description: 'Inspiring insights and prophetic conversations on faith, ministry, and current events hosted by Deacon Vijay Bansode with anointed guest speakers.'
+      description: 'Inspiring insights and prophetic conversations on faith, ministry, and current events hosted by  Vijay Bansode with anointed guest speakers.'
     },
     {
       id: 2,
       title: 'TIMELESS PARAGON – KIDS SHOW',
       category: 'KIDS',
-      image: timelessParagon,
+      image: timelessParagonNew,
       video: '/Videos/TIMELESS.mp4',
       schedule: 'Saturdays at 10:00 AM',
       duration: '45 mins',
@@ -82,7 +84,7 @@ const Programmes = () => {
     },
     {
       id: 3,
-      title: 'WORD AT WORK – STUDIO BROADCAST',
+      title: 'THE WORD AT WORK – STUDIO BROADCAST',
       category: 'TALK SHOWS',
       image: wordAtWork,
       video: '/Videos/TheWordAtWork.mp4',
@@ -96,6 +98,7 @@ const Programmes = () => {
       title: 'WHOLENESS WITH DR. PRASHANTI',
       category: 'HEALTH',
       image: drPrashanti,
+      video: '/Videos/WholenessWithDrPrashanti.mp4',
       schedule: 'Tuesdays at 9:30 AM',
       duration: '30 mins',
       tagline: 'Mind. Body. Purpose.',
@@ -133,25 +136,58 @@ const Programmes = () => {
       tagline: 'Create · Believe · Inspire — faith through art and craft.',
       description: 'Inspiring craft workshops where faith and creativity unite. Create, believe, and inspire through practical artistic projects and scripture insights.'
     },
+    // {
+    //   id: 9,
+    //   title: 'MONEY MATTERS',
+    //   category: 'TALK SHOWS',
+    //   image: moneyMatters,
+    //   video: '/Videos/MoneyMatters.mp4',
+    //   schedule: 'Mondays at 7:00 PM',
+    //   duration: '45 mins',
+    //   tagline: 'Biblical wisdom for financial growth.',
+    //   description: 'Practical insights and spiritual guidance on stewardship, financial intelligence, and prosperity according to biblical principles.'
+    // },
     {
       id: 9,
       title: 'MONEY MATTERS',
       category: 'TALK SHOWS',
       image: moneyMatters,
+      video: '/Videos/Ignite.mp4',
       schedule: 'Mondays at 7:00 PM',
       duration: '45 mins',
       tagline: 'Biblical wisdom for financial growth.',
-      description: 'Practical insights and spiritual guidance on stewardship, financial intelligence, and prosperity according to biblical principles.'
+      description:  'Practical insights and spiritual guidance on stewardship, financial intelligence, and prosperity according to biblical principles.'
     },
     {
       id: 10,
-      title: 'TEEV-BLAZE',
+      title: 'TEEVABLAZE',
       category: 'TEENS & YOUTH',
-      image: teevablaze,
+      image: teevablazeBanner,
+      video: '/Videos/Teevablaze.mp4',
       schedule: 'Monday to Friday at 11:30 AM',
       duration: '30 mins',
       tagline: 'Igniting the youth with vibrant faith and purpose.',
       description: 'An electrifying youth-centric broadcast celebrating youth culture, energetic discussions, faith testimonies, and talent for teens and young adults.'
+    },
+    {
+      id: 11,
+      title: 'VOICE OF PRAISE',
+      category: 'TALK SHOWS',
+      image: voiceOfPraise,
+      schedule: 'Weekly on LBN',
+      duration: '30 mins',
+      tagline: 'Where worship meets the heart.',
+      description: 'A soul-stirring worship and praise programme featuring anointed singers and musicians lifting voices in adoration and faith-filled music ministry.'
+    },
+    {
+      id: 12,
+      title: 'HEALTHY LIVING',
+      category: 'HEALTH',
+      image: healthyLiving,
+      schedule: 'Weekly on LBN',
+      duration: '30 mins',
+      tagline: 'Faith, wellness, and wholeness.',
+      description: 'Practical guidance on nutrition, natural health, and holistic wellness from a faith-based perspective — inspiring viewers to live well in spirit, soul, and body.'
     }
   ];
 
@@ -212,6 +248,31 @@ const Programmes = () => {
                 </button>
               ))}
             </div>
+            <button
+              className={`programmes-bg-mute-btn ${!bgMuted ? 'unmuted' : ''}`}
+              onClick={() => {
+                const v = bgVideoRef.current;
+                if (v) {
+                  v.muted = !v.muted;
+                  setBgMuted(v.muted);
+                }
+              }}
+              title={bgMuted ? 'Unmute background video' : 'Mute background video'}
+            >
+              {bgMuted ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <line x1="23" y1="9" x2="17" y2="15" />
+                  <line x1="17" y1="9" x2="23" y2="15" />
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
@@ -292,8 +353,23 @@ const Programmes = () => {
                       poster={selectedShow.image}
                       controls
                       autoPlay
+                      muted
+                      loop
                       playsInline
+                      preload="auto"
                       className="programmes-modal-video-player"
+                      ref={(el) => {
+                        if (el) {
+                          el.muted = true;
+                          el.playsInline = true;
+                          el.load();
+                          el.play().then(() => { el.muted = false; }).catch(() => {});
+                        }
+                      }}
+                      onLoadedData={(e) => {
+                        const v = e.currentTarget;
+                        v.play().then(() => { v.muted = false; }).catch(() => {});
+                      }}
                     >
                       Your browser does not support the video tag.
                     </video>

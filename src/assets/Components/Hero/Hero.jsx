@@ -4,8 +4,11 @@ import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/Word at work.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
-import teevablaze from '../../images/TEEVABLAZE (1).png';
 import wholeness from '../../images/Wholeness (1).png';
+import teevablazeBanner from '../../images/teevablaze_banner.jpg';
+import voiceOfPraise from '../../images/voice_of_praise.jpg';
+import healthyLiving from '../../images/healthy_living.jpg';
+import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -13,11 +16,14 @@ const Hero = () => {
 
   const slides = [
     { id: 0, image: theTrumpet, title: 'The Trumpet' },
-    { id: 1, image: wordAtWork, title: 'Word At Work' },
-    { id: 2, image: craftingFaith, title: 'Crafting Faith' },
-    { id: 3, image: moneyMatters, title: 'Money Matters' },
-    { id: 4, image: teevablaze, title: 'TEEV-Blaze' },
-    { id: 6, image: wholeness, title: 'Wholeness with Dr. Prashanti' }
+    { id: 1, image: teevablazeBanner, title: 'TEEVABLAZE' },
+    { id: 2, image: voiceOfPraise, title: 'Voice of Praise' },
+    { id: 3, image: wordAtWork, title: 'Word At Work' },
+    { id: 4, image: healthyLiving, title: 'Healthy Living' },
+    { id: 5, image: timelessParagonNew, title: 'Timeless Paragon' },
+    { id: 6, image: craftingFaith, title: 'Crafting Faith' },
+    { id: 7, image: moneyMatters, title: 'Money Matters' },
+    { id: 8, image: wholeness, title: 'Wholeness with Dr. Prashanti' }
   ];
 
   // Auto-play slider every 4 seconds (pauses on user hover)

@@ -1,9 +1,9 @@
 .hero-slider {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
+  height: calc(86vh + 80px);
+  min-height: calc(86vh + 80px);
+  max-height: calc(86vh + 80px);
   margin-top: -80px;
   overflow: hidden;
   background-color: #050507;
@@ -19,7 +19,7 @@
   height: 100%;
   flex-shrink: 0;
   background-size: cover;
-  background-position: center 50%;
+  background-position: center 22%;
   background-repeat: no-repeat;
   background-color: #050507;
   position: relative;

@@ -1,6 +1,6 @@
 .features-section {
   background-color: var(--bg-dark);
-  padding: 120px 0 100px 0;
+  padding: 15px 0 100px 0;
   width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -24,7 +24,7 @@
   color: var(--accent-gold);
   text-transform: uppercase;
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .features-title {

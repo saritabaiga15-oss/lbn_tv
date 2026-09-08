@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './ImageGallery.css';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/Word at work.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
-import teevablaze from '../../images/TEEVABLAZE (1).png';
+import teevablaze from '../../images/teevablaze_banner.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
-import timelessParagon from '../../images/timeless_paragon.jpg';
+import timelessParagon from '../../images/timeless_paragon_new.jpg';
 import prayWithMe from '../../images/pray_with_me.jpg';
 
 const ImageGallery = ({ onNavigateProgrammes }) => {
@@ -17,9 +17,9 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
     { id: 1, src: theTrumpet, video: '/Videos/THE_TRUMPET_NEW.mp4', title: 'The Trumpet – Deacon Vijay Bansode', category: 'TALK SHOWS', caption: 'Inspiring insights and prophetic conversations on faith, ministry, and current events.' },
     { id: 2, src: wordAtWork, video: '/Videos/TheWordAtWork.mp4', title: 'Word At Work – Studio Broadcast', category: 'TALK SHOWS', caption: 'Inspired, equipped, and empowered — panel discussions exploring God’s Word in action.' },
     { id: 3, src: craftingFaith, title: 'Crafting Faith – Studio & Creative Show', category: 'PROGRAMMES', caption: 'Create · Believe · Inspire — faith through art and hands-on creativity.' },
-    { id: 4, src: moneyMatters, title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship, financial intelligence, and freedom on LBN.' },
-    { id: 5, src: teevablaze, title: 'TEEV-Blaze – Youth Broadcast', category: 'TEENS & YOUTH', caption: 'Dynamic faith, contemporary discussions, and youth inspiration.' },
-    { id: 7, src: drPrashanti, title: 'Wholeness with Dr. Prashanti', category: 'HEALTH', caption: 'Mind · Body · Purpose — divine health and vitality from a faith-filled perspective.' },
+    { id: 4, src: moneyMatters, video: '/Videos/MoneyMatters.mp4', title: 'Money Matters – Biblical Wisdom', category: 'PROGRAMMES', caption: 'Biblical stewardship, financial intelligence, and freedom on LBN.' },
+    { id: 5, src: teevablaze,video: '/Videos/Teevablaze.mp4', title: 'TEEV-Blaze – Youth Broadcast', category: 'TEENS & YOUTH', caption: 'Dynamic faith, contemporary discussions, and youth inspiration.' },
+    { id: 7, src: drPrashanti, video: '/Videos/WholenessWithDrPrashanti.mp4', title: 'Wholeness with Dr. Prashanti', category: 'HEALTH', caption: 'Mind · Body · Purpose — divine health and vitality from a faith-filled perspective.' },
     { id: 8, src: igniteImg, video: '/Videos/Ignite.mp4', title: 'Ignite Show – Youth & Culture', category: 'TEENS & YOUTH', caption: 'Exploring the intersection of youth culture, adolescence, and vibrant faith.' },
     { id: 9, src: timelessParagon, video: '/Videos/TIMELESS.mp4', title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
     { id: 10, src: prayWithMe, title: 'Pray With Me – Global Intercession', category: 'PRAYER', caption: 'Lifting nations in fervent prayer and spiritual intercession across the globe.' }
@@ -121,8 +121,23 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
                   poster={selectedImage.src}
                   controls
                   autoPlay
+                  muted
+                  loop
                   playsInline
+                  preload="auto"
                   className="lightbox-video-player"
+                  ref={(el) => {
+                    if (el) {
+                      el.muted = true;
+                      el.playsInline = true;
+                      el.load();
+                      el.play().then(() => { el.muted = false; }).catch(() => {});
+                    }
+                  }}
+                  onLoadedData={(e) => {
+                    const v = e.currentTarget;
+                    v.play().then(() => { v.muted = false; }).catch(() => {});
+                  }}
                 >
                   Your browser does not support the video tag.
                 </video>
