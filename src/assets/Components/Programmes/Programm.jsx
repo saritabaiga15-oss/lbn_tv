@@ -136,23 +136,13 @@ const Programmes = () => {
       tagline: 'Create · Believe · Inspire — faith through art and craft.',
       description: 'Inspiring craft workshops where faith and creativity unite. Create, believe, and inspire through practical artistic projects and scripture insights.'
     },
-    // {
-    //   id: 9,
-    //   title: 'MONEY MATTERS',
-    //   category: 'TALK SHOWS',
-    //   image: moneyMatters,
-    //   video: '/Videos/MoneyMatters.mp4',
-    //   schedule: 'Mondays at 7:00 PM',
-    //   duration: '45 mins',
-    //   tagline: 'Biblical wisdom for financial growth.',
-    //   description: 'Practical insights and spiritual guidance on stewardship, financial intelligence, and prosperity according to biblical principles.'
-    // },
+  
     {
       id: 9,
       title: 'MONEY MATTERS',
       category: 'TALK SHOWS',
       image: moneyMatters,
-      video: '/Videos/Ignite.mp4',
+      video: '/Videos/MoneyMatters.mp4',
       schedule: 'Mondays at 7:00 PM',
       duration: '45 mins',
       tagline: 'Biblical wisdom for financial growth.',
