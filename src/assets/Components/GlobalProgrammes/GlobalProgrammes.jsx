@@ -1,6 +1,6 @@
 import React from 'react';
 import './GlobalProgrammes.css';
-import globalCommunion from '../../images/global_communion.png';
+import globalCommunion from '../../images/Growth.PNG';
 import praiseNight27 from '../../images/praise_night_27.jpg';
 
 const GlobalPrograms = () => {

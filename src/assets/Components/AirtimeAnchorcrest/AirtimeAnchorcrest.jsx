@@ -472,7 +472,7 @@ const AirtimeAnchorcrest = () => {
                   <div className="bank-data-row">
                     <div className="bank-data-label">Branch</div>
                     <div className="bank-data-value-group">
-                      <span className="bank-data-val">Kalyani Nagar Branch Pune</span>
+                      <span className="bank-data-val">Kalyani Nagar</span>
                     </div>
                   </div>
 

@@ -9,7 +9,6 @@ import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
 import voiceOfPraise from '../../images/voice_of_praise.jpg';
 import healthyLiving from '../../images/healthy_living.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
-import prayWithMe from '../../images/pray_with_me.jpg';
 import igniteImg from '../../images/YOUTHIgnite.png';
 
 const Programmes = () => {
@@ -105,17 +104,6 @@ const Programmes = () => {
       description: 'Inspiring health, wellness, and divine vitality from a faith-filled perspective with Dr. Prashanti, equipping you to live in wholeness across mind, body, and purpose.'
     },
     {
-      id: 5,
-      title: 'PRAY WITH ME – GLOBAL INTERCESSION',
-      category: 'PRAYER',
-      image: prayWithMe,
-      schedule: 'Thursdays at 12:00 PM',
-      duration: '30 mins',
-      tagline: 'Fervent prayer shaking the nations.',
-      description: 'Lifting nations, families, and churches in fervent prayer and spiritual intercession across the globe alongside devoted prayer leaders.'
-    },
-
-    {
       id: 7,
       title: 'IGNITE SHOW',
       category: 'TEENS & YOUTH',
@@ -174,6 +162,7 @@ const Programmes = () => {
       title: 'HEALTHY LIVING',
       category: 'HEALTH',
       image: healthyLiving,
+      video: '/Videos/HL INTRO.mp4',
       schedule: 'Weekly on LBN',
       duration: '30 mins',
       tagline: 'Faith, wellness, and wholeness.',

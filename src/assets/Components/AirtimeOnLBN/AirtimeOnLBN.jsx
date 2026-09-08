@@ -12,13 +12,10 @@ const AirtimeOnLBN = () => {
             AIRTIME ON <span className="gold-gradient-text">LBN</span>
           </h1>
           <p className="airtime-hero-desc">
-            Broadcast your ministry programs, commercial messages, and live events to millions of homes across India, Asia, and globally on the Loveworld Broadcasting Network satellite and digital channels.
+            Loveworld Broadcasting Network
           </p>
           <div className="airtime-hero-btns">
-            <a href="tel:+919529607156" className="airtime-primary-btn">
-              <span>📞 CALL BROADCAST TEAM</span>
-            </a>
-            <a href="https://wa.me/919529607156" target="_blank" rel="noopener noreferrer" className="airtime-secondary-btn">
+            <a href="tel:+919529607156" className="airtime-secondary-btn">
               <span>📞 CALL US</span>
             </a>
           </div>
@@ -51,7 +48,7 @@ const AirtimeOnLBN = () => {
                     <span className="c-icon">💬</span>
                     <div>
                       <strong>SMS:</strong>{' '}
-                      <a href="https://wa.me/919529607156" target="_blank" rel="noopener noreferrer">+91 9529607156</a>
+                      <a href="sms:+919529607156">+91 9529607156</a>
                     </div>
                   </div>
                   <div className="contact-item">

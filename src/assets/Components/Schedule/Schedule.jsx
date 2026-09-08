@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Schedule.css';
 import pastorChrisTeaching from '../../images/pastor_chris_teaching.png';
 import rhapsodyTv from '../../images/rhapsody_tv.png';
@@ -21,11 +21,38 @@ import wordAtWork from '../../images/Word at work.png';
 import praiseWorship from '../../images/praise_worship_live.jpg';
 import documentaryStudio from '../../images/documentary_studio.png';
 
+const getIndiaNow = () => {
+  const now = new Date();
+  const indiaOffset = 5.5 * 60 * 60 * 1000;
+  return new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + indiaOffset);
+};
+
+const getSlotStartMinutes = (time) => {
+  const [hours, minutes] = time.split(/[: ]/).map(Number);
+  const isPm = time.includes('PM');
+  const normalizedHours = hours === 12 ? 0 : hours;
+  return (normalizedHours + (isPm ? 12 : 0)) * 60 + minutes;
+};
+
+const getIndiaDay = () => getIndiaNow().toLocaleDateString('en-US', { weekday: 'long' });
+
+const getCurrentSlot = (slots, currentMinutes) => slots.find((slot) => {
+  const startMinutes = getSlotStartMinutes(slot.time);
+  const durationMinutes = parseInt(slot.duration, 10);
+  return currentMinutes >= startMinutes && currentMinutes < startMinutes + durationMinutes;
+});
+
 const Schedule = () => {
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const [selectedDay, setSelectedDay] = useState('Friday');
+  const [selectedDay, setSelectedDay] = useState(getIndiaDay);
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [reminderSet, setReminderSet] = useState({});
+  const [currentTime, setCurrentTime] = useState(getIndiaNow);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => setCurrentTime(getIndiaNow()), 30000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   const categories = ['ALL', 'WORSHIP', 'TEACHING', 'HEALING', 'TEENS & KIDS', 'ROR', 'TALK SHOWS', 'SPECIALS'];
 
@@ -216,6 +243,10 @@ const Schedule = () => {
   };
 
   const currentList = scheduleData[selectedDay] || [];
+  const currentDay = currentTime.toLocaleDateString('en-US', { weekday: 'long' });
+  const currentSlot = selectedDay === currentDay
+    ? getCurrentSlot(currentList, currentTime.getHours() * 60 + currentTime.getMinutes())
+    : null;
   const filteredList = activeCategory === 'ALL'
     ? currentList
     : currentList.filter(item => item.category === activeCategory);
@@ -265,16 +296,17 @@ const Schedule = () => {
           {filteredList.map((slot, index) => {
             const slotId = `${selectedDay}-${index}`;
             const isReminder = reminderSet[slotId];
+            const isLive = slot.live && slot === currentSlot;
 
             return (
-              <div key={index} className={`epg-slot-card ${slot.live ? 'is-live' : ''}`}>
+              <div key={index} className={`epg-slot-card ${isLive ? 'is-live' : ''}`}>
                 <div className="epg-slot-time-col">
                   <span className="slot-time">{slot.time}</span>
                   <span className="slot-duration">{slot.duration}</span>
                 </div>
 
                 <div className="epg-slot-img-col" style={{ backgroundImage: `url("${slot.image}")` }}>
-                  {slot.live && <span className="live-pill">&bull; LIVE NOW</span>}
+                  {isLive && <span className="live-pill">&bull; LIVE NOW</span>}
                 </div>
 
                 <div className="epg-slot-info-col">

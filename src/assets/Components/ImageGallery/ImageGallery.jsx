@@ -8,7 +8,6 @@ import teevablaze from '../../images/teevablaze_banner.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
 import timelessParagon from '../../images/timeless_paragon_new.jpg';
-import prayWithMe from '../../images/pray_with_me.jpg';
 
 const ImageGallery = ({ onNavigateProgrammes }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -21,8 +20,7 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
     { id: 5, src: teevablaze,video: '/Videos/Teevablaze.mp4', title: 'TEEV-Blaze – Youth Broadcast', category: 'TEENS & YOUTH', caption: 'Dynamic faith, contemporary discussions, and youth inspiration.' },
     { id: 7, src: drPrashanti, video: '/Videos/WholenessWithDrPrashanti.mp4', title: 'Wholeness with Dr. Prashanti', category: 'HEALTH', caption: 'Mind · Body · Purpose — divine health and vitality from a faith-filled perspective.' },
     { id: 8, src: igniteImg, video: '/Videos/Ignite.mp4', title: 'Ignite Show – Youth & Culture', category: 'TEENS & YOUTH', caption: 'Exploring the intersection of youth culture, adolescence, and vibrant faith.' },
-    { id: 9, src: timelessParagon, video: '/Videos/TIMELESS.mp4', title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' },
-    { id: 10, src: prayWithMe, title: 'Pray With Me – Global Intercession', category: 'PRAYER', caption: 'Lifting nations in fervent prayer and spiritual intercession across the globe.' }
+    { id: 9, src: timelessParagon, video: '/Videos/TIMELESS.mp4', title: 'Timeless Paragon – Kids Show', category: 'KIDS', caption: 'Fun, engaging studio episodes empowering children with scripture wisdom and faith values.' }
   ];
 
   // All items visible in horizontal scroll row

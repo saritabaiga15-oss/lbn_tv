@@ -244,7 +244,7 @@ const OneTimeGift = () => {
                     <p><strong>Account No:</strong> 923010049345208</p>
                     <p><strong>IFSC Code:</strong> UTIB0000269</p>
                     <p><strong>Bank:</strong> Axis Bank</p>
-                    <p><strong>Branch:</strong> Kalyani Nagar Branch Pune</p>
+                    <p><strong>Branch:</strong> Kalyani Nagar</p>
                   </div>
                 </div>
 

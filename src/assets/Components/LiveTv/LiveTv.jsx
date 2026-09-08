@@ -208,6 +208,13 @@ const getNowNext = () => {
   return { current, next, nextStartMins: next ? slotToMins(next.time) : null, upcoming };
 };
 
+const getChannelStatus = (epgState, matches) => {
+  const matchesProgram = (program) => program && matches.some((match) => program.title.toLowerCase().includes(match));
+  if (epgState.current?.live && matchesProgram(epgState.current)) return 'live';
+  if (epgState.upcoming.some((program) => program.live && matchesProgram(program))) return 'upcoming';
+  return null;
+};
+
 const LiveTv = ({ onNavigate }) => {
   const videoRef = useRef(null);
   const playerContainerRef = useRef(null);
@@ -286,6 +293,12 @@ const LiveTv = ({ onNavigate }) => {
   };
 
   const { current } = epgState;
+  const channelStatuses = {
+    trumpet: getChannelStatus(epgState, ['trumpet']),
+    prayer: getChannelStatus(epgState, ['pray with me']),
+    healing: getChannelStatus(epgState, ['healing streams']),
+    specials: getChannelStatus(epgState, ['yourloveworld', 'loveworld specials'])
+  };
 
   return (
     <div className="live-tv-page">
@@ -418,7 +431,7 @@ const LiveTv = ({ onNavigate }) => {
             <div className="channel-card active">
               <div className="channel-img-wrap">
                 <img src={theTrumpet} alt="LoveWorld India Live" className="channel-img" />
-                <span className="channel-badge live">🔴 LIVE</span>
+                {channelStatuses.trumpet && <span className={`channel-badge ${channelStatuses.trumpet}`}>🔴 {channelStatuses.trumpet.toUpperCase()}</span>}
               </div>
               <div className="channel-info">
                 <span className="channel-cat">TALK SHOWS</span>
@@ -430,7 +443,7 @@ const LiveTv = ({ onNavigate }) => {
             <div className="channel-card">
               <div className="channel-img-wrap">
                 <img src={prayWithMe} alt="Pray With Me Live" className="channel-img" />
-                <span className="channel-badge live">🔴 LIVE</span>
+                {channelStatuses.prayer && <span className={`channel-badge ${channelStatuses.prayer}`}>🔴 {channelStatuses.prayer.toUpperCase()}</span>}
               </div>
               <div className="channel-info">
                 <span className="channel-cat">PRAYER</span>
@@ -442,7 +455,7 @@ const LiveTv = ({ onNavigate }) => {
             <div className="channel-card">
               <div className="channel-img-wrap">
                 <img src={healingStreams} alt="Healing Streams Upcoming" className="channel-img" />
-                <span className="channel-badge upcoming">🔴 UPCOMING</span>
+                {channelStatuses.healing && <span className={`channel-badge ${channelStatuses.healing}`}>🔴 {channelStatuses.healing.toUpperCase()}</span>}
               </div>
               <div className="channel-info">
                 <span className="channel-cat">HEALING</span>
@@ -454,7 +467,7 @@ const LiveTv = ({ onNavigate }) => {
             <div className="channel-card">
               <div className="channel-img-wrap">
                 <img src={praiseAThon} alt="Your Loveworld Praise-A-Thon" className="channel-img" />
-                <span className="channel-badge upcoming">🔴 UPCOMING</span>
+                {channelStatuses.specials && <span className={`channel-badge ${channelStatuses.specials}`}>🔴 {channelStatuses.specials.toUpperCase()}</span>}
               </div>
               <div className="channel-info">
                 <span className="channel-cat">TEACHING</span>

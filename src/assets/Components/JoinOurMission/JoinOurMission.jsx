@@ -311,7 +311,7 @@ const JoinOurMission = () => {
                     </div>
                     <div className="bank-item full-width">
                       <span className="bank-lbl">Branch</span>
-                      <span className="bank-val">Kalyani Nagar Branch Pune</span>
+                      <span className="bank-val">Kalyani Nagar</span>
                     </div>
                   </div>
                 </div>

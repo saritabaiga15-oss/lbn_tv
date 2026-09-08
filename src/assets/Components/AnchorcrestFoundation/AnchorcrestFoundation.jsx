@@ -31,6 +31,29 @@ const AnchorcrestFoundation = () => {
     setTimeout(() => setCopiedField(null), 2500);
   };
 
+  const downloadReceipt = () => {
+    const amount = customAmount || selectedTier || '0';
+    const receipt = [
+      'ANCHORCREST FOUNDATION',
+      'SPONSORSHIP RECEIPT',
+      '',
+      `Amount: INR ${Number(amount).toLocaleString('en-IN')}`,
+      '',
+      'Account Name: ANCHORCREST FOUNDATION',
+      'Account Number: 923010049345208',
+      'Bank: AXIS BANK',
+      'Branch: Kalyani Nagar',
+      'IFSC Code: UTIB0000269'
+    ].join('\n');
+    const receiptBlob = new Blob([receipt], { type: 'text/plain;charset=utf-8' });
+    const receiptUrl = URL.createObjectURL(receiptBlob);
+    const link = document.createElement('a');
+    link.href = receiptUrl;
+    link.download = 'anchorcrest-foundation-receipt.txt';
+    link.click();
+    URL.revokeObjectURL(receiptUrl);
+  };
+
   const courses = [
     {
       id: 1,
@@ -439,10 +462,10 @@ const AnchorcrestFoundation = () => {
                 <div className="bank-row-card">
                   <div className="b-label">ACCOUNT NAME</div>
                   <div className="b-val-group">
-                    <span className="b-val highlight">LOVEWORLD BROADCASTING NETWORK INDIA PRIVATE LIMITED</span>
+                    <span className="b-val highlight">ANCHORCREST FOUNDATION</span>
                     <button
                       className={`copy-btn ${copiedField === 'name' ? 'copied' : ''}`}
-                      onClick={() => copyToClipboard('LOVEWORLD BROADCASTING NETWORK INDIA PRIVATE LIMITED', 'name')}
+                      onClick={() => copyToClipboard('ANCHORCREST FOUNDATION', 'name')}
                     >
                       {copiedField === 'name' ? '✓ Copied' : 'Copy'}
                     </button>
@@ -452,10 +475,10 @@ const AnchorcrestFoundation = () => {
                 <div className="bank-row-card">
                   <div className="b-label">BANK NAME</div>
                   <div className="b-val-group">
-                    <span className="b-val">HDFC BANK</span>
+                    <span className="b-val">AXIS BANK</span>
                     <button
                       className={`copy-btn ${copiedField === 'bank' ? 'copied' : ''}`}
-                      onClick={() => copyToClipboard('HDFC BANK', 'bank')}
+                      onClick={() => copyToClipboard('AXIS BANK', 'bank')}
                     >
                       {copiedField === 'bank' ? '✓ Copied' : 'Copy'}
                     </button>
@@ -465,10 +488,10 @@ const AnchorcrestFoundation = () => {
                 <div className="bank-row-card">
                   <div className="b-label">ACCOUNT NUMBER</div>
                   <div className="b-val-group">
-                    <span className="b-val mono-num">50200085444983</span>
+                    <span className="b-val mono-num">923010049345208</span>
                     <button
                       className={`copy-btn ${copiedField === 'acc' ? 'copied' : ''}`}
-                      onClick={() => copyToClipboard('50200085444983', 'acc')}
+                      onClick={() => copyToClipboard('923010049345208', 'acc')}
                     >
                       {copiedField === 'acc' ? '✓ Copied' : 'Copy'}
                     </button>
@@ -478,10 +501,10 @@ const AnchorcrestFoundation = () => {
                 <div className="bank-row-card">
                   <div className="b-label">IFSC CODE</div>
                   <div className="b-val-group">
-                    <span className="b-val mono-num">HDFC0000080</span>
+                    <span className="b-val mono-num">UTIB0000269</span>
                     <button
                       className={`copy-btn ${copiedField === 'ifsc' ? 'copied' : ''}`}
-                      onClick={() => copyToClipboard('HDFC0000080', 'ifsc')}
+                      onClick={() => copyToClipboard('UTIB0000269', 'ifsc')}
                     >
                       {copiedField === 'ifsc' ? '✓ Copied' : 'Copy'}
                     </button>
@@ -491,23 +514,17 @@ const AnchorcrestFoundation = () => {
                 <div className="bank-row-card">
                   <div className="b-label">BRANCH</div>
                   <div className="b-val-group">
-                    <span className="b-val">PUNE</span>
+                    <span className="b-val">Kalyani Nagar</span>
                   </div>
                 </div>
 
               </div>
 
-              {/* WhatsApp Payment Reference Confirmation */}
-              <div className="whatsapp-receipt-box">
-                <a
-                  href={`https://wa.me/919529607156?text=Hello%20Anchorcrest%20Foundation,%20I%20have%20sponsored%20₹${activeAmount || '5000'}%20for%20the%20Youth%20Media%20Training%20Program.%20Here%20is%20my%20sponsorship%20receipt/reference.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="wa-confirm-btn"
-                >
-                  <span>Receipt </span>
-                </a>
-                <span className="wa-help-note">
+              <div className="receipt-download-box">
+                <button type="button" onClick={downloadReceipt} className="receipt-download-btn">
+                  Receipt Download
+                </button>
+                <span className="receipt-help-note">
                   Click to notify our foundation coordinator for your official acknowledgement and certificate of sponsorship.
                 </span>
               </div>
