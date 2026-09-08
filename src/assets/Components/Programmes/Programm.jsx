@@ -20,6 +20,7 @@ const Programmes = () => {
   );
   const [bgMuted, setBgMuted] = useState(true);
   const bgVideoRef = useRef(null);
+  const promoVideoRef = useRef(null);
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
@@ -331,24 +332,10 @@ const Programmes = () => {
                       src={selectedShow.video}
                       poster={selectedShow.image}
                       controls
-                      autoPlay
-                      muted
-                      loop
                       playsInline
-                      preload="auto"
+                      preload="metadata"
                       className="programmes-modal-video-player"
-                      ref={(el) => {
-                        if (el) {
-                          el.muted = true;
-                          el.playsInline = true;
-                          el.load();
-                          el.play().then(() => { el.muted = false; }).catch(() => {});
-                        }
-                      }}
-                      onLoadedData={(e) => {
-                        const v = e.currentTarget;
-                        v.play().then(() => { v.muted = false; }).catch(() => {});
-                      }}
+                      ref={promoVideoRef}
                     >
                       Your browser does not support the video tag.
                     </video>
@@ -375,10 +362,12 @@ const Programmes = () => {
                     <button
                       className="programmes-modal-action-watch"
                       onClick={() => {
-                        const v = document.querySelector('.programmes-modal-video-player');
+                        const v = promoVideoRef.current;
                         if (v) {
                           v.currentTime = 0;
-                          v.play();
+                          v.play().catch((error) => {
+                            console.error('Unable to play programme promo:', error);
+                          });
                         }
                       }}
                     >
