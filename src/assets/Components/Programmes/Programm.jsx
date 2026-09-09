@@ -120,6 +120,7 @@ const Programmes = () => {
       title: 'CRAFTING FAITH',
       category: 'TALK SHOWS',
       image: craftingFaith,
+      video: '/CRAFTING%20FAITH.mp4',
       schedule: 'Wednesdays at 4:00 PM',
       duration: '30 mins',
       tagline: 'Create · Believe · Inspire — faith through art and craft.',
