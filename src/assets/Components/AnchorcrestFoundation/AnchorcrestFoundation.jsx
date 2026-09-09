@@ -15,8 +15,7 @@ import Voiceover from '../../images/Voiceover.png';
 import VideoPresenter from '../../images/VideoPresenter.jpeg';
 import TechPodcast from '../../images/Tech&Podcast.png';
 import SocialMedia from '../../images/SocialMedia.jpeg';
-// Makeupartist image not yet uploaded - card will show emoji icon instead
-
+import Makeupartist from '../../images/Makeupartist.jpeg';
 
 const AnchorcrestFoundation = () => {
   const [selectedTier, setSelectedTier] = useState('5000');
