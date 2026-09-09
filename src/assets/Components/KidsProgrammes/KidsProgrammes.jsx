@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './KidsProgrammes.css';
-import image2 from '../../images/image2.png';
-import image3 from '../../images/image3.png';
-import image4 from '../../images/image4.png';
+import rhapsodyTv from '../../images/rhapsody_tv.png';
+import lovetoons from '../../images/lovetoons.png';
+import gyTv from '../../images/gytv.png';
 
 const KidsProgrammes = () => {
   const [selectedKidShow, setSelectedKidShow] = useState(null);
@@ -12,7 +12,7 @@ const KidsProgrammes = () => {
       id: 1,
       title: 'KIDDIES RHAPSODY SHOW',
       subtitle: 'Faith Foundations for Kids',
-      image: image2,
+      image: rhapsodyTv,
       schedule: 'Fridays at 3:00 PM',
       duration: '45 mins',
       tagline: 'Growing in grace and scripture wisdom.',
@@ -22,7 +22,7 @@ const KidsProgrammes = () => {
       id: 2,
       title: 'BIBLE ADVENTURES',
       subtitle: '3D Animated Scripture Stories',
-      image: image3,
+      image: lovetoons,
       schedule: 'Thursdays at 3:00 PM',
       duration: '60 mins',
       tagline: 'Heroes of faith come to life.',
@@ -32,7 +32,7 @@ const KidsProgrammes = () => {
       id: 3,
       title: 'JOYFUL KIDS CHOIR',
       subtitle: 'Praises & Music Lessons',
-      image: image4,
+      image: gyTv,
       schedule: 'Wednesdays at 3:00 PM',
       duration: '45 mins',
       tagline: 'Singing praise with pure joy.',

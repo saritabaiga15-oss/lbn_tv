@@ -520,14 +520,6 @@ const AnchorcrestFoundation = () => {
 
               </div>
 
-              <div className="receipt-download-box">
-                <button type="button" onClick={downloadReceipt} className="receipt-download-btn">
-                  Receipt Download
-                </button>
-                <span className="receipt-help-note">
-                  Click to notify our foundation coordinator for your official acknowledgement and certificate of sponsorship.
-                </span>
-              </div>
             </div>
 
           </div>
