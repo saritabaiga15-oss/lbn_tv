@@ -318,7 +318,6 @@ const LiveTv = ({ onNavigate }) => {
               <span className="live-pulse-dot"></span>
               <span className="live-text">LIVE</span>
             </div>
-            <span className="live-channel-name">LOVEWORLD INDIA LBNTV</span>
           </div>
 
           {/* Custom Bottom Control Bar */}

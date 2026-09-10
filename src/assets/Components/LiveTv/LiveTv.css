@@ -125,18 +125,6 @@
   color: #ffffff;
 }
 
-.live-channel-name {
-  font-family: var(--font-title, 'Oswald', sans-serif);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(0, 0, 0, 0.5);
-  padding: 4px 12px;
-  border-radius: 14px;
-  backdrop-filter: blur(6px);
-}
-
 /* Bottom Player Controls */
 .live-player-controls {
   position: absolute;
