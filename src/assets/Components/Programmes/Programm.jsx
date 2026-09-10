@@ -10,6 +10,7 @@ import voiceOfPraise from '../../images/voice_of_praise.jpg';
 import healthyLiving from '../../images/healthy_living.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
+import justBelieveBanner from '../../images/Just_believe_banner .png';
 
 const Programmes = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
@@ -169,6 +170,16 @@ const Programmes = () => {
       duration: '30 mins',
       tagline: 'Faith, wellness, and wholeness.',
       description: 'Practical guidance on nutrition, natural health, and holistic wellness from a faith-based perspective — inspiring viewers to live well in spirit, soul, and body.'
+    },
+    {
+      id: 13,
+      title: 'JUST BELIEVE',
+      category: 'TALK SHOWS',
+      image: justBelieveBanner,
+      schedule: 'Weekly on LBN',
+      duration: '30 mins',
+      tagline: 'Faith that inspires hope and action.',
+      description: 'An uplifting programme encouraging viewers to trust God, strengthen their faith, and believe for the possibilities ahead.'
     }
   ];
 

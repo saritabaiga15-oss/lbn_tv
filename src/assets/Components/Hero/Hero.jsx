@@ -7,8 +7,11 @@ import moneyMatters from '../../images/MONEY MATTERS (1).png';
 import wholeness from '../../images/Wholeness (1).png';
 import teevablazeBanner from '../../images/teevablaze_banner.jpg';
 import voiceOfPraise from '../../images/voice_of_praise.jpg';
+import ETHS from '../../images/ETHS.png';
 import healthyLiving from '../../images/healthy_living.jpg';
 import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
+import Pst_Chris_Teaching1 from '../../images/Pst_Chris_Teaching1.jpg';
+import Just_believe_banner from '../../images/Just_believe_banner .png';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,11 +22,15 @@ const Hero = () => {
     { id: 1, image: teevablazeBanner, title: 'TEEVABLAZE' },
     { id: 2, image: voiceOfPraise, title: 'Voice of Praise' },
     { id: 3, image: wordAtWork, title: 'Word At Work' },
-    { id: 4, image: healthyLiving, title: 'Healthy Living' },
+    {id:  4, image: Pst_Chris_Teaching1, title: 'Pastor Chris Teaching'},
     { id: 5, image: timelessParagonNew, title: 'Timeless Paragon' },
     { id: 6, image: craftingFaith, title: 'Crafting Faith' },
     { id: 7, image: moneyMatters, title: 'Money Matters' },
-    { id: 8, image: wholeness, title: 'Wholeness with Dr. Prashanti' }
+    { id: 8, image: ETHS, title: 'ETHS' },
+    { id: 9, image: wholeness, title: 'Wholeness with Dr. Prashanti' },
+    { id: 10, image: Just_believe_banner, title: 'Just Believe' },
+    { id: 11, image: healthyLiving, title: 'Healthy Living' }
+   
   ];
 
   // Auto-play slider every 4 seconds (pauses on user hover)
