@@ -57,7 +57,7 @@ const Programmes = () => {
     };
   }, []);
 
-  const filters = ['ALL', 'TALK SHOWS', 'PRAYER', 'HEALTH', 'TEENS & YOUTH', 'KIDS',];
+  const filters = ['ALL', 'TALK SHOWS','HEALTH', 'WORSHIP', 'TEENS & YOUTH', 'KIDS',];
 
   const programList = [
     {
@@ -152,7 +152,7 @@ const Programmes = () => {
     {
       id: 11,
       title: 'VOICE OF PRAISE',
-      category: 'TALK SHOWS',
+      category: 'WORSHIP',
       image: voiceOfPraise,
       schedule: 'Weekly on LBN',
       duration: '30 mins',
