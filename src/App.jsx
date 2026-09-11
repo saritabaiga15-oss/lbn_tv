@@ -18,6 +18,7 @@ import AnchorcrestFoundation from "./assets/Components/AnchorcrestFoundation/Anc
 import LiveTv from "./assets/Components/LiveTv/LiveTv";
 import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
+import VOD from "./assets/Components/VOD/VOD";
 // import ChatWidget from "./assets/Components/Chatbot/Chatbot";
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
         {activeTab === 'one-time-gift' && <OneTimeGift />}
         {activeTab === 'airtime-on-lbn' && <AirtimeOnLBN />}
         {activeTab === 'anchorcrest-foundation' && <AnchorcrestFoundation />}
+        {activeTab === 'vod' && <VOD />}
       </main>
       <Footer onNavigate={handleNavigate} />
       {/* <ChatWidget onNavigate={handleChatNavigate} /> */}

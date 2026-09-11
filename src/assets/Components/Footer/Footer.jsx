@@ -79,29 +79,6 @@ const Footer = ({ onNavigate }) => {
   return (
     <footer className="site-footer">
       <div id="contacts" className="footer-card-container">
-        {/* Top: Partner with us */}
-        <div className="footer-top">
-          <h2 className="footer-partner-title">Partner with us</h2>
-          <div className="footer-social-circles">
-            {socials.map((social) => (
-              <a 
-                key={social.id} 
-                href={social.url} 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-circle-link" 
-                aria-label={`Follow us on ${social.name}`}
-              >
-                <div className="social-circle-button">
-                  {social.icon}
-                </div>
-                <span className="social-circle-name">{social.name}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <hr className="footer-divider" />
 
         {/* Middle: Details & Links columns */}
         <div className="footer-middle">
@@ -142,56 +119,78 @@ const Footer = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Links Columns */}
-          <div className="footer-links-layout">
-            <div className="footer-links-col">
-              <ul>
-                <li>
-                  <a href="#home" onClick={(e) => handleLinkClick(e, 'home')}>
-                    Homepage
-                  </a>
-                </li>
-                <li>
-                  <a href="#about-us" onClick={(e) => handleLinkClick(e, 'about-us')}>
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#services" onClick={(e) => handleLinkClick(e, 'services')}>
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a href="#contacts" onClick={(e) => handleLinkClick(e, null, 'contacts')}>
-                    Contacts
-                  </a>
-                </li>
-              </ul>
+          {/* Links Columns + Social Row */}
+          <div className="footer-links-stack">
+            <div className="footer-links-layout">
+              <div className="footer-links-col">
+                <ul>
+                  <li>
+                    <a href="#home" onClick={(e) => handleLinkClick(e, 'home')}>
+                      Homepage
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#about-us" onClick={(e) => handleLinkClick(e, 'about-us')}>
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#services" onClick={(e) => handleLinkClick(e, 'services')}>
+                      Services
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#contacts" onClick={(e) => handleLinkClick(e, null, 'contacts')}>
+                      Contacts
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="footer-links-col">
+                <ul>
+                  <li>
+                    <a href="#gallery" onClick={(e) => handleLinkClick(e, 'home', 'gallery')}>
+                      Gallery
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#faq" onClick={(e) => handleLinkClick(e, 'home', 'faq')}>
+                      FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#anchorcrest-foundation" onClick={(e) => handleLinkClick(e, 'anchorcrest-foundation')}>
+                      Anchorcrest Foundation
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#airtime-on-lbn" onClick={(e) => handleLinkClick(e, 'airtime-on-lbn')}>
+                      Airtime On LBN
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            
-            <div className="footer-links-col">
-              <ul>
-                <li>
-                  <a href="#gallery" onClick={(e) => handleLinkClick(e, 'home', 'gallery')}>
-                    Gallery
+
+            <div className="footer-social-row">
+              <div className="footer-social-circles">
+                {socials.map((social) => (
+                  <a 
+                    key={social.id} 
+                    href={social.url} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-circle-link" 
+                    aria-label={`Follow us on ${social.name}`}
+                  >
+                    <div className="social-circle-button">
+                      {social.icon}
+                    </div>
+                    <span className="social-circle-name">{social.name}</span>
                   </a>
-                </li>
-                <li>
-                  <a href="#faq" onClick={(e) => handleLinkClick(e, 'home', 'faq')}>
-                    FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#anchorcrest-foundation" onClick={(e) => handleLinkClick(e, 'anchorcrest-foundation')}>
-                    Anchorcrest Foundation
-                  </a>
-                </li>
-                <li>
-                  <a href="#airtime-on-lbn" onClick={(e) => handleLinkClick(e, 'airtime-on-lbn')}>
-                    Airtime On LBN
-                  </a>
-                </li>
-              </ul>
+                ))}
+              </div>
             </div>
           </div>
 

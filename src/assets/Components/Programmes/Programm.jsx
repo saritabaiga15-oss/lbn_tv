@@ -12,6 +12,21 @@ import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
 import justBelieveBanner from '../../images/Just_believe_banner .png';
 
+const BG_PROMOS = [
+  { id: 'trumpet', title: 'The Trumpet – Vijay Bansode', src: '/Videos/THE_TRUMPET_NEW.mp4' },
+  { id: 'timeless', title: 'Timeless Paragon – Kids Show', src: '/Videos/TIMELESS.mp4' },
+  { id: 'wordAtWork', title: 'The Word At Work – Studio Broadcast', src: '/Videos/TheWordAtWork.mp4' },
+  { id: 'wholeness', title: 'Wholeness with Dr. Prashanti', src: '/Videos/WholenessWithDrPrashanti.mp4' },
+  { id: 'ignite', title: 'Ignite Show', src: '/Videos/Ignite.mp4' },
+  { id: 'craftingFaith', title: 'Crafting Faith', src: '/CRAFTING%20FAITH.mp4' },
+  { id: 'moneyMatters', title: 'Money Matters', src: '/Videos/MoneyMatters.mp4' },
+  { id: 'teevablaze', title: 'Teevablaze', src: '/Videos/Teevablaze.mp4' },
+  { id: 'healthyLiving', title: 'Healthy Living', src: '/Videos/HL INTRO.mp4' },
+  { id: 'enoch', title: 'LoveWorld India Special', src: '/Videos/ENOCH_PROMO_FINAL.mp4' }
+];
+
+const PROMO_INTERVAL = 20000; // 20 seconds per promo
+
 const Programmes = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [selectedShow, setSelectedShow] = useState(null);
@@ -19,44 +34,189 @@ const Programmes = () => {
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
+
+  // Background promo flash rotation state
+  const [currentPromoIndex, setCurrentPromoIndex] = useState(0);
+  const [activeSlot, setActiveSlot] = useState('A');
+  const [slotASrc, setSlotASrc] = useState(BG_PROMOS[0].src);
+  const [slotBSrc, setSlotBSrc] = useState(BG_PROMOS[1].src);
+  const [isFlashing, setIsFlashing] = useState(false);
   const [bgMuted, setBgMuted] = useState(true);
-  const bgVideoRef = useRef(null);
+
+  const videoRefA = useRef(null);
+  const videoRefB = useRef(null);
+  const sectionRef = useRef(null);
   const promoVideoRef = useRef(null);
+
+  const activeSlotRef = useRef('A');
+  const promoIndexRef = useRef(0);
+  const bgMutedRef = useRef(true);
+  const isSectionVisibleRef = useRef(true);
+
+  useEffect(() => {
+    activeSlotRef.current = activeSlot;
+  }, [activeSlot]);
+
+  useEffect(() => {
+    promoIndexRef.current = currentPromoIndex;
+  }, [currentPromoIndex]);
+
+  useEffect(() => {
+    bgMutedRef.current = bgMuted;
+  }, [bgMuted]);
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // IntersectionObserver to guarantee background video autoplays smoothly when section enters viewport
+  // Initial playback for Slot A - ensure Slot B is strictly muted & paused
   useEffect(() => {
-    const video = bgVideoRef.current;
-    if (!video) return;
+    const videoA = videoRefA.current;
+    const videoB = videoRefB.current;
+    if (videoB) {
+      videoB.muted = true;
+      videoB.pause();
+    }
+    if (videoA) {
+      videoA.muted = bgMutedRef.current;
+      videoA.play().catch(() => {});
+    }
+  }, []);
 
-    video.muted = true;
+  // 10-second promo rotation with strict audio isolation (NO AUDIO MIXING)
+  useEffect(() => {
+    if (selectedShow) return;
+
+    const interval = setInterval(() => {
+      if (!isSectionVisibleRef.current) return;
+
+      const nextIndex = (promoIndexRef.current + 1) % BG_PROMOS.length;
+      const currentSlot = activeSlotRef.current;
+      const targetSlot = currentSlot === 'A' ? 'B' : 'A';
+      const incomingVideo = targetSlot === 'A' ? videoRefA.current : videoRefB.current;
+      const outgoingVideo = currentSlot === 'A' ? videoRefA.current : videoRefB.current;
+
+      // 1. IMMEDIATELY mute and pause outgoing video so audios NEVER mix!
+      if (outgoingVideo) {
+        outgoingVideo.muted = true;
+        outgoingVideo.pause();
+      }
+
+      // 2. Start incoming video with audio strictly according to user's mute state
+      if (incomingVideo) {
+        incomingVideo.currentTime = 0;
+        incomingVideo.muted = bgMutedRef.current;
+        incomingVideo.play().catch((err) => {
+          console.log('Next promo play error:', err);
+        });
+      }
+
+      // 3. Trigger broadcast flash transition
+      setIsFlashing(true);
+      setTimeout(() => setIsFlashing(false), 250);
+
+      // 4. Switch active slot and index
+      setActiveSlot(targetSlot);
+      setCurrentPromoIndex(nextIndex);
+
+      // 5. Preload next promo in the background
+      setTimeout(() => {
+        const preloadIndex = (nextIndex + 1) % BG_PROMOS.length;
+        if (targetSlot === 'B') {
+          setSlotASrc(BG_PROMOS[preloadIndex].src);
+        } else {
+          setSlotBSrc(BG_PROMOS[preloadIndex].src);
+        }
+      }, 500);
+    }, PROMO_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, [selectedShow]);
+
+  // IntersectionObserver to pause/resume background video based on viewport visibility
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.muted = true;
-            video.play().catch((err) => {
-              console.log('Programmes bg video play error:', err);
-            });
+          isSectionVisibleRef.current = entry.isIntersecting;
+          const currentSlot = activeSlotRef.current;
+          const activeVideo = currentSlot === 'A' ? videoRefA.current : videoRefB.current;
+          const inactiveVideo = currentSlot === 'A' ? videoRefB.current : videoRefA.current;
+
+          if (entry.isIntersecting && !selectedShow) {
+            if (inactiveVideo) {
+              inactiveVideo.muted = true;
+              inactiveVideo.pause();
+            }
+            if (activeVideo) {
+              activeVideo.muted = bgMutedRef.current;
+              activeVideo.play().catch(() => {});
+            }
           } else {
-            video.pause();
+            if (videoRefA.current) {
+              videoRefA.current.muted = true;
+              videoRefA.current.pause();
+            }
+            if (videoRefB.current) {
+              videoRefB.current.muted = true;
+              videoRefB.current.pause();
+            }
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    observer.observe(video);
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [selectedShow]);
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  // Pause background videos when a modal opens, resume when closed
+  useEffect(() => {
+    if (selectedShow) {
+      if (videoRefA.current) {
+        videoRefA.current.muted = true;
+        videoRefA.current.pause();
+      }
+      if (videoRefB.current) {
+        videoRefB.current.muted = true;
+        videoRefB.current.pause();
+      }
+    } else if (isSectionVisibleRef.current) {
+      const currentSlot = activeSlotRef.current;
+      const activeVideo = currentSlot === 'A' ? videoRefA.current : videoRefB.current;
+      const inactiveVideo = currentSlot === 'A' ? videoRefB.current : videoRefA.current;
+      if (inactiveVideo) {
+        inactiveVideo.muted = true;
+        inactiveVideo.pause();
+      }
+      if (activeVideo) {
+        activeVideo.muted = bgMutedRef.current;
+        activeVideo.play().catch(() => {});
+      }
+    }
+  }, [selectedShow]);
+
+  const handleToggleMute = () => {
+    const nextMuted = !bgMuted;
+    setBgMuted(nextMuted);
+    bgMutedRef.current = nextMuted;
+    const currentSlot = activeSlotRef.current;
+    const activeVideo = currentSlot === 'A' ? videoRefA.current : videoRefB.current;
+    const inactiveVideo = currentSlot === 'A' ? videoRefB.current : videoRefA.current;
+    if (inactiveVideo) {
+      inactiveVideo.muted = true;
+      inactiveVideo.pause();
+    }
+    if (activeVideo) {
+      activeVideo.muted = nextMuted;
+    }
+  };
 
   const filters = ['ALL', 'TALK SHOWS','HEALTH', 'WORSHIP', 'TEENS & YOUTH', 'KIDS',];
 
@@ -201,19 +361,28 @@ const Programmes = () => {
   };
 
   return (
-    <section id="programmes" className="programmes-section">
-      {/* Background Video with Gradient Overlay */}
+    <section id="programmes" className="programmes-section" ref={sectionRef}>
+      {/* Background Video with Double-Buffering & 5-Second Promo Flash Rotation */}
       <div className="programmes-bg-video-wrapper">
         <video
-          ref={bgVideoRef}
-          src="/Videos/ENOCH_PROMO_FINAL.mp4"
+          ref={videoRefA}
+          src={slotASrc}
           autoPlay
-          muted
-          loop
+          muted={activeSlot === 'A' ? bgMuted : true}
           playsInline
           preload="auto"
-          className="programmes-bg-video"
+          className={`programmes-bg-video ${activeSlot === 'A' ? 'active' : 'inactive'}`}
         />
+        <video
+          ref={videoRefB}
+          src={slotBSrc}
+          autoPlay
+          muted={activeSlot === 'B' ? bgMuted : true}
+          playsInline
+          preload="auto"
+          className={`programmes-bg-video ${activeSlot === 'B' ? 'active' : 'inactive'}`}
+        />
+        <div className={`programmes-promo-flash-fx ${isFlashing ? 'flashing' : ''}`} />
         <div className="programmes-bg-gradient-top"></div>
         <div className="programmes-bg-gradient-bottom"></div>
         <div className="programmes-bg-overlay"></div>
@@ -242,14 +411,9 @@ const Programmes = () => {
             </div>
             <button
               className={`programmes-bg-mute-btn ${!bgMuted ? 'unmuted' : ''}`}
-              onClick={() => {
-                const v = bgVideoRef.current;
-                if (v) {
-                  v.muted = !v.muted;
-                  setBgMuted(v.muted);
-                }
-              }}
-              title={bgMuted ? 'Unmute background video' : 'Mute background video'}
+              onClick={handleToggleMute}
+              title={bgMuted ? 'Unmute promo audio' : 'Mute promo audio'}
+              aria-label={bgMuted ? 'Unmute promo audio' : 'Mute promo audio'}
             >
               {bgMuted ? (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

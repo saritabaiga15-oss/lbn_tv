@@ -117,6 +117,15 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 Anchorcrest foundation
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                href="#vod"
+                onClick={(e) => { e.preventDefault(); handleNavClick('vod'); }}
+                className={`nav-link nav-link-vod ${activeTab === 'vod' ? 'active' : ''}`}
+              >
+                VOD
+              </a>
+            </li>
           </ul>
         </nav>
 
@@ -214,6 +223,15 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   className={activeTab === 'anchorcrest-foundation' ? 'active' : ''}
                 >
                   Anchorcrest foundation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#vod"
+                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('vod'); }}
+                  className={`mobile-vod-link ${activeTab === 'vod' ? 'active' : ''}`}
+                >
+                  VOD
                 </a>
               </li>
               <li>

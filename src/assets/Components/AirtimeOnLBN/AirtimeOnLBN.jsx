@@ -85,9 +85,6 @@ const AirtimeOnLBN = () => {
                 <div className="p-icon">✨</div>
                 <h3>Tailored Broadcast Strategy</h3>
                 <p>Looking for a custom seasonal package? Our media director will design an optimal airtime broadcast calendar tailored to your mission.</p>
-                <a href="mailto:info@lbntv.org?subject=Airtime%20Inquiry%20LBN" className="custom-plan-btn">
-                  Request Rate Card &rarr;
-                </a>
               </div>
             </div>
 

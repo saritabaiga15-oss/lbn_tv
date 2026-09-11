@@ -19,12 +19,43 @@
 }
 
 .programmes-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  opacity: 0.85;
   filter: brightness(0.9) contrast(1.05);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+.programmes-bg-video.active {
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.programmes-bg-video.inactive {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Broadcast Promo Flash Effect */
+.programmes-promo-flash-fx {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(207, 168, 96, 0.35) 0%, rgba(255, 255, 255, 0.25) 35%, transparent 75%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+  transition: opacity 0.35s ease;
+}
+
+.programmes-promo-flash-fx.flashing {
+  opacity: 1;
+  transition: opacity 0.12s ease-out;
 }
 
 .programmes-bg-gradient-top {

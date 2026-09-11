@@ -289,13 +289,6 @@ const AnchorcrestFoundation = () => {
             Join us in making an impact across the Loveworld Network by sponsoring young people to attend our media training courses for free
           </p>
 
-          <div className="hero-ecosystem-banner">
-            <div className="eco-star">🌟</div>
-            <div className="eco-info">
-              <h3>An Opportunity to Work in the Loveworld Ecosystem</h3>
-              <p>Graduates gain direct pathways to intern, produce, and work across Loveworld India &amp; global media facilities.</p>
-            </div>
-          </div>
 
           <div className="hero-action-row">
             <a href="#sponsor-section" className="sponsor-btn-main">

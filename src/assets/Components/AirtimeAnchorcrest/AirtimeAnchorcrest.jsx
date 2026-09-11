@@ -208,13 +208,6 @@ const AirtimeAnchorcrest = () => {
             "Join us to impact young people all over by sponsoring them to attend our media training courses for free."
           </p>
 
-          <div className="aa-ecosystem-card">
-            <div className="ecosystem-icon-box">🌟</div>
-            <div className="ecosystem-text">
-              <h3>An Opportunity to Work in the LoveWorld Ecosystem</h3>
-              <p>Graduates gain direct pathways to intern, produce, and work across Loveworld India &amp; global media facilities.</p>
-            </div>
-          </div>
 
           <div className="aa-hero-actions">
             <a href="#sponsor-section" className="aa-btn primary">

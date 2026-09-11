@@ -19,63 +19,72 @@
 }
 
 /* ========================================= */
-/* TOP SECTION: PARTNER WITH US              */
+/* SOCIAL MEDIA ROW (BOTTOM)                 */
 /* ========================================= */
 
-.footer-top {
+.footer-links-stack {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 50px;
+  gap: 22px;
+  min-width: 0;
 }
 
-.footer-partner-title {
-  font-family: var(--font-title);
-  font-size: 3.5rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  margin-bottom: 45px;
+.footer-social-row {
+  margin-top: 0;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .footer-social-circles {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 35px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 22px;
 }
 
 .social-circle-link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
   text-decoration: none;
+  min-width: 0;
 }
 
 .social-circle-button {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.03);
   color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition-smooth);
   backdrop-filter: blur(5px);
+  flex-shrink: 0;
+}
+
+.social-circle-button svg {
+  width: 12px;
+  height: 12px;
 }
 
 .social-circle-name {
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.58rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
   transition: var(--transition-smooth);
+  white-space: nowrap;
+  line-height: 1.2;
+  text-align: center;
 }
 
 /* Hover interactions */
@@ -83,19 +92,12 @@
   background-color: var(--accent-gold);
   border-color: var(--accent-gold);
   color: #000000;
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 10px 20px rgba(207, 168, 96, 0.3);
 }
 
 .social-circle-link:hover .social-circle-name {
-  color: var(--text-primary);
-}
-
-/* Divider Line */
-.footer-divider {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin: 50px 0;
+  color: var(--accent-gold);
 }
 
 /* ========================================= */
@@ -104,7 +106,7 @@
 
 .footer-middle {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 0.5fr;
+  grid-template-columns: 1.5fr 1.05fr 0.5fr;
   gap: 80px;
   align-items: start;
 }
@@ -317,8 +319,9 @@
 }
 
 @media (max-width: 991px) {
-  .footer-partner-title {
-    font-size: 2.8rem;
+  .footer-social-row {
+    margin-top: 40px;
+    padding-top: 25px;
   }
 
   .footer-social-circles {
@@ -326,8 +329,8 @@
   }
 
   .social-circle-button {
-    width: 60px;
-    height: 60px;
+    width: 54px;
+    height: 54px;
   }
 }
 
@@ -342,13 +345,9 @@
     box-sizing: border-box;
   }
 
-  .footer-top {
-    margin-bottom: 35px;
-  }
-
-  .footer-partner-title {
-    font-size: clamp(2rem, 6vw, 2.6rem);
-    margin-bottom: 30px;
+  .footer-social-row {
+    margin-top: 35px;
+    padding-top: 25px;
   }
 
   .footer-social-circles {
@@ -356,8 +355,8 @@
   }
 
   .social-circle-button {
-    width: 58px;
-    height: 58px;
+    width: 50px;
+    height: 50px;
   }
 
   .footer-middle {
@@ -408,7 +407,7 @@
     flex-direction: column;
     gap: 14px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
   }
 }
 
@@ -421,9 +420,9 @@
     padding: 0 14px;
   }
 
-  .footer-partner-title {
-    font-size: 1.8rem;
-    margin-bottom: 22px;
+  .footer-social-row {
+    margin-top: 25px;
+    padding-top: 20px;
   }
 
   .footer-social-circles {
@@ -431,8 +430,8 @@
   }
 
   .social-circle-button {
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
   }
 
   .social-circle-button svg {
@@ -442,10 +441,6 @@
 
   .social-circle-name {
     font-size: 0.68rem;
-  }
-
-  .footer-divider {
-    margin: 30px 0;
   }
 
   .footer-brand-header {

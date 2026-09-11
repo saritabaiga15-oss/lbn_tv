@@ -26,10 +26,11 @@
 .header-container {
   max-width: 1800px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 26px;
 }
 
 /* Logo */
@@ -60,24 +61,26 @@
 .nav-list {
   display: flex;
   list-style: none;
-  gap: 28px;
+  gap: 30px;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 0 8px;
+  flex-wrap: nowrap;
 }
 
 .nav-item {
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-link {
   font-family: var(--font-sans, 'Inter', sans-serif);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.08em;
   color: var(--text-primary, #ffffff);
   opacity: 0.8;
-  padding: 8px 0;
+  padding: 8px 2px;
   position: relative;
   transition: var(--transition-smooth, all 0.3s ease);
   text-decoration: none;
@@ -86,8 +89,9 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -219,12 +223,12 @@
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 30px;
 }
 
 .live-dot {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   background-color: #ff3b30;
   border-radius: 50%;
   box-shadow: 0 0 8px #ff3b30;
@@ -256,7 +260,7 @@
   letter-spacing: 0.15em;
   color: var(--text-primary, #ffffff);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  padding: 10px 24px;
+  padding: 11px 25px;
   border-radius: 0;
   background-color: transparent;
   transition: var(--transition-smooth, all 0.3s ease);
@@ -479,7 +483,7 @@
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .header-container {
-    padding: 0 24px;
+    padding: 0 20px;
   }
   .desktop-nav {
     display: none;
@@ -540,4 +544,29 @@
   .navbar-logo-img {
     height: 32px;
   }
+}
+
+/* VOD nav link — keep it visually consistent with the rest of the nav */
+.nav-link-vod {
+  color: var(--text-primary, #ffffff) !important;
+  opacity: 0.8 !important;
+}
+
+.nav-link-vod:hover {
+  color: var(--accent-gold, #cfa860) !important;
+  opacity: 1 !important;
+}
+
+.nav-link-vod.active {
+  color: var(--accent-gold, #cfa860) !important;
+  opacity: 1 !important;
+}
+
+.nav-link-vod::after {
+  background-color: var(--accent-gold, #cfa860) !important;
+}
+
+/* Mobile VOD link styling */
+.mobile-nav-list a.mobile-vod-link {
+  color: var(--text-primary, #ffffff) !important;
 }
