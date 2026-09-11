@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Hero.css';
 import theTrumpet from '../../images/Trumpet.png';
-import wordAtWork from '../../images/Word at work.png';
+import TheWordatWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
 import wholeness from '../../images/Wholeness (1).png';
@@ -21,8 +21,8 @@ const Hero = () => {
     { id: 0, image: theTrumpet, title: 'The Trumpet' },
     { id: 1, image: teevablazeBanner, title: 'TEEVABLAZE' },
     { id: 2, image: voiceOfPraise, title: 'Voice of Praise' },
-    { id: 3, image: wordAtWork, title: 'Word At Work' },
-    {id:  4, image: Pst_Chris_Teaching1, title: 'Pastor Chris Teaching'},
+    { id: 3, image: TheWordatWork, title: 'Word At Work' },
+    { id: 4, image: Pst_Chris_Teaching1, title: 'Pastor Chris Teaching' },
     { id: 5, image: timelessParagonNew, title: 'Timeless Paragon' },
     { id: 6, image: craftingFaith, title: 'Crafting Faith' },
     { id: 7, image: moneyMatters, title: 'Money Matters' },
@@ -30,7 +30,7 @@ const Hero = () => {
     { id: 9, image: wholeness, title: 'Wholeness with Dr. Prashanti' },
     { id: 10, image: Just_believe_banner, title: 'Just Believe' },
     { id: 11, image: healthyLiving, title: 'Healthy Living' }
-   
+
   ];
 
   // Auto-play slider every 4 seconds (pauses on user hover)

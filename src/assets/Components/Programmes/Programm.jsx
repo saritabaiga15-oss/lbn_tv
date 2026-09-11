@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './Programm.css';
 import theTrumpet from '../../images/Trumpet.png';
-import wordAtWork from '../../images/Word at work.png';
+import wordAtWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
 import teevablazeBanner from '../../images/teevablaze_banner.jpg';

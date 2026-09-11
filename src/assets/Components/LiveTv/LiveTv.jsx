@@ -17,7 +17,7 @@ import loveworldExpr     from '../../images/loveworld_expressions.png';
 import teevablaze        from '../../images/teevablaze_banner.jpg';
 import timelessParagon   from '../../images/timeless_paragon_new.jpg';
 import chronicles        from '../../images/chronicles_of_prophecy.png';
-import wordAtWork        from '../../images/Word at work.png';
+import wordAtWork        from '../../images/TheWordatWork.png';
 import craftingFaith     from '../../images/Crafting Faith.png';
 import moneyMatters      from '../../images/MONEY MATTERS (1).png';
 import igniteImg         from '../../images/YOUTHIgnite.png';

@@ -17,7 +17,7 @@ import craftingFaith from '../../images/Crafting Faith.png';
 import LWS from '../../images/LWS.jpeg';
 import igniteImg from '../../images/YOUTHIgnite.png';
 import teevablaze from '../../images/teevablaze_banner.jpg';
-import wordAtWork from '../../images/Word at work.png';
+import wordAtWork from '../../images/TheWordatWork.png';
 import praiseWorship from '../../images/praise_worship_live.jpg';
 import documentaryStudio from '../../images/documentary_studio.png';
 
