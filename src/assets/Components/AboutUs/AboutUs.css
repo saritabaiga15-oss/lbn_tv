@@ -170,6 +170,12 @@
 
 .about-readmore-btn.accent-gold {
   color: var(--accent-gold, #cfa860);
+  display: inline-block;
+  width: auto;
+  margin-top: 14px;
+  text-align: left;
+  justify-self: start;
+  align-self: start;
 }
 
 .about-divider {
@@ -233,6 +239,10 @@
   padding: 0;
   display: grid;
   gap: 8px;
+}
+
+.about-deliver-content.expanded .about-deliver-block:last-child p:last-child {
+  margin-bottom: 0;
 }
 
 /* Image column: follows container seamlessly */
