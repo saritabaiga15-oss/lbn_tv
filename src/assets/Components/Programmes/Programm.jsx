@@ -202,6 +202,27 @@ const Programmes = () => {
     }
   }, [selectedShow]);
 
+  // Immediately autoplay modal promo video when a programme card is clicked
+  useEffect(() => {
+    if (selectedShow && selectedShow.video) {
+      const timer = setTimeout(() => {
+        if (promoVideoRef.current) {
+          promoVideoRef.current.currentTime = 0;
+          const playPromise = promoVideoRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((err) => {
+              console.warn('Autoplay with sound prevented by browser, playing with fallback:', err);
+              if (promoVideoRef.current) {
+                promoVideoRef.current.play().catch(() => {});
+              }
+            });
+          }
+        }
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedShow]);
+
   const handleToggleMute = () => {
     const nextMuted = !bgMuted;
     setBgMuted(nextMuted);
@@ -457,7 +478,13 @@ const Programmes = () => {
                 <h3 className="programme-card-title">{prog.title}</h3>
                 <p className="programme-card-tagline">"{prog.tagline}"</p>
                 {prog.video && (
-                  <button className="programme-card-btn">
+                  <button
+                    className="programme-card-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedShow(prog);
+                    }}
+                  >
                     ▶ WATCH PROMO
                   </button>
                 )}
@@ -508,10 +535,22 @@ const Programmes = () => {
                       src={selectedShow.video}
                       poster={selectedShow.image}
                       controls
+                      autoPlay
                       playsInline
-                      preload="metadata"
+                      preload="auto"
                       className="programmes-modal-video-player"
-                      ref={promoVideoRef}
+                      ref={(el) => {
+                        promoVideoRef.current = el;
+                        if (el) {
+                          el.play().catch(() => {});
+                        }
+                      }}
+                      onLoadedData={(e) => {
+                        e.currentTarget.play().catch(() => {});
+                      }}
+                      onCanPlay={(e) => {
+                        e.currentTarget.play().catch(() => {});
+                      }}
                     >
                       Your browser does not support the video tag.
                     </video>

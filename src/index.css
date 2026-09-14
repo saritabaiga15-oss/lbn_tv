@@ -121,7 +121,9 @@ main,
 .gallery-more-container,
 .programmes-more-container,
 .programs-carousel-container,
-.drawer-content-container {
+.drawer-content-container,
+.vod-hero-backdrop-container,
+.vod-hero-backdrop-layer {
   width: auto !important;
   max-width: 100% !important;
   margin-left: 0 !important;

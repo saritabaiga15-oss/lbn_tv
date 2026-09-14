@@ -1,466 +1,618 @@
-/* ═══════════════════════════════════════
-   VOD - Video On Demand Page Styles
-   LBN TV — Premium Streaming UI
-═══════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════════
+   LBN TV — VOD (Video On Demand) Platform Styles
+   Aesthetic: Premium OTT Cinematic Streaming (Netflix / Apple TV+ inspired)
+   Theme: Obsidian Dark + Luxury Gold (#cfa860) + Royal Blue Atmospheric Glow
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 .vod-page {
-  background: #08080f;
-  min-height: 100vh;
+  background-color: #050508;
   color: #ffffff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+  padding-bottom: 80px;
+  width: 100%;
 }
 
-/* ═══════════════ HERO SECTION ═══════════════ */
-.vod-hero {
+/* ══════════════════════════════════════════════════════════════════
+   1. TOP HERO BANNER STAGE (100% Full Viewport Width Bleed)
+   ══════════════════════════════════════════════════════════════════ */
+.vod-hero-stage {
   position: relative;
-  min-height: 100vh;
+  width: 100vw;
+  max-width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 68vh;
+  min-height: 560px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 120px 80px 80px;
   overflow: hidden;
-  gap: 60px;
+  padding: 40px 0 25px;
+  background: #050508;
 }
 
-.vod-hero-bg {
+/* Backdrop Image & Multi-layer Vignette Masks - 100% full bleed */
+.vod-hero-backdrop-layer,
+.vod-hero-backdrop-container {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, #0e0535 0%, #08080f 55%);
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
   z-index: 0;
+  overflow: hidden;
 }
 
-.vod-hero-orb {
+.vod-hero-backdrop-img {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.9) contrast(1.05);
+  transform: scale(1.02);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+}
+
+.vod-hero-stage:hover .vod-hero-backdrop-img {
+  transform: scale(1.05);
+}
+
+/* Left-to-right dark gradient ensuring high text legibility */
+.vod-hero-overlay-dark {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #050508 0%,
+    rgba(5, 5, 8, 0.95) 28%,
+    rgba(5, 5, 8, 0.75) 55%,
+    rgba(5, 5, 8, 0.3) 80%,
+    rgba(5, 5, 8, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+/* Radial spotlight and ambient glow */
+.vod-hero-overlay-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 40%,
+    rgba(30, 90, 212, 0.18) 0%,
+    transparent 65%
+  );
+  z-index: 2;
   pointer-events: none;
 }
 
-.vod-orb-1 {
-  width: 600px;
-  height: 600px;
-  background: rgba(100, 30, 200, 0.22);
-  top: -100px;
-  left: -100px;
-  animation: vod-float-1 12s ease-in-out infinite;
-}
-
-.vod-orb-2 {
-  width: 400px;
-  height: 400px;
-  background: rgba(207, 168, 96, 0.12);
-  bottom: 0;
-  right: 35%;
-  animation: vod-float-2 15s ease-in-out infinite;
-}
-
-.vod-orb-3 {
-  width: 350px;
-  height: 350px;
-  background: rgba(30, 80, 200, 0.15);
-  top: 30%;
-  right: 10%;
-  animation: vod-float-3 18s ease-in-out infinite;
-}
-
-@keyframes vod-float-1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(40px, 30px) scale(1.05); }
-  66% { transform: translate(-20px, 50px) scale(0.95); }
-}
-@keyframes vod-float-2 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-30px, -40px); }
-}
-@keyframes vod-float-3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(20px, 30px) scale(1.1); }
-}
-
-.vod-hero-bottom-fade {
+/* Bottom fade to melt seamlessly into the rows below */
+.vod-hero-vignette-bottom {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 200px;
-  background: linear-gradient(to bottom, transparent, #08080f);
-  z-index: 1;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, #050508 100%);
+  z-index: 3;
   pointer-events: none;
 }
 
-/* Hero Content */
-.vod-hero-content {
+/* Hero Content Grid (Left: Info, Right: 3 Stills Stack) */
+.vod-hero-inner {
   position: relative;
-  z-index: 2;
-  flex: 0 0 50%;
-  max-width: 580px;
-}
-
-.vod-hero-badge-row {
+  z-index: 4;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 60px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
+  justify-content: space-between;
+  gap: 50px;
 }
 
-.vod-hero-eyebrow-badge {
-  display: inline-flex;
+/* ─── Left Meta Column ─── */
+.vod-hero-meta-col {
+  flex: 1;
+  max-width: 700px;
+}
+
+.vod-hero-tag-row {
+  display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(207, 168, 96, 0.12);
-  border: 1px solid rgba(207, 168, 96, 0.35);
-  color: #cfa860;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  padding: 7px 16px;
-  border-radius: 999px;
-  text-transform: uppercase;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
 }
 
-.vod-live-pulse {
-  width: 8px;
-  height: 8px;
-  background: #ff3b30;
-  border-radius: 50%;
-  display: inline-block;
-  box-shadow: 0 0 8px #ff3b30, 0 0 16px rgba(255, 59, 48, 0.5);
-  animation: vod-pulse 1.4s ease-in-out infinite;
-}
-@keyframes vod-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px #ff3b30; }
-  50% { opacity: 0.4; transform: scale(0.8); box-shadow: 0 0 2px #ff3b30; }
-}
-
-.vod-hero-tag {
+.vod-badge-gold {
+  background: linear-gradient(135deg, #cfa860 0%, #b3842c 100%);
+  color: #000000;
   font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.4);
+  font-weight: 800;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(207, 168, 96, 0.4);
 }
 
-.vod-hero-title {
-  font-family: 'Oswald', 'Bebas Neue', sans-serif;
-  font-size: clamp(3rem, 5vw, 5.5rem);
-  font-weight: 700;
-  line-height: 1.05;
+.vod-badge-category {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  margin: 0 0 24px 0;
-  letter-spacing: -0.01em;
-}
-
-.vod-title-gradient {
-  background: linear-gradient(90deg, #cfa860 0%, #f0d080 40%, #c07820 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.vod-hero-desc {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.62);
-  margin-bottom: 40px;
-  max-width: 480px;
-}
-
-/* Stats row */
-.vod-hero-stats {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 44px;
-  flex-wrap: wrap;
-}
-
-.vod-stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.vod-stat-value {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #cfa860;
-  line-height: 1;
-}
-
-.vod-stat-label {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-}
-
-/* CTA Buttons */
-.vod-hero-actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.vod-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 32px;
-  font-size: 0.82rem;
+  font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  font-family: 'Inter', sans-serif;
+  padding: 4px 10px;
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
 }
 
-.vod-btn-primary {
-  background: linear-gradient(135deg, #cfa860 0%, #8a5c10 100%);
-  color: #000000;
-  box-shadow: 0 6px 30px rgba(207, 168, 96, 0.35);
-}
-
-.vod-btn-primary:hover {
-  background: linear-gradient(135deg, #dbb970 0%, #9a6c20 100%);
-  box-shadow: 0 10px 40px rgba(207, 168, 96, 0.55);
-  transform: translateY(-2px);
-}
-
-.vod-btn-outline {
-  background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.vod-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-2px);
-}
-
-/* ═══════════════ FEATURED VIDEO CARD ═══════════════ */
-.vod-hero-featured {
-  position: relative;
-  z-index: 2;
-  flex: 0 0 44%;
-}
-
-.vod-featured-card {
-  position: relative;
-  background: #0e0e1a;
-  border: 1px solid rgba(207, 168, 96, 0.18);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(100, 30, 200, 0.12);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-}
-
-.vod-featured-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8), 0 0 60px rgba(207, 168, 96, 0.15);
-}
-
-.vod-featured-card-glow {
-  position: absolute;
-  top: -30%;
-  left: -10%;
-  width: 120%;
-  height: 80%;
-  background: radial-gradient(ellipse, rgba(100, 30, 200, 0.18) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.vod-featured-visual {
-  position: relative;
-  height: 220px;
-  overflow: hidden;
-}
-
-.vod-featured-gradient-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #1a0533 0%, #3d0b6e 50%, #0d1b3e 100%);
-}
-
-.vod-featured-trending {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: linear-gradient(135deg, #cfa860, #8a5c10);
-  color: #000;
+.vod-badge-quality {
+  background: rgba(30, 90, 212, 0.25);
+  border: 1px solid rgba(30, 90, 212, 0.55);
+  color: #8bb7ff;
   font-size: 0.62rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
-  padding: 5px 12px;
-  border-radius: 999px;
-  text-transform: uppercase;
-  z-index: 2;
-}
-
-.vod-featured-play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #08080f;
-  z-index: 2;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
-  padding-left: 4px;
-}
-
-.vod-featured-play-btn:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-  background: #cfa860;
-}
-
-.vod-featured-overlay {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
-  display: flex;
-  gap: 10px;
-  z-index: 2;
-}
-
-.vod-featured-duration,
-.vod-featured-views {
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.85);
-  padding: 4px 10px;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
   border-radius: 4px;
 }
 
-.vod-featured-body {
-  position: relative;
-  z-index: 1;
-  padding: 22px 24px 26px;
-}
-
-.vod-featured-subtitle {
-  display: block;
-  font-size: 0.65rem;
+/* Main Cinematic Title */
+.vod-hero-title {
+  font-family: 'Oswald', 'Cinzel', sans-serif;
+  font-size: clamp(2.4rem, 4.2vw, 4rem);
   font-weight: 700;
-  letter-spacing: 0.2em;
-  color: #cfa860;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.vod-featured-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.55rem;
-  font-weight: 700;
+  line-height: 1.05;
   color: #ffffff;
-  margin: 0 0 12px 0;
-  line-height: 1.1;
-}
-
-.vod-featured-desc {
-  font-size: 0.85rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 20px;
-}
-
-.vod-featured-watch-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(207, 168, 96, 0.12);
-  border: 1px solid rgba(207, 168, 96, 0.4);
-  color: #cfa860;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.02em;
+  margin: 0 0 10px 0;
   text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  text-shadow: 0 6px 35px rgba(0, 0, 0, 0.9);
 }
 
-.vod-featured-watch-btn:hover {
-  background: #cfa860;
-  color: #000;
-  border-color: #cfa860;
-}
-
-/* ═══════════════ LIBRARY SECTION ═══════════════ */
-.vod-library {
-  padding: 80px 0 100px;
-  background: #08080f;
-}
-
-.vod-library-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 80px;
-}
-
-.vod-library-header {
+/* Rating Strip: Stars + LBN Rating + Details */
+.vod-hero-rating-strip {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 32px;
-  gap: 20px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
-.vod-section-kicker {
-  display: block;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  color: #cfa860;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+.vod-stars {
+  display: flex;
+  gap: 3px;
 }
 
-.vod-library-title {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.2rem;
+.star-icon {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.star-icon.filled {
+  color: #f7b731;
+  text-shadow: 0 0 10px rgba(247, 183, 49, 0.6);
+}
+
+.vod-score-badge {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.74rem;
   font-weight: 700;
   color: #ffffff;
-  margin: 0;
-  line-height: 1.1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.vod-search-box {
+.vod-score-label {
+  color: #cfa860;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.vod-meta-dot {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.85rem;
+}
+
+.vod-meta-item {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* Logline & Synopsis */
+.vod-hero-logline {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #cfa860;
+  margin-bottom: 8px;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.vod-hero-synopsis {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 620px;
+  margin-bottom: 22px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Action CTA Group */
+.vod-hero-cta-group {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 18px;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Primary Play Button */
+.vod-play-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #cfa860 0%, #e0bd75 50%, #b88d38 100%);
+  color: #050508;
+  padding: 12px 30px;
   border-radius: 8px;
-  min-width: 260px;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(207, 168, 96, 0.45);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vod-play-primary-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(207, 168, 96, 0.65);
+  background: linear-gradient(135deg, #dfba6a 0%, #f3d48f 50%, #c49942 100%);
+}
+
+.btn-play-triangle {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* Secondary Circular Watchlist Button */
+.vod-watchlist-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  position: relative;
   transition: all 0.3s ease;
 }
 
-.vod-search-box:focus-within {
+.vod-watchlist-btn:hover {
+  background: rgba(207, 168, 96, 0.18);
+  border-color: #cfa860;
+  color: #cfa860;
+  transform: scale(1.08);
+}
+
+.vod-watchlist-btn.active {
+  background: rgba(207, 168, 96, 0.25);
+  border-color: #cfa860;
+  color: #cfa860;
+}
+
+.tooltip-text {
+  display: none;
+}
+
+/* Audio wave status indicator */
+.vod-audio-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.audio-wave-bar {
+  width: 3px;
+  height: 14px;
+  background: #cfa860;
+  border-radius: 2px;
+  display: inline-block;
+  animation: audioPulse 1.2s ease-in-out infinite alternate;
+}
+
+.audio-wave-bar.bar-2 {
+  height: 20px;
+  animation-delay: 0.2s;
+}
+
+.audio-wave-bar.bar-3 {
+  height: 10px;
+  animation-delay: 0.4s;
+}
+
+@keyframes audioPulse {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1.2); }
+}
+
+.audio-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+/* ─── Right Thumbs Stack Column (Matches user reference screenshot) ─── */
+.vod-hero-thumbs-col {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vod-thumbs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.vod-thumbs-kicker {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #cfa860;
+  text-transform: uppercase;
+}
+
+.vod-thumbs-note {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.04em;
+}
+
+.vod-thumbs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vod-thumb-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(18, 18, 28, 0.65);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 6px 8px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.vod-thumb-card:hover {
+  background: rgba(28, 28, 42, 0.85);
   border-color: rgba(207, 168, 96, 0.5);
-  background: rgba(207, 168, 96, 0.04);
+  transform: translateX(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(207, 168, 96, 0.15);
+}
+
+.vod-thumb-card.active {
+  background: rgba(207, 168, 96, 0.12);
+  border-color: #cfa860;
+  box-shadow: 0 8px 25px rgba(207, 168, 96, 0.25);
+}
+
+.vod-thumb-card.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #cfa860;
+}
+
+.vod-thumb-image-wrap {
+  position: relative;
+  width: 82px;
+  height: 52px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.vod-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.vod-thumb-card:hover .vod-thumb-img {
+  transform: scale(1.1);
+}
+
+.vod-thumb-play-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(207, 168, 96, 0.9);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.25s ease;
+}
+
+.vod-thumb-card:hover .vod-thumb-play-circle {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.vod-thumb-badge {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #cfa860;
+  font-size: 0.5rem;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.vod-thumb-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.vod-thumb-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vod-thumb-sub {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vod-thumb-meta {
+  font-size: 0.65rem;
+  color: #cfa860;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   2. FILTER & SEARCH CONTROLS STRIP
+   ══════════════════════════════════════════════════════════════════ */
+.vod-controls-strip {
+  padding: 10px 0 30px;
+  background: #050508;
+  position: relative;
+  z-index: 5;
+}
+
+.vod-controls-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.vod-category-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vod-filter-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.vod-filter-pill:hover {
+  background: rgba(207, 168, 96, 0.12);
+  border-color: rgba(207, 168, 96, 0.4);
+  color: #cfa860;
+}
+
+.vod-filter-pill.active {
+  background: linear-gradient(135deg, #cfa860 0%, #b88d38 100%);
+  border-color: #cfa860;
+  color: #050508;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(207, 168, 96, 0.35);
+}
+
+.vod-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 8px 18px;
+  width: 320px;
+  transition: all 0.3s ease;
+}
+
+.vod-search-wrapper:focus-within {
+  border-color: #cfa860;
+  background: rgba(207, 168, 96, 0.06);
+  box-shadow: 0 0 15px rgba(207, 168, 96, 0.2);
+}
+
+.vod-search-icon {
+  font-size: 0.85rem;
+  opacity: 0.6;
 }
 
 .vod-search-input {
@@ -468,401 +620,877 @@
   border: none;
   outline: none;
   color: #ffffff;
-  font-size: 0.9rem;
-  flex: 1;
+  font-size: 0.82rem;
+  width: 100%;
+  font-family: inherit;
 }
 
 .vod-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.35);
 }
 
-/* Category Pills */
-.vod-category-bar {
+.vod-search-clear {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.vod-search-clear:hover {
+  color: #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   3. HORIZONTAL SHELF SECTIONS ("Most Popular", "Trending Promos")
+   ══════════════════════════════════════════════════════════════════ */
+.vod-shelf-section {
+  max-width: 1600px;
+  margin: 0 auto 50px;
+  padding: 0 60px;
+}
+
+.vod-shelf-header {
   display: flex;
-  gap: 10px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 16px;
 }
 
-.vod-cat-pill {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  padding: 9px 20px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-transform: uppercase;
-  font-family: 'Inter', sans-serif;
+.vod-shelf-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.vod-cat-pill:hover {
-  background: rgba(207, 168, 96, 0.1);
-  border-color: rgba(207, 168, 96, 0.4);
-  color: #cfa860;
-}
-
-.vod-cat-pill.active {
-  background: linear-gradient(135deg, #cfa860 0%, #8a5c10 100%);
-  border-color: transparent;
-  color: #000000;
+.vod-shelf-heading {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
   font-weight: 700;
-  box-shadow: 0 4px 20px rgba(207, 168, 96, 0.35);
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
 }
 
-/* Video Grid */
-.vod-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 60px;
+.vod-shelf-badge {
+  background: rgba(207, 168, 96, 0.15);
+  border: 1px solid rgba(207, 168, 96, 0.35);
+  color: #cfa860;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 
-/* Video Card */
-.vod-card {
-  background: #0e0e1a;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+.vod-shelf-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.vod-card:hover,
-.vod-card.hovered {
-  border-color: rgba(207, 168, 96, 0.3);
-  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(207, 168, 96, 0.08);
-  transform: translateY(-6px);
-}
-
-.vod-card-thumb {
-  position: relative;
-  height: 168px;
-  overflow: hidden;
+.vod-arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.vod-card-badge {
+.vod-arrow-btn:hover {
+  background: #cfa860;
+  color: #000000;
+  border-color: #cfa860;
+  transform: scale(1.08);
+}
+
+.vod-view-all-link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #cfa860;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: color 0.2s ease;
+}
+
+.vod-view-all-link:hover {
+  color: #ffffff;
+}
+
+/* Horizontal Carousel Row */
+.vod-cards-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 4px 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.vod-cards-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Poster Cards (Vertical OTT ratio matching screenshot) ─── */
+.vod-poster-card {
+  flex: 0 0 220px;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.vod-poster-card:hover {
+  transform: translateY(-8px);
+}
+
+.vod-poster-media {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0e0e18;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vod-poster-card:hover .vod-poster-media {
+  border-color: rgba(207, 168, 96, 0.6);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(207, 168, 96, 0.25);
+}
+
+.vod-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.5s ease;
+}
+
+.vod-poster-card:hover .vod-poster-img {
+  transform: scale(1.06);
+}
+
+.vod-poster-gradient-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 5, 8, 0.9) 0%, rgba(5, 5, 8, 0.15) 35%, transparent 60%);
+  pointer-events: none;
+}
+
+.vod-poster-badge {
   position: absolute;
   top: 10px;
   left: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #cfa860;
+  border: 1px solid rgba(207, 168, 96, 0.4);
   font-size: 0.55rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #cfa860, #8a5c10);
-  color: #000;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
   z-index: 2;
 }
 
-.vod-card-badge.badge-live {
-  background: linear-gradient(135deg, #ff3b30, #c00);
-  color: #fff;
-}
-
-.vod-live-pulse-sm {
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  animation: vod-pulse 1.4s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-.vod-card-play {
+.vod-poster-quality {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
+  top: 10px;
+  right: 10px;
+  background: rgba(30, 90, 212, 0.7);
+  color: #ffffff;
+  font-size: 0.52rem;
+  font-weight: 800;
+  padding: 3px 6px;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+/* Hover overlay with Play Button */
+.vod-poster-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.vod-poster-card:hover .vod-poster-hover-overlay {
+  opacity: 1;
+}
+
+.vod-play-glow-btn {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #cfa860 0%, #b88d38 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  color: #08080f;
-  z-index: 2;
-  opacity: 0;
-  transition: all 0.3s ease;
-  padding-left: 3px;
+  box-shadow: 0 0 25px rgba(207, 168, 96, 0.7);
+  transform: scale(0.9);
+  transition: transform 0.25s ease;
 }
 
-.vod-card:hover .vod-card-play,
-.vod-card.hovered .vod-card-play {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
+.vod-poster-card:hover .vod-play-glow-btn {
+  transform: scale(1);
 }
 
-.vod-card-duration {
-  position: absolute;
-  bottom: 8px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.7);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.62rem;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 4px;
-  z-index: 2;
+.play-triangle {
+  color: #000000;
+  font-size: 1.1rem;
+  margin-left: 3px;
 }
 
-.vod-card-watermark {
-  position: absolute;
-  font-family: 'Oswald', sans-serif;
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.06);
-  letter-spacing: 0.1em;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.vod-card-body {
-  padding: 16px 18px 18px;
-}
-
-.vod-card-meta {
-  display: block;
-  font-size: 0.6rem;
+.vod-hover-prompt {
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  color: #ffffff;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #cfa860;
-  margin-bottom: 6px;
 }
 
-.vod-card-title {
+.vod-hover-duration {
+  font-size: 0.62rem;
+  color: #cfa860;
+  font-weight: 600;
+}
+
+/* Caption below poster */
+.vod-poster-caption {
+  padding: 10px 4px 0;
+}
+
+.vod-poster-title {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 600;
   color: #ffffff;
-  margin: 0 0 14px 0;
-  line-height: 1.2;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
 }
 
-.vod-card-footer {
+.vod-poster-sub {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 8px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vod-poster-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.vod-card-views {
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.38);
+.vod-poster-rating {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #f7b731;
+}
+
+.vod-poster-save-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
-  gap: 5px;
-}
-
-.vod-card-watch-btn {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #cfa860;
-  background: transparent;
-  border: 1px solid rgba(207, 168, 96, 0.3);
-  padding: 6px 14px;
-  border-radius: 0;
+  justify-content: center;
   cursor: pointer;
-  transition: all 0.25s ease;
-  font-family: 'Inter', sans-serif;
+  transition: all 0.2s ease;
 }
 
-.vod-card-watch-btn:hover {
+.vod-poster-save-btn:hover {
   background: #cfa860;
   color: #000;
   border-color: #cfa860;
 }
 
-/* Load More */
-.vod-load-more-row {
+.vod-poster-save-btn.saved {
+  background: rgba(207, 168, 96, 0.25);
+  color: #cfa860;
+  border-color: #cfa860;
+}
+
+/* Watchlist Shelf Custom Styles */
+.vod-badge-accent {
+  background: rgba(207, 168, 96, 0.16) !important;
+  color: #f1cf85 !important;
+  border-color: rgba(207, 168, 96, 0.45) !important;
+}
+
+.vod-watchlist-empty {
   display: flex;
-  justify-content: center;
-}
-
-.vod-load-more-btn {
-  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 14px 36px;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  gap: 20px;
+  padding: 30px 36px;
+  background: linear-gradient(135deg, rgba(20, 22, 36, 0.7) 0%, rgba(12, 14, 24, 0.85) 100%);
+  border: 1px dashed rgba(207, 168, 96, 0.35);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+  margin-top: 10px;
 }
 
-.vod-load-more-btn:hover {
-  background: rgba(207, 168, 96, 0.08);
-  border-color: rgba(207, 168, 96, 0.4);
+.vod-empty-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(207, 168, 96, 0.12);
+  border: 1px solid rgba(207, 168, 96, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vod-empty-icon {
+  font-size: 1.5rem;
+}
+
+.vod-empty-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vod-empty-title {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.vod-empty-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.vod-empty-desc strong {
   color: #cfa860;
 }
 
-/* ═══════════════ CTA BANNER ═══════════════ */
-.vod-cta-banner {
-  position: relative;
-  padding: 100px 80px;
+/* Filtered Collection View & Clear Filter Button */
+.vod-filtered-view-section {
+  min-height: 480px;
+  animation: vodFilterFadeIn 0.35s ease-out;
+}
+
+@keyframes vodFilterFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vod-clear-filter-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #cfa860;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vod-clear-filter-btn:hover {
+  background: rgba(207, 168, 96, 0.2);
+  border-color: #cfa860;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.vod-no-filter-results {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 48px;
+  background: linear-gradient(135deg, rgba(20, 22, 36, 0.7) 0%, rgba(12, 14, 24, 0.85) 100%);
+  border: 1px dashed rgba(207, 168, 96, 0.35);
+  border-radius: 14px;
+  margin-top: 20px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   4. LOWER FEATURED BANNER: "Popular TV Series"
+   (Matches THE FLASH : SEASON 9 banner in the user's reference mockup)
+   ══════════════════════════════════════════════════════════════════ */
+.vod-lower-feature-section {
+  max-width: 1600px;
+  margin: 70px auto 60px;
+  padding: 0 60px;
+}
+
+.vod-lower-feature-header {
   text-align: center;
-  overflow: hidden;
-  background: linear-gradient(180deg, #08080f 0%, #0d0720 50%, #08080f 100%);
+  margin-bottom: 30px;
 }
 
-.vod-cta-banner-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+.vod-feature-spotlight-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 10px 0;
 }
 
-.vod-cta-orb {
-  position: absolute;
-  width: 800px;
-  height: 400px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse, rgba(100, 30, 200, 0.2) 0%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(40px);
-}
-
-.vod-cta-content {
-  position: relative;
-  z-index: 1;
-  max-width: 600px;
+.vod-feature-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #cfa860, transparent);
   margin: 0 auto;
 }
 
-.vod-cta-kicker {
-  display: block;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
+.vod-featured-series-banner {
+  position: relative;
+  min-height: 480px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(207, 168, 96, 0.25);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(30, 90, 212, 0.15);
+  display: flex;
+  align-items: center;
+  background: #090912;
+}
+
+.vod-series-banner-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.vod-series-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: brightness(0.85);
+}
+
+.vod-series-banner-mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #090912 0%,
+    rgba(9, 9, 18, 0.95) 35%,
+    rgba(9, 9, 18, 0.7) 65%,
+    rgba(9, 9, 18, 0.9) 100%
+  );
+}
+
+.vod-series-banner-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.vod-series-meta-col {
+  max-width: 780px;
+  width: 100%;
+}
+
+.vod-series-flag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
   color: #cfa860;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
-.vod-cta-title {
+.vod-series-title {
   font-family: 'Oswald', sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 700;
   color: #ffffff;
-  line-height: 1.05;
-  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
-.vod-cta-desc {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 36px;
+.vod-series-tagline {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #cfa860;
+  margin-bottom: 10px;
 }
 
-.vod-cta-platform-icons {
+.vod-series-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 28px;
+}
+
+.vod-series-actions {
   display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   5. FULL CATALOG GRID (Filtered View)
+   ══════════════════════════════════════════════════════════════════ */
+.vod-full-grid-section {
+  max-width: 1600px;
+  margin: 50px auto;
+  padding: 0 60px;
+}
+
+.vod-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   6. CINEMATIC VIDEO PLAYER MODAL
+   ══════════════════════════════════════════════════════════════════ */
+.vod-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
   justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.vod-modal-container {
+  width: 100%;
+  max-width: 1040px;
+  max-height: 92vh;
+  background: #0a0a12;
+  border: 1.5px solid rgba(207, 168, 96, 0.35);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.95), 0 0 50px rgba(207, 168, 96, 0.2);
+  display: flex;
+  flex-direction: column;
+  animation: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.94); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Modal Header Bar */
+.vod-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #0f0f1c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.vod-modal-title-group {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 40px;
   flex-wrap: wrap;
 }
 
-.vod-platform-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 10px 18px;
-  border-radius: 8px;
-  transition: all 0.25s ease;
+.vod-modal-category-badge {
+  background: linear-gradient(135deg, #cfa860 0%, #b88d38 100%);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 
-.vod-platform-pill:hover {
-  background: rgba(207, 168, 96, 0.1);
-  border-color: rgba(207, 168, 96, 0.3);
+.vod-modal-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.vod-modal-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.vod-modal-close-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vod-modal-close-btn:hover {
+  background: #cfa860;
+  color: #000000;
+  border-color: #cfa860;
+  transform: rotate(90deg);
+}
+
+/* Video Frame */
+.vod-modal-video-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  aspect-ratio: 16 / 9;
+  max-height: 58vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vod-modal-video-element {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Modal Info Footer */
+.vod-modal-footer {
+  padding: 20px 24px;
+  background: #0a0a12;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.vod-modal-info {
+  flex: 1;
+}
+
+.vod-modal-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 10px 0;
+}
+
+.vod-modal-meta-row {
+  display: flex;
+  gap: 20px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  flex-wrap: wrap;
+}
+
+.vod-modal-meta-row strong {
   color: #cfa860;
 }
 
-.vod-cta-main-btn {
-  font-size: 0.85rem;
-  padding: 16px 40px;
+.vod-modal-add-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
 }
 
-/* ═══════════════ RESPONSIVE ═══════════════ */
+.vod-modal-add-btn:hover,
+.vod-modal-add-btn.saved {
+  background: rgba(207, 168, 96, 0.2);
+  border-color: #cfa860;
+  color: #cfa860;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   7. RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 1280px) {
-  .vod-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .vod-hero-inner {
+    padding: 0 40px;
+    gap: 40px;
   }
-  .vod-hero {
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: auto;
-    padding: 120px 60px 80px;
+  .vod-hero-title {
+    font-size: 3.5rem;
   }
-  .vod-hero-content,
-  .vod-hero-featured {
-    flex: 0 0 100%;
-    max-width: 100%;
+  .vod-hero-thumbs-col {
+    width: 290px;
+  }
+  .vod-shelf-section,
+  .vod-lower-feature-section,
+  .vod-full-grid-section,
+  .vod-controls-inner {
+    padding: 0 40px;
   }
 }
 
 @media (max-width: 1024px) {
-  .vod-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .vod-hero-stage {
+    min-height: auto;
+    padding: 120px 0 50px;
   }
-  .vod-library-inner {
-    padding: 0 40px;
+  .vod-hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .vod-hero {
-    padding: 110px 40px 60px;
+  .vod-hero-meta-col {
+    max-width: 100%;
   }
-  .vod-cta-banner {
-    padding: 80px 40px;
+  .vod-hero-thumbs-col {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .vod-thumbs-stack {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  .vod-thumb-card {
+    flex: 0 0 280px;
+  }
+  .vod-featured-series-banner {
+    min-height: auto;
+  }
+  .vod-series-banner-content {
+    padding: 40px 30px;
   }
 }
 
 @media (max-width: 768px) {
-  .vod-hero {
-    padding: 100px 24px 50px;
-    gap: 40px;
+  .vod-hero-inner,
+  .vod-shelf-section,
+  .vod-lower-feature-section,
+  .vod-full-grid-section,
+  .vod-controls-inner {
+    padding: 0 20px;
   }
-  .vod-hero-title { font-size: 2.8rem; }
-  .vod-hero-stats { gap: 20px; }
-  .vod-hero-badge-row { flex-wrap: wrap; }
-  .vod-library-inner { padding: 0 24px; }
-  .vod-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .vod-library-header { flex-direction: column; align-items: flex-start; }
-  .vod-search-box { width: 100%; min-width: unset; }
-  .vod-cta-banner { padding: 60px 24px; }
+  .vod-hero-title {
+    font-size: 2.6rem;
+  }
+  .vod-hero-logline {
+    font-size: 1rem;
+  }
+  .vod-poster-card {
+    flex: 0 0 170px;
+  }
+  .vod-poster-media {
+    height: 240px;
+  }
+  .vod-catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .vod-search-wrapper {
+    width: 100%;
+  }
+  .vod-modal-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 480px) {
-  .vod-grid { grid-template-columns: 1fr; }
-  .vod-hero-actions { flex-direction: column; }
-  .vod-btn { width: 100%; justify-content: center; }
+  .vod-hero-title {
+    font-size: 2.2rem;
+  }
+  .vod-hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .vod-play-primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .vod-watchlist-btn {
+    width: 100%;
+    border-radius: 8px;
+    height: 46px;
+    font-size: 1rem;
+  }
+  .tooltip-text {
+    display: inline;
+    margin-left: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+  .vod-audio-indicator {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
 }
