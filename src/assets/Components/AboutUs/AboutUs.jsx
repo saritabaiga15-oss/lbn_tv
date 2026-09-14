@@ -153,7 +153,7 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              <div className="about-deliver-block">
+              <div className="about-deliver-full-width">
                 <h3>Why Clients Choose LBN</h3>
                 <ul>
                   <li>One accountable partner. Concept, production and post under a single roof, with one point of responsibility for delivery.</li>

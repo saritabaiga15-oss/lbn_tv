@@ -264,7 +264,7 @@ const AnchorcrestFoundation = () => {
   ];
 
   const activeAmount = customAmount ? customAmount : selectedTier;
-  const visibleCourses = showAllCourses ? courses : courses.slice(0, 6);
+  const visibleCourses = showAllCourses ? courses : courses.slice(0, 9);
 
   return (
     <div className="anchorcrest-page">
