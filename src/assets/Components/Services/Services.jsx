@@ -60,8 +60,7 @@ const Services = () => {
         'Built-in broadcast confidence monitor mounts & teleprompter setups',
         'Dynamic RGB stage backlight integration with DMX console control',
         'Custom corporate and television show branded podiums & set elements',
-        'Direct access to backstage talent green rooms and hair/makeup stations',
-        'Ultra-quiet broadcast HVAC climate control system'
+        'Direct access to backstage talent green rooms and hair/makeup stations'
       ],
       idealFor: ['Live Broadcast Shows', 'Talk Shows & Interviews', 'Award Ceremonies', 'Product Launches', 'Feature Film Scenes']
     },
@@ -85,8 +84,7 @@ const Services = () => {
         'Modern interview tables with hidden cable management for microphones',
         'Bespoke studio decor, geometric partition screens, and architectural plants',
         'Customizable color schemes to match your brand identity',
-        'Quick turn-around reconfiguration between recording sessions',
-        'Professional set dressing team available upon request'
+        'Quick turn-around reconfiguration between recording sessions'
       ],
       idealFor: ['Executive Interviews', 'Panel Discussions', 'Podcast Studios', 'Brand Storytelling', 'Lifestyle Shoots']
     },
@@ -110,8 +108,7 @@ const Services = () => {
         'High-CRI panel softlights for natural, flattering skin tones',
         'Dynamic RGB and bi-color stage lighting with custom scene programming',
         'Spotlights, fresnels, and ellipsoidal fixtures for razor-sharp edge lighting',
-        'Emergency UPS backup power ensuring continuous filming uninterrupted',
-        'Certified lighting director and gaffer support on standby'
+        'Emergency UPS backup power ensuring continuous filming uninterrupted'
       ],
       idealFor: ['Cinema & Commercials', 'Music Videos', 'High-Speed Filming', 'Virtual Production', 'Broadcast Television']
     },
@@ -135,8 +132,7 @@ const Services = () => {
         'Track-mounted 32oz heavy sound-absorbing acoustic black velour curtains',
         'Custom large-format fabric and canvas printed scenic backdrops',
         'Rapid track interchange system for instant backdrop swaps',
-        'Floor-to-ceiling seamless transitions for realistic perspective depth',
-        'Specialty textured backdrops including industrial, brick, and wood panels'
+        'Floor-to-ceiling seamless transitions for realistic perspective depth'
       ],
       idealFor: ['Chroma Keying & VFX', 'Fashion & Commercials', 'Music Videos', 'Corporate Video', 'Product Photography']
     }
@@ -701,7 +697,10 @@ const Services = () => {
                     key={item.id}
                     type="button"
                     className={`studio-setup-pill ${selectedSetup.id === item.id ? 'active' : ''}`}
-                    onClick={() => setSelectedSetup(item)}
+                    onClick={() => {
+                      setSelectedSetup(item);
+                      setShowContactInfo(false);
+                    }}
                   >
                     {item.title}
                   </button>
@@ -746,32 +745,35 @@ const Services = () => {
                   <p className="studio-modal-tagline">"{selectedSetup.tagline}"</p>
                 </div>
 
-                <div className="studio-modal-body">
-                  <div className="studio-modal-section">
-                    <h4>STUDIO SETUP OVERVIEW</h4>
-                    <p>{selectedSetup.overview}</p>
-                  </div>
+                {/* Inner scrollable area for content (Image 2) */}
+                <div className="studio-modal-scroll-body">
+                  <div className="studio-modal-body">
+                    <div className="studio-modal-section">
+                      <h4>STUDIO SETUP OVERVIEW</h4>
+                      <p>{selectedSetup.overview}</p>
+                    </div>
 
-                  <div className="studio-modal-section">
-                    <h4>INCLUDED EQUIPMENT & HIGHLIGHTS</h4>
-                    <ul className="studio-features-list">
-                      {selectedSetup.features.map((feat, idx) => (
-                        <li key={idx}>
-                          <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
-                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                          </svg>
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <div className="studio-modal-section">
+                      <h4>INCLUDED EQUIPMENT & HIGHLIGHTS</h4>
+                      <ul className="studio-features-list">
+                        {selectedSetup.features.map((feat, idx) => (
+                          <li key={idx}>
+                            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                            <span>{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  <div className="studio-modal-section">
-                    <h4>RECOMMENDED PRODUCTIONS</h4>
-                    <div className="studio-ideal-tags">
-                      {selectedSetup.idealFor.map((item, idx) => (
-                        <span key={idx} className="ideal-tag">{item}</span>
-                      ))}
+                    <div className="studio-modal-section">
+                      <h4>RECOMMENDED PRODUCTIONS</h4>
+                      <div className="studio-ideal-tags">
+                        {selectedSetup.idealFor.map((item, idx) => (
+                          <span key={idx} className="ideal-tag">{item}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -873,7 +875,7 @@ const Services = () => {
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                     </svg>
-                    <span>{showContactInfo ? 'HIDE CONTACT NUMBERS' : 'BOOK STUDIO NOW — VIEW CONTACTS'}</span>
+                    <span>{showContactInfo ? 'HIDE CONTACT INFO' : 'BOOK STUDIO NOW'}</span>
                   </button>
 
 

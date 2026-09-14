@@ -98,13 +98,14 @@
 /* ── LBN AT A GLANCE / YOUR VALUE blocks ── */
 .about-glance-block {
   display: flex;
-  gap: 28px;
+  flex-direction: column;
+  gap: 12px;
   align-items: flex-start;
   padding: 20px 0;
 }
 
 .about-glance-label-col {
-  flex: 0 0 170px;
+  flex: none;
 }
 
 .about-section-tag {
@@ -126,7 +127,7 @@
 }
 
 .about-glance-content-col {
-  flex: 1;
+  width: 100%;
 }
 
 .about-glance-text {
@@ -176,6 +177,62 @@
   height: 1px;
   background: rgba(255, 255, 255, 0.08);
   margin: 10px 0;
+}
+
+.about-deliver-section {
+  margin: 0 0 90px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-deliver-header {
+  margin-bottom: 30px;
+}
+
+.about-deliver-content {
+  display: grid;
+  gap: 22px;
+  transition: all 0.35s ease;
+}
+
+.about-deliver-content.collapsed {
+  max-height: 440px;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-deliver-content.expanded {
+  max-height: none;
+}
+
+.about-deliver-block {
+  padding: 0 0 0 0;
+}
+
+.about-deliver-block h3 {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-gold, #cfa860);
+  margin: 0 0 10px;
+}
+
+.about-deliver-block p,
+.about-deliver-block li {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.about-deliver-block ul {
+  margin: 8px 0 0 20px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
 }
 
 /* Image column: follows container seamlessly */

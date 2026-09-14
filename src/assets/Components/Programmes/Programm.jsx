@@ -239,7 +239,7 @@ const Programmes = () => {
     }
   };
 
-  const filters = ['ALL', 'TALK SHOWS','HEALTH', 'WORSHIP', 'TEENS & YOUTH', 'KIDS',];
+  const filters = ['ALL', 'TALK SHOWS','HEALTH', 'WORSHIP', 'TEENS & YOUTH', 'KIDDIES',];
 
   const programList = [
     {
@@ -255,8 +255,8 @@ const Programmes = () => {
     },
     {
       id: 2,
-      title: 'TIMELESS PARAGON – KIDS SHOW',
-      category: 'KIDS',
+      title: 'TIMELESS PARAGON – KIDDIES SHOW',
+      category: 'KIDDIES',
       image: timelessParagonNew,
       video: '/Videos/TIMELESS.mp4',
       schedule: 'Saturdays at 10:00 AM',
