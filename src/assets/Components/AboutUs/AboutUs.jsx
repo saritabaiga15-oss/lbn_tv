@@ -95,8 +95,7 @@ const AboutUs = () => {
             <span className="about-section-tag accent-gold">WHAT WE DELIVER</span>
           </div>
 
-          {/* Always-visible first 3 blocks */}
-          <div className="about-deliver-content expanded">
+          <div className="about-deliver-scroll-row">
             <div className="about-deliver-block">
               <h3>Broadcast &amp; Original Programming</h3>
               <p>
@@ -117,6 +116,27 @@ const AboutUs = () => {
                 Purpose-built podcast and recording studios, professional capture, editing and mastering, formatted for release across every major platform.
               </p>
             </div>
+
+            <div className="about-deliver-block">
+              <h3>Audio Production</h3>
+              <p>
+                Jingles, adverts, theme music, albums, audiobooks and full audio branding, produced to broadcast specification.
+              </p>
+            </div>
+
+            <div className="about-deliver-block">
+              <h3>Voice &amp; Localisation</h3>
+              <p>
+                Our AI voice assistant and cloning is designed to adapt across accents, languages and registers — corporate narration, character, devotional reads, dubbing and subtitling.
+              </p>
+            </div>
+
+            <div className="about-deliver-block">
+              <h3>Post-Production Services</h3>
+              <p>
+                Editing, sound design, mixing, colour grading, motion graphics and mastering for clients who only need the final mile — and for those who need the whole road.
+              </p>
+            </div>
           </div>
 
           {/* READ MORE button — only shown when collapsed */}
@@ -129,29 +149,9 @@ const AboutUs = () => {
             </button>
           )}
 
-          {/* Expandable additional blocks */}
+          {/* Expandable additional content */}
           {deliverExpanded && (
-            <div className="about-deliver-content expanded" style={{ marginTop: '22px' }}>
-              <div className="about-deliver-block">
-                <h3>Audio Production</h3>
-                <p>
-                  Jingles, adverts, theme music, albums, audiobooks and full audio branding, produced to broadcast specification.
-                </p>
-              </div>
-
-              <div className="about-deliver-block">
-                <h3>Voice &amp; Localisation</h3>
-                <p>
-                  Our AI voice assistant and cloning is designed to adapt across accents, languages and registers — corporate narration, character, devotional reads, dubbing and subtitling.
-                </p>
-              </div>
-
-              <div className="about-deliver-block">
-                <h3>Post-Production Services</h3>
-                <p>
-                  Editing, sound design, mixing, colour grading, motion graphics and mastering for clients who only need the final mile — and for those who need the whole road.
-                </p>
-              </div>
+            <div className="about-deliver-expanded-content">
 
               <div className="about-deliver-full-width">
                 <h3>Why Clients Choose LBN</h3>
@@ -164,35 +164,36 @@ const AboutUs = () => {
                 </ul>
               </div>
 
-              <div className="about-deliver-block">
-                <h3>Who We Work With</h3>
-                <p>
-                  Ministries and faith-based organisations · Corporate brands and agencies · Film and music producers · Podcasters and digital creators · Event organisers and institutions.
-                </p>
+              <div className="about-deliver-expanded-grid">
+                <div className="about-deliver-block">
+                  <h3>Who We Work With</h3>
+                  <p>
+                    Ministries and faith-based organisations · Corporate brands and agencies · Film and music producers · Podcasters and digital creators · Event organisers and institutions.
+                  </p>
+                </div>
+
+                <div className="about-deliver-block">
+                  <h3>Our Conviction</h3>
+                  <p>
+                    You were created for a purpose — and on purpose. Everything we produce is designed to help you recognise that purpose, develop your potential, and accomplish what you were sent to do.
+                  </p>
+                </div>
+
+                <div className="about-deliver-block">
+                  <h3>Let's Begin</h3>
+                  <p>
+                    Brief us on your project and we will come back with a scope, a schedule and a cost. Walk in with your script; leave with a production your market will respect.
+                  </p>
+                  <p style={{ marginTop: '10px' }}>
+                    Subscribe to the LBN bulletin for programme premieres, studio openings and client opportunities.
+                  </p>
+                </div>
               </div>
 
-              <div className="about-deliver-block">
-                <h3>Our Conviction</h3>
-                <p>
-                  You were created for a purpose — and on purpose. Everything we produce is designed to help you recognise that purpose, develop your potential, and accomplish what you were sent to do.
-                </p>
-              </div>
-
-              <div className="about-deliver-block">
-                <h3>Let's Begin</h3>
-                <p>
-                  Brief us on your project and we will come back with a scope, a schedule and a cost. Walk in with your script; leave with a production your market will respect.
-                </p>
-                <p>
-                  Subscribe to the LBN bulletin for programme premieres, studio openings and client opportunities.
-                </p>
-              </div>
-
-              {/* SHOW LESS button at the bottom of the expanded section */}
               <button
                 className="about-readmore-btn accent-gold"
                 onClick={() => setDeliverExpanded(false)}
-                style={{ marginTop: '2px' }}
+                style={{ marginTop: '24px' }}
               >
                 SHOW LESS ▲
               </button>

@@ -22,7 +22,7 @@ const Hero = () => {
     { id: 1, image: teevablazeBanner, title: 'TEEVABLAZE' },
     { id: 2, image: voiceOfPraise, title: 'Voice of Praise' },
     { id: 3, image: TheWordatWork, title: 'Word At Work' },
-    { id: 4, image: Pst_Chris_Teaching1, title: 'Pastor Chris Teaching' },
+    { id: 4, image: Pst_Chris_Teaching1, title: 'Your Loveworld Specials S12P4' },
     { id: 5, image: timelessParagonNew, title: 'Timeless Paragon' },
     { id: 6, image: craftingFaith, title: 'Crafting Faith' },
     { id: 7, image: moneyMatters, title: 'Money Matters' },

@@ -479,8 +479,10 @@ const VOD = () => {
               <span className="vod-meta-item">{selectedHero.schedule}</span>
             </div>
 
-            <p className="vod-hero-logline">{selectedHero.tagline}</p>
-            <p className="vod-hero-synopsis">{selectedHero.description}</p>
+            <div className="vod-hero-desc-container">
+              <p className="vod-hero-logline">{selectedHero.tagline}</p>
+              <p className="vod-hero-synopsis">{selectedHero.description}</p>
+            </div>
 
             {/* Action Buttons: PLAY PROMO & + MY LIST */}
             <div className="vod-hero-cta-group">

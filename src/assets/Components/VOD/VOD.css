@@ -236,7 +236,13 @@
   font-weight: 500;
 }
 
-/* Logline & Synopsis */
+/* Logline & Synopsis Container */
+.vod-hero-desc-container {
+  display: block;
+  max-width: 620px;
+  margin-bottom: 22px;
+}
+
 .vod-hero-logline {
   font-size: 1.02rem;
   font-weight: 600;
@@ -250,8 +256,7 @@
   font-size: 0.9rem;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.72);
-  max-width: 620px;
-  margin-bottom: 22px;
+  margin-bottom: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -1431,6 +1436,71 @@
 }
 
 @media (max-width: 768px) {
+  /* Hide tag badges and rating strip on mobile as requested (Desktop untouched) */
+  .vod-hero-tag-row,
+  .vod-hero-rating-strip {
+    display: none !important;
+  }
+
+  .vod-hero-stage {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    align-items: flex-start;
+    padding: 0 0 40px;
+    background: #050508;
+    overflow: hidden;
+  }
+
+  /* Display full proper 16:9 banner starting from top 0 without black gap */
+  .vod-hero-backdrop-layer,
+  .vod-hero-backdrop-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    height: 58vw !important;
+    min-height: 230px !important;
+    max-height: 380px !important;
+    overflow: hidden;
+  }
+
+  .vod-hero-backdrop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transform: none;
+    filter: brightness(0.96) contrast(1.04);
+  }
+
+  /* Gentle vertical gradient on mobile so full banner stays clear and visible */
+  .vod-hero-overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(5, 5, 8, 0.05) 0%,
+      rgba(5, 5, 8, 0.25) 50%,
+      rgba(5, 5, 8, 0.85) 85%,
+      #050508 100%
+    );
+  }
+
+  .vod-hero-overlay-radial {
+    display: none;
+  }
+
+  .vod-hero-vignette-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent, #050508 100%);
+  }
+
   .vod-hero-inner,
   .vod-shelf-section,
   .vod-lower-feature-section,
@@ -1438,12 +1508,159 @@
   .vod-controls-inner {
     padding: 0 20px;
   }
+
+  .vod-hero-inner {
+    position: relative;
+    z-index: 4;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: calc(58vw - 32px);
+  }
+
+  /* All content kept to one side */
+  .vod-hero-meta-col {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+  }
+
   .vod-hero-title {
-    font-size: 2.6rem;
+    font-size: 2.3rem;
+    margin-bottom: 6px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
   }
-  .vod-hero-logline {
-    font-size: 1rem;
+
+  /* Dedicated card container for tagline and synopsis */
+  .vod-hero-desc-container {
+    background: rgba(14, 14, 24, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-left: 3.5px solid #cfa860;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 0 0 16px 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
+
+  .vod-hero-desc-container .vod-hero-logline {
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: #dfba6a;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+
+  .vod-hero-desc-container .vod-hero-synopsis {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 0;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 3-Column horizontal scrollable CTA buttons row */
+  .vod-hero-cta-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+    flex-wrap: nowrap;
+  }
+
+  .vod-hero-cta-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vod-play-primary-btn {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 11px 20px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .vod-watchlist-btn {
+    flex: 0 0 auto;
+    width: auto;
+    height: 42px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tooltip-text {
+    display: inline;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .vod-audio-indicator {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 8px 14px;
+    margin-left: 0;
+    white-space: nowrap;
+    font-size: 0.65rem;
+  }
+
+  /* 3-Column horizontal scrollable Preview Cards */
+  .vod-hero-thumbs-col {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .vod-thumbs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .vod-thumbs-stack {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .vod-thumbs-stack::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vod-thumb-card {
+    flex: 0 0 240px;
+    min-width: 220px;
+    max-width: 250px;
+  }
+
   .vod-poster-card {
     flex: 0 0 170px;
   }
@@ -1464,33 +1681,68 @@
 }
 
 @media (max-width: 480px) {
+  .vod-hero-stage {
+    padding: 0 0 30px;
+  }
+
+  .vod-hero-backdrop-layer,
+  .vod-hero-backdrop-container {
+    top: 0;
+    height: 60vw !important;
+    min-height: 215px !important;
+  }
+
+  .vod-hero-inner {
+    padding: 0 16px;
+    margin-top: calc(60vw - 25px);
+    gap: 12px;
+  }
+
   .vod-hero-title {
-    font-size: 2.2rem;
+    font-size: 1.95rem;
+    line-height: 1.1;
+    margin-bottom: 2px;
   }
+
+  .vod-hero-desc-container {
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+  }
+
+  .vod-hero-desc-container .vod-hero-logline {
+    font-size: 0.88rem;
+    line-height: 1.3;
+    margin-bottom: 5px;
+  }
+
+  .vod-hero-desc-container .vod-hero-synopsis {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
   .vod-hero-cta-group {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
+    gap: 8px;
   }
+
   .vod-play-primary-btn {
-    width: 100%;
-    justify-content: center;
+    padding: 10px 16px;
+    font-size: 0.74rem;
   }
+
   .vod-watchlist-btn {
-    width: 100%;
-    border-radius: 8px;
-    height: 46px;
-    font-size: 1rem;
+    height: 38px;
+    padding: 0 12px;
+    font-size: 0.76rem;
   }
-  .tooltip-text {
-    display: inline;
-    margin-left: 8px;
-    font-size: 0.85rem;
-    font-weight: 700;
-  }
+
   .vod-audio-indicator {
-    width: 100%;
-    justify-content: center;
-    margin-left: 0;
+    padding: 7px 12px;
+    font-size: 0.62rem;
+  }
+
+  .vod-thumb-card {
+    flex: 0 0 215px;
+    min-width: 200px;
   }
 }

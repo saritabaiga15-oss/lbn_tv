@@ -1,7 +1,7 @@
 import React from 'react';
 import './GlobalProgrammes.css';
 import globalCommunion from '../../images/Growth.PNG';
-import YLS_S12P4 from '../../images/YLS_S12P4.jpeg';
+import PraiseNight29 from '../../images/PraiseNight29.jpeg';
 
 const GlobalPrograms = () => {
   const programs = [
@@ -13,8 +13,8 @@ const GlobalPrograms = () => {
     },
     {
       id: 2,
-      image: YLS_S12P4,
-      title: 'Your Loveworld Special with Pastor Chris',
+      image: PraiseNight29,
+      title: 'Praise Night 29 with Pastor Chris',
       badge: 'LIVE SPECIAL'
     }
   ];
