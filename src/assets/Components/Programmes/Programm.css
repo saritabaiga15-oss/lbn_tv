@@ -567,6 +567,24 @@
   font-size: 0.6rem;
 }
 
+.programme-coming-soon-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, rgba(201, 160, 48, 0.92), rgba(180, 120, 20, 0.95));
+  color: #fff;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(201, 160, 48, 0.4), 0 2px 6px rgba(0, 0, 0, 0.4);
+  animation: pulse-slow 2.5s infinite;
+}
+
 .programmes-modal-info-col {
   padding: 60px 50px;
   display: flex;

@@ -22,6 +22,7 @@ const BG_PROMOS = [
   { id: 'moneyMatters', title: 'Money Matters', src: '/Videos/MoneyMatters.mp4' },
   { id: 'teevablaze', title: 'Teevablaze', src: '/Videos/Teevablaze.mp4' },
   { id: 'healthyLiving', title: 'Healthy Living', src: '/Videos/HL INTRO.mp4' },
+  { id: 'voiceOfPraise', title: 'Voice of Praise', src: '/Videos/VoiceOfPraise.mp4' },
   { id: 'enoch', title: 'LoveWorld India Special', src: '/Videos/ENOCH_PROMO_FINAL.mp4' }
 ];
 
@@ -336,6 +337,7 @@ const Programmes = () => {
       title: 'VOICE OF PRAISE',
       category: 'WORSHIP',
       image: voiceOfPraise,
+      video: '/Videos/VoiceOfPraise.mp4',
       schedule: 'Weekly on LBN',
       duration: '30 mins',
       tagline: 'Where worship meets the heart.',
@@ -467,9 +469,13 @@ const Programmes = () => {
                 <span className={`programme-card-category ${getCategoryClass(prog.category)}`}>
                   {prog.category}
                 </span>
-                {prog.video && (
+                {prog.video ? (
                   <span className="programme-video-badge">
                     <span className="play-triangle">▶</span> VIDEO PROMO
+                  </span>
+                ) : (
+                  <span className="programme-coming-soon-badge">
+                    COMING SOON
                   </span>
                 )}
               </div>
