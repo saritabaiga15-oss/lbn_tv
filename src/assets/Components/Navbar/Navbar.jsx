@@ -105,7 +105,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 onClick={(e) => { e.preventDefault(); handleNavClick('airtime-on-lbn'); }}
                 className={`nav-link ${activeTab === 'airtime-on-lbn' ? 'active' : ''}`}
               >
-                Airtime On LBN
+                AIRTIME ON LBN
               </a>
             </li>
             <li className="nav-item">
@@ -114,7 +114,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                 onClick={(e) => { e.preventDefault(); handleNavClick('anchorcrest-foundation'); }}
                 className={`nav-link ${activeTab === 'anchorcrest-foundation' ? 'active' : ''}`}
               >
-                Anchorcrest foundation
+                ANCHORCREST FOUNDATION
               </a>
             </li>
             <li className="nav-item">
@@ -213,7 +213,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('airtime-on-lbn'); }}
                   className={activeTab === 'airtime-on-lbn' ? 'active' : ''}
                 >
-                  Airtime On LBN
+                  AIRTIME ON LBN
                 </a>
               </li>
               <li>
@@ -222,7 +222,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('anchorcrest-foundation'); }}
                   className={activeTab === 'anchorcrest-foundation' ? 'active' : ''}
                 >
-                  Anchorcrest foundation
+                  ANCHORCREST FOUNDATION
                 </a>
               </li>
               <li>

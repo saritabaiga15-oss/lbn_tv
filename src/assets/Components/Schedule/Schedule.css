@@ -1,7 +1,7 @@
 .epg-section {
-  padding: 90px 20px 80px;
+  padding: 4px 16px 30px;
   background-color: #07070a;
-  min-height: 85vh;
+  min-height: 80vh;
   color: #ffffff;
 }
 
@@ -12,29 +12,53 @@
 
 .epg-header {
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 8px;
 }
 
+.epg-top-badge-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 6px auto;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.epg-top-badge-wrap .epg-badge,
 .epg-badge {
-  display: inline-block;
-  font-size: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 2px;
   color: #d4a34b;
-  background: rgba(212, 163, 75, 0.08);
-  padding: 6px 20px;
+  background: rgba(212, 163, 75, 0.09);
+  padding: 5px 20px;
   border-radius: 999px;
-  border: 1px solid rgba(212, 163, 75, 0.35);
-  margin-bottom: 18px;
+  border: 1px solid rgba(212, 163, 75, 0.4);
+  margin: 0 auto;
   text-transform: uppercase;
+  box-shadow: 0 4px 18px rgba(212, 163, 75, 0.12);
+  transition: all 0.3s ease;
+}
+
+.epg-top-badge-wrap .epg-badge:hover,
+.epg-badge:hover {
+  background: rgba(212, 163, 75, 0.16);
+  border-color: #d4a34b;
+  box-shadow: 0 4px 22px rgba(212, 163, 75, 0.25);
+  transform: translateY(-1px);
 }
 
 .epg-title {
   font-family: var(--font-title, 'Oswald', sans-serif);
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
   letter-spacing: 1.5px;
-  margin-bottom: 14px;
+  margin-bottom: 0;
   color: #ffffff;
   text-transform: uppercase;
   line-height: 1.15;
@@ -43,7 +67,7 @@
 .epg-subtitle {
   color: #9c9ca8;
   max-width: 680px;
-  margin: 0 auto 36px;
+  margin: 0 auto;
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -55,7 +79,8 @@
   overflow-x: auto !important;
   justify-content: flex-start;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-top: 25px;
+  margin-bottom: 22px;
   padding: 6px 4px 14px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -124,6 +149,17 @@
   font-weight: 600;
 }
 
+/* Filters Wrapper & View Mode Toggle */
+.epg-filters-bar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 8px;
+  margin-bottom: 38px;
+  flex-wrap: wrap;
+}
+
 /* Category Filters Bar: Always in ONE line, horizontally scrollable */
 .epg-filters-bar {
   display: flex;
@@ -131,19 +167,57 @@
   overflow-x: auto !important;
   justify-content: flex-start;
   gap: 10px;
-  margin-bottom: 40px;
-  padding: 6px 4px 14px;
+  margin-bottom: 0;
+  padding: 6px 4px 10px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  flex: 1;
 }
 
 .epg-filters-bar::-webkit-scrollbar {
   display: none;
 }
 
+.epg-view-mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #121218;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 4px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.view-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  color: #88889a;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.view-mode-btn:hover {
+  color: #ffffff;
+}
+
+.view-mode-btn.active {
+  background: #d4a34b;
+  color: #07070a;
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(212, 163, 75, 0.35);
+}
+
 @media (min-width: 1040px) {
   .epg-filters-bar {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
@@ -173,6 +247,593 @@
   color: #d4a34b;
   background: rgba(212, 163, 75, 0.08);
   box-shadow: 0 0 14px rgba(212, 163, 75, 0.15);
+}
+
+/* ══════════════════════════════════════════════════════════
+   3D COVERFLOW STAGE (Matching User Reference Design)
+══════════════════════════════════════════════════════════ */
+.coverflow-stage-outer {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: 0;
+  margin-bottom: 12px;
+  border-radius: 0;
+  padding: 0 0 10px;
+  overflow: hidden;
+  background: #09090e;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: none;
+  border-right: none;
+}
+
+/* Fullscreen mode (both native browser fullscreen & CSS is-fullscreen) */
+.coverflow-stage-outer:fullscreen,
+.coverflow-stage-outer.is-fullscreen {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  background: #07070a !important;
+  z-index: 999999 !important;
+}
+
+.coverflow-stage-outer:fullscreen .coverflow-stage,
+.coverflow-stage-outer.is-fullscreen .coverflow-stage {
+  height: calc(100vh - 120px) !important;
+  max-height: 800px !important;
+}
+
+/* Fullscreen Toggle Button */
+.coverflow-fullscreen-btn {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 35;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.coverflow-fullscreen-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(212, 163, 75, 0.8);
+  color: #d4a34b;
+  transform: scale(1.1);
+}
+
+/* Dynamic Ambient blurred artwork backdrop */
+.coverflow-ambient-bg {
+  position: absolute;
+  inset: -60px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(65px) saturate(1.4);
+  opacity: 0.35;
+  transform: scale(1.15);
+  pointer-events: none;
+  transition: background-image 0.7s ease;
+  z-index: 0;
+}
+
+.coverflow-ambient-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(9, 9, 14, 0.25) 20%, #09090e 95%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.coverflow-stage {
+  position: relative;
+  width: 100%;
+  height: 385px;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  user-select: none;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.coverflow-stage:active {
+  cursor: grabbing;
+}
+
+/* Left & Right Chevrons / Arrow Buttons */
+.coverflow-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+
+.coverflow-nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.coverflow-nav-arrow.prev {
+  left: 20px;
+}
+
+.coverflow-nav-arrow.next {
+  right: 20px;
+}
+
+/* 3D Cards Track */
+.coverflow-cards-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Individual 3D Card */
+.coverflow-card {
+  position: absolute;
+  width: 245px;
+  height: 350px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0b0b10;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+  transform-origin: center center;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.55s ease,
+              filter 0.55s ease,
+              box-shadow 0.55s ease,
+              border-color 0.55s ease;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.coverflow-card.is-active {
+  border: 2px solid rgba(212, 163, 75, 0.85);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9),
+              0 0 30px rgba(212, 163, 75, 0.35);
+}
+
+.coverflow-card.is-live {
+  border-color: #e50914;
+}
+
+/* Gradient Scrim for crystal clear readability */
+.coverflow-card-scrim {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: radial-gradient(
+    circle at center,
+    rgba(5, 5, 8, 0.45) 0%,
+    rgba(5, 5, 8, 0.88) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── CENTERED CONTENT: EXACTLY MATCHING REFERENCE IMAGE ── */
+.coverflow-card-center-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  animation: coverflowContentFade 0.4s ease;
+}
+
+@keyframes coverflowContentFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.coverflow-card-hashtag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.88);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+}
+
+.coverflow-card-title {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: clamp(1.15rem, 1.6vw, 1.38rem);
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 6px;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.95);
+  max-width: 215px;
+}
+
+.coverflow-card-divider {
+  width: 30px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.7);
+  margin: 0 auto 6px;
+  border-radius: 2px;
+}
+
+.coverflow-card-timing {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #f6d17b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.coverflow-card-host {
+  font-size: 0.7rem;
+  color: #c4c4d6;
+  margin: 0 0 8px;
+  line-height: 1.25;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.coverflow-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.coverflow-reminder-btn {
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(212, 163, 75, 0.8);
+  color: #f6d17b;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 125px;
+  text-align: center;
+}
+
+.coverflow-reminder-btn:hover {
+  background: #d4a34b;
+  color: #07070a;
+  box-shadow: 0 0 16px rgba(212, 163, 75, 0.5);
+}
+
+.coverflow-reminder-btn.set {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #07070a;
+  font-weight: 800;
+}
+
+.coverflow-watch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 16px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: #e50914;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 14px rgba(229, 9, 20, 0.6);
+  min-width: 120px;
+  text-align: center;
+}
+
+.coverflow-watch-btn:hover {
+  background: #ff1f2d;
+  transform: scale(1.04);
+}
+
+/* Side Card subtle pill */
+.coverflow-side-card-pill {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Bottom Bar: Counter & Quick Navigator */
+.coverflow-bottom-bar {
+  position: relative;
+  z-index: 5;
+  max-width: 860px;
+  margin: 4px auto 0;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(14, 14, 20, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+}
+
+.coverflow-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-weight: 700;
+}
+
+.counter-current {
+  font-family: var(--font-title, 'Oswald', sans-serif);
+  font-size: 1.4rem;
+  color: #d4a34b;
+}
+
+.counter-sep {
+  color: #555566;
+  font-size: 1rem;
+}
+
+.counter-total {
+  color: #88889a;
+  font-size: 0.95rem;
+}
+
+.counter-label {
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  color: #666677;
+  margin-left: 4px;
+}
+
+.coverflow-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 380px;
+  overflow-x: auto;
+  padding: 4px 0;
+  scrollbar-width: none;
+}
+
+.coverflow-dots::-webkit-scrollbar {
+  display: none;
+}
+
+.coverflow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.coverflow-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.coverflow-dot.active {
+  width: 22px;
+  background: #d4a34b;
+  box-shadow: 0 0 10px rgba(212, 163, 75, 0.6);
+}
+
+.coverflow-jump-live-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(229, 9, 20, 0.18);
+  border: 1px solid #e50914;
+  color: #ff4d58;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.coverflow-jump-live-btn:hover {
+  background: #e50914;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(229, 9, 20, 0.6);
+}
+
+/* Responsive adjustments for 3D Coverflow */
+@media (max-width: 1024px) {
+  .coverflow-stage {
+    height: 480px;
+  }
+  .coverflow-card {
+    width: 280px;
+    height: 420px;
+  }
+  .coverflow-nav-arrow.prev { left: 16px; }
+  .coverflow-nav-arrow.next { right: 16px; }
+}
+
+@media (max-width: 768px) {
+  .coverflow-stage-outer {
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    border-radius: 0 !important;
+    padding: 24px 0 20px !important;
+    overflow: hidden !important;
+    touch-action: pan-y !important;
+  }
+  .coverflow-stage {
+    height: 430px;
+    perspective: 850px;
+    touch-action: pan-y !important;
+  }
+  .coverflow-card {
+    width: 240px;
+    height: 370px;
+    touch-action: pan-y !important;
+  }
+  .coverflow-card-center-content {
+    padding: 20px 14px !important;
+  }
+  .coverflow-card-title {
+    font-size: 1.18rem !important;
+    margin: 0 0 10px !important;
+  }
+  .coverflow-card-timing {
+    font-size: 0.8rem !important;
+    margin-bottom: 6px !important;
+  }
+  .coverflow-card-host {
+    font-size: 0.74rem !important;
+    margin: 0 0 14px !important;
+  }
+  .coverflow-reminder-btn {
+    padding: 7px 14px !important;
+    font-size: 0.72rem !important;
+  }
+  .coverflow-watch-btn {
+    padding: 7px 14px !important;
+    font-size: 0.72rem !important;
+  }
+  /* On mobile touch devices, swipe navigation replaces arrows */
+  .coverflow-nav-arrow {
+    display: none !important;
+  }
+  .coverflow-bottom-bar {
+    max-width: 94%;
+    margin: 14px auto 0 !important;
+    padding: 10px 16px !important;
+    gap: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .epg-top-badge-wrap {
+    margin-bottom: 14px;
+  }
+  .epg-top-badge-wrap .epg-badge,
+  .epg-badge {
+    font-size: 0.72rem;
+    padding: 6px 16px;
+    letter-spacing: 1.4px;
+  }
+  .coverflow-stage {
+    height: 385px;
+    perspective: 700px;
+  }
+  .coverflow-card {
+    width: 220px;
+    height: 335px;
+    border-radius: 16px;
+  }
+  .coverflow-card-title {
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+  }
+  .coverflow-card-center-content {
+    padding: 16px 12px !important;
+  }
+  .coverflow-card-divider {
+    margin: 0 auto 10px !important;
+  }
+  .coverflow-bottom-bar {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+  }
+  .counter-current {
+    font-size: 1.15rem;
+  }
+  .counter-total {
+    font-size: 0.82rem;
+  }
+  .counter-label {
+    display: none;
+  }
+  .coverflow-dots {
+    max-width: 130px;
+  }
+  .coverflow-jump-live-btn span:last-child {
+    display: none;
+  }
 }
 
 /* Timeline Cards: Image and Reminder in the SAME horizontal line */
@@ -327,14 +988,128 @@
   }
 }
 
-/* Mobile & Small Screens: Image and Reminder strictly on the SAME horizontal line */
+/* Mobile & Small Screens: Coverflow + EPG Slot adjustments */
 @media (max-width: 768px) {
   .epg-section {
-    padding: 50px 14px 40px;
+    padding: 6px 12px 24px;
   }
 
   .epg-title {
     font-size: clamp(1.8rem, 6vw, 2.3rem);
+  }
+
+  /* Coverflow Stage & Cards on Mobile */
+  .coverflow-stage {
+    height: 345px;
+  }
+
+  .coverflow-card {
+    width: 215px;
+    height: 310px;
+    border-radius: 14px;
+  }
+
+  .coverflow-card-center-content {
+    padding: 12px 10px;
+  }
+
+  .coverflow-card-hashtag {
+    font-size: 0.64rem;
+    padding: 2px 6px;
+    margin-bottom: 4px;
+  }
+
+  .coverflow-card-title {
+    font-size: 1.15rem;
+    max-width: 185px;
+    margin: 0 0 4px;
+  }
+
+  .coverflow-card-divider {
+    width: 24px;
+    margin: 0 auto 4px;
+  }
+
+  .coverflow-card-timing {
+    font-size: 0.72rem;
+    margin-bottom: 2px;
+  }
+
+  .coverflow-card-host {
+    font-size: 0.66rem;
+    margin: 0 0 6px;
+  }
+
+  .coverflow-reminder-btn {
+    padding: 4px 12px;
+    font-size: 0.65rem;
+    min-width: 110px;
+  }
+
+  .coverflow-watch-btn {
+    padding: 4px 12px;
+    font-size: 0.65rem;
+    min-width: 105px;
+  }
+
+  .coverflow-nav-arrow {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .coverflow-nav-arrow.prev {
+    left: 8px;
+  }
+
+  .coverflow-nav-arrow.next {
+    right: 8px;
+  }
+
+  .coverflow-bottom-bar {
+    padding: 5px 12px;
+    gap: 8px;
+    width: calc(100% - 16px);
+    margin: 4px auto 0;
+  }
+
+  .counter-current {
+    font-size: 1.15rem;
+  }
+
+  .counter-total {
+    font-size: 0.82rem;
+  }
+
+  .counter-label {
+    display: none;
+  }
+
+  .coverflow-dots {
+    max-width: 150px;
+    gap: 4px;
+  }
+
+  .coverflow-dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .coverflow-dot.active {
+    width: 16px;
+  }
+
+  .coverflow-jump-live-btn {
+    padding: 4px 10px;
+    font-size: 0.62rem;
+    white-space: nowrap;
+  }
+
+  .coverflow-fullscreen-btn {
+    top: 10px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
   }
 
   .epg-slot-card {
@@ -416,11 +1191,80 @@
 
 @media (max-width: 480px) {
   .epg-section {
-    padding: 40px 10px 35px;
+    padding: 6px 6px 24px;
   }
 
   .epg-title {
     font-size: 1.65rem;
+  }
+
+  .coverflow-stage {
+    height: 315px;
+  }
+
+  .coverflow-card {
+    width: 195px;
+    height: 280px;
+    border-radius: 12px;
+  }
+
+  .coverflow-card-center-content {
+    padding: 10px 8px;
+  }
+
+  .coverflow-card-title {
+    font-size: 1.02rem;
+    max-width: 165px;
+  }
+
+  .coverflow-card-hashtag {
+    font-size: 0.58rem;
+    padding: 1px 6px;
+    margin-bottom: 3px;
+  }
+
+  .coverflow-card-timing {
+    font-size: 0.68rem;
+  }
+
+  .coverflow-card-host {
+    font-size: 0.62rem;
+    margin: 0 0 4px;
+  }
+
+  .coverflow-reminder-btn {
+    padding: 3px 10px;
+    font-size: 0.62rem;
+    min-width: 95px;
+  }
+
+  .coverflow-watch-btn {
+    padding: 3px 10px;
+    font-size: 0.62rem;
+    min-width: 90px;
+  }
+
+  .coverflow-nav-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .coverflow-nav-arrow.prev {
+    left: 4px;
+  }
+
+  .coverflow-nav-arrow.next {
+    right: 4px;
+  }
+
+  .coverflow-bottom-bar {
+    padding: 4px 8px;
+    gap: 6px;
+    width: calc(100% - 12px);
+  }
+
+  .coverflow-dots {
+    max-width: 110px;
   }
 
   .epg-slot-card {

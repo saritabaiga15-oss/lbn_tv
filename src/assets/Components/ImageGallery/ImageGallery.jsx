@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './ImageGallery.css';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
-import teevablaze from '../../images/teevablaze_banner.jpg';
+import teevablaze from '../../images/TEEVABLAZE .png';
 import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
 import timelessParagon from '../../images/timeless_paragon_new.jpg';
@@ -25,6 +25,68 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
 
   // All items visible in horizontal scroll row
   const visibleItems = galleryItems;
+
+  const currentIndex = selectedImage
+    ? visibleItems.findIndex((item) => item.id === selectedImage.id)
+    : -1;
+
+  const handlePrev = (e) => {
+    if (e) e.stopPropagation();
+    if (currentIndex === -1) return;
+    const prevIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+    setSelectedImage(visibleItems[prevIndex]);
+  };
+
+  const handleNext = (e) => {
+    if (e) e.stopPropagation();
+    if (currentIndex === -1) return;
+    const nextIndex = (currentIndex + 1) % visibleItems.length;
+    setSelectedImage(visibleItems[nextIndex]);
+  };
+
+  // Keyboard navigation for lightbox (ArrowLeft / ArrowRight / Escape)
+  useEffect(() => {
+    if (!selectedImage) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrev();
+      } else if (e.key === 'ArrowRight') {
+        handleNext();
+      } else if (e.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentIndex]);
+
+  // Touch swipe support for lightbox modal on mobile
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+
+  const handleModalTouchStart = (e) => {
+    if (e.touches && e.touches[0]) {
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+    }
+  };
+
+  const handleModalTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    if (e.changedTouches && e.changedTouches[0]) {
+      const diffX = touchStartX.current - e.changedTouches[0].clientX;
+      const diffY = touchStartY.current - e.changedTouches[0].clientY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+        if (diffX > 0) {
+          handleNext();
+        } else {
+          handlePrev();
+        }
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
 
   const handleSeeMore = () => {
     if (onNavigateProgrammes) {
@@ -108,9 +170,25 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
 
       {/* Lightbox Modal */}
       {selectedImage && (
-        <div className="gallery-lightbox" onClick={() => setSelectedImage(null)}>
+        <div
+          className="gallery-lightbox"
+          onClick={() => setSelectedImage(null)}
+          onTouchStart={handleModalTouchStart}
+          onTouchEnd={handleModalTouchEnd}
+        >
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button className="lightbox-close" onClick={() => setSelectedImage(null)}>&times;</button>
+            {/* Back / Close Cross Button on Left Side */}
+            <button className="lightbox-close" onClick={() => setSelectedImage(null)} aria-label="Back / Close">
+              &times;
+            </button>
+            
+            {/* Promo Counter Badge on Right Side */}
+            {currentIndex !== -1 && (
+              <div className="lightbox-promo-counter">
+                <span>PROMO {currentIndex + 1} OF {visibleItems.length}</span>
+              </div>
+            )}
+
             {selectedImage.video ? (
               <div className="lightbox-video-container">
                 <video
@@ -143,13 +221,36 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
             ) : (
               <img src={selectedImage.src} alt={selectedImage.title} className="lightbox-img" />
             )}
+
             <div className="lightbox-info">
-              <span className="lightbox-cat">{selectedImage.category}</span>
+              <div className="lightbox-meta-row">
+                <span className="lightbox-cat">{selectedImage.category}</span>
+                {currentIndex !== -1 && (
+                  <span className="lightbox-index-pill">{currentIndex + 1} / {visibleItems.length}</span>
+                )}
+              </div>
               <h3 className="lightbox-title">{selectedImage.title}</h3>
               <p className="lightbox-caption">{selectedImage.caption}</p>
-              <button className="lightbox-programme-link" onClick={() => { setSelectedImage(null); handleSeeMore(); }}>
-                View in Programmes Guide &rarr;
-              </button>
+
+              <div className="lightbox-footer-row">
+                <button className="lightbox-programme-link" onClick={() => { setSelectedImage(null); handleSeeMore(); }}>
+                  View in Programmes Guide &rarr;
+                </button>
+                <div className="lightbox-inline-nav">
+                  <button className="lightbox-inline-nav-btn prev" onClick={handlePrev} title="Previous Promo">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>PREV</span>
+                  </button>
+                  <button className="lightbox-inline-nav-btn next" onClick={handleNext} title="Next Promo">
+                    <span>NEXT</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

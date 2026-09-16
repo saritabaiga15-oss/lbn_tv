@@ -112,7 +112,7 @@ const Footer = ({ onNavigate }) => {
                 Pune, Maharashtra 411036
               </p>
               <div className="contact-lines">
-                <p><strong>Phone:</strong> +919529607156 / +234 9085900344</p>
+                <p><strong>Phone:</strong> +919529607156 / +918040184671</p>
                 <p><strong>Chat:</strong> +919529607156</p>
                 <p><strong>Web:</strong> <a href="https://www.lbntv.org" target="_blank" rel="noopener noreferrer">www.lbntv.org</a></p>
               </div>

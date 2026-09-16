@@ -41,7 +41,7 @@ const AirtimeOnLBN = () => {
                     <span className="c-icon">📞</span>
                     <div>
                       <strong>Call Us:</strong>{' '}
-                      <a href="tel:+919529607156">+91 9529607156</a> | <a href="tel:+2349085900344">+234 9085900344</a>
+                      <a href="tel:+919529607156">+91 9529607156</a> | <a href="tel:+918040184671">+91 8040184671</a>
                     </div>
                   </div>
                   <div className="contact-item">

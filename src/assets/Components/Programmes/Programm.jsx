@@ -4,7 +4,7 @@ import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MONEY MATTERS (1).png';
-import teevablazeBanner from '../../images/teevablaze_banner.jpg';
+import TEEVABLAZE from '../../images/TEEVABLAZE .png';
 import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
 import voiceOfPraise from '../../images/voice_of_praise.jpg';
 import healthyLiving from '../../images/healthy_living.jpg';
@@ -20,9 +20,10 @@ const BG_PROMOS = [
   { id: 'ignite', title: 'Ignite Show', src: '/Videos/Ignite.mp4' },
   { id: 'craftingFaith', title: 'Crafting Faith', src: '/CRAFTING%20FAITH.mp4' },
   { id: 'moneyMatters', title: 'Money Matters', src: '/Videos/MoneyMatters.mp4' },
-  { id: 'teevablaze', title: 'Teevablaze', src: '/Videos/Teevablaze.mp4' },
+  { id: 'Teevablaze', title: 'Teevablaze', src: '/Videos/Teevablaze.mp4' },
   { id: 'healthyLiving', title: 'Healthy Living', src: '/Videos/HL INTRO.mp4' },
   { id: 'voiceOfPraise', title: 'Voice of Praise', src: '/Videos/VoiceOfPraise.mp4' },
+  {id: 'justBelieve', title: 'Just Believe', src: '/Videos/JustBelieve.mp4'},
   { id: 'enoch', title: 'LoveWorld India Special', src: '/Videos/ENOCH_PROMO_FINAL.mp4' }
 ];
 
@@ -325,7 +326,7 @@ const Programmes = () => {
       id: 10,
       title: 'TEEVABLAZE',
       category: 'TEENS & YOUTH',
-      image: teevablazeBanner,
+      image: TEEVABLAZE,
       video: '/Videos/Teevablaze.mp4',
       schedule: 'Monday to Friday at 11:30 AM',
       duration: '30 mins',
@@ -356,9 +357,13 @@ const Programmes = () => {
     },
     {
       id: 13,
+
+
+
       title: 'JUST BELIEVE',
       category: 'TALK SHOWS',
       image: justBelieveBanner,
+      video: '/Videos/JustBelieve.mp4',
       schedule: 'Weekly on LBN',
       duration: '30 mins',
       tagline: 'Faith that inspires hope and action.',
@@ -374,6 +379,40 @@ const Programmes = () => {
   const filteredPrograms = activeFilter === 'ALL'
     ? programList
     : programList.filter(prog => prog.category === activeFilter);
+
+  const currentShowIdx = selectedShow
+    ? filteredPrograms.findIndex(p => p.id === selectedShow.id)
+    : -1;
+
+  const handlePrevShow = (e) => {
+    if (e) e.stopPropagation();
+    if (currentShowIdx === -1 || filteredPrograms.length === 0) return;
+    const prevIdx = (currentShowIdx - 1 + filteredPrograms.length) % filteredPrograms.length;
+    setSelectedShow(filteredPrograms[prevIdx]);
+  };
+
+  const handleNextShow = (e) => {
+    if (e) e.stopPropagation();
+    if (currentShowIdx === -1 || filteredPrograms.length === 0) return;
+    const nextIdx = (currentShowIdx + 1) % filteredPrograms.length;
+    setSelectedShow(filteredPrograms[nextIdx]);
+  };
+
+  // Keyboard navigation for programme modal
+  useEffect(() => {
+    if (!selectedShow) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrevShow();
+      } else if (e.key === 'ArrowRight') {
+        handleNextShow();
+      } else if (e.key === 'Escape') {
+        setSelectedShow(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedShow, currentShowIdx, filteredPrograms]);
 
   // 4 items on mobile (2x2) initially, 6 items on desktop (2x3) initially
   const initialLimit = isMobile ? 4 : 6;
@@ -530,7 +569,18 @@ const Programmes = () => {
       {selectedShow && (
         <div className="programmes-modal" onClick={() => setSelectedShow(null)}>
           <div className="programmes-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="programmes-modal-close" onClick={() => setSelectedShow(null)}>&times;</button>
+            {/* Back / Close Cross Button on Top-Left */}
+            <button className="programmes-modal-close" onClick={() => setSelectedShow(null)} aria-label="Back / Close">
+              &times;
+            </button>
+
+            {/* Promo Counter Badge on Top-Right */}
+            {currentShowIdx !== -1 && (
+              <div className="programmes-modal-promo-counter">
+                <span>SHOW {currentShowIdx + 1} OF {filteredPrograms.length}</span>
+              </div>
+            )}
+
             <div className="programmes-modal-grid">
 
               <div className="programmes-modal-img-col">
@@ -542,6 +592,7 @@ const Programmes = () => {
                       poster={selectedShow.image}
                       controls
                       autoPlay
+                      muted
                       playsInline
                       preload="auto"
                       className="programmes-modal-video-player"
@@ -599,9 +650,20 @@ const Programmes = () => {
                       WATCH LATEST
                     </button>
                   )}
-                  <button className="programmes-modal-action-back" onClick={() => setSelectedShow(null)}>
-                    BACK
-                  </button>
+                  <div className="programmes-modal-nav-pair">
+                    <button className="programmes-modal-action-nav prev" onClick={handlePrevShow} title="Previous Programme">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                      </svg>
+                      <span>PREV</span>
+                    </button>
+                    <button className="programmes-modal-action-nav next" onClick={handleNextShow} title="Next Programme">
+                      <span>NEXT</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
 

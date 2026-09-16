@@ -9,7 +9,7 @@ import wholenessImg from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
 import craftingFaithImg from '../../images/Crafting Faith.png';
 import moneyMattersImg from '../../images/MONEY MATTERS (1).png';
-import teevablazeImg from '../../images/teevablaze_banner.jpg';
+import teevablazeImg from '../../images/TEEVABLAZE .png';
 import healthyLivingImg from '../../images/healthy_living.jpg';
 import ethsImg from '../../images/ETHS.png';
 import justBelieveImg from '../../images/Just_believe_banner .png';
@@ -49,7 +49,7 @@ const PROMO_VIDEOS = [
     quality: '4K ULTRA HD',
     poster: justBelievePoster,
     banner: justBelieveImg,
-    video: '/Videos/THE_TRUMPET_NEW.mp4', // fallback/promo
+    video: '/Videos/JustBelieve.mp4',
     tagline: 'Faith that inspires hope, possibilities, and purposeful action.',
     description: 'An uplifting cinematic series encouraging believers worldwide to trust God, ignite mountain-moving faith, and walk boldly in the miraculous possibilities ahead.',
     schedule: 'Weekly on LBN TV',

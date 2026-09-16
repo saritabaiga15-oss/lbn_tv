@@ -7,12 +7,20 @@
   margin-top: -80px;
   overflow: hidden;
   background-color: #050507;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+
+.hero-slider:active {
+  cursor: grabbing;
 }
 
 .slider-track {
   display: flex;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .slide {
@@ -147,21 +155,9 @@
     background: linear-gradient(to top, rgba(5, 5, 7, 0.7) 0%, transparent 100%);
   }
 
-  /* Mobile arrow controls */
+  /* Mobile arrow controls removed - swipable navigation enabled */
   .hero-arrow {
-    width: 38px;
-    height: 38px;
-    top: 50%;
-  }
-
-  .hero-arrow.prev {
-    display: flex !important;
-    left: 10px;
-  }
-
-  .hero-arrow.next {
-    display: flex !important;
-    right: 10px;
+    display: none !important;
   }
 
   /* Compact slide dots on mobile */
@@ -196,12 +192,6 @@
   .slide {
     background-size: cover;
     background-position: center 50%;
-  }
-
-  .hero-arrow {
-    width: 32px;
-    height: 32px;
-    top: 50%;
   }
 
   .slider-dots {

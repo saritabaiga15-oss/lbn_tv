@@ -232,8 +232,8 @@ const Services = () => {
           </h1>
 
           <div className="services-hero-actions">
-            <a 
-              href="#props-studio-setup" 
+            <a
+              href="#props-studio-setup"
               className="services-btn primary"
               onClick={handleBookStudioClick}
             >
@@ -463,8 +463,8 @@ const Services = () => {
 
           <div className="service-cards-grid">
             {propsStudioData.map((item) => (
-              <div 
-                key={item.id} 
+              <div
+                key={item.id}
                 className="service-card service-setup-card"
                 onClick={() => setSelectedSetup(item)}
                 role="button"
@@ -483,9 +483,9 @@ const Services = () => {
                   <p className="service-card-tagline">
                     "{item.tagline}"
                   </p>
-                  
-                  <button 
-                    type="button" 
+
+                  <button
+                    type="button"
                     className="service-card-pop-btn"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -671,18 +671,18 @@ const Services = () => {
 
       {/* Studio & Setup Details Modal */}
       {selectedSetup && (
-        <div 
+        <div
           className="studio-modal-backdrop"
           onClick={() => setSelectedSetup(null)}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-setup-title"
         >
-          <div 
+          <div
             className="studio-modal-box"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               className="studio-modal-close-btn"
               onClick={() => setSelectedSetup(null)}
               aria-label="Close details"
@@ -712,10 +712,10 @@ const Services = () => {
               {/* Left column: Visuals & technical specs */}
               <div className="studio-modal-visual-col">
                 <div className="studio-modal-img-wrapper">
-                  <img 
-                    src={selectedSetup.image} 
-                    alt={selectedSetup.title} 
-                    className="studio-modal-img" 
+                  <img
+                    src={selectedSetup.image}
+                    alt={selectedSetup.title}
+                    className="studio-modal-img"
                   />
                   <div className="studio-modal-img-gradient"></div>
                   <div className="studio-modal-badge-group">
@@ -794,7 +794,7 @@ const Services = () => {
                       <div className="contact-card-box highlight">
                         <div className="contact-card-icon-wrap">
                           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                           </svg>
                         </div>
                         <div className="contact-card-details">
@@ -802,8 +802,8 @@ const Services = () => {
                           <span className="contact-phone-number">+91 9529607156</span>
                         </div>
                         <div className="contact-card-actions">
-                          <button 
-                            type="button" 
+                          <button
+                            type="button"
                             className="contact-copy-btn"
                             onClick={() => copyToClipboard('+919529607156', 'india')}
                             title="Copy number to clipboard"
@@ -817,18 +817,18 @@ const Services = () => {
                       <div className="contact-card-box">
                         <div className="contact-card-icon-wrap">
                           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                           </svg>
                         </div>
                         <div className="contact-card-details">
                           <span className="contact-region-tag">INTERNATIONAL LINE (AFRICA / GLOBAL)</span>
-                          <span className="contact-phone-number">+234 9085900344</span>
+                          <span className="contact-phone-number">+918040184671</span>
                         </div>
                         <div className="contact-card-actions">
-                          <button 
-                            type="button" 
+                          <button
+                            type="button"
                             className="contact-copy-btn"
                             onClick={() => copyToClipboard('+2349085900344', 'intl')}
                             title="Copy number to clipboard"
@@ -842,8 +842,8 @@ const Services = () => {
                       <div className="contact-card-box">
                         <div className="contact-card-icon-wrap">
                           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                           </svg>
                         </div>
                         <div className="contact-card-details">
@@ -851,8 +851,8 @@ const Services = () => {
                           <span className="contact-phone-number">info@lbntv.org</span>
                         </div>
                         <div className="contact-card-actions">
-                          <button 
-                            type="button" 
+                          <button
+                            type="button"
                             className="contact-copy-btn"
                             onClick={() => copyToClipboard('info@lbntv.org', 'email')}
                             title="Copy email to clipboard"
@@ -867,31 +867,31 @@ const Services = () => {
 
                 {/* Modal footer actions */}
                 <div className="studio-modal-actions">
-                  <button 
+                  <button
                     type="button"
                     className={`modal-action-btn primary ${showContactInfo ? 'active-glow' : ''}`}
                     onClick={() => setShowContactInfo(!showContactInfo)}
                   >
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
                     <span>{showContactInfo ? 'HIDE CONTACT INFO' : 'BOOK STUDIO NOW'}</span>
                   </button>
 
 
-                  <a 
+                  <a
                     href={`mailto:info@lbntv.org?subject=Studio%20Booking%20Inquiry%20-%20${encodeURIComponent(selectedSetup.title)}`}
                     className="modal-action-btn outline"
                   >
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="2" y="4" width="20" height="16" rx="2"/>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                     </svg>
                     <span>EMAIL</span>
                   </a>
 
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     className="modal-action-btn secondary"
                     onClick={() => {
                       setSelectedSetup(null);

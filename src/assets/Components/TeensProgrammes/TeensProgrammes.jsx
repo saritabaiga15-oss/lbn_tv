@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './TeensProgrammes.css';
-import teevablazeImg from '../../images/teevablaze_banner.jpg';
+import teevablazeImg from '../../images/TEEVABLAZE .png';
 import igniteImg from '../../images/YOUTHIgnite.png';
 
 const TeensProgrammes = () => {

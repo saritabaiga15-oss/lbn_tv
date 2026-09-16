@@ -406,6 +406,7 @@
   letter-spacing: 0.15em;
   color: var(--text-primary, #ffffff);
   text-decoration: none;
+  text-transform: uppercase;
   transition: var(--transition-smooth, all 0.3s ease);
 }
 
