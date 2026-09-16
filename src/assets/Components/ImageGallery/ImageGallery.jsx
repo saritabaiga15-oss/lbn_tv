@@ -125,7 +125,13 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
               onClick={() => setSelectedImage(item)}
             >
               <div className="gallery-img-wrapper">
-                <img src={item.src} alt={item.title} className="gallery-img" />
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="gallery-img"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span className="gallery-cat-pill-overlay">{item.category}</span>
                 {item.video && (
                   <span className="gallery-video-badge">
@@ -196,23 +202,16 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
                   src={selectedImage.video}
                   poster={selectedImage.src}
                   controls
-                  autoPlay
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="lightbox-video-player"
                   ref={(el) => {
                     if (el) {
                       el.muted = true;
                       el.playsInline = true;
-                      el.load();
-                      el.play().then(() => { el.muted = false; }).catch(() => {});
                     }
-                  }}
-                  onLoadedData={(e) => {
-                    const v = e.currentTarget;
-                    v.play().then(() => { v.muted = false; }).catch(() => {});
                   }}
                 >
                   Your browser does not support the video tag.
