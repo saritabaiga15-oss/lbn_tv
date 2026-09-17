@@ -1117,7 +1117,17 @@ const VOD = () => {
                 ref={(el) => {
                   videoPlayerRef.current = el;
                   if (el) {
-                    el.play().catch(() => {});
+                    el.muted = false;
+                    el.volume = 1.0;
+                    el.play().catch((err) => {
+                      console.warn('VOD autoplay audio fallback:', err);
+                      el.muted = true;
+                      el.play().then(() => {
+                        const unmute = () => { if (videoPlayerRef.current) videoPlayerRef.current.muted = false; };
+                        window.addEventListener('click', unmute, { once: true });
+                        window.addEventListener('touchstart', unmute, { once: true });
+                      }).catch(() => {});
+                    });
                   }
                 }}
                 src={activeModalVideo.video}
@@ -1128,10 +1138,16 @@ const VOD = () => {
                 preload="auto"
                 controlsList="nodownload"
                 onLoadedData={(e) => {
-                  e.currentTarget.play().catch(() => {});
+                  const v = e.currentTarget;
+                  v.muted = false;
+                  v.volume = 1.0;
+                  v.play().catch(() => {});
                 }}
                 onCanPlay={(e) => {
-                  e.currentTarget.play().catch(() => {});
+                  const v = e.currentTarget;
+                  v.muted = false;
+                  v.volume = 1.0;
+                  v.play().catch(() => {});
                 }}
               >
                 Your browser does not support the video tag.

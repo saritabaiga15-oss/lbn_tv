@@ -73,7 +73,7 @@ const Hero = () => {
     isSwiping.current = false;
     const diffX = touchStartX.current - touchEndX.current;
     const diffY = touchStartY.current - touchEndY.current;
-    const minDistance = 30; // 30px swipe threshold
+    const minDistance = 25; // 25px touch swipe threshold
 
     // Ensure horizontal swipe is dominant over vertical scroll
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) >= minDistance) {

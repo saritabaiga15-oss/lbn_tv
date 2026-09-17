@@ -238,13 +238,26 @@ const LiveTv = ({ onNavigate }) => {
     if (!video) return;
     let hls;
     const playVideo = () => {
+      video.muted = false;
       const p = video.play();
-      if (p) p.then(() => { setIsPlaying(true); setIsBuffering(false); })
-        .catch(() => {
-          video.muted = true; setIsMuted(true);
-          video.play().then(() => { setIsPlaying(true); setIsBuffering(false); })
-            .catch(() => { setIsPlaying(false); setIsBuffering(false); });
-        });
+      if (p) {
+        p.then(() => { setIsPlaying(true); setIsMuted(false); setIsBuffering(false); })
+         .catch(() => {
+           video.muted = true; setIsMuted(true);
+           video.play().then(() => {
+             setIsPlaying(true);
+             setIsBuffering(false);
+             const enableAudio = () => {
+               video.muted = false;
+               setIsMuted(false);
+               window.removeEventListener('click', enableAudio);
+               window.removeEventListener('touchstart', enableAudio);
+             };
+             window.addEventListener('click', enableAudio, { once: true });
+             window.addEventListener('touchstart', enableAudio, { once: true });
+           }).catch(() => { setIsPlaying(false); setIsBuffering(false); });
+         });
+      }
     };
     if (Hls.isSupported()) {
       hls = new Hls({ enableWorker: true, lowLatencyMode: true, backBufferLength: 90 });

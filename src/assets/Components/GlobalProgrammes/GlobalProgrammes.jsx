@@ -1,7 +1,7 @@
 import React from 'react';
 import './GlobalProgrammes.css';
 import globalCommunion from '../../images/Growth.PNG';
-import PraiseNight29 from '../../images/PraiseNight29.jpeg';
+import PraiseNight29 from '../../images/PraiseNight29.jpg';
 
 const GlobalPrograms = () => {
   const programs = [

@@ -197,22 +197,31 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
                   poster={selectedImage.src}
                   controls
                   autoPlay
-                  muted
                   loop
                   playsInline
                   preload="auto"
                   className="lightbox-video-player"
                   ref={(el) => {
                     if (el) {
-                      el.muted = true;
+                      el.muted = false;
+                      el.volume = 1.0;
                       el.playsInline = true;
-                      el.load();
-                      el.play().then(() => { el.muted = false; }).catch(() => {});
+                      el.play().catch((err) => {
+                        console.warn('Audio autoplay blocked, fallback play:', err);
+                        el.muted = true;
+                        el.play().then(() => {
+                          const unmute = () => { el.muted = false; };
+                          window.addEventListener('click', unmute, { once: true });
+                          window.addEventListener('touchstart', unmute, { once: true });
+                        }).catch(() => {});
+                      });
                     }
                   }}
                   onLoadedData={(e) => {
                     const v = e.currentTarget;
-                    v.play().then(() => { v.muted = false; }).catch(() => {});
+                    v.muted = false;
+                    v.volume = 1.0;
+                    v.play().catch(() => {});
                   }}
                 >
                   Your browser does not support the video tag.

@@ -9,7 +9,7 @@ const TeensProgrammes = () => {
   const programs = [
     {
       id: 1,
-      title: 'TEEV-BLAZE',
+      title: 'TEEV-ABLAZE',
       subtitle: 'Youth, Faith & Dynamic Talks',
       image: teevablazeImg,
       schedule: 'Monday to Friday at 11:30 AM',

@@ -16,7 +16,7 @@ const BG_PROMOS = [
   { id: 'trumpet', title: 'The Trumpet – Vijay Bansode', src: '/Videos/THE_TRUMPET_NEW.mp4' },
   { id: 'timeless', title: 'Timeless Paragon – Kids Show', src: '/Videos/TIMELESS.mp4' },
   { id: 'wordAtWork', title: 'The Word At Work – Studio Broadcast', src: '/Videos/TheWordAtWork.mp4' },
-  { id: 'wholeness', title: 'Wholeness with Dr. Prashanti', src: '/Videos/WholenessWithDrPrashanti.mp4' },
+  { id: 'wholeness', title: 'WHOLENESS with Dr. Prashanti', src: '/Videos/WHOLENESS.mp4' },
   { id: 'ignite', title: 'Ignite Show', src: '/Videos/Ignite.mp4' },
   { id: 'craftingFaith', title: 'Crafting Faith', src: '/CRAFTING%20FAITH.mp4' },
   { id: 'moneyMatters', title: 'Money Matters', src: '/Videos/MoneyMatters.mp4' },
@@ -204,18 +204,27 @@ const Programmes = () => {
     }
   }, [selectedShow]);
 
-  // Immediately autoplay modal promo video when a programme card is clicked
+  // Immediately autoplay modal promo video with audio enabled when a programme card is clicked
   useEffect(() => {
     if (selectedShow && selectedShow.video) {
       const timer = setTimeout(() => {
         if (promoVideoRef.current) {
           promoVideoRef.current.currentTime = 0;
+          promoVideoRef.current.muted = false;
+          promoVideoRef.current.volume = 1.0;
           const playPromise = promoVideoRef.current.play();
           if (playPromise !== undefined) {
             playPromise.catch((err) => {
-              console.warn('Autoplay with sound prevented by browser, playing with fallback:', err);
+              console.warn('Autoplay with sound fallback:', err);
               if (promoVideoRef.current) {
-                promoVideoRef.current.play().catch(() => {});
+                promoVideoRef.current.muted = true;
+                promoVideoRef.current.play().then(() => {
+                  const enableAudio = () => {
+                    if (promoVideoRef.current) promoVideoRef.current.muted = false;
+                  };
+                  window.addEventListener('click', enableAudio, { once: true });
+                  window.addEventListener('touchstart', enableAudio, { once: true });
+                }).catch(() => {});
               }
             });
           }
@@ -282,7 +291,7 @@ const Programmes = () => {
       title: 'WHOLENESS WITH DR. PRASHANTI',
       category: 'HEALTH',
       image: drPrashanti,
-      video: '/Videos/WholenessWithDrPrashanti.mp4',
+      video: '/Videos/WHOLENESS.mp4',
       schedule: 'Tuesdays at 9:30 AM',
       duration: '30 mins',
       tagline: 'Mind. Body. Purpose.',
@@ -592,21 +601,28 @@ const Programmes = () => {
                       poster={selectedShow.image}
                       controls
                       autoPlay
-                      muted
                       playsInline
                       preload="auto"
                       className="programmes-modal-video-player"
                       ref={(el) => {
                         promoVideoRef.current = el;
                         if (el) {
+                          el.muted = false;
+                          el.volume = 1.0;
                           el.play().catch(() => {});
                         }
                       }}
                       onLoadedData={(e) => {
-                        e.currentTarget.play().catch(() => {});
+                        const v = e.currentTarget;
+                        v.muted = false;
+                        v.volume = 1.0;
+                        v.play().catch(() => {});
                       }}
                       onCanPlay={(e) => {
-                        e.currentTarget.play().catch(() => {});
+                        const v = e.currentTarget;
+                        v.muted = false;
+                        v.volume = 1.0;
+                        v.play().catch(() => {});
                       }}
                     >
                       Your browser does not support the video tag.
