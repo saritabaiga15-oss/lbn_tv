@@ -125,7 +125,13 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
               onClick={() => setSelectedImage(item)}
             >
               <div className="gallery-img-wrapper">
-                <img src={item.src} alt={item.title} className="gallery-img" />
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="gallery-img"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span className="gallery-cat-pill-overlay">{item.category}</span>
                 {item.video && (
                   <span className="gallery-video-badge">
@@ -197,31 +203,23 @@ const ImageGallery = ({ onNavigateProgrammes }) => {
                   poster={selectedImage.src}
                   controls
                   autoPlay
+                  muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="lightbox-video-player"
                   ref={(el) => {
                     if (el) {
                       el.muted = false;
                       el.volume = 1.0;
                       el.playsInline = true;
-                      el.play().catch((err) => {
-                        console.warn('Audio autoplay blocked, fallback play:', err);
-                        el.muted = true;
-                        el.play().then(() => {
-                          const unmute = () => { el.muted = false; };
-                          window.addEventListener('click', unmute, { once: true });
-                          window.addEventListener('touchstart', unmute, { once: true });
-                        }).catch(() => {});
-                      });
+                      el.load();
+                      el.play().then(() => { el.muted = false; }).catch(() => {});
                     }
                   }}
                   onLoadedData={(e) => {
                     const v = e.currentTarget;
-                    v.muted = false;
-                    v.volume = 1.0;
-                    v.play().catch(() => {});
+                    v.play().then(() => { v.muted = false; }).catch(() => {});
                   }}
                 >
                   Your browser does not support the video tag.
