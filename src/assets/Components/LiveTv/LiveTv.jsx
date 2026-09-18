@@ -1,219 +1,51 @@
 import { useEffect, useRef, useState } from 'react';
 import Hls from 'hls.js';
 import './LiveTv.css';
-
-import theTrumpet        from '../../images/Trumpet.png';
-import prayWithMe        from '../../images/pray_with_me.jpg';
-import healingStreams     from '../../images/healing_streams.png';
-import praiseAThon        from '../../images/praise_a_thon.png';
-import pastorChris       from '../../images/pastor_chris_teaching.png';
-import rhapsodyTv        from '../../images/rhapsody_tv.png';
-import praiseWorship     from '../../images/praise_worship_live.jpg';
-import documentaryStudio from '../../images/documentary_studio.png';
-import gytv              from '../../images/gytv.png';
-import lovetoons         from '../../images/lovetoons.png';
-import loveworldExtra    from '../../images/loveworld_extra.png';
-import loveworldExpr     from '../../images/loveworld_expressions.png';
-import teevablaze        from '../../images/TEEVABLAZE .png';
-import timelessParagon   from '../../images/timeless_paragon_new.jpg';
-import chronicles        from '../../images/chronicles_of_prophecy.png';
-import wordAtWork        from '../../images/TheWordatWork.png';
-import craftingFaith     from '../../images/Crafting Faith.png';
-import moneyMatters      from '../../images/MoneyMatter.jpeg';
-import igniteImg         from '../../images/YOUTHIgnite.png';
-import wholeness         from '../../images/Wholeness (1).png';
-
-const epg = {
-  Monday: [
-    { time: '06:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '06:30', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '07:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '08:00', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '08:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '09:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '09:30', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '10:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '11:00', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '11:30', title: 'TEEVABLAZE', category: 'TEENS & YOUTH', live: true, image: teevablaze },
-    { time: '12:00', title: 'Pray With Me', category: 'PRAYER', live: true, image: prayWithMe },
-    { time: '12:30', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '13:00', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '13:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '14:30', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '16:00', title: 'THE TRUMPET LIVE', category: 'TALK SHOWS', live: true, image: theTrumpet },
-    { time: '19:30', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '20:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '21:00', title: 'TEEVABLAZE - REBROADCAST', category: 'TEENS & YOUTH', live: false, image: teevablaze },
-    { time: '21:30', title: 'Money Matters', category: 'SPECIALS', live: false, image: moneyMatters },
-    { time: '22:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '22:30', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '23:00', title: 'Loveworld Expressions', category: 'SPECIALS', live: false, image: loveworldExpr },
-    { time: '23:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-  ],
-  Tuesday: [
-    { time: '06:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '06:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '07:00', title: 'THE TRUMPET LIVE', category: 'TALK SHOWS', live: true, image: theTrumpet },
-    { time: '11:00', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '11:30', title: 'TEEVABLAZE', category: 'TEENS & YOUTH', live: true, image: teevablaze },
-    { time: '12:00', title: 'Pray With Me', category: 'PRAYER', live: true, image: prayWithMe },
-    { time: '12:30', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '13:00', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '13:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '14:30', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '17:00', title: 'Kids Glows', category: 'KIDS', live: false, image: timelessParagon },
-    { time: '17:30', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '20:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '21:00', title: 'TEEVABLAZE - REBROADCAST', category: 'TEENS & YOUTH', live: false, image: teevablaze },
-    { time: '21:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '22:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '22:30', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '23:00', title: 'Loveworld Expressions', category: 'SPECIALS', live: false, image: loveworldExpr },
-    { time: '23:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-  ],
-  Wednesday: [
-    { time: '06:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '06:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '07:00', title: 'THE TRUMPET LIVE', category: 'TALK SHOWS', live: true, image: theTrumpet },
-    { time: '11:00', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '11:30', title: 'TEEVABLAZE', category: 'TEENS & YOUTH', live: true, image: teevablaze },
-    { time: '12:00', title: 'Pray With Me', category: 'PRAYER', live: true, image: prayWithMe },
-    { time: '12:30', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '13:00', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '13:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '14:30', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '16:00', title: 'Dusk Till Dawn', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '16:30', title: 'Lovetoons', category: 'KIDS', live: false, image: lovetoons },
-    { time: '17:30', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '19:30', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '20:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '21:00', title: 'TEEVABLAZE - REBROADCAST', category: 'TEENS & YOUTH', live: false, image: teevablaze },
-    { time: '21:30', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '22:00', title: 'Money Matters', category: 'SPECIALS', live: false, image: moneyMatters },
-    { time: '22:30', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '23:00', title: 'Loveworld Expressions', category: 'SPECIALS', live: false, image: loveworldExpr },
-    { time: '23:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-  ],
-  Thursday: [
-    { time: '06:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '06:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '07:00', title: 'THE TRUMPET LIVE', category: 'TALK SHOWS', live: true, image: theTrumpet },
-    { time: '11:00', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '11:30', title: 'TEEVABLAZE', category: 'TEENS & YOUTH', live: true, image: teevablaze },
-    { time: '12:00', title: 'Pray With Me', category: 'PRAYER', live: true, image: prayWithMe },
-    { time: '12:30', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '13:00', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '13:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '14:30', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '17:00', title: 'Ignite Show', category: 'TEENS & YOUTH', live: false, image: igniteImg },
-    { time: '17:30', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '20:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '20:30', title: 'Word at Work', category: 'TALK SHOWS', live: false, image: wordAtWork },
-    { time: '21:00', title: 'TEEVABLAZE - REBROADCAST', category: 'TEENS & YOUTH', live: false, image: teevablaze },
-    { time: '21:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '22:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '22:30', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '23:00', title: 'Loveworld Expressions', category: 'SPECIALS', live: false, image: loveworldExpr },
-    { time: '23:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-  ],
-  Friday: [
-    { time: '06:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '06:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '07:00', title: 'THE TRUMPET LIVE', category: 'TALK SHOWS', live: true, image: theTrumpet },
-    { time: '11:00', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '11:30', title: 'TEEVABLAZE', category: 'TEENS & YOUTH', live: true, image: teevablaze },
-    { time: '12:00', title: 'Pray With Me', category: 'PRAYER', live: true, image: prayWithMe },
-    { time: '12:30', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '13:00', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '13:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '14:30', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '17:00', title: 'Crafting Faith', category: 'TALK SHOWS', live: false, image: craftingFaith },
-    { time: '17:30', title: 'GYTV', category: 'TEENS & YOUTH', live: false, image: gytv },
-    { time: '19:30', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '20:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '20:30', title: 'HEALING STREAMS TESTIMONIES LIVE', category: 'HEALING', live: true, image: healingStreams },
-    { time: '22:30', title: 'Money Matters', category: 'SPECIALS', live: false, image: moneyMatters },
-    { time: '23:00', title: 'Movie Night', category: 'SPECIALS', live: false, image: documentaryStudio },
-  ],
-  Saturday: [
-    { time: '06:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '06:30', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '07:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '08:00', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '08:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '09:00', title: 'Wholeness', category: 'HEALTH', live: false, image: wholeness },
-    { time: '09:30', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '10:00', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '10:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '11:30', title: 'Lovetoons', category: 'KIDS', live: false, image: lovetoons },
-    { time: '12:30', title: 'GYTV', category: 'TEENS & YOUTH', live: false, image: gytv },
-    { time: '14:30', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '15:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '15:30', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '16:00', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '16:30', title: 'LOVEWORLD EXTRA LIVE', category: 'SPECIALS', live: true, image: loveworldExtra },
-    { time: '20:30', title: 'HEALING STREAMS TESTIMONIES LIVE', category: 'HEALING', live: true, image: healingStreams },
-    { time: '22:30', title: 'CHRONICLES OF PROPHECY LIVE', category: 'SPECIALS', live: true, image: chronicles },
-    { time: '24:30', title: 'Movie Night', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '26:30', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '28:30', title: 'Loveworld Expressions', category: 'SPECIALS', live: false, image: loveworldExpr },
-  ],
-  Sunday: [
-    { time: '06:00', title: 'Worship (LWIndia)', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '06:30', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '07:00', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '08:00', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '08:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '09:00', title: 'Wholeness', category: 'HEALTH', live: false, image: wholeness },
-    { time: '09:30', title: 'Worship (LWIndia)', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '10:00', title: 'Enter the Healing School', category: 'HEALING', live: false, image: healingStreams },
-    { time: '10:30', title: 'Pastor Chris Teaching', category: 'TEACHING', live: false, image: pastorChris },
-    { time: '11:30', title: 'Lovetoons', category: 'KIDS', live: false, image: lovetoons },
-    { time: '12:30', title: 'GYTV', category: 'TEENS & YOUTH', live: false, image: gytv },
-    { time: '14:30', title: 'ROR Travels', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '15:00', title: 'Praise and Worship', category: 'WORSHIP', live: false, image: praiseWorship },
-    { time: '15:30', title: 'ROR Dailies', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '16:00', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '16:30', title: 'LOVEWORLD EXTRA LIVE', category: 'SPECIALS', live: true, image: loveworldExtra },
-    { time: '20:30', title: 'HEALING STREAMS TESTIMONIES LIVE', category: 'HEALING', live: true, image: healingStreams },
-    { time: '22:30', title: 'Documentary', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '23:00', title: 'Movie Night', category: 'SPECIALS', live: false, image: documentaryStudio },
-    { time: '25:00', title: 'Rhapsody TV', category: 'ROR', live: false, image: rhapsodyTv },
-    { time: '26:00', title: 'YourLoveworld Praise-A-Thon Rebroadcast', category: 'WORSHIP', live: false, image: praiseWorship },
-  ],
-};
+import { scheduleData, getSlotStartMinutes } from '../../data/scheduleData';
 
 const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-const slotToMins = (str) => {
-  const [h, m] = str.split(':').map(Number);
-  return h * 60 + m;
-};
-
 const getNowNext = () => {
   const now = new Date();
-  const istOffset = 5.5 * 60 * 60 * 1000;
-  const ist = new Date(now.getTime() + (now.getTimezoneOffset() * 60000) + istOffset);
+  const istStr = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+  const ist = new Date(istStr);
   const dayName = DAYS[ist.getDay()];
   const currentMins = ist.getHours() * 60 + ist.getMinutes();
-  const slots = epg[dayName] || [];
-  let currentIdx = 0;
-  for (let i = 0; i < slots.length; i++) {
-    if (slotToMins(slots[i].time) <= currentMins) currentIdx = i;
-    else break;
+  const slots = scheduleData[dayName] || [];
+
+  if (slots.length === 0) {
+    return { current: null, next: null, upcoming: [] };
   }
+
+  let currentIdx = -1;
+  for (let i = 0; i < slots.length; i++) {
+    const startMins = getSlotStartMinutes(slots[i].time);
+    const duration = parseInt(slots[i].duration, 10) || 30;
+    if (currentMins >= startMins && currentMins < startMins + duration) {
+      currentIdx = i;
+      break;
+    }
+  }
+
+  if (currentIdx === -1) {
+    for (let i = slots.length - 1; i >= 0; i--) {
+      if (getSlotStartMinutes(slots[i].time) <= currentMins) {
+        currentIdx = i;
+        break;
+      }
+    }
+  }
+
+  if (currentIdx === -1) {
+    currentIdx = 0;
+  }
+
   const current = slots[currentIdx];
-  const next = slots[currentIdx + 1] || null;
-  const upcoming = slots.slice(currentIdx + 1, currentIdx + 4);
-  return { current, next, nextStartMins: next ? slotToMins(next.time) : null, upcoming };
+  const next = currentIdx + 1 < slots.length ? slots[currentIdx + 1] : null;
+  const upcoming = slots.slice(currentIdx + 1, currentIdx + 5);
+  return { current, next, upcoming };
 };
 
-const getChannelStatus = (epgState, matches) => {
-  const matchesProgram = (program) => program && matches.some((match) => program.title.toLowerCase().includes(match));
-  if (epgState.current?.live && matchesProgram(epgState.current)) return 'live';
-  if (epgState.upcoming.some((program) => program.live && matchesProgram(program))) return 'upcoming';
-  return null;
-};
 
 const LiveTv = ({ onNavigate }) => {
   const videoRef = useRef(null);
@@ -305,12 +137,15 @@ const LiveTv = ({ onNavigate }) => {
     if (navigator.clipboard) { navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 2500); }
   };
 
-  const { current } = epgState;
-  const channelStatuses = {
-    trumpet: getChannelStatus(epgState, ['trumpet']),
-    prayer: getChannelStatus(epgState, ['pray with me']),
-    healing: getChannelStatus(epgState, ['healing streams']),
-    specials: getChannelStatus(epgState, ['yourloveworld', 'loveworld specials'])
+  const { current, next, upcoming } = epgState;
+
+  const formatTime12h = (timeStr) => {
+    if (!timeStr) return '';
+    if (timeStr.includes('AM') || timeStr.includes('PM')) return timeStr;
+    const [h, m] = timeStr.split(':').map(Number);
+    const period = h >= 12 ? 'PM' : 'AM';
+    const hour = h % 12 || 12;
+    return `${String(hour).padStart(2, '0')}:${String(m).padStart(2, '0')} ${period}`;
   };
 
   return (
@@ -410,71 +245,40 @@ const LiveTv = ({ onNavigate }) => {
               </button>
             </div>
           </div>
-          <div className="live-next-row">
-            <div className="next-tag">Next</div>
-            <div className="next-time">06:00 PM</div>
-            <div className="next-show-name">Word At Work – Studio Broadcast</div>
-            <div className="next-duration">06:30 PM &bull; Interactive Teaching &amp; Worship</div>
-          </div>
+          {next && (
+            <div className="live-next-row">
+              <div className="next-tag">Next</div>
+              <div className="next-time">{formatTime12h(next.time)}</div>
+              <div className="next-show-name">{next.title}</div>
+              <div className="next-duration">{next.category}</div>
+            </div>
+          )}
 
         </div>
       </section>
 
-      {/* Live Broadcast Channels Grid (Modeled after image 2) */}
+      {/* Upcoming Programs from EPG */}
       <section className="live-channels-section">
         <div className="live-channels-container">
-          <h3 className="live-section-title">BROADCAST CHANNELS &amp; UPCOMING FEEDS</h3>
-          
+          <h3 className="live-section-title">UPCOMING PROGRAMMES</h3>
+
           <div className="live-channels-grid">
-            
-            <div className="channel-card active">
-              <div className="channel-img-wrap">
-                <img src={theTrumpet} alt="LoveWorld India Live" className="channel-img" />
-                {channelStatuses.trumpet && <span className={`channel-badge ${channelStatuses.trumpet}`}>🔴 {channelStatuses.trumpet.toUpperCase()}</span>}
+            {upcoming.slice(0, 4).map((prog, idx) => (
+              <div key={idx} className={`channel-card ${prog.live ? 'active' : ''}`}>
+                <div className="channel-img-wrap">
+                  <img src={prog.image} alt={prog.title} className="channel-img" />
+                  <span className="channel-time-badge">{formatTime12h(prog.time)}</span>
+                  {prog.live && <span className="channel-badge live">🔴 LIVE</span>}
+                </div>
+                <div className="channel-info">
+                  <span className="channel-cat">{prog.category}</span>
+                  <h4 className="channel-title">{prog.title.toUpperCase()}</h4>
+                </div>
               </div>
-              <div className="channel-info">
-                <span className="channel-cat">TALK SHOWS</span>
-                <h4 className="channel-title">LOVEWORLD INDIA MAIN FEED</h4>
-                <p className="channel-desc">Prophetic insights, live ministry, and regional satellite broadcasts.</p>
-              </div>
-            </div>
-
-            <div className="channel-card">
-              <div className="channel-img-wrap">
-                <img src={prayWithMe} alt="Pray With Me Live" className="channel-img" />
-                {channelStatuses.prayer && <span className={`channel-badge ${channelStatuses.prayer}`}>🔴 {channelStatuses.prayer.toUpperCase()}</span>}
-              </div>
-              <div className="channel-info">
-                <span className="channel-cat">PRAYER</span>
-                <h4 className="channel-title">PRAY WITH ME – INTERCESSION</h4>
-                <p className="channel-desc">Global intercessory prayer and spiritual warfare broadcasts.</p>
-              </div>
-            </div>
-
-            <div className="channel-card">
-              <div className="channel-img-wrap">
-                <img src={healingStreams} alt="Healing Streams Upcoming" className="channel-img" />
-                {channelStatuses.healing && <span className={`channel-badge ${channelStatuses.healing}`}>🔴 {channelStatuses.healing.toUpperCase()}</span>}
-              </div>
-              <div className="channel-info">
-                <span className="channel-cat">HEALING</span>
-                <h4 className="channel-title">HEALING STREAMS TESTIMONIES</h4>
-                <p className="channel-desc">Miraculous healings and faith testimonies from across nations.</p>
-              </div>
-            </div>
-
-            <div className="channel-card">
-              <div className="channel-img-wrap">
-                <img src={praiseAThon} alt="Your Loveworld Praise-A-Thon" className="channel-img" />
-                {channelStatuses.specials && <span className={`channel-badge ${channelStatuses.specials}`}>🔴 {channelStatuses.specials.toUpperCase()}</span>}
-              </div>
-              <div className="channel-info">
-                <span className="channel-cat">TEACHING</span>
-                <h4 className="channel-title">YOUR LOVEWORLD SPECIALS</h4>
-                <p className="channel-desc">Anointed teaching, word revelations, and global praise sessions.</p>
-              </div>
-            </div>
-
+            ))}
+            {upcoming.length === 0 && (
+              <p style={{ color: '#aaa', gridColumn: '1/-1', textAlign: 'center', padding: '2rem' }}>No upcoming programmes scheduled.</p>
+            )}
           </div>
         </div>
       </section>

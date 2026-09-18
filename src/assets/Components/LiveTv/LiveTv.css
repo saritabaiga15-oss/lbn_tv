@@ -409,6 +409,21 @@
   color: #000000;
 }
 
+.channel-time-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 4px 9px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #cfa860;
+  backdrop-filter: blur(4px);
+}
+
 .channel-info {
   padding: 16px;
 }
