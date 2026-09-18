@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Schedule.css';
 import pastorChrisTeaching from '../../images/pastor_chris_teaching.png';
-import yourLoveworldSpecials from '../../images/YLSWPC.jpeg';
+import yourLoveworldSpecials from '../../images/Pst_Chris_Teaching1.jpg';
 import rhapsodyTv from '../../images/rhapsody_tv.png';
 import praiseAThon from '../../images/praise_a_thon.png';
 import healingStreams from '../../images/healing_streams.png';
@@ -106,11 +106,9 @@ const Schedule = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const categories = ['ALL', 'WORSHIP', 'TEACHING', 'HEALING', 'TEENS & YOUTHS', 'KIDS', 'ROR', 'TALK SHOWS', 'SPECIALS'];
-
-  const scheduleData = {
-    Monday: [
-      { time: '06:00 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+export const scheduleData = {
+  Monday: [
+    { time: '06:00 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
       { time: '06:30 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '30m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
       { time: '07:00 AM', title: 'THE TRUMPET LIVE (07:00AM – 11:00AM)', category: 'TALK SHOWS', duration: '240m', host: 'Deacon Vijay Bansode', live: true, image: theTrumpet },
       { time: '11:00 AM', title: 'ROR Travels', category: 'ROR', duration: '30m', host: 'LBN', live: false, image: rhapsodyTv },
@@ -236,7 +234,7 @@ const Schedule = () => {
       { time: '10:30 PM', title: 'Money Matters', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: moneyMatters },
       { time: '11:00 PM', title: 'Movie Night', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
       { time: '01:00 AM', title: 'Rhapsody TV', category: 'ROR', duration: '60m', host: 'LBN', live: false, image: rhapsodyTv },
-      { time: '02:00 AM', title: 'YourLoveworld Praise-A-Thon RE-BR', category: 'ROR', duration: '210m', host: 'LBN', live: false, image: rhapsodyTv },
+      { time: '02:00 AM', title: 'YourLoveworld Praise-A-Thon RE-BR', category: 'SPECIALS', duration: '210m', host: 'Pastor Chris', live: false, image: praiseAThon },
       { time: '05:30 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams }
     ],
     Saturday: [
@@ -250,7 +248,7 @@ const Schedule = () => {
       { time: '10:00 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },
       { time: '10:30 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
       { time: '11:30 AM', title: 'Lovetoons', category: 'TEENS & KIDS', duration: '30m', host: 'LBN Kids', live: false, image: lovetoons },
-      { time: '12:00 PM', title: 'Timeless Paragon', category: 'KIDS', duration: '30m', host: 'LBN Kids', live: false, image: timelessParagonNew },
+      { time: '12:00 PM', title: 'Timeless Paragon', category: 'TEENS & KIDS', duration: '30m', host: 'LBN Kids', live: false, image: timelessParagonNew },
       { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
       { time: '01:00 PM', title: 'Fruitful', category: 'TALK SHOWS', duration: '30m', host: 'LBN', live: false, image: wordAtWork },
       { time: '01:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '150m', host: 'LBN', live: false, image: praiseWorship },
@@ -273,7 +271,7 @@ const Schedule = () => {
       { time: '09:30 AM', title: 'Worship (LWIndia)', category: 'WORSHIP', duration: '30m', host: 'LoveWorld India', live: false, image: praiseWorship },
       { time: '10:00 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },
       { time: '10:30 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
-      { time: '11:30 AM', title: 'Lovetoons', category: 'KIDS', duration: '90m', host: 'LBN Kids', live: false, image: lovetoons },
+      { time: '11:30 AM', title: 'Lovetoons', category: 'TEENS & KIDS', duration: '90m', host: 'LBN Kids', live: false, image: lovetoons },
       { time: '01:00 PM', title: 'Timeless Paragon', category: 'TEENS & KIDS', duration: '30m', host: 'LBN Kids', live: false, image: timelessParagonNew },
       { time: '01:30 PM', title: 'Dusk Till Dawn', category: 'TEENS & KIDS', duration: '30m', host: 'LBN Youth', live: false, image: gytv },
       { time: '02:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
@@ -285,7 +283,7 @@ const Schedule = () => {
       { time: '10:30 PM', title: 'Documentary', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: documentaryStudio },
       { time: '11:00 PM', title: 'Movie Night', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
       { time: '01:00 AM', title: 'Rhapsody TV', category: 'ROR', duration: '60m', host: 'LBN', live: false, image: rhapsodyTv },
-      { time: '02:00 AM', title: 'YourLoveworld Praise-A-Thon RE-BR', category: 'ROR', duration: '210m', host: 'LBN', live: false, image: rhapsodyTv },
+      { time: '02:00 AM', title: 'YourLoveworld Praise-A-Thon RE-BR', category: 'SPECIALS', duration: '210m', host: 'Pastor Chris', live: false, image: praiseAThon },
       { time: '05:30 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams }
     ]
   };
