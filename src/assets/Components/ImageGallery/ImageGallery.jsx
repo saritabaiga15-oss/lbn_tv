@@ -3,7 +3,7 @@ import './ImageGallery.css';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
-import moneyMatters from '../../images/MONEY MATTERS (1).png';
+import moneyMatters from '../../images/MoneyMatter.jpeg';
 import teevablaze from '../../images/TEEVABLAZE .png';
 import drPrashanti from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';

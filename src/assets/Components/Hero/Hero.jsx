@@ -3,7 +3,7 @@ import './Hero.css';
 import theTrumpet from '../../images/Trumpet.png';
 import TheWordatWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
-import moneyMatters from '../../images/MONEY MATTERS (1).png';
+import moneyMatters from '../../images/MoneyMatter.jpeg';
 import wholeness from '../../images/Wholeness (1).png';
 import TEEVABLAZE from '../../images/TEEVABLAZE .png';
 import voiceOfPraise from '../../images/voice_of_praise.jpg';

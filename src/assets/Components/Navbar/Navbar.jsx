@@ -83,11 +83,11 @@ const Navbar = ({ activeTab, onTabChange }) => {
             </li>
             <li className="nav-item">
               <a
-                href="#epg"
-                onClick={(e) => { e.preventDefault(); handleNavClick('epg'); }}
-                className={`nav-link ${activeTab === 'epg' ? 'active' : ''}`}
+                href="#schedule"
+                onClick={(e) => { e.preventDefault(); handleNavClick('schedule'); }}
+                className={`nav-link ${activeTab === 'schedule' || activeTab === 'epg' ? 'active' : ''}`}
               >
-                EPG
+                SCHEDULE
               </a>
             </li>
             <li className="nav-item">
@@ -191,11 +191,11 @@ const Navbar = ({ activeTab, onTabChange }) => {
               </li>
               <li>
                 <a
-                  href="#epg"
-                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('epg'); }}
-                  className={activeTab === 'epg' ? 'active' : ''}
+                  href="#schedule"
+                  onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('schedule'); }}
+                  className={activeTab === 'schedule' || activeTab === 'epg' ? 'active' : ''}
                 >
-                  EPG
+                  SCHEDULE
                 </a>
               </li>
               <li>

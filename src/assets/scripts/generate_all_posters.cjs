@@ -228,7 +228,7 @@ async function buildCraftingFaith() {
 
 // 6. MONEY MATTERS
 async function buildMoneyMatters() {
-  const src = path.join(imgDir, 'MONEY MATTERS (1).png');
+  const src = path.join(imgDir, 'MoneyMatter.jpeg');
   const bg = await sharp(src)
     .resize(W, H, { fit: 'cover', position: 'center' })
     .blur(18)

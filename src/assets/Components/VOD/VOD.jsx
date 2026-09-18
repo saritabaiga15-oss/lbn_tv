@@ -8,7 +8,7 @@ import wordAtWorkImg from '../../images/TheWordatWork.png';
 import wholenessImg from '../../images/Wholeness (1).png';
 import igniteImg from '../../images/YOUTHIgnite.png';
 import craftingFaithImg from '../../images/Crafting Faith.png';
-import moneyMattersImg from '../../images/MONEY MATTERS (1).png';
+import moneyMattersImg from '../../images/MoneyMatter.jpeg';
 import teevablazeImg from '../../images/TEEVABLAZE .png';
 import healthyLivingImg from '../../images/healthy_living.jpg';
 import ethsImg from '../../images/ETHS.png';

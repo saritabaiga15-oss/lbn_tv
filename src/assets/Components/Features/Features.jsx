@@ -6,7 +6,7 @@ const Features = () => {
     {
       id: 1,
       title: 'Stream Anywhere',
-      desc: 'Watch your favourite LBNTV programmes anytime, anywhere, on any device.',
+      desc: 'Watch your favourite LBNTV programmes anytime, anywhere, and on any device.',
       accent: 'blue',
       icon: (
         <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -66,7 +66,7 @@ const Features = () => {
   return (
     <section className="features-section" id="why-lbntv">
       <div className="features-container">
-        
+
         {/* Header */}
         <div className="features-header">
           <span className="features-label">WHY LBNTV</span>

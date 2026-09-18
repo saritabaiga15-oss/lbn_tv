@@ -66,7 +66,7 @@ function App() {
         )}
         {activeTab === 'about-us' && <AboutUs />}
         {activeTab === 'programmes' && <Programmes />}
-        {activeTab === 'epg' && <Schedule />}
+        {(activeTab === 'schedule' || activeTab === 'epg') && <Schedule />}
         {activeTab === 'services' && <Services />}
         {activeTab === 'live' && <LiveTv onNavigate={handleNavigate} />}
         {activeTab === 'teens-programs' && <TeensProgrammes />}

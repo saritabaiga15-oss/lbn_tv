@@ -3,7 +3,7 @@ import './Programm.css';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
-import moneyMatters from '../../images/MONEY MATTERS (1).png';
+import moneyMatters from '../../images/MoneyMatter.jpeg';
 import TEEVABLAZE from '../../images/TEEVABLAZE .png';
 import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
 import voiceOfPraise from '../../images/voice_of_praise.jpg';
