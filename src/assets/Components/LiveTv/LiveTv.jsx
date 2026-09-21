@@ -161,16 +161,6 @@ const LiveTv = ({ onNavigate }) => {
               <span className="live-loader-text">CONNECTING TO LIVE BROADCAST...</span>
             </div>
           )}
-          {/* Top Live Badge Bar - only display when current show is live */}
-          {isLive && (
-            <div className="live-player-top-bar">
-              <div className="live-status-pill">
-                <span className="live-pulse-dot"></span>
-                <span className="live-text">LIVE</span>
-              </div>
-            </div>
-          )}
-
           {/* Custom Bottom Control Bar */}
           <div className="live-player-controls">
             <div className="controls-left">

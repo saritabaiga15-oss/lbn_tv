@@ -1,7 +1,7 @@
 import React from 'react';
 import './GlobalProgrammes.css';
 import globalCommunion from '../../images/Growth.PNG';
-import PraiseNight29 from '../../images/PraiseNight29.jpg';
+import GDOPF from '../../images/GDOPF.jpeg';
 
 const GlobalPrograms = () => {
   const programs = [
@@ -13,8 +13,8 @@ const GlobalPrograms = () => {
     },
     {
       id: 2,
-      image: PraiseNight29,
-      title: 'Praise Night 29 with Pastor Chris',
+      image: GDOPF,
+      title: 'Global Day Of Prayer And Fasting with Pastor Chris',
       badge: 'LIVE SPECIAL'
     }
   ];
