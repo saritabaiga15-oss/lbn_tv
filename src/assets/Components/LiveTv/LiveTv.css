@@ -269,26 +269,6 @@
   transform: translateY(-2px);
 }
 
-.live-btn-share {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 9px 20px;
-  border-radius: 6px;
-  font-family: var(--font-sans, 'Inter', sans-serif);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.25s ease;
-}
-
-.live-btn-share:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
-}
 
 .live-next-row {
   display: flex;
@@ -479,7 +459,7 @@
   .live-now-actions {
     width: 100%;
   }
-  .live-btn-schedule, .live-btn-share {
+  .live-btn-schedule {
     flex: 1;
     justify-content: center;
   }

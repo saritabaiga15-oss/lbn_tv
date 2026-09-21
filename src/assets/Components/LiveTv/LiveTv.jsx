@@ -55,7 +55,6 @@ const LiveTv = ({ onNavigate }) => {
   const [volume, setVolume] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isBuffering, setIsBuffering] = useState(true);
-  const [copied, setCopied] = useState(false);
   const [epgState, setEpgState] = useState(getNowNext);
 
   useEffect(() => {
@@ -132,9 +131,6 @@ const LiveTv = ({ onNavigate }) => {
     if (!document.fullscreenElement)
       playerContainerRef.current.requestFullscreen().then(() => setIsFullscreen(true)).catch(() => {});
     else document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
-  };
-  const handleShare = () => {
-    if (navigator.clipboard) { navigator.clipboard.writeText(window.location.href); setCopied(true); setTimeout(() => setCopied(false), 2500); }
   };
 
   const { current, next, upcoming } = epgState;
@@ -229,13 +225,6 @@ const LiveTv = ({ onNavigate }) => {
             </div>
             <div className="live-now-actions">
               <button className="live-btn-schedule" onClick={() => onNavigate && onNavigate('epg')}>Full Schedule</button>
-              <button className="live-btn-share" onClick={handleShare}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-                </svg>
-                <span>{copied ? 'Copied!' : 'Share'}</span>
-              </button>
             </div>
           </div>
           {next && (

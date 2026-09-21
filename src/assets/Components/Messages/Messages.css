@@ -1,4 +1,4 @@
-/* ── Messages Section ── */
+/* ── Messages Section (Exact same styling as Upcoming Global Programs) ── */
 .messages-section {
   background-color: var(--bg-dark);
   padding: 100px 0 140px 0;
@@ -38,7 +38,6 @@
   letter-spacing: 0.05em;
   color: var(--text-primary);
   text-transform: uppercase;
-  margin: 0 0 0 0;
 }
 
 .messages-desc {
@@ -50,7 +49,7 @@
   line-height: 1.6;
 }
 
-/* ── 2-Column Grid (same as GlobalProgrammes) ── */
+/* ── 2-Column Grid Layout (Same as Upcoming Global Programs) ── */
 .messages-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -59,7 +58,6 @@
   margin: 0 auto;
 }
 
-/* ── Card ── */
 .message-card {
   position: relative;
   border-radius: 12px;
@@ -70,7 +68,8 @@
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.5s ease,
               border-color 0.5s ease;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .message-card:hover {
@@ -80,12 +79,11 @@
               0 0 30px rgba(230, 180, 80, 0.2);
 }
 
-/* ── Image Wrapper ── */
 .message-img-wrapper {
-  position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  position: relative;
   background: #000;
 }
 
@@ -93,7 +91,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -102,62 +100,10 @@
   transform: scale(1.04);
 }
 
-/* ── Overlay with badge + title ── */
-.message-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.0) 40%,
-    rgba(5, 5, 15, 0.92) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 16px 20px;
-  pointer-events: none;
-}
+/* ========================================= */
+/* RESPONSIVE DESIGN ADJUSTMENTS            */
+/* ========================================= */
 
-.message-badge {
-  align-self: flex-start;
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #0b0b0f;
-  background: var(--accent-gold, #cfa860);
-  padding: 4px 12px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-
-.message-card-text {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.message-card-title {
-  font-family: var(--font-title);
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.25;
-  letter-spacing: 0.03em;
-}
-
-.message-card-subtitle {
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  color: var(--accent-gold, #cfa860);
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-}
-
-/* ── Responsive ── */
 @media (max-width: 1024px) {
   .messages-grid {
     gap: 30px;
@@ -181,6 +127,7 @@
 
   .messages-title {
     font-size: clamp(1.6rem, 5vw, 2.2rem);
+    letter-spacing: 0.03em;
   }
 
   .messages-desc {
@@ -197,8 +144,9 @@
     box-sizing: border-box;
   }
 
-  .message-card-title {
-    font-size: 1rem;
+  .message-card {
+    width: 100%;
+    border-radius: 10px;
   }
 }
 
@@ -227,14 +175,26 @@
 
   .messages-desc {
     font-size: 0.82rem;
+    line-height: 1.48;
     margin-top: 10px;
   }
 
   .messages-grid {
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .messages-container {
+    padding: 0 8px;
   }
 
-  .message-card-title {
-    font-size: 0.85rem;
+  .messages-title {
+    font-size: 1.35rem;
+  }
+
+  .messages-grid {
+    gap: 8px;
   }
 }
