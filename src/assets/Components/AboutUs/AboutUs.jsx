@@ -63,7 +63,7 @@ const AboutUs = () => {
                       Our broadcast division carries a clear mandate: to promote life and love, and to carry the message of Christ' love into nations through original programming in faith, teaching, leadership, family, lifestyle, prayer and worship.
                     </p>
                     <p className="about-glance-text expanded" style={{ marginTop: '16px' }}>
-                      Our production division serves clients outside our own schedule — and inside it. We are a working studio with the infrastructure, crew and post-production discipline to take a project from concept to completed delivery.
+                      Our production division serves clients outside our own schedule and inside it. We are a working studio with the infrastructure, crew and post-production discipline to take a project from concept to completed delivery.
                     </p>
 
                     {/* SHOW LESS — at the very bottom of expanded content */}
@@ -99,14 +99,14 @@ const AboutUs = () => {
             <div className="about-deliver-block">
               <h3>Broadcast &amp; Original Programming</h3>
               <p>
-                Faith, lifestyle, leadership, family, teaching, prayer and worship content — developed, produced and broadcast on LBN's platforms, with reach across India and into the global diaspora.
+                Faith, lifestyle, leadership, family, teaching, prayer and worship content developed, produced and broadcast on LBN's platforms, with reach across India and into the global diaspora.
               </p>
             </div>
 
             <div className="about-deliver-block">
               <h3>Film &amp; Video Production</h3>
               <p>
-                Feature films, documentaries, brand films, music videos and corporate video. Script development, production management, direction, cinematography, editing, colour, grading and final master — handled end to end.
+                Feature films, documentaries, brand films, music videos and corporate video. Script development, production management, direction, cinematography, editing, colour, grading and final master handled end to end.
               </p>
             </div>
 
@@ -127,14 +127,14 @@ const AboutUs = () => {
             <div className="about-deliver-block">
               <h3>Voice &amp; Localisation</h3>
               <p>
-                Our AI voice assistant and cloning is designed to adapt across accents, languages and registers — corporate narration, character, devotional reads, dubbing and subtitling.
+                Our AI voice assistant and cloning is designed to adapt across accents, languages and registers corporate narration, character, devotional reads, dubbing and subtitling.
               </p>
             </div>
 
             <div className="about-deliver-block">
               <h3>Post-Production Services</h3>
               <p>
-                Editing, sound design, mixing, colour grading, motion graphics and mastering for clients who only need the final mile — and for those who need the whole road.
+                Editing, sound design, mixing, colour grading, motion graphics and mastering for clients who only need the final mile and for those who need the whole road.
               </p>
             </div>
           </div>
@@ -157,7 +157,7 @@ const AboutUs = () => {
                 <h3>Why Clients Choose LBN</h3>
                 <ul>
                   <li>One accountable partner. Concept, production and post under a single roof, with one point of responsibility for delivery.</li>
-                  <li>Broadcast-standard discipline. Our work is built for air, not just for a folder — specifications, QC and consistency as default.</li>
+                  <li>Broadcast-standard discipline. Our work is built for air, not just for a folder specifications, QC and consistency as default.</li>
                   <li>Modern infrastructure. Studios, control rooms and edit suites that meet current delivery requirements.</li>
                   <li>Experienced hands. Producers, directors, engineers and editors who have worked at scale, in a culture that does not accept anything short of excellent.</li>
                   <li>A defined audience. Our clients reach an engaged, values-driven viewership that most commercial platforms cannot offer.</li>
@@ -175,7 +175,7 @@ const AboutUs = () => {
                 <div className="about-deliver-block">
                   <h3>Our Conviction</h3>
                   <p>
-                    You were created for a purpose — and on purpose. Everything we produce is designed to help you recognise that purpose, develop your potential, and accomplish what you were sent to do.
+                    You were created for a purpose and on purpose. Everything we produce is designed to help you recognise that purpose, develop your potential, and accomplish what you were sent to do.
                   </p>
                 </div>
 

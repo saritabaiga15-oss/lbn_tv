@@ -11,6 +11,7 @@ import TeensProgrammes from "./assets/Components/TeensProgrammes/TeensProgrammes
 import KidsProgrammes from "./assets/Components/KidsProgrammes/KidsProgrammes";
 import ImageGallery from "./assets/Components/ImageGallery/ImageGallery";
 import GlobalProgrammes from "./assets/Components/GlobalProgrammes/GlobalProgrammes";
+import Messages from "./assets/Components/Messages/Messages";
 import JoinOurMission from "./assets/Components/JoinOurMission/JoinOurMission";
 import OneTimeGift from "./assets/Components/OneTimeGift/OneTimeGift";
 import AirtimeOnLBN from "./assets/Components/AirtimeOnLBN/AirtimeOnLBN";
@@ -60,6 +61,7 @@ function App() {
             <Hero />
             <Features />
             <ImageGallery onNavigateProgrammes={() => { setActiveTab('programmes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
+            <Messages />
             <GlobalProgrammes />
             <FAQ />
           </>
