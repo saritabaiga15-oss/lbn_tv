@@ -406,7 +406,9 @@
 
 .channel-badge.upcoming {
   background: rgba(207, 168, 96, 0.95);
-  color: #000000;
+  color: #0b0b0f;
+  white-space: nowrap;
+  letter-spacing: 0.6px;
 }
 
 .channel-time-badge {

@@ -138,6 +138,7 @@ const LiveTv = ({ onNavigate }) => {
   };
 
   const { current, next, upcoming } = epgState;
+  const isLive = Boolean(current && current.live);
 
   const formatTime12h = (timeStr) => {
     if (!timeStr) return '';
@@ -160,13 +161,15 @@ const LiveTv = ({ onNavigate }) => {
               <span className="live-loader-text">CONNECTING TO LIVE BROADCAST...</span>
             </div>
           )}
-          {/* Top Live Badge Bar */}
-          <div className="live-player-top-bar">
-            <div className="live-status-pill">
-              <span className="live-pulse-dot"></span>
-              <span className="live-text">LIVE</span>
+          {/* Top Live Badge Bar - only display when current show is live */}
+          {isLive && (
+            <div className="live-player-top-bar">
+              <div className="live-status-pill">
+                <span className="live-pulse-dot"></span>
+                <span className="live-text">LIVE</span>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Custom Bottom Control Bar */}
           <div className="live-player-controls">
@@ -210,7 +213,7 @@ const LiveTv = ({ onNavigate }) => {
                 />
               </div>
 
-              <span className="live-stream-badge">LIVE</span>
+              {isLive && <span className="live-stream-badge">LIVE</span>}
             </div>
 
             <div className="controls-right">
@@ -229,8 +232,8 @@ const LiveTv = ({ onNavigate }) => {
           <div className="live-now-row">
             <div className="live-now-left">
               <span className="live-now-badge">
-                <span className="pulse-dot-red"></span>
-                {current && current.live ? ' LIVE Now!' : ' ON AIR'}
+                {isLive && <span className="pulse-dot-red"></span>}
+                {isLive ? ' LIVE Now!' : ' ON AIR'}
               </span>
               <h2 className="live-now-title">{current ? current.title.toUpperCase() : 'LBN BROADCAST'}</h2>
             </div>
@@ -264,11 +267,11 @@ const LiveTv = ({ onNavigate }) => {
 
           <div className="live-channels-grid">
             {upcoming.slice(0, 4).map((prog, idx) => (
-              <div key={idx} className={`channel-card ${prog.live ? 'active' : ''}`}>
+              <div key={idx} className="channel-card">
                 <div className="channel-img-wrap">
                   <img src={prog.image} alt={prog.title} className="channel-img" />
                   <span className="channel-time-badge">{formatTime12h(prog.time)}</span>
-                  {prog.live && <span className="channel-badge live">🔴 LIVE</span>}
+                  <span className="channel-badge upcoming">UPCOMING PROGRAMME</span>
                 </div>
                 <div className="channel-info">
                   <span className="channel-cat">{prog.category}</span>
