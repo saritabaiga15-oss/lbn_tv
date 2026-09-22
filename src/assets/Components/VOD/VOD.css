@@ -1307,6 +1307,37 @@
   transform: rotate(90deg);
 }
 
+.vod-modal-header-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vod-modal-header-back-btn:hover {
+  background: rgba(255, 215, 0, 0.2);
+  border-color: #ffd700;
+  color: #ffd700;
+}
+
+@media (max-width: 768px) {
+  .vod-modal-bg-back-btn {
+    top: 14px;
+    left: 14px;
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+}
+
 /* Video Frame */
 .vod-modal-video-wrapper {
   position: relative;

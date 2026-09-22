@@ -673,7 +673,10 @@ const Services = () => {
       {selectedSetup && (
         <div
           className="studio-modal-backdrop"
-          onClick={() => setSelectedSetup(null)}
+          onClick={() => {
+            setSelectedSetup(null);
+            setShowContactInfo(false);
+          }}
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-setup-title"
@@ -685,9 +688,13 @@ const Services = () => {
             <button
               className="studio-modal-close-btn"
               onClick={() => setSelectedSetup(null)}
-              aria-label="Close details"
+              aria-label="Go back"
+              title="Go back"
             >
-              &times;
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
             </button>
             <div className="studio-modal-top-bar">
               <span className="studio-modal-kicker-badge">PROPS & STUDIO SETUP</span>

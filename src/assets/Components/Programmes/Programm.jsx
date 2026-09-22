@@ -578,9 +578,12 @@ const Programmes = () => {
       {selectedShow && (
         <div className="programmes-modal" onClick={() => setSelectedShow(null)}>
           <div className="programmes-modal-content" onClick={(e) => e.stopPropagation()}>
-            {/* Back / Close Cross Button on Top-Left */}
-            <button className="programmes-modal-close" onClick={() => setSelectedShow(null)} aria-label="Back / Close">
-              &times;
+            {/* Back Icon Button on Top-Left */}
+            <button className="programmes-modal-close" onClick={() => setSelectedShow(null)} aria-label="Go back" title="Go back">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
             </button>
 
             {/* Promo Counter Badge on Top-Right */}
