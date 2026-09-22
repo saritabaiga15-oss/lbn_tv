@@ -1,20 +1,20 @@
 import React from 'react';
 import './GlobalProgrammes.css';
-import globalCommunion from '../../images/Growth.PNG';
-import GDOPF from '../../images/GDOPF.jpeg';
+import gdop from '../../images/gdop.png';
+import GPAF from '../../images/GPAF.png';
 
 const GlobalPrograms = () => {
   const programs = [
     {
       id: 1,
-      image: globalCommunion,
-      title: 'Global Communion Service with Pastor Chris',
+      image: gdop,
+      title: 'Global Day Of Prayer with Pastor Chris',
       badge: 'LIVE BROADCAST'
     },
     {
       id: 2,
-      image: GDOPF,
-      title: 'Global Day Of Prayer And Fasting with Pastor Chris',
+      image: GPAF,
+      title: 'Global Prayer and Fasting with Pastor Chris',
       badge: 'LIVE SPECIAL'
     }
   ];

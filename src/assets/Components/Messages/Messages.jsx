@@ -1,6 +1,7 @@
 import React from 'react';
 import './Messages.css';
 import monthlyMsg from '../../images/Growth.PNG';
+import yearlyMsg from '../../images/Manifestation_banner.png';
 
 const messages = [
   {
@@ -8,7 +9,15 @@ const messages = [
     image: monthlyMsg,
     title: "September – The Month of Growth",
     badge: "MESSAGE OF THE MONTH",
+    objectPosition: "center 8%",
   },
+  {
+    id: 2,
+    image: yearlyMsg,
+    title: "2026 The Year Of Manifestation",
+    badge: "MESSAGE OF THE YEAR",
+    objectPosition: "center center",
+  }
 ];
 
 const Messages = () => {
@@ -28,7 +37,12 @@ const Messages = () => {
           {messages.map((msg) => (
             <div key={msg.id} className="message-card">
               <div className="message-img-wrapper">
-                <img src={msg.image} alt={msg.title} className="message-img" />
+                <img
+                  src={msg.image}
+                  alt={msg.title}
+                  className="message-img"
+                  style={{ objectPosition: msg.objectPosition }}
+                />
               </div>
             </div>
           ))}
