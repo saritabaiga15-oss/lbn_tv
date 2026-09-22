@@ -1532,60 +1532,10 @@
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.95);
   }
 
-  /* Dedicated card container for tagline and synopsis */
-  .vod-hero-desc-container {
-    background: rgba(14, 14, 24, 0.78);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-left: 3.5px solid #cfa860;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin: 0 0 16px 0;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  .vod-hero-desc-container .vod-hero-logline {
-    font-size: 0.94rem;
-    font-weight: 600;
-    color: #dfba6a;
-    margin-bottom: 6px;
-    line-height: 1.35;
-  }
-
-  .vod-hero-desc-container .vod-hero-synopsis {
-    font-size: 0.84rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.88);
-    margin-bottom: 0;
-    -webkit-line-clamp: 3;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* 3-Column horizontal scrollable CTA buttons row */
+  /* Hide hero description and action buttons on mobile breakpoint */
+  .vod-hero-desc-container,
   .vod-hero-cta-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 6px;
-    flex-wrap: nowrap;
-  }
-
-  .vod-hero-cta-group::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 
   .vod-play-primary-btn {

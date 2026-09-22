@@ -282,10 +282,6 @@ const AirtimeAnchorcrest = () => {
                 <h3 className="course-title">{course.title}</h3>
                 <p className="course-desc">{course.desc}</p>
                 <div className="course-footer">
-                  <div className="course-meta">
-                    <span className="meta-item">⏱️ {course.duration}</span>
-                    <span className="meta-item">🎯 {course.level}</span>
-                  </div>
                   <a href="#sponsor-section" className="course-sponsor-link">
                     Sponsor This Course &rarr;
                   </a>

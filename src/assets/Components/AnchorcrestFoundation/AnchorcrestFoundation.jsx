@@ -19,7 +19,6 @@ import Makeupartist from '../../images/Makeupartist.jpeg';
 
 const AnchorcrestFoundation = () => {
   const [selectedTier, setSelectedTier] = useState('5000');
-  const [customAmount, setCustomAmount] = useState('');
   const [copiedField, setCopiedField] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [showAllCourses, setShowAllCourses] = useState(false);
@@ -31,7 +30,7 @@ const AnchorcrestFoundation = () => {
   };
 
   const downloadReceipt = () => {
-    const amount = customAmount || selectedTier || '0';
+    const amount = selectedTier || '0';
     const receipt = [
       'ANCHORCREST FOUNDATION',
       'SPONSORSHIP RECEIPT',
@@ -263,7 +262,6 @@ const AnchorcrestFoundation = () => {
     }
   ];
 
-  const activeAmount = customAmount ? customAmount : selectedTier;
   const visibleCourses = showAllCourses ? courses : courses.slice(0, 9);
 
   return (
@@ -329,10 +327,6 @@ const AnchorcrestFoundation = () => {
                 </div>
 
                 <div className="programme-card-content">
-                  <span className="programme-card-schedule">
-                    ⏳ {course.duration} &bull; 🎯 {course.level}
-                  </span>
-
                   <h3 className="programme-card-title">
                     {course.title}
                   </h3>
@@ -411,10 +405,9 @@ const AnchorcrestFoundation = () => {
                 {sponsorshipTiers.map((tier) => (
                   <div
                     key={tier.amount}
-                    className={`tier-card-btn ${selectedTier === tier.amount && !customAmount ? 'active' : ''}`}
+                    className={`tier-card-btn ${selectedTier === tier.amount ? 'active' : ''}`}
                     onClick={() => {
                       setSelectedTier(tier.amount);
-                      setCustomAmount('');
                     }}
                   >
                     <div className="tier-tag-pill">{tier.tag}</div>
@@ -426,19 +419,6 @@ const AnchorcrestFoundation = () => {
                     <p className="tier-impact-text">{tier.impact}</p>
                   </div>
                 ))}
-              </div>
-
-              <div className="custom-seed-box">
-                <label>Or Enter Custom Sponsorship Amount (₹):</label>
-                <div className="custom-input-group">
-                  <span className="currency-symbol">₹</span>
-                  <input
-                    type="number"
-                    placeholder="Enter any amount (e.g. 15000)"
-                    value={customAmount}
-                    onChange={(e) => setCustomAmount(e.target.value)}
-                  />
-                </div>
               </div>
             </div>
 
@@ -531,9 +511,6 @@ const AnchorcrestFoundation = () => {
                   </div>
 
                   <div className="programmes-modal-info-col">
-                    <span className="programmes-modal-schedule-tag">
-                      ⏳ {selectedCourse.duration} &bull; 🎯 {selectedCourse.level}
-                    </span>
                     <h2 className="programmes-modal-show-title">{selectedCourse.title}</h2>
                     <h4 className="programmes-modal-show-subtitle">{selectedCourse.category} SPECIALIZATION</h4>
                     <p className="programmes-modal-show-tagline">"{selectedCourse.tagline}"</p>

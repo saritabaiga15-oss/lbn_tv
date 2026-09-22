@@ -92,7 +92,7 @@ const AboutUs = () => {
 
         <div className="about-deliver-section">
           <div className="about-deliver-header">
-            <span className="about-section-tag accent-gold">WHAT WE DELIVER</span>
+            <span className="about-section-tag accent-gold">WHAT WE DO</span>
           </div>
 
           <div className="about-deliver-scroll-row">

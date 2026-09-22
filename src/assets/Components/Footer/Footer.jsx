@@ -126,22 +126,22 @@ const Footer = ({ onNavigate }) => {
                 <ul>
                   <li>
                     <a href="#home" onClick={(e) => handleLinkClick(e, 'home')}>
-                      Homepage
+                      HOME
                     </a>
                   </li>
                   <li>
                     <a href="#about-us" onClick={(e) => handleLinkClick(e, 'about-us')}>
-                      About
+                      ABOUT US
                     </a>
                   </li>
                   <li>
-                    <a href="#services" onClick={(e) => handleLinkClick(e, 'services')}>
-                      Services
+                    <a href="#programmes" onClick={(e) => handleLinkClick(e, 'programmes')}>
+                      PROGRAMMES
                     </a>
                   </li>
                   <li>
-                    <a href="#contacts" onClick={(e) => handleLinkClick(e, null, 'contacts')}>
-                      Contacts
+                    <a href="#schedule" onClick={(e) => handleLinkClick(e, 'schedule')}>
+                      SCHEDULE
                     </a>
                   </li>
                 </ul>
@@ -150,23 +150,23 @@ const Footer = ({ onNavigate }) => {
               <div className="footer-links-col">
                 <ul>
                   <li>
-                    <a href="#gallery" onClick={(e) => handleLinkClick(e, 'home', 'gallery')}>
-                      Gallery
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#faq" onClick={(e) => handleLinkClick(e, 'home', 'faq')}>
-                      FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#anchorcrest-foundation" onClick={(e) => handleLinkClick(e, 'anchorcrest-foundation')}>
-                      Anchorcrest Foundation
+                    <a href="#services" onClick={(e) => handleLinkClick(e, 'services')}>
+                      SERVICES
                     </a>
                   </li>
                   <li>
                     <a href="#airtime-on-lbn" onClick={(e) => handleLinkClick(e, 'airtime-on-lbn')}>
-                      Airtime On LBN
+                      AIRTIME ON LBN
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#anchorcrest-foundation" onClick={(e) => handleLinkClick(e, 'anchorcrest-foundation')}>
+                      ANCHORCREST FOUNDATION
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#vod" onClick={(e) => handleLinkClick(e, 'vod')}>
+                      VOD
                     </a>
                   </li>
                 </ul>

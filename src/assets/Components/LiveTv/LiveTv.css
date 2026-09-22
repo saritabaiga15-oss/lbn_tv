@@ -448,21 +448,42 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .live-channels-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+
+  .live-channels-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .channel-card {
+    flex: 0 0 85%;
+    max-width: 340px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
   .live-now-row {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .live-now-actions {
     width: 100%;
   }
+
   .live-btn-schedule {
     flex: 1;
     justify-content: center;
   }
+
   .live-meta-container, .live-channels-container {
     padding: 0 16px;
   }

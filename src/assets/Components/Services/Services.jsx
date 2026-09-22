@@ -783,7 +783,6 @@ const Services = () => {
                   <div className="studio-contact-reveal-panel">
                     <div className="contact-panel-header">
                       <div className="status-indicator-live">
-                        <span className="live-dot"></span>
                         <span className="live-status-text">DIRECT STUDIO BOOKING LINES</span>
                       </div>
                       <span className="contact-panel-sub">Reach our production coordinator directly</span>

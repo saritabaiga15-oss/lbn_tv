@@ -474,8 +474,6 @@ const VOD = () => {
               <span className="vod-meta-dot">•</span>
               <span className="vod-meta-item">{selectedHero.year}</span>
               <span className="vod-meta-dot">•</span>
-              <span className="vod-meta-item">{selectedHero.duration}</span>
-              <span className="vod-meta-dot">•</span>
               <span className="vod-meta-item">{selectedHero.schedule}</span>
             </div>
 
@@ -554,7 +552,7 @@ const VOD = () => {
                   <div className="vod-thumb-info">
                     <h4 className="vod-thumb-title">{item.title}</h4>
                     <p className="vod-thumb-sub">{item.subtitle}</p>
-                    <span className="vod-thumb-meta">⭐ {item.rating} · {item.duration}</span>
+                    <span className="vod-thumb-meta">⭐ {item.rating}</span>
                   </div>
                 </div>
               ))}
@@ -655,7 +653,6 @@ const VOD = () => {
                         <span className="play-triangle">▶</span>
                       </div>
                       <span className="vod-hover-prompt">Watch Promo</span>
-                      <span className="vod-hover-duration">{item.duration}</span>
                     </div>
                   </div>
 
@@ -761,7 +758,6 @@ const VOD = () => {
                           <span className="play-triangle">▶</span>
                         </div>
                         <span className="vod-hover-prompt">Watch Promo</span>
-                        <span className="vod-hover-duration">{item.duration}</span>
                       </div>
                     </div>
 
@@ -847,7 +843,6 @@ const VOD = () => {
                         <span className="play-triangle">▶</span>
                       </div>
                       <span className="vod-hover-prompt">Watch Promo</span>
-                      <span className="vod-hover-duration">{item.duration}</span>
                     </div>
                   </div>
 
@@ -920,7 +915,6 @@ const VOD = () => {
                         <span className="play-triangle">▶</span>
                       </div>
                       <span className="vod-hover-prompt">Watch Promo</span>
-                      <span className="vod-hover-duration">{item.duration}</span>
                     </div>
                   </div>
 
@@ -1053,7 +1047,6 @@ const VOD = () => {
                         <span className="play-triangle">▶</span>
                       </div>
                       <span className="vod-hover-prompt">Watch Promo</span>
-                      <span className="vod-hover-duration">{item.duration}</span>
                     </div>
                   </div>
 
