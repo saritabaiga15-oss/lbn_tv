@@ -438,7 +438,7 @@ const Programmes = () => {
         <video
           ref={videoRefA}
           src={slotASrc}
-          autoPlay
+          loop
           muted={activeSlot === 'A' ? bgMuted : true}
           playsInline
           preload="auto"
@@ -447,7 +447,7 @@ const Programmes = () => {
         <video
           ref={videoRefB}
           src={slotBSrc}
-          autoPlay
+          loop
           muted={activeSlot === 'B' ? bgMuted : true}
           playsInline
           preload="auto"
