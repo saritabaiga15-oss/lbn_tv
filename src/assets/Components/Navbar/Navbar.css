@@ -232,10 +232,15 @@
   height: 11px;
   background-color: #ff3b30;
   border-radius: 50%;
-  box-shadow: 0 0 8px #ff3b30;
-  animation: blink-live-dot 1.2s infinite ease-in-out;
+  box-shadow: 0 0 5px rgba(255, 59, 48, 0.45);
   display: inline-block;
   flex-shrink: 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.live-dot.is-live {
+  box-shadow: 0 0 8px #ff3b30;
+  animation: blink-live-dot 1.2s infinite ease-in-out;
 }
 
 @keyframes blink-live-dot {

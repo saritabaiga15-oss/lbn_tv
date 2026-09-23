@@ -29,6 +29,52 @@ export const getSlotStartMinutes = (time) => {
   return (normalizedHours + (isPm ? 12 : 0)) * 60 + minutes;
 };
 
+export const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+export const getNowNext = () => {
+  const now = new Date();
+  const istStr = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+  const ist = new Date(istStr);
+  const dayName = DAYS_OF_WEEK[ist.getDay()];
+  const currentMins = ist.getHours() * 60 + ist.getMinutes();
+  const slots = scheduleData[dayName] || [];
+
+  if (slots.length === 0) {
+    return { current: null, next: null, upcoming: [], isLive: false };
+  }
+
+  let currentIdx = -1;
+  let isActiveTime = false;
+  for (let i = 0; i < slots.length; i++) {
+    const startMins = getSlotStartMinutes(slots[i].time);
+    const duration = parseInt(slots[i].duration, 10) || 30;
+    if (currentMins >= startMins && currentMins < startMins + duration) {
+      currentIdx = i;
+      isActiveTime = true;
+      break;
+    }
+  }
+
+  if (currentIdx === -1) {
+    for (let i = slots.length - 1; i >= 0; i--) {
+      if (getSlotStartMinutes(slots[i].time) <= currentMins) {
+        currentIdx = i;
+        break;
+      }
+    }
+  }
+
+  if (currentIdx === -1) {
+    currentIdx = 0;
+  }
+
+  const current = slots[currentIdx];
+  const next = currentIdx + 1 < slots.length ? slots[currentIdx + 1] : null;
+  const upcoming = slots.slice(currentIdx + 1, currentIdx + 5);
+  const isLive = Boolean(isActiveTime && current && current.live);
+  return { current, next, upcoming, isLive };
+};
+
 export const categories = [
   'ALL',
   'WORSHIP',

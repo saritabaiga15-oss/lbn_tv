@@ -438,41 +438,6 @@
   overflow: hidden;
 }
 
-/* Fullscreen Logo Overlay Button for Live TV Stream */
-.mobile-fullscreen-logo-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 25;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(10, 10, 18, 0.82);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 215, 0, 0.45);
-  padding: 6px 14px;
-  border-radius: 24px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-}
-
-.mobile-fullscreen-logo-btn:hover,
-.mobile-fullscreen-logo-btn:active {
-  background: rgba(255, 215, 0, 0.95);
-  border-color: #ffd700;
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-}
-
-.fullscreen-logo-img {
-  height: 22px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
-}
-
 /* Responsive Media Queries */
 @media (max-width: 1024px) {
   .live-channels-grid {
@@ -484,19 +449,6 @@
 }
 
 @media (max-width: 768px) {
-  /* Prominent full screen logo overlay on mobile stream */
-  .mobile-fullscreen-logo-btn {
-    top: 12px;
-    right: 12px;
-    padding: 5px 12px;
-    background: rgba(15, 23, 42, 0.9);
-    border-color: #ffd700;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-  }
-
-  .fullscreen-logo-img {
-    height: 20px;
-  }
 
   .live-channels-grid {
     display: flex;

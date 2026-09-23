@@ -1,52 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Hls from 'hls.js';
 import './LiveTv.css';
-import { scheduleData, getSlotStartMinutes } from '../../data/scheduleData';
-import lwiLogo from '../../images/LWI_logo.png';
-
-const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-
-const getNowNext = () => {
-  const now = new Date();
-  const istStr = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-  const ist = new Date(istStr);
-  const dayName = DAYS[ist.getDay()];
-  const currentMins = ist.getHours() * 60 + ist.getMinutes();
-  const slots = scheduleData[dayName] || [];
-
-  if (slots.length === 0) {
-    return { current: null, next: null, upcoming: [] };
-  }
-
-  let currentIdx = -1;
-  for (let i = 0; i < slots.length; i++) {
-    const startMins = getSlotStartMinutes(slots[i].time);
-    const duration = parseInt(slots[i].duration, 10) || 30;
-    if (currentMins >= startMins && currentMins < startMins + duration) {
-      currentIdx = i;
-      break;
-    }
-  }
-
-  if (currentIdx === -1) {
-    for (let i = slots.length - 1; i >= 0; i--) {
-      if (getSlotStartMinutes(slots[i].time) <= currentMins) {
-        currentIdx = i;
-        break;
-      }
-    }
-  }
-
-  if (currentIdx === -1) {
-    currentIdx = 0;
-  }
-
-  const current = slots[currentIdx];
-  const next = currentIdx + 1 < slots.length ? slots[currentIdx + 1] : null;
-  const upcoming = slots.slice(currentIdx + 1, currentIdx + 5);
-  return { current, next, upcoming };
-};
-
+import { getNowNext } from '../../data/scheduleData';
 
 const LiveTv = ({ onNavigate }) => {
   const videoRef = useRef(null);
@@ -134,8 +89,7 @@ const LiveTv = ({ onNavigate }) => {
     else document.exitFullscreen().then(() => setIsFullscreen(false)).catch(() => {});
   };
 
-  const { current, next, upcoming } = epgState;
-  const isLive = Boolean(current && current.live);
+  const { current, next, upcoming, isLive } = epgState;
 
   const formatTime12h = (timeStr) => {
     if (!timeStr) return '';
@@ -153,15 +107,6 @@ const LiveTv = ({ onNavigate }) => {
           <video ref={videoRef} playsInline className="live-video-element"
             onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} />
 
-          {/* Fullscreen Logo Overlay Button for Mobile & Touch Viewports */}
-          <button
-            className="mobile-fullscreen-logo-btn"
-            onClick={toggleFullscreen}
-            title={isFullscreen ? 'Exit Fullscreen' : 'Full Screen'}
-            aria-label={isFullscreen ? 'Exit Fullscreen' : 'Full Screen'}
-          >
-            <img src={lwiLogo} alt="LBN TV Fullscreen" className="fullscreen-logo-img" />
-          </button>
           {isBuffering && (
             <div className="live-loader-overlay">
               <div className="live-spinner"></div>

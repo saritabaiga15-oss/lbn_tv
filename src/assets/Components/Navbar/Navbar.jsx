@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import image from '../../images/LWI_logo.png';
+import { getNowNext } from '../../data/scheduleData';
 
 const Navbar = ({ activeTab, onTabChange }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isLive, setIsLive] = useState(() => Boolean(getNowNext()?.isLive));
+
+  useEffect(() => {
+    const updateLiveStatus = () => {
+      setIsLive(Boolean(getNowNext()?.isLive));
+    };
+    updateLiveStatus();
+    const interval = setInterval(updateLiveStatus, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -136,7 +147,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
             onClick={(e) => { e.preventDefault(); handleNavClick('live'); }}
             className={`cta-button ${activeTab === 'live' ? 'active' : ''}`}
           >
-            <span className="live-dot"></span>
+            <span className={`live-dot ${isLive ? 'is-live' : ''}`}></span>
             WATCH LIVE
           </a>
           <button
@@ -240,7 +251,7 @@ const Navbar = ({ activeTab, onTabChange }) => {
                   className="mobile-cta"
                   onClick={(e) => { e.preventDefault(); toggleMobileMenu(); handleNavClick('live'); }}
                 >
-                  <span className="live-dot"></span> WATCH LIVE
+                  <span className={`live-dot ${isLive ? 'is-live' : ''}`}></span> WATCH LIVE
                 </a>
               </li>
             </ul>
