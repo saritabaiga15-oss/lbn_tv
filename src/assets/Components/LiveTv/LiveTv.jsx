@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Hls from 'hls.js';
 import './LiveTv.css';
 import { scheduleData, getSlotStartMinutes } from '../../data/scheduleData';
+import lwiLogo from '../../images/LWI_logo.png';
 
 const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
@@ -151,6 +152,16 @@ const LiveTv = ({ onNavigate }) => {
         <div ref={playerContainerRef} className={`live-player-container ${isFullscreen ? 'is-fullscreen' : ''}`}>
           <video ref={videoRef} playsInline className="live-video-element"
             onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} />
+
+          {/* Fullscreen Logo Overlay Button for Mobile & Touch Viewports */}
+          <button
+            className="mobile-fullscreen-logo-btn"
+            onClick={toggleFullscreen}
+            title={isFullscreen ? 'Exit Fullscreen' : 'Full Screen'}
+            aria-label={isFullscreen ? 'Exit Fullscreen' : 'Full Screen'}
+          >
+            <img src={lwiLogo} alt="LBN TV Fullscreen" className="fullscreen-logo-img" />
+          </button>
           {isBuffering && (
             <div className="live-loader-overlay">
               <div className="live-spinner"></div>
