@@ -6,7 +6,7 @@ import trumpetImg from '../../images/Trumpet.png';
 import timelessImg from '../../images/timeless_paragon_new.jpg';
 import wordAtWorkImg from '../../images/TheWordatWork.png';
 import wholenessImg from '../../images/Wholeness (1).png';
-import igniteImg from '../../images/YOUTHIgnite.png';
+import igniteImg from '../../images/Ignite.png';
 import craftingFaithImg from '../../images/Crafting Faith.png';
 import moneyMattersImg from '../../images/MoneyMatter.jpeg';
 import teevablazeImg from '../../images/TEEVABLAZE .png';
@@ -162,7 +162,7 @@ const PROMO_VIDEOS = [
     year: '2024',
     duration: '60 mins',
     quality: '4K ULTRA HD',
-    poster: ignitePoster,
+    poster: igniteImg,
     banner: igniteImg,
     video: '/Videos/Ignite.mp4',
     tagline: 'We Burn. Faith lights the way through life.',

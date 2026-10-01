@@ -4,6 +4,7 @@ import theTrumpet from '../../images/Trumpet.png';
 import TheWordatWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MoneyMatter.jpeg';
+import Ignite from '../../images/Ignite.png';
 import wholeness from '../../images/Wholeness (1).png';
 import TEEVABLAZE from '../../images/TEEVABLAZE .png';
 import voiceOfPraise from '../../images/voice_of_praise.jpg';
@@ -34,10 +35,11 @@ const Hero = () => {
     { id: 5, image: timelessParagonNew, title: 'Timeless Paragon' },
     { id: 6, image: craftingFaith, title: 'Crafting Faith' },
     { id: 7, image: moneyMatters, title: 'Money Matters' },
-    { id: 8, image: ETHS, title: 'ETHS' },
-    { id: 9, image: wholeness, title: 'Wholeness with Dr. Prashanti' },
-    { id: 10, image: Just_believe_banner, title: 'Just Believe' },
-    { id: 11, image: healthyLiving, title: 'Healthy Living' }
+    { id: 8, image: Ignite, title: 'Ignite' },
+    { id: 9, image: ETHS, title: 'ETHS' },
+    { id: 10, image: wholeness, title: 'Wholeness with Dr. Prashanti' },
+    { id: 11, image: Just_believe_banner, title: 'Just Believe' },
+    { id: 12, image: healthyLiving, title: 'Healthy Living' }
   ];
 
   const handlePrev = () => {

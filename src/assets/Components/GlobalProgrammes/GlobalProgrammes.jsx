@@ -1,22 +1,16 @@
 import React from 'react';
 import './GlobalProgrammes.css';
-import gdop from '../../images/gdop.png';
-import GPAF from '../../images/GPAF.png';
+import GlobalCommunionOct from '../../images/GlobalCommunionOct.png';
+
 
 const GlobalPrograms = () => {
   const programs = [
     {
       id: 1,
-      image: gdop,
-      title: 'Global Day Of Prayer with Pastor Chris',
+      image: GlobalCommunionOct,
+      title: 'Global Communion Service with Pastor Chris',
       badge: 'LIVE BROADCAST'
     },
-    {
-      id: 2,
-      image: GPAF,
-      title: 'Global Prayer and Fasting with Pastor Chris',
-      badge: 'LIVE SPECIAL'
-    }
   ];
 
   return (
@@ -30,8 +24,8 @@ const GlobalPrograms = () => {
           </p>
         </div>
 
-        {/* 2-Column Showcase Grid */}
-        <div className="global-programs-grid">
+        {/* Showcase Grid */}
+        <div className={`global-programs-grid ${programs.length === 1 ? 'single-program' : ''}`}>
           {programs.map((prog) => (
             <div
               key={prog.id}

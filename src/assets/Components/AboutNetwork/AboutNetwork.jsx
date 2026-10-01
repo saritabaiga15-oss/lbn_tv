@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AboutNetwork.css';
 import img1 from '../../images/cinema_lenses.jpg';
 import img2 from '../../images/praise_worship_live.jpg';
-import igniteImg from '../../images/ignite.jpg';
+import igniteImg from '../../images/Ignite.png';
 
 const AboutNetwork = () => {
   const [activeIndex, setActiveIndex] = useState(1);

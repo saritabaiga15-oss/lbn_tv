@@ -6,7 +6,7 @@ import craftingFaith from '../../images/Crafting Faith.png';
 import moneyMatters from '../../images/MoneyMatter.jpeg';
 import teevablaze from '../../images/TEEVABLAZE .png';
 import drPrashanti from '../../images/Wholeness (1).png';
-import igniteImg from '../../images/YOUTHIgnite.png';
+import igniteImg from '../../images/Ignite.png';
 import timelessParagon from '../../images/timeless_paragon_new.jpg';
 
 const ImageGallery = ({ onNavigateProgrammes }) => {

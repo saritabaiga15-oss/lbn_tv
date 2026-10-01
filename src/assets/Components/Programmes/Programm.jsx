@@ -9,7 +9,7 @@ import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
 import voiceOfPraise from '../../images/voice_of_praise.jpg';
 import healthyLiving from '../../images/healthy_living.jpg';
 import drPrashanti from '../../images/Wholeness (1).png';
-import igniteImg from '../../images/YOUTHIgnite.png';
+import igniteImg from '../../images/Ignite.png';
 import justBelieveBanner from '../../images/Just_believe_banner .png';
 
 const BG_PROMOS = [

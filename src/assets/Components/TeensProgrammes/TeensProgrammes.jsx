@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TeensProgrammes.css';
 import teevablazeImg from '../../images/TEEVABLAZE .png';
-import igniteImg from '../../images/YOUTHIgnite.png';
+import igniteImg from '../../images/Ignite.png';
 
 const TeensProgrammes = () => {
   const [selectedShow, setSelectedShow] = useState(null);
