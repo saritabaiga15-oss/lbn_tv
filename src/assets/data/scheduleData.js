@@ -338,7 +338,9 @@ export const scheduleData = {
 
     { time: '11:30 AM', title: 'TEEVABLAZE LIVE', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: true, image: teevablaze },
 
-    { time: '12:00 PM', title: 'Voice Of Praise', category: 'WORSHIP', duration: '60m', host: 'LBN Prayer Team', live: false, image: voiceOfPraise },
+    { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
+
+    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
 
     { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -354,43 +356,73 @@ export const scheduleData = {
 
     { time: '05:30 PM', title: 'Crafting Faith', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: craftingFaith },
 
-    // 🌍 GDOP REBROADCAST STARTS — FRIDAY 6 PM
+    { time: '06:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
 
-    { time: '06:00 PM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 1', category: 'GLOBAL DAY OF PRAYER', duration: '240m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '06:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
-    { time: '10:00 PM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 2', category: 'GLOBAL DAY OF PRAYER', duration: '240m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '07:00 PM', title: 'ROR Travels', category: 'ROR', duration: '30m', host: 'LBN', live: false, image: rhapsodyTv },
 
-    { time: '02:00 AM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 3', category: 'GLOBAL DAY OF PRAYER', duration: '240m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '07:30 PM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },
+
+    { time: '08:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '30m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
+
+    { time: '08:30 PM', title: 'HEALING STREAMS TESTIMONIES LIVE (08:30PM – 10:30PM)', category: 'HEALING', duration: '120m', host: 'Healing School', live: true, image: healingStreams },
+
+    { time: '10:30 PM', title: 'Money Matters', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: moneyMatters },
+
+    { time: '11:00 PM', title: 'Movie Night', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
+
+    { time: '01:00 AM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
+
+    { time: '02:00 AM', title: 'YourLoveworld Praise-A-Thon RE-BRO', category: 'WORSHIP', duration: '210m', host: 'Pastor Chris', live: false, image: praiseAThon },
+
+    { time: '05:30 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams }
 
   ],
 
   Saturday: [
 
-    // 🌍 GDOP REBROADCAST CONTINUES — SATURDAY
+    { time: '06:00 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
-    { time: '06:00 AM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 4', category: 'GLOBAL DAY OF PRAYER', duration: '180m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
 
-    { time: '09:00 AM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 5', category: 'GLOBAL DAY OF PRAYER', duration: '180m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '07:00 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
-    { time: '12:00 PM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 6', category: 'GLOBAL DAY OF PRAYER', duration: '180m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '08:00 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },
 
-    { time: '03:00 PM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 7', category: 'GLOBAL DAY OF PRAYER', duration: '180m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '08:30 AM', title: 'Documentary', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: documentaryStudio },
 
-    { time: '06:00 PM', title: 'GLOBAL DAY OF PRAYER – REBROADCAST – BLOCK 8', category: 'GLOBAL DAY OF PRAYER', duration: '180m', host: 'Global Day of Prayer', live: false, image: gdop },
+    { time: '09:00 AM', title: 'Wholeness', category: 'SPECIALS', duration: '30m', host: 'Dr. Prashanti', live: false, image: drPrashanti },
 
-    // 🌍 GDOP ENDS — SATURDAY 9 PM
+    { time: '09:30 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
-    { time: '09:00 PM', title: 'HEALING STREAMS TESTIMONIES LIVE (09:00PM – 10:30PM)', category: 'HEALING', duration: '90m', host: 'Healing School', live: true, image: healingStreams },
+    { time: '10:00 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },
+
+    { time: '10:30 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
+
+    { time: '11:30 AM', title: 'Lovetoons', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: lovetoons },
+
+    { time: '12:00 PM', title: 'Timeless Paragon', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: timelessParagonNew },
+
+    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+
+    { time: '01:00 PM', title: 'Fruitful', category: 'TALK SHOWS', duration: '30m', host: 'LBN', live: false, image: wordAtWork },
+
+    { time: '01:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '120m', host: 'LBN', live: false, image: praiseWorship },
+
+    { time: '03:30 PM', title: 'Voice of Praise', category: 'WORSHIP', duration: '60m', host: 'LBN Worship', live: false, image: voiceOfPraise },
+
+    { time: '04:30 PM', title: 'LOVEWORLD EXTRA (04:30PM – 08:30PM)', category: 'SPECIALS', duration: '240m', host: 'LBN Global', live: true, image: loveworldExtra },
+
+    { time: '08:30 PM', title: 'HEALING STREAMS TESTIMONIES LIVE (08:30PM – 10:30PM)', category: 'HEALING', duration: '120m', host: 'Healing School', live: true, image: healingStreams },
 
     { time: '10:30 PM', title: 'CHRONICLES OF PROPHECY LIVE (10:30PM – 12:30AM)', category: 'SPECIALS', duration: '120m', host: 'LBN Prophetic Team', live: true, image: chroniclesOfProphecy },
 
-    { time: '12:30 AM', title: 'Documentary', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: documentaryStudio },
+    { time: '12:30 AM', title: 'Movie Night', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
 
-    { time: '01:00 AM', title: 'Movie Night', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
+    { time: '02:30 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '120m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
-    { time: '03:00 AM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
-
-    { time: '04:00 AM', title: 'YourLoveworld Praise-A-Thon RE-BRO', category: 'WORSHIP', duration: '90m', host: 'Pastor Chris', live: false, image: praiseAThon },
+    { time: '04:30 AM', title: 'Loveworld Expressions', category: 'SPECIALS', duration: '60m', host: 'LBN Music', live: false, image: loveworldExpressions },
 
     { time: '05:30 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams }
 
@@ -424,11 +456,11 @@ export const scheduleData = {
 
     { time: '01:30 PM', title: 'Dusk Till Dawn', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: false, image: gytv },
 
-    { time: '02:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '02:00 PM', title: 'IGNITE LIVE (02:00PM – 03:00PM)', category: 'TEENS & YOUTHS', duration: '60m', host: 'LBN Youth', live: true, image: igniteImg },
 
-    { time: '02:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '03:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
 
-    { time: '03:00 PM', title: 'IGNITE (03:00PM – 04:00PM)', category: 'TEENS & YOUTHS', duration: '60m', host: 'LBN Youth', live: true, image: igniteImg },
+    { time: '03:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
     { time: '04:00 PM', title: 'ROR Travels', category: 'ROR', duration: '30m', host: 'LBN', live: false, image: rhapsodyTv },
 
@@ -436,11 +468,9 @@ export const scheduleData = {
 
     { time: '08:30 PM', title: 'HEALING STREAMS TESTIMONIES LIVE (08:30PM – 10:30PM)', category: 'HEALING', duration: '120m', host: 'Healing School', live: true, image: healingStreams },
 
-    { time: '10:30 PM', title: 'Documentary', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: documentaryStudio },
+    { time: '10:30 PM', title: 'CHRONICLES OF PROPHECY LIVE (10:30PM – 12:30AM)', category: 'SPECIALS', duration: '120m', host: 'LBN Prophetic Team', live: true, image: chroniclesOfProphecy },
 
-    { time: '11:00 PM', title: 'Movie Night', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
-
-    { time: '01:00 AM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
+    { time: '12:30 AM', title: 'Movie Night', category: 'SPECIALS', duration: '90m', host: 'LBN', live: false, image: documentaryStudio },
 
     { time: '02:00 AM', title: 'YourLoveworld Praise-A-Thon RE-BRO', category: 'WORSHIP', duration: '210m', host: 'Pastor Chris', live: false, image: praiseAThon },
 

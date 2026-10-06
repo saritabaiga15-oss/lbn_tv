@@ -22,7 +22,7 @@ export const CHATBOT_CONFIG = {
     { name: 'Word at Work', schedule: 'Thursdays at 8:30 PM', category: 'Talk show' },
     { name: 'TEEV-Blaze', schedule: 'Monday to Friday at 11:30 AM', category: 'Teens & youth' },
     { name: 'Pray With Me', schedule: 'Thursdays at 12:00 PM', category: 'Prayer' },
-    { name: 'Ignite', schedule: 'Sundays at 3:00 PM', category: 'Teens & youth' },
+    { name: 'Ignite', schedule: 'Sundays at 2:00 PM', category: 'Teens & youth' },
     { name: 'Crafting Faith', schedule: 'Wednesdays at 4:00 PM', category: 'Talk show' },
     { name: 'Money Matters', schedule: 'Mondays at 7:00 PM', category: 'Talk show' },
     { name: 'Timeless Paragon', schedule: 'Saturdays at 10:00 AM', category: 'Kids' },

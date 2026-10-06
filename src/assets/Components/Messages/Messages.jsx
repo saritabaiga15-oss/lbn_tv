@@ -1,15 +1,15 @@
 import React from 'react';
 import './Messages.css';
-import monthlyMsg from '../../images/Growth.PNG';
+import WOTM from '../../images/WOTM.png';
 import yearlyMsg from '../../images/Manifestation_banner.png';
 
 const messages = [
   {
     id: 1,
-    image: monthlyMsg,
-    title: "September – The Month of Growth",
+    image: WOTM,
+    title: "October – The Month of Mercies",
     badge: "MESSAGE OF THE MONTH",
-    objectPosition: "center 8%",
+    objectPosition: "center 58%",
   },
   {
     id: 2,

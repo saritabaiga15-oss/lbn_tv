@@ -303,7 +303,7 @@ const Programmes = () => {
       category: 'TEENS & YOUTH',
       image: igniteImg,
       video: '/Videos/Ignite.mp4',
-      schedule: 'Sundays at 3:00 PM',
+      schedule: 'Sundays at 2:00 PM',
       duration: '60 mins',
       tagline: 'We Burn.',
       description: 'Ignite explores the real-life intersection of culture, lifestyle, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'

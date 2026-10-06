@@ -18,7 +18,7 @@ const GlobalPrograms = () => {
       <div className="global-programs-container">
         <div className="global-programs-header">
           <span className="global-programs-label">LIVE BROADCASTS</span>
-          <h2 className="global-programs-title">UPCOMING GLOBAL PROGRAMS</h2>
+          <h2 className="global-programs-title">UPCOMING GLOBAL PROGRAMMES</h2>
           <p className="global-programs-desc">
             Experience inspiring moments from around the world, featuring impactful messages, uplifting music, and special live events. Stay connected, stay inspired, and be part of what’s happening across our global network.
           </p>

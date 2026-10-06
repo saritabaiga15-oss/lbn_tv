@@ -22,7 +22,7 @@ const TeensProgrammes = () => {
       title: 'IGNITE SHOW',
       subtitle: 'Adolescence and Faith',
       image: igniteImg,
-      schedule: 'Sundays at 3:00 PM',
+      schedule: 'Sundays at 2:00 PM',
       duration: '60 mins',
       tagline: 'Always keep the hope alive.',
       description: 'Ignite explores the real-life intersection of youth culture, adolescence, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'
