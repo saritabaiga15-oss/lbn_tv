@@ -1,14 +1,14 @@
 import React from 'react';
 import './GlobalProgrammes.css';
-import GlobalCommunionOct from '../../images/GlobalCommunionOct.png';
+import HSLHSWPC from '../../images/HSLHSWPC.jpg';
 
 
 const GlobalPrograms = () => {
   const programs = [
     {
       id: 1,
-      image: GlobalCommunionOct,
-      title: 'Global Communion Service with Pastor Chris',
+      image: HSLHSWPC,
+      title: 'Healing Streams Live Healing Service with Pastor Chris',
       badge: 'LIVE BROADCAST'
     },
   ];
