@@ -1,6 +1,6 @@
 import React from 'react';
 import './GlobalProgrammes.css';
-import HSLHSWPC from '../../images/HSLHSWPC.jpg';
+import HSLHSWPC from '../../images/HSLHSWPC.jpeg';
 
 
 const GlobalPrograms = () => {

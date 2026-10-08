@@ -23,7 +23,7 @@ const BG_PROMOS = [
   { id: 'Teevablaze', title: 'Teevablaze', src: '/Videos/Teevablaze.mp4' },
   { id: 'healthyLiving', title: 'Healthy Living', src: '/Videos/HL INTRO.mp4' },
   { id: 'voiceOfPraise', title: 'Voice of Praise', src: '/Videos/VoiceOfPraise.mp4' },
-  {id: 'justBelieve', title: 'Just Believe', src: '/Videos/JustBelieve.mp4'},
+  { id: 'justBelieve', title: 'Just Believe', src: '/Videos/JustBelieve.mp4' },
   { id: 'enoch', title: 'LoveWorld India Special', src: '/Videos/ENOCH_PROMO_FINAL.mp4' }
 ];
 
@@ -83,7 +83,7 @@ const Programmes = () => {
     }
     if (videoA) {
       videoA.muted = bgMutedRef.current;
-      videoA.play().catch(() => {});
+      videoA.play().catch(() => { });
     }
   }, []);
 
@@ -157,7 +157,7 @@ const Programmes = () => {
             }
             if (activeVideo) {
               activeVideo.muted = bgMutedRef.current;
-              activeVideo.play().catch(() => {});
+              activeVideo.play().catch(() => { });
             }
           } else {
             if (videoRefA.current) {
@@ -199,7 +199,7 @@ const Programmes = () => {
       }
       if (activeVideo) {
         activeVideo.muted = bgMutedRef.current;
-        activeVideo.play().catch(() => {});
+        activeVideo.play().catch(() => { });
       }
     }
   }, [selectedShow]);
@@ -224,7 +224,7 @@ const Programmes = () => {
                   };
                   window.addEventListener('click', enableAudio, { once: true });
                   window.addEventListener('touchstart', enableAudio, { once: true });
-                }).catch(() => {});
+                }).catch(() => { });
               }
             });
           }
@@ -250,7 +250,7 @@ const Programmes = () => {
     }
   };
 
-  const filters = ['ALL', 'TALK SHOWS','HEALTH', 'WORSHIP', 'TEENS & YOUTH', 'KIDDIES',];
+  const filters = ['ALL', 'TALK SHOWS', 'HEALTH', 'WORSHIP', 'TEENS & YOUTH', 'KIDDIES',];
 
   const programList = [
     {
@@ -262,7 +262,7 @@ const Programmes = () => {
       schedule: 'Tuesday to Friday at 11:00 AM',
       duration: '60 mins',
       tagline: 'Prophetic conversations, truth, and faith.',
-      description: 'Inspiring insights and prophetic conversations on faith, ministry, and current events hosted by  Vijay Bansode with anointed guest speakers.'
+      description: 'A morning bouquet To prepare and position the Church for the coming of the Lord by delivering timely, biblically grounded teaching that deepens spiritual understanding, strengthens faith and promotes spiritual growth.'
     },
     {
       id: 2,
@@ -273,7 +273,7 @@ const Programmes = () => {
       schedule: 'Saturdays at 10:00 AM',
       duration: '45 mins',
       tagline: 'Empowering children with scripture wisdom.',
-      description: 'Fun, engaging studio episodes empowering children with scripture wisdom, character-building stories, and timeless faith values for growing minds.'
+      description: 'Timeless Paragon introduces children to the timeless truths of God’s Word through engaging, creative, and entertaining Bible stories that build faith, character, imagination, and a lasting love for Scripture.'
     },
     {
       id: 3,
@@ -284,7 +284,7 @@ const Programmes = () => {
       schedule: 'Thursdays at 8:30 PM',
       duration: '60 mins',
       tagline: 'Inspired, equipped, and empowered.',
-      description: 'Panel discussions exploring God’s Word in action, equipping believers with practical application of biblical truths and life-transforming revelations.'
+      description: 'The Word at Work aims to make the Word of God relevant, understandable, and actionable, exploring a different topic in each episode and helping viewers discover how biblical principles can shape their thoughts, decisions, relationships, character, and purpose.'
     },
     {
       id: 4,
@@ -295,7 +295,7 @@ const Programmes = () => {
       schedule: 'Tuesdays at 9:30 AM',
       duration: '30 mins',
       tagline: 'Mind. Body. Purpose.',
-      description: 'Inspiring health, wellness, and divine vitality from a faith-filled perspective with Dr. Prashanti, equipping you to live in wholeness across mind, body, and purpose.'
+      description: 'Dr. Prashanti brings a wholistic experience to educate and empower viewers with practical, accessible knowledge about physical health, body awareness, prevention, and emergency response, helping individuals better understand their bodies, recognize warning signs, and make informed decisions about their wellbeing.'
     },
     {
       id: 7,
@@ -306,7 +306,7 @@ const Programmes = () => {
       schedule: 'Sundays at 2:00 PM',
       duration: '60 mins',
       tagline: 'We Burn.',
-      description: 'Ignite explores the real-life intersection of culture, lifestyle, and faith. Engaging discussions, young panels, and inspiring stories show how faith lights the way through life’s trials.'
+      description: 'Ignite creates a dynamic and engaging platform where young people openly discuss, debate, and share perspectives on relevant issues affecting their lives, while providing a strong spiritual foundation that inspires them to grow in faith, discover their God-given identity and purpose, and make values-driven decisions.'
     },
     {
       id: 8,
@@ -319,7 +319,7 @@ const Programmes = () => {
       tagline: 'Create · Believe · Inspire — faith through art and craft.',
       description: 'Inspiring craft workshops where faith and creativity unite. Create, believe, and inspire through practical artistic projects and scripture insights.'
     },
-  
+
     {
       id: 9,
       title: 'MONEY MATTERS',
@@ -329,7 +329,7 @@ const Programmes = () => {
       schedule: 'Mondays at 7:00 PM',
       duration: '45 mins',
       tagline: 'Biblical wisdom for financial growth.',
-      description:  'Practical insights and spiritual guidance on stewardship, financial intelligence, and prosperity according to biblical principles.'
+      description: 'Money Matters equips viewers with practical financial knowledge and responsible money-management skills, while providing biblical and spiritual insights that encourage wise stewardship, financial discipline, integrity, and purpose-driven living.'
     },
     {
       id: 10,
@@ -340,7 +340,7 @@ const Programmes = () => {
       schedule: 'Monday to Friday at 11:30 AM',
       duration: '30 mins',
       tagline: 'Igniting the youth with vibrant faith and purpose.',
-      description: 'An electrifying youth-centric broadcast celebrating youth culture, energetic discussions, faith testimonies, and talent for teens and young adults.'
+      description: 'Teevablaze To inspire, equip, and empower teens and young people through the study of Rhapsody TeeVo, helping them understand, embrace, and apply God’s Word in their everyday lives.'
     },
     {
       id: 11,
@@ -351,7 +351,7 @@ const Programmes = () => {
       schedule: 'Weekly on LBN',
       duration: '30 mins',
       tagline: 'Where worship meets the heart.',
-      description: 'A soul-stirring worship and praise programme featuring anointed singers and musicians lifting voices in adoration and faith-filled music ministry.'
+      description: 'Voice of Praise is a platform where praise becomes a lifestyle and worship becomes a deeper understanding of God, exploring important topics that strengthen believers’ of worshiping God.'
     },
     {
       id: 12,
@@ -362,7 +362,7 @@ const Programmes = () => {
       schedule: 'Weekly on LBN',
       duration: '30 mins',
       tagline: 'Faith, wellness, and wholeness.',
-      description: 'Practical guidance on nutrition, natural health, and holistic wellness from a faith-based perspective — inspiring viewers to live well in spirit, soul, and body.'
+      description: 'Healthy Living is a program that educates, inspires, and empowers viewers to adopt healthier lifestyles by providing practical, accessible, and evidence-based guidance on nutrition, physical activity, mental wellbeing, healthy habits, and everyday wellness.'
     },
     {
       id: 13,
@@ -612,20 +612,20 @@ const Programmes = () => {
                         if (el) {
                           el.muted = false;
                           el.volume = 1.0;
-                          el.play().catch(() => {});
+                          el.play().catch(() => { });
                         }
                       }}
                       onLoadedData={(e) => {
                         const v = e.currentTarget;
                         v.muted = false;
                         v.volume = 1.0;
-                        v.play().catch(() => {});
+                        v.play().catch(() => { });
                       }}
                       onCanPlay={(e) => {
                         const v = e.currentTarget;
                         v.muted = false;
                         v.volume = 1.0;
-                        v.play().catch(() => {});
+                        v.play().catch(() => { });
                       }}
                     >
                       Your browser does not support the video tag.

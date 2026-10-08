@@ -1,6 +1,7 @@
 import pastorChrisTeaching from '../images/pastor_chris_teaching.png';
 import yourLoveworldSpecials from '../images/YourLWS.jpeg';
 import rhapsodyTv from '../images/rhapsody_tv.png';
+import RORD from '../images/RORD.jpeg';
 import praiseAThon from '../images/praise_a_thon.png';
 import healingStreams from '../images/healing_streams.png';
 import gytv from '../images/gytv.png';
@@ -94,7 +95,7 @@ export const scheduleData = {
 
     { time: '06:00 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
-    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '07:00 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -116,7 +117,7 @@ export const scheduleData = {
 
     { time: '12:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
-    { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '01:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -166,7 +167,7 @@ export const scheduleData = {
 
     { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -222,7 +223,7 @@ export const scheduleData = {
 
     { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: false, image: prayWithMe },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -238,7 +239,7 @@ export const scheduleData = {
 
     { time: '05:30 PM', title: 'Dusk Till Dawn', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: false, image: gytv },
 
-    { time: '06:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '06:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '06:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
@@ -282,7 +283,7 @@ export const scheduleData = {
 
     { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: false, image: prayWithMe },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -340,7 +341,7 @@ export const scheduleData = {
 
     { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -356,7 +357,7 @@ export const scheduleData = {
 
     { time: '05:30 PM', title: 'Crafting Faith', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: craftingFaith },
 
-    { time: '06:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '06:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '06:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
@@ -384,7 +385,7 @@ export const scheduleData = {
 
     { time: '06:00 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
-    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '07:00 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -404,7 +405,7 @@ export const scheduleData = {
 
     { time: '12:00 PM', title: 'Timeless Paragon', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: timelessParagonNew },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '01:00 PM', title: 'Fruitful', category: 'TALK SHOWS', duration: '30m', host: 'LBN', live: false, image: wordAtWork },
 
@@ -432,7 +433,7 @@ export const scheduleData = {
 
     { time: '06:00 AM', title: 'Worship (LWIndia)', category: 'WORSHIP', duration: '30m', host: 'LoveWorld India', live: false, image: praiseWorship },
 
-    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '07:00 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -458,7 +459,7 @@ export const scheduleData = {
 
     { time: '02:00 PM', title: 'IGNITE LIVE (02:00PM – 03:00PM)', category: 'TEENS & YOUTHS', duration: '60m', host: 'LBN Youth', live: true, image: igniteImg },
 
-    { time: '03:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: rhapsodyTv },
+    { time: '03:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '03:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
