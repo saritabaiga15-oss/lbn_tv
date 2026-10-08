@@ -1,6 +1,7 @@
 import React from 'react';
 import './GlobalProgrammes.css';
 import HSLHSWPC from '../../images/HSLHSWPC.jpeg';
+import OCT_GPAF from '../../images/OCT_GPAF.png';
 
 
 const GlobalPrograms = () => {
@@ -9,6 +10,12 @@ const GlobalPrograms = () => {
       id: 1,
       image: HSLHSWPC,
       title: 'Healing Streams Live Healing Service with Pastor Chris',
+      badge: 'LIVE BROADCAST'
+    },
+    {
+      id: 2,
+      image: OCT_GPAF,
+      title: 'Global Prayer And Fasting with Pastor Chris',
       badge: 'LIVE BROADCAST'
     },
   ];
