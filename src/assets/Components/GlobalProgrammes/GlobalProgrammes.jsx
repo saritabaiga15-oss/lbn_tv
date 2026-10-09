@@ -9,7 +9,7 @@ const GlobalPrograms = () => {
     {
       id: 1,
       image: HSLHSWPC,
-      title: 'Healing Streams Live Healing Service with Pastor Chris',
+      title: 'Healing Streams Live Healing Services with Pastor Chris (Season 18)',
       badge: 'LIVE BROADCAST'
     },
     {
