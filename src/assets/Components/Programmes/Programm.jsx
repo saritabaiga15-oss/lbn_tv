@@ -298,7 +298,7 @@ const Programmes = () => {
       description: 'Dr. Prashanti brings a wholistic experience to educate and empower viewers with practical, accessible knowledge about physical health, body awareness, prevention, and emergency response, helping individuals better understand their bodies, recognize warning signs, and make informed decisions about their wellbeing.'
     },
     {
-      id: 7,
+      id: 5,
       title: 'IGNITE SHOW',
       category: 'TEENS & YOUTH',
       image: igniteImg,
@@ -309,7 +309,7 @@ const Programmes = () => {
       description: 'Ignite creates a dynamic and engaging platform where young people openly discuss, debate, and share perspectives on relevant issues affecting their lives, while providing a strong spiritual foundation that inspires them to grow in faith, discover their God-given identity and purpose, and make values-driven decisions.'
     },
     {
-      id: 8,
+      id: 6,
       title: 'CRAFTING FAITH',
       category: 'TALK SHOWS',
       image: craftingFaith,
@@ -321,7 +321,7 @@ const Programmes = () => {
     },
 
     {
-      id: 9,
+      id: 7,
       title: 'MONEY MATTERS',
       category: 'TALK SHOWS',
       image: moneyMatters,
