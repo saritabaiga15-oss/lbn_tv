@@ -61,6 +61,43 @@ const ALL_GALLERY_IMAGES = [
 const HealingStreamsModal = ({ isOpen, onClose }) => {
   const [currentPage, setCurrentPage] = useState(0); // 0 to 4
   const [activeImageIndex, setActiveImageIndex] = useState(0); // 0 to 6 (all images)
+  const [expandedPages, setExpandedPages] = useState({
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false
+  });
+
+  const togglePageExpand = (pageIdx) => {
+    setExpandedPages((prev) => ({
+      ...prev,
+      [pageIdx]: !prev[pageIdx]
+    }));
+  };
+
+  const renderReadMoreBtn = (pageIdx) => {
+    const isExpanded = Boolean(expandedPages[pageIdx]);
+    return (
+      <div className="hs-read-more-wrapper">
+        <button
+          type="button"
+          className={`hs-read-more-btn ${isExpanded ? 'expanded' : ''}`}
+          onClick={() => togglePageExpand(pageIdx)}
+        >
+          <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            {isExpanded ? (
+              <polyline points="18 15 12 9 6 15"></polyline>
+            ) : (
+              <polyline points="6 9 12 15 18 9"></polyline>
+            )}
+          </svg>
+        </button>
+      </div>
+    );
+  };
+
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const isSwiping = useRef(false);
@@ -276,33 +313,43 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                       The significance of this final edition of 2026 is not lost on many, making the occasion even more momentous as billions seize the opportunity to experience the love and visceral mercies of God made manifest.
                     </p>
 
-                    <div className="hs-page-divider"></div>
-
-                    <h2 className="hs-page-subtitle">
-                      <span className="hs-sub-icon">🌐</span> AN OPEN INVITATION TO THE WORLD
-                    </h2>
-
-                    <p className="hs-page-p">
-                      Registration is free and open to everyone worldwide at{' '}
-                      <a
-                        href="https://healingstreams.org/?r=LWIN"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hs-highlight-link"
-                      >
-                        healingstreams.org
-                      </a>
-                      . Registrants are encouraged to indicate if they or their loved ones need healing so they can receive tailored guidance and access preparatory faith classes and materials designed to help them prepare for their miracle.
-                    </p>
-
-                    <p className="hs-page-p">
-                      The invitation, however, extends far beyond those who are sick. Pastor Chris Oyakhilome, convener of the event, has repeatedly emphasized that everyone needs God's Word, making the program an opportunity for people of every age and circumstance to encounter the message of Christ, strengthen their faith, and experience the blessings of God's presence.
-                    </p>
-
-                    <div className="hs-page-action-row">
-                      <button className="hs-card-btn-gold" onClick={handleNextPage}>
-                        Next: One Message, Every Language (Page 2) →
+                    {/* Mobile Read More toggle & Quick Next */}
+                    <div className="hs-mobile-mid-actions">
+                      {renderReadMoreBtn(0)}
+                      <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
+                        Next Page →
                       </button>
+                    </div>
+
+                    <div className={`hs-expandable-section ${expandedPages[0] ? 'open' : ''}`}>
+                      <div className="hs-page-divider"></div>
+
+                      <h2 className="hs-page-subtitle">
+                        <span className="hs-sub-icon">🌐</span> AN OPEN INVITATION TO THE WORLD
+                      </h2>
+
+                      <p className="hs-page-p">
+                        Registration is free and open to everyone worldwide at{' '}
+                        <a
+                          href="https://healingstreams.org/?r=LWIN"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hs-highlight-link"
+                        >
+                          healingstreams.org
+                        </a>
+                        . Registrants are encouraged to indicate if they or their loved ones need healing so they can receive tailored guidance and access preparatory faith classes and materials designed to help them prepare for their miracle.
+                      </p>
+
+                      <p className="hs-page-p">
+                        The invitation, however, extends far beyond those who are sick. Pastor Chris Oyakhilome, convener of the event, has repeatedly emphasized that everyone needs God's Word, making the program an opportunity for people of every age and circumstance to encounter the message of Christ, strengthen their faith, and experience the blessings of God's presence.
+                      </p>
+
+                      <div className="hs-page-action-row">
+                        <button className="hs-card-btn-gold" onClick={handleNextPage}>
+                          Next: One Message, Every Language →
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -327,67 +374,77 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                       As is customary, the edition will be streamed live and translated into all languages and major dialects, bringing people of diverse cultures and backgrounds together in a landmark, unified experience of the Word. Across towns, villages, communities, hospitals, streets, prisons, orphanages, neighborhoods, homes, cities, states, and nations, millions of Healing Centers have been established in preparation for the event, creating easy access for people to participate as groups, families, or individuals.
                     </p>
 
-                    <div className="hs-page-divider"></div>
-
-                    <h2 className="hs-page-subtitle">
-                      <span className="hs-sub-icon">📣</span> “WE CAN CHANGE THEIR WORLD” — A GLOBAL CALL FROM PASTOR CHRIS
-                    </h2>
-
-                    <p className="hs-page-p">
-                      Underscoring the import of the edition, Pastor Chris Oyakhilome has issued a stirring call for an unprecedented global mobilization. Speaking recently at the Global Communion Service, he stated:
-                    </p>
-
-                    <blockquote className="hs-quote-callout">
-                      <div className="hs-quote-icon">“</div>
-                      <p className="hs-quote-message">
-                        It’s just a few more days; we will have the Healing Streams Live Healing Services, and it is going to be huge. By the power of the Holy Spirit, the healing graces of God, the Angels of God, will cover this world, and many will be healed; especially in this month of mercies.
-                      </p>
-                      <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
-                    </blockquote>
-
-                    <p className="hs-page-p">
-                      He emphasized the significance of the program for the many for whom this is their only hope of getting well, urging ministers of the Gospel worldwide to work together to make the event a major global outreach:
-                    </p>
-
-                    <blockquote className="hs-quote-callout gold-border">
-                      <div className="hs-quote-icon">“</div>
-                      <p className="hs-quote-message">
-                        We have to mobilize all that the Lord has given us authority to control and to influence. Get everyone ready for Healing Streams. We can change their world.
-                      </p>
-                      <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
-                    </blockquote>
-
-                    <p className="hs-page-p">
-                      Pastor Chris further pointed to the dramatic healings witnessed during previous editions, averring that:
-                    </p>
-
-                    <blockquote className="hs-quote-callout">
-                      <div className="hs-quote-icon">“</div>
-                      <p className="hs-quote-message">
-                        This is something that will bring so much blessing to old and young alike. Think about babies, children who have never walked because of some debilitating disease. And during the Healing Streams, they will begin to walk. The deaf will hear, the dumb will speak, the blind will see; God’s going to change their world completely because of the Healing Streams. Even the dead will be raised.
-                      </p>
-                      <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
-                    </blockquote>
-
-                    <p className="hs-page-p">
-                      He concluded with a call for people everywhere to look forward to the program and prepare for what he described as a global manifestation of God’s glory:
-                    </p>
-
-                    <blockquote className="hs-quote-callout gold-border">
-                      <div className="hs-quote-icon">“</div>
-                      <p className="hs-quote-message">
-                        I want you to look forward to Healing Streams, prepare for it, plan for it; because the glory of God will be made manifest around the world.
-                      </p>
-                      <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
-                    </blockquote>
-
-                    <div className="hs-page-action-row">
-                      <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                        ← Previous Page
+                    {/* Mobile Read More toggle & Quick Next */}
+                    <div className="hs-mobile-mid-actions">
+                      {renderReadMoreBtn(1)}
+                      <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
+                        Next Page →
                       </button>
-                      <button className="hs-card-btn-gold" onClick={handleNextPage}>
-                        Next: Testimonies & Expectations (Page 3) →
-                      </button>
+                    </div>
+
+                    <div className={`hs-expandable-section ${expandedPages[1] ? 'open' : ''}`}>
+                      <div className="hs-page-divider"></div>
+
+                      <h2 className="hs-page-subtitle">
+                        <span className="hs-sub-icon">📣</span> “WE CAN CHANGE THEIR WORLD” — A GLOBAL CALL FROM PASTOR CHRIS
+                      </h2>
+
+                      <p className="hs-page-p">
+                        Underscoring the import of the edition, Pastor Chris Oyakhilome has issued a stirring call for an unprecedented global mobilization. Speaking recently at the Global Communion Service, he stated:
+                      </p>
+
+                      <blockquote className="hs-quote-callout">
+                        <div className="hs-quote-icon">“</div>
+                        <p className="hs-quote-message">
+                          It’s just a few more days; we will have the Healing Streams Live Healing Services, and it is going to be huge. By the power of the Holy Spirit, the healing graces of God, the Angels of God, will cover this world, and many will be healed; especially in this month of mercies.
+                        </p>
+                        <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
+                      </blockquote>
+
+                      <p className="hs-page-p">
+                        He emphasized the significance of the program for the many for whom this is their only hope of getting well, urging ministers of the Gospel worldwide to work together to make the event a major global outreach:
+                      </p>
+
+                      <blockquote className="hs-quote-callout gold-border">
+                        <div className="hs-quote-icon">“</div>
+                        <p className="hs-quote-message">
+                          We have to mobilize all that the Lord has given us authority to control and to influence. Get everyone ready for Healing Streams. We can change their world.
+                        </p>
+                        <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
+                      </blockquote>
+
+                      <p className="hs-page-p">
+                        Pastor Chris further pointed to the dramatic healings witnessed during previous editions, averring that:
+                      </p>
+
+                      <blockquote className="hs-quote-callout">
+                        <div className="hs-quote-icon">“</div>
+                        <p className="hs-quote-message">
+                          This is something that will bring so much blessing to old and young alike. Think about babies, children who have never walked because of some debilitating disease. And during the Healing Streams, they will begin to walk. The deaf will hear, the dumb will speak, the blind will see; God’s going to change their world completely because of the Healing Streams. Even the dead will be raised.
+                        </p>
+                        <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
+                      </blockquote>
+
+                      <p className="hs-page-p">
+                        He concluded with a call for people everywhere to look forward to the program and prepare for what he described as a global manifestation of God’s glory:
+                      </p>
+
+                      <blockquote className="hs-quote-callout gold-border">
+                        <div className="hs-quote-icon">“</div>
+                        <p className="hs-quote-message">
+                          I want you to look forward to Healing Streams, prepare for it, plan for it; because the glory of God will be made manifest around the world.
+                        </p>
+                        <cite className="hs-quote-author">— Pastor Chris Oyakhilome</cite>
+                      </blockquote>
+
+                      <div className="hs-page-action-row">
+                        <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
+                          ← Previous Page
+                        </button>
+                        <button className="hs-card-btn-gold" onClick={handleNextPage}>
+                          Next: Testimonies & Expectations →
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -442,82 +499,92 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                       </div>
                     </div>
 
-                    <div className="hs-page-divider"></div>
-
-                    <span className="hs-page-kicker">FAITH AT FEVER PITCH</span>
-                    <h2 className="hs-page-title">
-                      EXPECTATIONS SOAR ACROSS THE NATIONS
-                    </h2>
-
-                    <p className="hs-page-lead">
-                      With just a few days to go, global preparations and expectations are reaching a fever pitch, with millions daring to believe that the seemingly impossible will become possible.
-                    </p>
-
-                    <div className="hs-editorial-quotes-list">
-                      {/* Sakshi Telure */}
-                      <div className="hs-editorial-person-card">
-                        <div className="hs-person-top">
-                          <span className="hs-person-flag-round">🇮🇳</span>
-                          <div className="hs-person-id">
-                            <span className="hs-person-name">Sakshi Telure</span>
-                            <span className="hs-person-location">India</span>
-                          </div>
-                        </div>
-                        <p className="hs-person-statement">
-                          “I’m filled with expectation for this edition of the Healing Streams Live Healing Services. I believe even more amazing things are going to happen this time, and I’m excited to share the news with everyone I know. I encourage you to share it with your friends and family because I believe that, whether you need healing, restoration, or a breakthrough in any area of your life, you can receive your miracle. I’m so excited and full of expectation for what God is going to do. I believe many people will experience the Lord’s grace, mercy, and love through the Healing Streams Live Healing Services. Praise the Lord!”
-                        </p>
-                      </div>
-
-                      {/* Shabib */}
-                      <div className="hs-editorial-person-card">
-                        <div className="hs-person-top">
-                          <span className="hs-person-flag-round">🇳🇬</span>
-                          <div className="hs-person-id">
-                            <span className="hs-person-name">Shabib</span>
-                            <span className="hs-person-location">Nigeria</span>
-                          </div>
-                        </div>
-                        <p className="hs-person-statement">
-                          “I’m expecting a miracle in my health and finances in this edition. I believe the pain I have suffered for many years due to a spinal injury will finally leave me permanently, along with the high blood pressure and weakness that have plagued me. My faith is high, and my expectation shall not be cut off.”
-                        </p>
-                      </div>
-
-                      {/* Vanessa */}
-                      <div className="hs-editorial-person-card">
-                        <div className="hs-person-top">
-                          <span className="hs-person-flag-round">🇨🇦</span>
-                          <div className="hs-person-id">
-                            <span className="hs-person-name">Vanessa</span>
-                            <span className="hs-person-location">Canada</span>
-                          </div>
-                        </div>
-                        <p className="hs-person-statement">
-                          “I’m expecting this Healing Streams to reach people who may have lost hope and their way, especially in my country. I believe many will encounter the healing power of God and experience miracles they never thought possible, and, most importantly, receive salvation.”
-                        </p>
-                      </div>
-
-                      {/* Steve */}
-                      <div className="hs-editorial-person-card">
-                        <div className="hs-person-top">
-                          <span className="hs-person-flag-round">🇩🇪</span>
-                          <div className="hs-person-id">
-                            <span className="hs-person-name">Steve</span>
-                            <span className="hs-person-location">Germany</span>
-                          </div>
-                        </div>
-                        <p className="hs-person-statement">
-                          “I expect that this edition will surpass everything we have witnessed before. I’m looking forward to countless testimonies of healing, restoration, and salvation from people across the nations.”
-                        </p>
-                      </div>
+                    {/* Mobile Read More toggle & Quick Next */}
+                    <div className="hs-mobile-mid-actions">
+                      {renderReadMoreBtn(2)}
+                      <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
+                        Next Page →
+                      </button>
                     </div>
 
-                    <div className="hs-page-action-row">
-                      <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                        ← Previous Page
-                      </button>
-                      <button className="hs-card-btn-gold" onClick={handleNextPage}>
-                        Next: Global Mobilisation (Page 4) →
-                      </button>
+                    <div className={`hs-expandable-section ${expandedPages[2] ? 'open' : ''}`}>
+                      <div className="hs-page-divider"></div>
+
+                      <span className="hs-page-kicker">FAITH AT FEVER PITCH</span>
+                      <h2 className="hs-page-title">
+                        EXPECTATIONS SOAR ACROSS THE NATIONS
+                      </h2>
+
+                      <p className="hs-page-lead">
+                        With just a few days to go, global preparations and expectations are reaching a fever pitch, with millions daring to believe that the seemingly impossible will become possible.
+                      </p>
+
+                      <div className="hs-editorial-quotes-list">
+                        {/* Sakshi Telure */}
+                        <div className="hs-editorial-person-card">
+                          <div className="hs-person-top">
+                            <span className="hs-person-flag-round">🇮🇳</span>
+                            <div className="hs-person-id">
+                              <span className="hs-person-name">Sakshi Telure</span>
+                              <span className="hs-person-location">India</span>
+                            </div>
+                          </div>
+                          <p className="hs-person-statement">
+                            “I’m filled with expectation for this edition of the Healing Streams Live Healing Services. I believe even more amazing things are going to happen this time, and I’m excited to share the news with everyone I know. I encourage you to share it with your friends and family because I believe that, whether you need healing, restoration, or a breakthrough in any area of your life, you can receive your miracle. I’m so excited and full of expectation for what God is going to do. I believe many people will experience the Lord’s grace, mercy, and love through the Healing Streams Live Healing Services. Praise the Lord!”
+                          </p>
+                        </div>
+
+                        {/* Shabib */}
+                        <div className="hs-editorial-person-card">
+                          <div className="hs-person-top">
+                            <span className="hs-person-flag-round">🇳🇬</span>
+                            <div className="hs-person-id">
+                              <span className="hs-person-name">Shabib</span>
+                              <span className="hs-person-location">Nigeria</span>
+                            </div>
+                          </div>
+                          <p className="hs-person-statement">
+                            “I’m expecting a miracle in my health and finances in this edition. I believe the pain I have suffered for many years due to a spinal injury will finally leave me permanently, along with the high blood pressure and weakness that have plagued me. My faith is high, and my expectation shall not be cut off.”
+                          </p>
+                        </div>
+
+                        {/* Vanessa */}
+                        <div className="hs-editorial-person-card">
+                          <div className="hs-person-top">
+                            <span className="hs-person-flag-round">🇨🇦</span>
+                            <div className="hs-person-id">
+                              <span className="hs-person-name">Vanessa</span>
+                              <span className="hs-person-location">Canada</span>
+                            </div>
+                          </div>
+                          <p className="hs-person-statement">
+                            “I’m expecting this Healing Streams to reach people who may have lost hope and their way, especially in my country. I believe many will encounter the healing power of God and experience miracles they never thought possible, and, most importantly, receive salvation.”
+                          </p>
+                        </div>
+
+                        {/* Steve */}
+                        <div className="hs-editorial-person-card">
+                          <div className="hs-person-top">
+                            <span className="hs-person-flag-round">🇩🇪</span>
+                            <div className="hs-person-id">
+                              <span className="hs-person-name">Steve</span>
+                              <span className="hs-person-location">Germany</span>
+                            </div>
+                          </div>
+                          <p className="hs-person-statement">
+                            “I expect that this edition will surpass everything we have witnessed before. I’m looking forward to countless testimonies of healing, restoration, and salvation from people across the nations.”
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="hs-page-action-row">
+                        <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
+                          ← Previous Page
+                        </button>
+                        <button className="hs-card-btn-gold" onClick={handleNextPage}>
+                          Next: Global Mobilisation →
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -546,40 +613,50 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                       From the establishment of Healing Centers in communities and locations around the world to strengthening faith and expectation through the <em>Healing to the Nations</em> magazines, preparations are intensifying on every front. Meanwhile, the ongoing 24/7 prayer chain continues to fill the atmosphere with the fervent prayers of countless Christians around the world as they intercede for the sick and make tremendous power available for all who will participate.
                     </p>
 
-                    <div className="hs-page-divider"></div>
-
-                    <h2 className="hs-page-subtitle">
-                      <span className="hs-sub-icon">📺</span> ROAD TO HEALING STREAMS RETURNS WITH SEASON 18
-                    </h2>
-
-                    <p className="hs-page-p">
-                      Crowning the global mobilization is <strong>Road to Healing Streams Live Healing Services S18</strong>, a special daily broadcast documenting the remarkable preparations, inspiring testimonies, and growing wave of faith unfolding worldwide ahead of the event.
-                    </p>
-
-                    <div className="hs-broadcast-schedule-box">
-                      <div className="hs-sched-badge">EXCLUSIVE BROADCAST HOURS</div>
-                      <div className="hs-sched-details">
-                        <span className="hs-sched-channel">Healing Streams TV</span>
-                        <span className="hs-sched-time">Daily at 12:00 Noon & 4:00 PM (GMT+1)</span>
-                        <span className="hs-sched-date">Broadcasting until Thursday, October 22</span>
-                      </div>
+                    {/* Mobile Read More toggle & Quick Next */}
+                    <div className="hs-mobile-mid-actions">
+                      {renderReadMoreBtn(3)}
+                      <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
+                        Next Page →
+                      </button>
                     </div>
 
-                    <p className="hs-page-p">
-                      The program offers viewers an exclusive look at the activities of ministries, churches, organizations, volunteers, and individuals across the globe as they prepare their communities through healing crusades, evangelism campaigns, strategic prayer initiatives, Healing Center mobilization, community outreaches, and other faith-building activities.
-                    </p>
+                    <div className={`hs-expandable-section ${expandedPages[3] ? 'open' : ''}`}>
+                      <div className="hs-page-divider"></div>
 
-                    <p className="hs-page-p">
-                      The broadcast also features inspiring testimonies from participants and recipients already experiencing remarkable miracles as they prepare through prayer, faith, and the application of God’s Word.
-                    </p>
+                      <h2 className="hs-page-subtitle">
+                        <span className="hs-sub-icon">📺</span> ROAD TO HEALING STREAMS RETURNS WITH SEASON 18
+                      </h2>
 
-                    <div className="hs-page-action-row">
-                      <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                        ← Previous Page
-                      </button>
-                      <button className="hs-card-btn-gold" onClick={handleNextPage}>
-                        Next: Miracles & Global Experience (Page 5) →
-                      </button>
+                      <p className="hs-page-p">
+                        Crowning the global mobilization is <strong>Road to Healing Streams Live Healing Services S18</strong>, a special daily broadcast documenting the remarkable preparations, inspiring testimonies, and growing wave of faith unfolding worldwide ahead of the event.
+                      </p>
+
+                      <div className="hs-broadcast-schedule-box">
+                        <div className="hs-sched-badge">EXCLUSIVE BROADCAST HOURS</div>
+                        <div className="hs-sched-details">
+                          <span className="hs-sched-channel">Healing Streams TV</span>
+                          <span className="hs-sched-time">Daily at 12:00 Noon & 4:00 PM (GMT+1)</span>
+                          <span className="hs-sched-date">Broadcasting until Thursday, October 22</span>
+                        </div>
+                      </div>
+
+                      <p className="hs-page-p">
+                        The program offers viewers an exclusive look at the activities of ministries, churches, organizations, volunteers, and individuals across the globe as they prepare their communities through healing crusades, evangelism campaigns, strategic prayer initiatives, Healing Center mobilization, community outreaches, and other faith-building activities.
+                      </p>
+
+                      <p className="hs-page-p">
+                        The broadcast also features inspiring testimonies from participants and recipients already experiencing remarkable miracles as they prepare through prayer, faith, and the application of God’s Word.
+                      </p>
+
+                      <div className="hs-page-action-row">
+                        <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
+                          ← Previous Page
+                        </button>
+                        <button className="hs-card-btn-gold" onClick={handleNextPage}>
+                          Next: Miracles & Global Experience →
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -642,61 +719,71 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                       </div>
                     </div>
 
-                    <div className="hs-page-divider"></div>
-
-                    <h2 className="hs-page-subtitle">
-                      <span className="hs-sub-icon"></span> JOIN THE GLOBAL EXPERIENCE
-                    </h2>
-
-                    <p className="hs-page-p">
-                      The stage is set as the world prepares for the miracles. The live services begin at <strong>2:00 PM (GMT+1) daily</strong> and will be streamed live on <strong>Healing Streams TV</strong>, all <strong>LoveWorld Networks</strong>, and select terrestrial television and radio stations worldwide.
-                    </p>
-
-                    <div className="hs-contact-block">
-                      <div className="hs-contact-row-top">
-                        <span className="hs-contact-brand">Healing Streams Communications</span>
-                        <a href="mailto:info@healingstreams.tv" className="hs-contact-email-link">
-                          ✉ info@healingstreams.tv
-                        </a>
-                      </div>
-
-                      <div className="hs-phones-compact-grid">
-                        <div className="hs-phone-cell"><span>South Africa:</span> <a href="tel:+27799675852">+27 799 675 852</a></div>
-                        <div className="hs-phone-cell"><span>Nigeria:</span> <a href="tel:+23418885066">+234 (1) 888 5066</a></div>
-                        <div className="hs-phone-cell"><span>USA:</span> <a href="tel:+18327249390">+1 832 724 9390</a></div>
-                        <div className="hs-phone-cell"><span>Canada:</span> <a href="tel:+12896221634">+1 289 622 1634</a></div>
-                        <div className="hs-phone-cell"><span>UK:</span> <a href="tel:+4403331880710">+44 (0) 333 188 0710</a></div>
-                        <div className="hs-phone-cell"><span>Asia:</span> <a href="tel:+919650096633">+91 96500 96633</a></div>
-                        <div className="hs-phone-cell"><span>India:</span> <a href="tel:+917794993762">+91 77949 93762</a></div>
-                      </div>
-
-                      <div className="hs-final-cta-group">
-                        <a
-                          href="https://healingstreams.org/?r=LWIN"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hs-primary-register-btn"
-                        >
-                          Register Free on healingstreams.org
-                        </a>
-                        <a
-                          href="https://healingstreams.tv"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hs-secondary-portal-btn"
-                        >
-                          Visit healingstreams.tv ↗
-                        </a>
-                      </div>
+                    {/* Mobile Read More toggle & Quick Next */}
+                    <div className="hs-mobile-mid-actions">
+                      {renderReadMoreBtn(4)}
+                      <button className="hs-mobile-quick-next-btn" onClick={() => goToPage(0)}>
+                        Back to Start ↺
+                      </button>
                     </div>
 
-                    <div className="hs-page-action-row">
-                      <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                        ← Previous Page
-                      </button>
-                      <button className="hs-card-btn-gold" onClick={() => goToPage(0)}>
-                        Back to Start (Page 1)
-                      </button>
+                    <div className={`hs-expandable-section ${expandedPages[4] ? 'open' : ''}`}>
+                      <div className="hs-page-divider"></div>
+
+                      <h2 className="hs-page-subtitle">
+                        <span className="hs-sub-icon">🌐</span> JOIN THE GLOBAL EXPERIENCE
+                      </h2>
+
+                      <p className="hs-page-p">
+                        The stage is set as the world prepares for the miracles. The live services begin at <strong>2:00 PM (GMT+1) daily</strong> and will be streamed live on <strong>Healing Streams TV</strong>, all <strong>LoveWorld Networks</strong>, and select terrestrial television and radio stations worldwide.
+                      </p>
+
+                      <div className="hs-contact-block">
+                        <div className="hs-contact-row-top">
+                          <span className="hs-contact-brand">Healing Streams Communications</span>
+                          <a href="mailto:info@healingstreams.tv" className="hs-contact-email-link">
+                            ✉ info@healingstreams.tv
+                          </a>
+                        </div>
+
+                        <div className="hs-phones-compact-grid">
+                          <div className="hs-phone-cell"><span>South Africa:</span> <a href="tel:+27799675852">+27 799 675 852</a></div>
+                          <div className="hs-phone-cell"><span>Nigeria:</span> <a href="tel:+23418885066">+234 (1) 888 5066</a></div>
+                          <div className="hs-phone-cell"><span>USA:</span> <a href="tel:+18327249390">+1 832 724 9390</a></div>
+                          <div className="hs-phone-cell"><span>Canada:</span> <a href="tel:+12896221634">+1 289 622 1634</a></div>
+                          <div className="hs-phone-cell"><span>UK:</span> <a href="tel:+4403331880710">+44 (0) 333 188 0710</a></div>
+                          <div className="hs-phone-cell"><span>Asia:</span> <a href="tel:+919650096633">+91 96500 96633</a></div>
+                          <div className="hs-phone-cell"><span>India:</span> <a href="tel:+917794993762">+91 77949 93762</a></div>
+                        </div>
+
+                        <div className="hs-final-cta-group">
+                          <a
+                            href="https://healingstreams.org/?r=LWIN"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hs-primary-register-btn"
+                          >
+                            Register Free on healingstreams.org
+                          </a>
+                          <a
+                            href="https://healingstreams.tv"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hs-secondary-portal-btn"
+                          >
+                            Visit healingstreams.tv ↗
+                          </a>
+                        </div>
+                      </div>
+
+                      <div className="hs-page-action-row">
+                        <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
+                          ← Previous Page
+                        </button>
+                        <button className="hs-card-btn-gold" onClick={() => goToPage(0)}>
+                          Back to Start
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

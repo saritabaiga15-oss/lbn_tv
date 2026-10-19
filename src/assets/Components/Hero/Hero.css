@@ -395,26 +395,127 @@
 }
 
 @media (max-width: 768px) {
+  .hero-slider.has-bulletin {
+    min-height: 250px;
+  }
+
+  .hero-slider.has-bulletin .slider-dots {
+    bottom: 10px;
+  }
+
   .hero-side-notification {
     top: auto;
-    bottom: 22px;
+    bottom: 34px;
     right: 12px;
-    left: 12px;
-    width: auto;
-    padding: 8px 10px;
-    background: rgba(12, 12, 18, 0.94);
+    left: auto;
+    width: 250px;
+    max-width: calc(100vw - 24px);
+    margin: 0;
+    padding: 6px 10px;
+    background: rgba(10, 11, 18, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(207, 168, 96, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8),
+                0 0 16px rgba(207, 168, 96, 0.2);
+    border-radius: 10px;
+    gap: 10px;
+    z-index: 40;
   }
 
   .hero-side-notif-thumb-wrap {
-    width: 60px;
-    height: 44px;
+    width: 52px;
+    height: 38px;
+    border-radius: 6px;
   }
 
   .hero-side-notif-title {
-    font-size: 0.85rem;
+    font-size: 0.80rem;
+    margin-bottom: 1px;
+  }
+
+  .hero-side-notif-tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-side-notif-date {
+    font-size: 0.58rem;
+    padding: 1px 4px;
   }
 
   .hero-side-notif-desc {
     display: none;
+  }
+
+  .hero-side-notif-cta {
+    font-size: 0.68rem;
+    gap: 3px;
+  }
+
+  .hero-side-notif-cta svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .hero-side-notif-close {
+    top: 5px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slider.has-bulletin {
+    min-height: 230px;
+  }
+
+  .hero-slider.has-bulletin .slider-dots {
+    bottom: 8px;
+  }
+
+  .hero-side-notification {
+    top: auto;
+    bottom: 30px;
+    right: 10px;
+    left: auto;
+    width: 230px;
+    max-width: calc(100vw - 20px);
+    padding: 5px 8px;
+    gap: 8px;
+    border-radius: 9px;
+  }
+
+  .hero-side-notif-thumb-wrap {
+    width: 44px;
+    height: 30px;
+    border-radius: 5px;
+  }
+
+  .hero-side-notif-title {
+    font-size: 0.72rem;
+  }
+
+  .hero-side-notif-tag {
+    font-size: 0.48rem;
+  }
+
+  .hero-side-notif-date {
+    font-size: 0.52rem;
+  }
+
+  .hero-side-notif-cta {
+    font-size: 0.62rem;
+  }
+
+  .hero-side-notif-close {
+    top: 4px;
+    right: 4px;
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
   }
 }

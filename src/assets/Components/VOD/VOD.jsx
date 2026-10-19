@@ -579,7 +579,6 @@ const VOD = () => {
           </div>
 
           <div className="vod-search-wrapper">
-            <span className="vod-search-icon">🔍</span>
             <input
               type="text"
               placeholder="Search promo videos, shows, hosts..."

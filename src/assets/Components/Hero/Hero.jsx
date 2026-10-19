@@ -121,7 +121,7 @@ const Hero = ({ onOpenHealingStreams }) => {
   return (
     <div
       id="home"
-      className="hero-slider"
+      className={`hero-slider ${isNotificationVisible ? 'has-bulletin' : ''}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -210,6 +210,7 @@ const Hero = ({ onOpenHealingStreams }) => {
           }}
           onMouseDown={(e) => e.stopPropagation()}
           onTouchStart={(e) => e.stopPropagation()}
+          onTouchEnd={(e) => e.stopPropagation()}
           role="button"
           tabIndex={0}
           aria-label="View Healing Streams Live Services announcement"
@@ -224,6 +225,10 @@ const Hero = ({ onOpenHealingStreams }) => {
             type="button"
             className="hero-side-notif-close"
             onClick={(e) => {
+              e.stopPropagation();
+              setIsNotificationVisible(false);
+            }}
+            onTouchEnd={(e) => {
               e.stopPropagation();
               setIsNotificationVisible(false);
             }}
