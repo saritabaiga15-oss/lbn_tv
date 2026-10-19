@@ -20,10 +20,12 @@ import LiveTv from "./assets/Components/LiveTv/LiveTv";
 import FAQ from "./assets/Components/FAQ/FAQ";
 import Footer from "./assets/Components/Footer/Footer";
 import VOD from "./assets/Components/VOD/VOD";
+import HealingStreamsModal from "./assets/Components/HealingStreamsModal/HealingStreamsModal";
 // import ChatWidget from "./assets/Components/Chatbot/Chatbot";
 
 function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [isHealingStreamsOpen, setIsHealingStreamsOpen] = useState(false);
 
   const handleNavigate = (tab, hash = null) => {
     if (tab && activeTab !== tab) {
@@ -58,11 +60,11 @@ function App() {
       <main className="app-main">
         {activeTab === 'home' && (
           <>
-            <Hero />
+            <Hero onOpenHealingStreams={() => setIsHealingStreamsOpen(true)} />
             <Features />
             <ImageGallery onNavigateProgrammes={() => { setActiveTab('programmes'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} />
             <Messages />
-            <GlobalProgrammes />
+            <GlobalProgrammes onOpenHealingStreams={() => setIsHealingStreamsOpen(true)} />
             <FAQ />
           </>
         )}
@@ -81,6 +83,12 @@ function App() {
       </main>
       <Footer onNavigate={handleNavigate} />
       {/* <ChatWidget onNavigate={handleChatNavigate} /> */}
+
+      {/* Healing Streams Live On-Screen Popup Modal */}
+      <HealingStreamsModal
+        isOpen={isHealingStreamsOpen}
+        onClose={() => setIsHealingStreamsOpen(false)}
+      />
     </div>
   );
 }

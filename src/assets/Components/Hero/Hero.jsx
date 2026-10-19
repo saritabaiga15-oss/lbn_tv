@@ -13,9 +13,11 @@ import healthyLiving from '../../images/healthy_living.jpg';
 import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
 import Pst_Chris_Teaching1 from '../../images/Pst_Chris_Teaching1.jpg';
 import Just_believe_banner from '../../images/Just_believe_banner .png';
+import HSLHSWPC from '../../images/HSLHSWPC.jpeg';
 
-const Hero = () => {
+const Hero = ({ onOpenHealingStreams }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isNotificationVisible, setIsNotificationVisible] = useState(true);
 
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
@@ -198,6 +200,68 @@ const Hero = () => {
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </div>
+
+      {/* Floating Side Notification UI for Healing Streams */}
+      {isNotificationVisible && (
+        <aside
+          className="hero-side-notification"
+          onClick={() => {
+            if (onOpenHealingStreams) onOpenHealingStreams();
+          }}
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+          role="button"
+          tabIndex={0}
+          aria-label="View Healing Streams Live Services announcement"
+          onKeyDown={(e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && onOpenHealingStreams) {
+              e.preventDefault();
+              onOpenHealingStreams();
+            }
+          }}
+        >
+          <button
+            type="button"
+            className="hero-side-notif-close"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsNotificationVisible(false);
+            }}
+            aria-label="Dismiss notification"
+          >
+            &times;
+          </button>
+
+          <div className="hero-side-notif-thumb-wrap">
+            <img
+              src={HSLHSWPC}
+              alt="Healing Streams Live"
+              className="hero-side-notif-thumb"
+            />
+            <span className="hero-side-notif-pulse-dot"></span>
+          </div>
+
+          <div className="hero-side-notif-content">
+            <div className="hero-side-notif-badge-row">
+              <span className="hero-side-notif-tag">SPECIAL PROGRAM</span>
+              <span className="hero-side-notif-date">OCT 23–25</span>
+            </div>
+            <h4 className="hero-side-notif-title">
+              Healing Streams Live Services
+            </h4>
+            <p className="hero-side-notif-desc">
+              Global expectation soars • Read testimonies & report
+            </p>
+            <div className="hero-side-notif-cta">
+              <span>Read More</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+          </div>
+        </aside>
+      )}
     </div>
   );
 };
