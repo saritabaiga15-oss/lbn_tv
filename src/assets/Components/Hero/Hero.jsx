@@ -121,7 +121,7 @@ const Hero = ({ onOpenHealingStreams }) => {
   return (
     <div
       id="home"
-      className={`hero-slider ${isNotificationVisible ? 'has-bulletin' : ''}`}
+      className="hero-slider"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -143,7 +143,7 @@ const Hero = ({ onOpenHealingStreams }) => {
         </svg>
       </button>
 
-      {/* Slider Track with all 12 image slides */}
+      {/* Slider Track with all image slides */}
       <div
         className="slider-track"
         style={{
@@ -200,7 +200,6 @@ const Hero = ({ onOpenHealingStreams }) => {
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </div>
-
       {/* Floating Side Notification UI for Healing Streams */}
       {isNotificationVisible && (
         <aside
@@ -252,13 +251,13 @@ const Hero = ({ onOpenHealingStreams }) => {
               <span className="hero-side-notif-date">OCT 23–25</span>
             </div>
             <h4 className="hero-side-notif-title">
-              Healing Streams Live Services
+              HEALING STREAMS LIVE SERVICES
             </h4>
             <p className="hero-side-notif-desc">
               Global expectation soars • Read testimonies & report
             </p>
             <div className="hero-side-notif-cta">
-              <span>Read More</span>
+              <span>View Full Details</span>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>

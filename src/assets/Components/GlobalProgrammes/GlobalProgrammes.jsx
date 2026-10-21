@@ -58,7 +58,11 @@ const GlobalPrograms = ({ onOpenHealingStreams }) => {
                 {prog.isSpecialModal && (
                   <div className="global-program-card-overlay">
                     <span className="global-program-overlay-btn">
-                      Read More
+                      <span>View Full Details</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
                     </span>
                   </div>
                 )}

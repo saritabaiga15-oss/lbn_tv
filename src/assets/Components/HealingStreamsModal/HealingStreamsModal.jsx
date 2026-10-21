@@ -300,13 +300,13 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                     </h1>
 
                     <div className="hs-doc-meta-strip">
-                      <span className="hs-meta-pill"><strong>Convener:</strong> Pastor Chris Oyakhilome</span>
+                      <span className="hs-meta-pill"><strong>Convener:</strong> <strong className="hs-gold-name">Pastor Chris Oyakhilome</strong></span>
                       <span className="hs-meta-pill"><strong>Daily:</strong> 2:00 PM (GMT+1) / 6:30 PM (IST)</span>
                       <span className="hs-meta-pill"><strong>Platform:</strong> Healing Streams TV</span>
                     </div>
 
                     <p className="hs-page-lead">
-                      The <strong>Healing Streams Live Healing Services</strong> with Pastor Chris Oyakhilome returns this month, from October 23 to 25, at 2:00 PM (GMT+1) daily, heightening global expectations for another magnificent outpouring of the healing power of God. Building on the remarkable precedent of previous editions, the three-day global event is set to usher in an extraordinary wave of miraculous healings, with people from all walks of life experiencing instantaneous and remarkable changes in their bodies and circumstances.
+                      The <strong>Healing Streams Live Healing Services</strong> with <strong className="hs-gold-name">Pastor Chris Oyakhilome</strong> returns this month, from October 23 to 25, at 2:00 PM (GMT+1) daily, heightening global expectations for another magnificent outpouring of the healing power of God. Building on the remarkable precedent of previous editions, the three-day global event is set to usher in an extraordinary wave of miraculous healings, with people from all walks of life experiencing instantaneous and remarkable changes in their bodies and circumstances.
                     </p>
 
                     <p className="hs-page-p">
@@ -317,7 +317,7 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                     <div className="hs-mobile-mid-actions">
                       {renderReadMoreBtn(0)}
                       <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
-                        Next Page →
+                        Next →
                       </button>
                     </div>
 
@@ -378,7 +378,7 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                     <div className="hs-mobile-mid-actions">
                       {renderReadMoreBtn(1)}
                       <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
-                        Next Page →
+                        Next →
                       </button>
                     </div>
 
@@ -439,7 +439,10 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
 
                       <div className="hs-page-action-row">
                         <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                          ← Previous Page
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                          </svg>
+                          <span>Prev</span>
                         </button>
                         <button className="hs-card-btn-gold" onClick={handleNextPage}>
                           Next: Testimonies & Expectations →
@@ -475,24 +478,28 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
 
                     <div className="hs-legacy-stats-grid">
                       <div className="hs-stat-card">
+                        <span className="hs-stat-id">01</span>
                         <span className="hs-stat-number">Billions</span>
                         <span className="hs-stat-label">Global Viewers Reached</span>
                         <p className="hs-stat-sub">Across 200+ countries & territories</p>
                       </div>
 
                       <div className="hs-stat-card">
+                        <span className="hs-stat-id">02</span>
                         <span className="hs-stat-number">Millions</span>
                         <span className="hs-stat-label">Substantiated Miracles</span>
                         <p className="hs-stat-sub">From paralysis, cancer, blindness & more</p>
                       </div>
 
                       <div className="hs-stat-card">
+                        <span className="hs-stat-id">03</span>
                         <span className="hs-stat-number">7,000+</span>
                         <span className="hs-stat-label">Languages & Dialects</span>
                         <p className="hs-stat-sub">Simultaneous live translations</p>
                       </div>
 
                       <div className="hs-stat-card">
+                        <span className="hs-stat-id">04</span>
                         <span className="hs-stat-number">Millions</span>
                         <span className="hs-stat-label">Healing Centers</span>
                         <p className="hs-stat-sub">Established globally in communities</p>
@@ -503,7 +510,7 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                     <div className="hs-mobile-mid-actions">
                       {renderReadMoreBtn(2)}
                       <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
-                        Next Page →
+                        Next →
                       </button>
                     </div>
 
@@ -579,7 +586,10 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
 
                       <div className="hs-page-action-row">
                         <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                          ← Previous Page
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                          </svg>
+                          <span>Prev</span>
                         </button>
                         <button className="hs-card-btn-gold" onClick={handleNextPage}>
                           Next: Global Mobilisation →
@@ -617,7 +627,7 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                     <div className="hs-mobile-mid-actions">
                       {renderReadMoreBtn(3)}
                       <button className="hs-mobile-quick-next-btn" onClick={handleNextPage}>
-                        Next Page →
+                        Next →
                       </button>
                     </div>
 
@@ -651,7 +661,10 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
 
                       <div className="hs-page-action-row">
                         <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                          ← Previous Page
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                          </svg>
+                          <span>Prev</span>
                         </button>
                         <button className="hs-card-btn-gold" onClick={handleNextPage}>
                           Next: Miracles & Global Experience →
@@ -723,7 +736,7 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
                     <div className="hs-mobile-mid-actions">
                       {renderReadMoreBtn(4)}
                       <button className="hs-mobile-quick-next-btn" onClick={() => goToPage(0)}>
-                        Back to Start ↺
+                        Back to Start
                       </button>
                     </div>
 
@@ -778,7 +791,10 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
 
                       <div className="hs-page-action-row">
                         <button className="hs-card-btn-ghost" onClick={handlePrevPage}>
-                          ← Previous Page
+                          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                          </svg>
+                          <span>Prev</span>
                         </button>
                         <button className="hs-card-btn-gold" onClick={() => goToPage(0)}>
                           Back to Start

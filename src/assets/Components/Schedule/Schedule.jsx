@@ -16,7 +16,7 @@ const getCurrentSlot = (slots, currentMinutes) => slots.find((slot) => {
   return currentMinutes >= startMinutes && currentMinutes < startMinutes + durationMinutes;
 });
 
-const Schedule = () => {
+const Schedule = ({ onOpenHealingStreams }) => {
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const [selectedDay, setSelectedDay] = useState(getIndiaDay);
   const [activeCategory, setActiveCategory] = useState('ALL');
@@ -460,6 +460,18 @@ const Schedule = () => {
                             >
                               {isReminder ? '✓ REMINDER SET' : '+ SET REMINDER'}
                             </button>
+
+                            {slot.title && slot.title.toUpperCase().includes('HEALING STREAMS') && onOpenHealingStreams && (
+                              <button
+                                className="coverflow-details-btn"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  onOpenHealingStreams();
+                                }}
+                              >
+                                <span>VIEW DETAILS</span>
+                              </button>
+                            )}
 
                             {isLive && (
                               <button

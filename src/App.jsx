@@ -70,7 +70,9 @@ function App() {
         )}
         {activeTab === 'about-us' && <AboutUs />}
         {activeTab === 'programmes' && <Programmes />}
-        {(activeTab === 'schedule' || activeTab === 'epg') && <Schedule />}
+        {(activeTab === 'schedule' || activeTab === 'epg') && (
+          <Schedule onOpenHealingStreams={() => setIsHealingStreamsOpen(true)} />
+        )}
         {activeTab === 'services' && <Services />}
         {activeTab === 'live' && <LiveTv onNavigate={handleNavigate} />}
         {activeTab === 'teens-programs' && <TeensProgrammes />}

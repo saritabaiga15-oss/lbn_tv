@@ -141,10 +141,10 @@
     background-color: #050507;
   }
 
-  /* Show crisp full banner on mobile without top/bottom empty space */
+  /* Show crisp full banner on mobile without left cropping */
   .slide {
     background-size: cover;
-    background-position: center 50%;
+    background-position: 20% center;
     background-repeat: no-repeat;
   }
 
@@ -191,7 +191,7 @@
 
   .slide {
     background-size: cover;
-    background-position: center 50%;
+    background-position: 20% center;
   }
 
   .slider-dots {
@@ -208,7 +208,7 @@
   right: 28px;
   z-index: 35;
   width: 340px;
-  background: rgba(12, 12, 18, 0.88);
+  background: rgba(12, 12, 18, 0.90);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(207, 168, 96, 0.4);
@@ -385,7 +385,6 @@
   color: #ffd98a;
 }
 
-/* Responsive adjustments for Side Notification */
 @media (max-width: 1024px) {
   .hero-side-notification {
     top: 20px;
@@ -395,53 +394,72 @@
 }
 
 @media (max-width: 768px) {
-  .hero-slider.has-bulletin {
-    min-height: 250px;
-  }
-
-  .hero-slider.has-bulletin .slider-dots {
-    bottom: 10px;
-  }
-
   .hero-side-notification {
     top: auto;
-    bottom: 34px;
-    right: 12px;
+    bottom: 24px;
+    right: max(16px, calc((100% - var(--site-grid-width, calc(100% - 32px))) / 2));
     left: auto;
-    width: 250px;
-    max-width: calc(100vw - 24px);
+    width: clamp(170px, 45vw, 215px);
+    max-width: calc(100% - 32px);
     margin: 0;
-    padding: 6px 10px;
+    padding: 6px 8px;
     background: rgba(10, 11, 18, 0.94);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(207, 168, 96, 0.45);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8),
                 0 0 16px rgba(207, 168, 96, 0.2);
-    border-radius: 10px;
-    gap: 10px;
+    border-radius: 8px;
+    gap: 7px;
     z-index: 40;
   }
 
-  .hero-side-notif-thumb-wrap {
-    width: 52px;
-    height: 38px;
-    border-radius: 6px;
+  .hero-side-notif-content {
+    padding-right: 8px;
+    min-width: 0;
   }
 
-  .hero-side-notif-title {
-    font-size: 0.80rem;
-    margin-bottom: 1px;
+  .hero-side-notif-thumb-wrap {
+    width: 34px;
+    height: 26px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .hero-side-notif-pulse-dot {
+    width: 5px;
+    height: 5px;
+    top: 2px;
+    left: 2px;
+  }
+
+  .hero-side-notif-badge-row {
+    gap: 4px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
   }
 
   .hero-side-notif-tag {
-    font-size: 0.55rem;
-    letter-spacing: 0.08em;
+    font-size: 0.42rem;
+    letter-spacing: 0.05em;
   }
 
   .hero-side-notif-date {
-    font-size: 0.58rem;
+    font-size: 0.44rem;
     padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .hero-side-notif-title {
+    font-size: 0.64rem;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .hero-side-notif-desc {
@@ -449,73 +467,111 @@
   }
 
   .hero-side-notif-cta {
-    font-size: 0.68rem;
+    font-size: 0.54rem;
     gap: 3px;
   }
 
   .hero-side-notif-cta svg {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
 
   .hero-side-notif-close {
-    top: 5px;
-    right: 6px;
-    width: 22px;
-    height: 22px;
-    font-size: 15px;
+    top: 3px;
+    right: 3px;
+    width: 15px;
+    height: 15px;
+    font-size: 11px;
     background: rgba(255, 255, 255, 0.12);
   }
 }
 
 @media (max-width: 480px) {
-  .hero-slider.has-bulletin {
-    min-height: 230px;
-  }
-
-  .hero-slider.has-bulletin .slider-dots {
-    bottom: 8px;
-  }
-
   .hero-side-notification {
     top: auto;
-    bottom: 30px;
-    right: 10px;
+    bottom: 22px;
+    right: max(12px, calc((100% - var(--site-grid-width, calc(100% - 24px))) / 2));
     left: auto;
-    width: 230px;
-    max-width: calc(100vw - 20px);
-    padding: 5px 8px;
-    gap: 8px;
-    border-radius: 9px;
+    width: clamp(155px, 46vw, 195px);
+    max-width: calc(100% - 24px);
+    padding: 5px 6px;
+    gap: 6px;
+    border-radius: 7px;
+  }
+
+  .hero-side-notif-content {
+    padding-right: 7px;
   }
 
   .hero-side-notif-thumb-wrap {
-    width: 44px;
-    height: 30px;
-    border-radius: 5px;
+    width: 28px;
+    height: 22px;
+    border-radius: 3px;
   }
 
-  .hero-side-notif-title {
-    font-size: 0.72rem;
+  .hero-side-notif-pulse-dot {
+    width: 4px;
+    height: 4px;
+    top: 1.5px;
+    left: 1.5px;
+  }
+
+  .hero-side-notif-badge-row {
+    gap: 3px;
+    margin-bottom: 1px;
   }
 
   .hero-side-notif-tag {
-    font-size: 0.48rem;
+    font-size: 0.38rem;
+    letter-spacing: 0.03em;
   }
 
   .hero-side-notif-date {
-    font-size: 0.52rem;
+    font-size: 0.40rem;
+    padding: 0.5px 3px;
+    border-radius: 2px;
+  }
+
+  .hero-side-notif-title {
+    font-size: 0.56rem;
+    line-height: 1.2;
+    margin-bottom: 1px;
   }
 
   .hero-side-notif-cta {
-    font-size: 0.62rem;
+    font-size: 0.48rem;
+    gap: 2px;
+  }
+
+  .hero-side-notif-cta svg {
+    width: 7px;
+    height: 7px;
   }
 
   .hero-side-notif-close {
-    top: 4px;
-    right: 4px;
-    width: 20px;
-    height: 20px;
-    font-size: 13px;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-side-notification {
+    width: clamp(135px, 48vw, 160px);
+    right: 8px;
+    bottom: 20px;
+    padding: 4px 5px;
+    gap: 4px;
+  }
+
+  .hero-side-notif-thumb-wrap {
+    width: 24px;
+    height: 18px;
+  }
+
+  .hero-side-notif-title {
+    font-size: 0.50rem;
   }
 }

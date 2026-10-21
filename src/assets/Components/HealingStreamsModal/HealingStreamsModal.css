@@ -522,8 +522,10 @@
   font-weight: 400;
 }
 
-.hs-page-lead strong {
+.hs-page-lead strong,
+.hs-gold-name {
   color: var(--accent-gold, #cfa860);
+  font-weight: 700;
 }
 
 .hs-page-p {
@@ -689,6 +691,7 @@
 }
 
 .hs-stat-card {
+  position: relative;
   background: rgba(18, 20, 30, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
@@ -700,6 +703,18 @@
   border-color: rgba(207, 168, 96, 0.4);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.hs-stat-id {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888888;
+  opacity: 0.5;
+  line-height: 1;
 }
 
 .hs-stat-number {
@@ -1061,6 +1076,9 @@
 }
 
 .hs-card-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #d8d8e5;
@@ -1723,27 +1741,58 @@
     font-size: 0.60rem;
   }
 
+  /* Small flexbox 2-column layout for mobile responsive (matches AboutUs metric cards) */
   .hs-legacy-stats-grid {
-    grid-template-columns: 1fr;
-    gap: 5px;
-    margin: 6px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
   }
 
   .hs-stat-card {
-    padding: 6px 8px;
-    border-radius: 6px;
+    flex: 1 1 calc(50% - 3px);
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 7px 6px;
+    border-radius: 7px;
+    position: relative;
+    background: rgba(18, 20, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .hs-stat-id {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.52rem;
+    font-weight: 600;
+    color: #888888;
+    opacity: 0.5;
+    line-height: 1;
   }
 
   .hs-stat-number {
-    font-size: 1.05rem;
+    font-size: 0.96rem;
+    line-height: 1;
+    margin-bottom: 2px;
   }
 
   .hs-stat-label {
-    font-size: 0.62rem;
+    font-size: 0.58rem;
+    line-height: 1.25;
+    margin: 0 0 2px 0;
+    font-weight: 700;
   }
 
   .hs-stat-sub {
-    font-size: 0.55rem;
+    font-size: 0.48rem;
+    line-height: 1.3;
+    color: #a8a8b3;
+    margin: 0;
   }
 
   .hs-editorial-quotes-list {

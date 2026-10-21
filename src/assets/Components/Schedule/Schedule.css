@@ -644,6 +644,31 @@
   font-weight: 800;
 }
 
+.coverflow-details-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 16px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #cfa860 0%, #aa8037 100%);
+  color: #0b0b10;
+  border: 1px solid #ffd88a;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 110px;
+  box-shadow: 0 4px 14px rgba(207, 168, 96, 0.35);
+}
+
+.coverflow-details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(207, 168, 96, 0.6);
+  background: linear-gradient(135deg, #ffd88a 0%, #cfa860 100%);
+}
+
 .coverflow-watch-btn {
   display: inline-flex;
   align-items: center;
