@@ -336,9 +336,9 @@ const Schedule = ({ onOpenHealingStreams }) => {
             LIVE BROADCAST
           </div>
           <div className="epg-special-alert-content">
-            <span className="epg-special-alert-title">HEALING STREAMS LIVE HEALING SERVICES (SEASON 18)</span>
+            <span className="epg-special-alert-title">HEALING STREAMS FESTIVAL OF MIRACLES</span>
             <span className="epg-special-alert-time">
-              OCT 9 – 22, 2026 &bull; Weekdays: 4:30 PM &amp; 10:30 PM IST &bull; Weekends: 4:30 PM &amp; 8:30 PM IST
+              OCT 26 – NOV 8, 2026 &bull; Weekdays: 4:30 PM &ndash; 6:30 PM IST &bull; Weekends: 8:30 PM &ndash; 10:30 PM IST
             </span>
           </div>
         </div>

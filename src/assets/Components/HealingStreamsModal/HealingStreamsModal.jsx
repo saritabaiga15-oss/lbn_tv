@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import './HealingStreamsModal.css';
 
@@ -863,3 +864,5 @@ const HealingStreamsModal = ({ isOpen, onClose }) => {
 };
 
 export default HealingStreamsModal;
+
+

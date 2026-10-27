@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import './Hero.css';
 import theTrumpet from '../../images/Trumpet.png';
 import TheWordatWork from '../../images/TheWordatWork.png';
@@ -13,11 +13,9 @@ import healthyLiving from '../../images/healthy_living.jpg';
 import timelessParagonNew from '../../images/timeless_paragon_new.jpg';
 import Pst_Chris_Teaching1 from '../../images/Pst_Chris_Teaching1.jpg';
 import Just_believe_banner from '../../images/Just_believe_banner .png';
-import HSLHSWPC from '../../images/HSLHSWPC.jpeg';
 
-const Hero = ({ onOpenHealingStreams }) => {
+const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isNotificationVisible, setIsNotificationVisible] = useState(true);
 
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
@@ -200,7 +198,9 @@ const Hero = ({ onOpenHealingStreams }) => {
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </div>
-      {/* Floating Side Notification UI for Healing Streams */}
+
+      {/*
+      Floating Side Notification UI for Healing Streams Festival of Miracles
       {isNotificationVisible && (
         <aside
           className="hero-side-notification"
@@ -212,7 +212,7 @@ const Hero = ({ onOpenHealingStreams }) => {
           onTouchEnd={(e) => e.stopPropagation()}
           role="button"
           tabIndex={0}
-          aria-label="View Healing Streams Live Services announcement"
+          aria-label="View Healing Streams Festival of Miracles announcement"
           onKeyDown={(e) => {
             if ((e.key === 'Enter' || e.key === ' ') && onOpenHealingStreams) {
               e.preventDefault();
@@ -239,7 +239,7 @@ const Hero = ({ onOpenHealingStreams }) => {
           <div className="hero-side-notif-thumb-wrap">
             <img
               src={HSLHSWPC}
-              alt="Healing Streams Live"
+              alt="Healing Streams Festival of Miracles"
               className="hero-side-notif-thumb"
             />
             <span className="hero-side-notif-pulse-dot"></span>
@@ -247,14 +247,14 @@ const Hero = ({ onOpenHealingStreams }) => {
 
           <div className="hero-side-notif-content">
             <div className="hero-side-notif-badge-row">
-              <span className="hero-side-notif-tag">SPECIAL PROGRAM</span>
-              <span className="hero-side-notif-date">OCT 23–25</span>
+              <span className="hero-side-notif-tag">LIVE EVENT</span>
+              <span className="hero-side-notif-date">OCT 26 – NOV 8</span>
             </div>
             <h4 className="hero-side-notif-title">
-              HEALING STREAMS LIVE SERVICES
+              HEALING STREAMS FESTIVAL OF MIRACLES
             </h4>
             <p className="hero-side-notif-desc">
-              Global expectation soars • Read testimonies & report
+              Weekdays: 4:30–6:30 PM & 8:30–10:30 PM • Weekends: 8:30–10:30 PM
             </p>
             <div className="hero-side-notif-cta">
               <span>View Full Details</span>
@@ -264,8 +264,11 @@ const Hero = ({ onOpenHealingStreams }) => {
               </svg>
             </div>
           </div>
+
         </aside>
       )}
+      */}
+
     </div>
   );
 };

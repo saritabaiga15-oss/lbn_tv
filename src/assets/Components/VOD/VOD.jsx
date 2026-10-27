@@ -27,7 +27,7 @@ import trumpetPoster from '../../images/posters/trumpet_portrait.jpg';
 import wordAtWorkPoster from '../../images/posters/word_at_work_portrait.jpg';
 import timelessPoster from '../../images/posters/timeless_paragon_portrait.jpg';
 import wholenessPoster from '../../images/posters/wholeness_portrait.jpg';
-import ignitePoster from '../../images/posters/ignite_portrait.jpg';
+// ignite_portrait.jpg not present; reusing igniteImg as poster
 import craftingFaithPoster from '../../images/posters/crafting_faith_portrait.jpg';
 import moneyMattersPoster from '../../images/posters/money_matters_portrait.jpg';
 import teevablazePoster from '../../images/posters/teevablaze_portrait.jpg';

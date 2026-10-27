@@ -1,25 +1,27 @@
-import React from 'react';
 import './GlobalProgrammes.css';
-import HSLHSWPC from '../../images/HSLHSWPC.jpeg';
 import OCT_GPAF from '../../images/OCT_GPAF.png';
+import GlobalCommunion_Nov from '../../images/GlobalCommunion_Nov.png';
+
 
 
 const GlobalPrograms = ({ onOpenHealingStreams }) => {
   const programs = [
-    {
+   {
       id: 1,
-      image: HSLHSWPC,
-      title: 'Healing Streams Live Healing Service with Pastor Chris',
-      badge: 'LIVE BROADCAST',
-      isSpecialModal: true
-    },
-    {
-      id: 2,
       image: OCT_GPAF,
       title: 'Global Prayer And Fasting with Pastor Chris',
       badge: 'LIVE BROADCAST',
       isSpecialModal: false
     },
+    
+{
+      id: 2,
+      image: GlobalCommunion_Nov,
+      title: 'Global Communion Service with Pastor Chris',
+      badge: 'LIVE BROADCAST',
+      isSpecialModal: true
+    },
+    
   ];
 
   return (
@@ -55,6 +57,7 @@ const GlobalPrograms = ({ onOpenHealingStreams }) => {
             >
               <div className="global-program-img-wrapper">
                 <img src={prog.image} alt={prog.title} className="global-program-img" />
+                {/*
                 {prog.isSpecialModal && (
                   <div className="global-program-card-overlay">
                     <span className="global-program-overlay-btn">
@@ -66,12 +69,14 @@ const GlobalPrograms = ({ onOpenHealingStreams }) => {
                     </span>
                   </div>
                 )}
+                */}
               </div>
             </div>
           ))}
         </div>
       </div>
     </section>
+    
   );
 };
 
