@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Messages.css';
 import WOTM from '../../images/WOTM.png';
 import yearlyMsg from '../../images/Manifestation_banner.png';
+import { client } from '../../../sanity/client';
+import { urlFor } from '../../../sanity/image';
+import { MESSAGES_QUERY } from '../../../sanity/queries';
 
-const messages = [
+const LOCAL_MESSAGES = [
   {
     id: 1,
     image: WOTM,
@@ -21,6 +24,28 @@ const messages = [
 ];
 
 const Messages = () => {
+  const [messages, setMessages] = useState(LOCAL_MESSAGES);
+
+  useEffect(() => {
+    client
+      .fetch(MESSAGES_QUERY)
+      .then((data) => {
+        if (data && data.length > 0) {
+          const mapped = data.map((item, idx) => ({
+            id: item._id || idx + 1,
+            title: item.title,
+            badge: item.badge,
+            objectPosition: item.objectPosition || 'center center',
+            image: item.image ? urlFor(item.image).url() : LOCAL_MESSAGES[idx]?.image,
+          }));
+          setMessages(mapped);
+        }
+      })
+      .catch((err) => {
+        console.error('Sanity messages fetch error:', err);
+      });
+  }, []);
+
   return (
     <section className="messages-section">
       <div className="messages-container">

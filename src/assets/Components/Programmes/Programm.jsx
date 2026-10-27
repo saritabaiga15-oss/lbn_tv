@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import './Programm.css';
+import { client } from '../../../sanity/client';
+import { urlFor } from '../../../sanity/image';
+import { PROGRAMMES_QUERY } from '../../../sanity/queries';
 import theTrumpet from '../../images/Trumpet.png';
 import wordAtWork from '../../images/TheWordatWork.png';
 import craftingFaith from '../../images/Crafting Faith.png';
@@ -32,6 +35,7 @@ const PROMO_INTERVAL = 20000; // 20 seconds per promo
 const Programmes = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [selectedShow, setSelectedShow] = useState(null);
+  const [sanityProgrammes, setSanityProgrammes] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
@@ -250,6 +254,39 @@ const Programmes = () => {
     }
   };
 
+  useEffect(() => {
+    client
+      .fetch(PROGRAMMES_QUERY)
+      .then((data) => {
+        if (data && data.length > 0) {
+          const mapped = data.map((item, idx) => {
+            let imageUrl = null;
+            if (item.image) {
+              try {
+                imageUrl = urlFor(item.image)?.url();
+              } catch (e) {
+                console.warn('Image URL generation error:', e);
+              }
+            }
+
+            return {
+              id: item._id || idx + 1,
+              title: item.title,
+              category: item.category || 'TALK SHOWS',
+              image: imageUrl,
+              video: item.video || item.videoUrl,
+              schedule: item.schedule,
+              duration: item.duration,
+              tagline: item.tagline,
+              description: item.description,
+            };
+          });
+          setSanityProgrammes(mapped);
+        }
+      })
+      .catch((err) => console.error('Sanity programmes fetch error:', err));
+  }, []);
+
   const filters = ['ALL', 'TALK SHOWS', 'HEALTH', 'WORSHIP', 'TEENS & YOUTH', 'KIDDIES',];
 
   const programList = [
@@ -385,9 +422,11 @@ const Programmes = () => {
     setShowAll(false);
   };
 
+  const displayList = (sanityProgrammes && sanityProgrammes.length > 0) ? sanityProgrammes : programList;
+
   const filteredPrograms = activeFilter === 'ALL'
-    ? programList
-    : programList.filter(prog => prog.category === activeFilter);
+    ? displayList
+    : displayList.filter(prog => prog.category === activeFilter);
 
   const currentShowIdx = selectedShow
     ? filteredPrograms.findIndex(p => p.id === selectedShow.id)

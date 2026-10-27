@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Schedule.css';
 import { scheduleData, categories, getSlotStartMinutes } from '../../data/scheduleData';
+import { client } from '../../../sanity/client';
+import { urlFor } from '../../../sanity/image';
+import { SCHEDULE_ITEMS_QUERY } from '../../../sanity/queries';
 
 const getIndiaDay = () => new Date().toLocaleDateString('en-US', { weekday: 'long', timeZone: 'Asia/Kolkata' });
 
@@ -21,6 +24,7 @@ const Schedule = ({ onOpenHealingStreams }) => {
   const [selectedDay, setSelectedDay] = useState(getIndiaDay);
   const [activeCategory, setActiveCategory] = useState('ALL');
   const [reminderSet, setReminderSet] = useState({});
+  const [sanitySchedule, setSanitySchedule] = useState({});
   const [currentTime, setCurrentTime] = useState(getIndiaNow);
   const [activeIndex, setActiveIndex] = useState(0);
   const [viewMode, setViewMode] = useState('coverflow'); // 'coverflow' | 'list'
@@ -43,6 +47,33 @@ const Schedule = ({ onOpenHealingStreams }) => {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    client
+      .fetch(SCHEDULE_ITEMS_QUERY)
+      .then((data) => {
+        if (data && data.length > 0) {
+          const grouped = {};
+          data.forEach((item) => {
+            if (!item.day) return;
+            if (!grouped[item.day]) grouped[item.day] = [];
+            grouped[item.day].push({
+              time: item.time || '',
+              title: item.title,
+              category: item.category || 'SPECIALS',
+              duration: item.duration || '30m',
+              host: item.host || 'LBN',
+              live: !!item.live,
+              image: item.image ? urlFor(item.image).url() : null,
+              order: item.order,
+              startMinutes: item.startMinutes,
+            });
+          });
+          setSanitySchedule(grouped);
+        }
+      })
+      .catch((err) => console.error('Sanity schedule fetch error:', err));
   }, []);
 
   const toggleFullscreen = () => {
@@ -81,7 +112,9 @@ const Schedule = ({ onOpenHealingStreams }) => {
     setReminderSet(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const currentList = scheduleData[selectedDay] || [];
+  const currentList = (sanitySchedule[selectedDay] && sanitySchedule[selectedDay].length > 0)
+    ? sanitySchedule[selectedDay]
+    : (scheduleData[selectedDay] || []);
   const currentDay = currentTime.toLocaleDateString('en-US', { weekday: 'long' });
   const currentSlot = selectedDay === currentDay
     ? getCurrentSlot(currentList, currentTime.getHours() * 60 + currentTime.getMinutes())
