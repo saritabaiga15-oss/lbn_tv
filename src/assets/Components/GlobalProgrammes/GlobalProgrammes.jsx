@@ -1,52 +1,28 @@
-import { useState, useEffect } from 'react';
 import './GlobalProgrammes.css';
 import OCT_GPAF from '../../images/OCT_GPAF.png';
 import GlobalCommunion_Nov from '../../images/GlobalCommunion_Nov.png';
-import { client } from '../../../sanity/client';
-import { urlFor } from '../../../sanity/image';
-import { GLOBAL_PROGRAMS_QUERY } from '../../../sanity/queries';
 
-const LOCAL_PROGRAMS = [
-  {
-    id: 1,
-    image: OCT_GPAF,
-    title: 'Global Prayer And Fasting with Pastor Chris',
-    badge: 'LIVE BROADCAST',
-    isSpecialModal: false
-  },
-  {
-    id: 2,
-    image: GlobalCommunion_Nov,
-    title: 'Global Communion Service with Pastor Chris',
-    badge: 'LIVE BROADCAST',
-    isSpecialModal: true
-  },
-];
+
 
 const GlobalPrograms = ({ onOpenHealingStreams }) => {
-  const [programs, setPrograms] = useState(LOCAL_PROGRAMS);
-
-  useEffect(() => {
-    client
-      .fetch(GLOBAL_PROGRAMS_QUERY)
-      .then((data) => {
-        if (data && data.length > 0) {
-          const mapped = data.map((item, idx) => ({
-            id: item._id || idx + 1,
-            title: item.title,
-            badge: item.badge || 'LIVE BROADCAST',
-            image: item.image ? urlFor(item.image).url() : LOCAL_PROGRAMS[idx]?.image,
-            linkUrl: item.linkUrl,
-            isSpecialModal: idx === 1 || item.title?.toLowerCase().includes('communion') || item.title?.toLowerCase().includes('healing'),
-          }));
-          setPrograms(mapped);
-        }
-      })
-      .catch((err) => {
-        console.error('Sanity global programs fetch error:', err);
-      });
-  }, []);
-
+  const programs = [
+   {
+      id: 1,
+      image: OCT_GPAF,
+      title: 'Global Prayer And Fasting with Pastor Chris',
+      badge: 'LIVE BROADCAST',
+      isSpecialModal: false
+    },
+    
+{
+      id: 2,
+      image: GlobalCommunion_Nov,
+      title: 'Global Communion Service with Pastor Chris',
+      badge: 'LIVE BROADCAST',
+      isSpecialModal: true
+    },
+    
+  ];
 
   return (
     <section className="global-programs-section">
