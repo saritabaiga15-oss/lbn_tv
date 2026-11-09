@@ -36,13 +36,139 @@ export const getSlotStartMinutes = (time) => {
 
 export const DAYS_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+const chroniclesOfProphecyOverride = {
+  time: '10:30 PM',
+  title: 'CHRONICLES OF PROPHECY LIVE (10:30PM – 12:30AM)',
+  category: 'SPECIALS',
+  duration: '120m',
+  host: 'LBN Prophetic Team',
+  live: true,
+  image: chroniclesOfProphecy
+};
+
+const scheduleOverrides = {
+  '2026-10-30': [
+    { time: '01:30 PM', title: 'GLOBAL PRAYER AND FASTING - DAY 1 (REBROADCAST)', category: 'PRAYER', duration: '180m', host: 'Pastor Chris', live: false, image: gdop }
+  ],
+  '2026-10-31': [
+    { time: '06:30 AM', title: 'GLOBAL PRAYER AND FASTING - DAY 1 (REBROADCAST)', category: 'PRAYER', duration: '180m', host: 'Pastor Chris', live: false, image: gdop },
+    { time: '01:30 PM', title: 'GLOBAL PRAYER AND FASTING - DAY 2 (REBROADCAST)', category: 'PRAYER', duration: '180m', host: 'Pastor Chris', live: false, image: gdop }
+  ],
+  '2026-11-01': [
+    { time: '06:30 AM', title: 'GLOBAL PRAYER AND FASTING - DAY 2 (REBROADCAST)', category: 'PRAYER', duration: '180m', host: 'Pastor Chris', live: false, image: gdop }
+  ],
+  '2026-11-18': [chroniclesOfProphecyOverride],
+  '2026-11-19': [chroniclesOfProphecyOverride],
+  '2026-11-20': [chroniclesOfProphecyOverride]
+};
+
+const getDateKey = (date) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+const getPreviousDateKey = (dateKey) => {
+  const [year, month, day] = dateKey.split('-').map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day - 1));
+  return date.toISOString().slice(0, 10);
+};
+
+const getScheduleTimelineStart = (time) => {
+  const start = getSlotStartMinutes(time);
+  return start < 6 * 60 ? start + 24 * 60 : start;
+};
+
+const formatScheduleTime = (minutes) => {
+  const clockMinutes = minutes % (24 * 60);
+  const hours = Math.floor(clockMinutes / 60);
+  const displayHours = hours % 12 || 12;
+  const displayMinutes = String(clockMinutes % 60).padStart(2, '0');
+  const period = hours < 12 ? 'AM' : 'PM';
+  return `${String(displayHours).padStart(2, '0')}:${displayMinutes} ${period}`;
+};
+
+export const getScheduleDateForDay = (day, referenceDate) => {
+  const dayIndex = DAYS_OF_WEEK.indexOf(day);
+  if (dayIndex === -1) return getDateKey(referenceDate);
+
+  const mondayBasedDayIndex = (dayIndex + 6) % DAYS_OF_WEEK.length;
+  const daysSinceMonday = (referenceDate.getDay() + 6) % DAYS_OF_WEEK.length;
+  const date = new Date(Date.UTC(
+    referenceDate.getFullYear(),
+    referenceDate.getMonth(),
+    referenceDate.getDate() - daysSinceMonday + mondayBasedDayIndex
+  ));
+  return getDateKey(date);
+};
+
+export const getScheduleForDay = (day, dateKey) => {
+  const slots = scheduleData[day] || [];
+  const overrides = scheduleOverrides[dateKey] || [];
+  const previousDateOverrides = scheduleOverrides[getPreviousDateKey(dateKey)] || [];
+  const carryOverOverrides = previousDateOverrides.flatMap((override) => {
+    const start = getScheduleTimelineStart(override.time);
+    const end = start + (parseInt(override.duration, 10) || 30);
+    const carryOverDuration = Math.max(0, end - 30 * 60);
+    return carryOverDuration > 0
+      ? [{ ...override, time: '06:00 AM', duration: `${carryOverDuration}m` }]
+      : [];
+  });
+  const allOverrides = [...overrides, ...carryOverOverrides];
+  if (allOverrides.length === 0) return slots;
+
+  const adjustedSlots = slots.flatMap((slot) => {
+    const slotStart = getScheduleTimelineStart(slot.time);
+    const slotEnd = slotStart + (parseInt(slot.duration, 10) || 30);
+    const overlappingOverrides = allOverrides
+      .map((override) => {
+        const overrideStart = getScheduleTimelineStart(override.time);
+        const overrideEnd = overrideStart + (parseInt(override.duration, 10) || 30);
+        return { start: overrideStart, end: overrideEnd };
+      })
+      .filter(({ start, end }) => slotStart < end && slotEnd > start)
+      .sort((a, b) => a.start - b.start);
+
+    if (overlappingOverrides.length === 0) return [slot];
+
+    const remainingSlots = [];
+    let remainingStart = slotStart;
+    overlappingOverrides.forEach(({ start, end }) => {
+      if (remainingStart < start) {
+        remainingSlots.push({
+          ...slot,
+          time: formatScheduleTime(remainingStart),
+          duration: `${start - remainingStart}m`
+        });
+      }
+      remainingStart = Math.max(remainingStart, end);
+    });
+
+    if (remainingStart < slotEnd) {
+      remainingSlots.push({
+        ...slot,
+        time: formatScheduleTime(remainingStart),
+        duration: `${slotEnd - remainingStart}m`
+      });
+    }
+
+    return remainingSlots;
+  });
+
+  return [...adjustedSlots, ...allOverrides].sort((a, b) => {
+    return getScheduleTimelineStart(a.time) - getScheduleTimelineStart(b.time);
+  });
+};
+
 export const getNowNext = () => {
   const now = new Date();
   const istStr = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
   const ist = new Date(istStr);
-  const dayName = DAYS_OF_WEEK[ist.getDay()];
   const currentMins = ist.getHours() * 60 + ist.getMinutes();
-  const slots = scheduleData[dayName] || [];
+  const broadcastDate = currentMins < 6 * 60 ? new Date(ist.getTime() - 24 * 60 * 60 * 1000) : ist;
+  const dayName = DAYS_OF_WEEK[broadcastDate.getDay()];
+  const slots = getScheduleForDay(dayName, getDateKey(broadcastDate));
 
   if (slots.length === 0) {
     return { current: null, next: null, upcoming: [], isLive: false };
@@ -115,9 +241,7 @@ export const scheduleData = {
 
     { time: '11:30 AM', title: 'TEEVABLAZE LIVE', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: true, image: teevablaze },
 
-    { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
-
-    { time: '12:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '12:00 PM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
 
     { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
@@ -129,11 +253,7 @@ export const scheduleData = {
 
     { time: '03:30 PM', title: 'TEEVABLAZE – REBROADCAST', category: 'ROR', duration: '30m', host: 'LBN Youth', live: false, image: teevablaze },
 
-    { time: '04:00 PM', title: 'THE TRUMPET LIVE', category: 'TALK SHOWS', duration: '30m', host: 'Deacon Vijay Bansode', live: true, image: theTrumpet },
-
-    { time: '04:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
-
-    { time: '06:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '04:00 PM', title: 'THE TRUMPET LIVE (04:00PM – 07:00PM)', category: 'TALK SHOWS', duration: '180m', host: 'Vijay Bansode', live: true, image: theTrumpet },
 
     { time: '07:00 PM', title: 'The Word at work', category: 'TALK SHOWS', duration: '30m', host: 'LBN', live: false, image: wordAtWork },
 
@@ -145,7 +265,7 @@ export const scheduleData = {
 
     { time: '09:30 PM', title: 'Money Matters', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: moneyMatters },
 
-    { time: '10:00 PM', title: 'TRUMPET REBROADCAST (10:00PM – 11:00PM)', category: 'TALK SHOWS', duration: '60m', host: 'Deacon Vijay Bansode', live: false, image: theTrumpet },
+    { time: '10:00 PM', title: 'TRUMPET REBROADCAST (10:00PM – 11:00PM)', category: 'TALK SHOWS', duration: '60m', host: 'Vijay Bansode', live: false, image: theTrumpet },
 
     { time: '11:00 PM', title: 'Loveworld Expressions', category: 'SPECIALS', duration: '30m', host: 'LBN Music', live: false, image: loveworldExpressions },
 
@@ -169,13 +289,11 @@ export const scheduleData = {
 
     { time: '11:30 AM', title: 'TEEVABLAZE LIVE', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: true, image: teevablaze },
 
-    { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
+    { time: '12:00 PM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
+    { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
-    { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
-
-    { time: '02:00 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '01:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
     { time: '02:30 PM', title: 'Healthy Living', category: 'SPECIALS', duration: '30m', host: 'LBN Health', live: false, image: healthyLiving },
 
@@ -183,9 +301,11 @@ export const scheduleData = {
 
     { time: '04:00 PM', title: 'TEEVABLAZE – REBROADCAST', category: 'ROR', duration: '30m', host: 'LBN Youth', live: false, image: teevablaze },
 
-    { time: '04:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
+    { time: '04:30 PM', title: 'Lovetoons', category: 'KIDDIES', duration: '60m', host: 'LBN Kids', live: false, image: lovetoons },
 
-    { time: '06:30 PM', title: 'Ignite', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: false, image: igniteImg },
+    { time: '05:30 PM', title: 'Timeless Paragon', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: timelessParagonNew },
+
+    { time: '06:00 PM', title: 'Ignite', category: 'TEENS & YOUTHS', duration: '60m', host: 'LBN Youth', live: false, image: igniteImg },
 
     { time: '07:00 PM', title: 'ROR Travels', category: 'ROR', duration: '30m', host: 'LBN', live: false, image: rhapsodyTv },
 
@@ -221,13 +341,11 @@ export const scheduleData = {
 
     { time: '11:30 AM', title: 'TEEVABLAZE LIVE', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: true, image: teevablaze },
 
-    { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
+    { time: '12:00 PM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
+    { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
-    { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
-
-    { time: '02:00 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '01:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
     { time: '02:30 PM', title: 'Wholeness', category: 'SPECIALS', duration: '30m', host: 'Dr. Prashanti', live: false, image: drPrashanti },
 
@@ -235,7 +353,11 @@ export const scheduleData = {
 
     { time: '04:00 PM', title: 'TEEVABLAZE – REBROADCAST', category: 'ROR', duration: '30m', host: 'LBN Youth', live: false, image: teevablaze },
 
-    { time: '04:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
+    { time: '04:30 PM', title: 'Lovetoons', category: 'KIDDIES', duration: '60m', host: 'LBN Kids', live: false, image: lovetoons },
+
+    { time: '05:30 PM', title: 'Dusk Till Dawn', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: false, image: gytv },
+
+    { time: '06:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '06:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
@@ -257,7 +379,9 @@ export const scheduleData = {
 
     { time: '11:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '30m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
-    { time: '12:00 AM', title: 'Documentary', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
+    { time: '12:00 AM', title: 'Documentary', category: 'SPECIALS', duration: '90m', host: 'LBN', live: false, image: documentaryStudio },
+
+    { time: '01:30 AM', title: 'Money Matters', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: moneyMatters },
 
     { time: '02:00 AM', title: 'YourLoveworld Specials rebroadcasts', category: 'TEACHING', duration: '210m', host: 'Pastor Chris', live: false, image: yourLoveworldSpecials },
 
@@ -275,13 +399,11 @@ export const scheduleData = {
 
     { time: '11:30 AM', title: 'TEEVABLAZE LIVE', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: true, image: teevablaze },
 
-    { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
+    { time: '12:00 PM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
+    { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
-    { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
-
-    { time: '02:00 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '01:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
     { time: '02:30 PM', title: 'Healthy Living', category: 'SPECIALS', duration: '30m', host: 'LBN Health', live: false, image: healthyLiving },
 
@@ -289,7 +411,9 @@ export const scheduleData = {
 
     { time: '04:00 PM', title: 'TEEVABLAZE – REBROADCAST', category: 'ROR', duration: '30m', host: 'LBN Youth', live: false, image: teevablaze },
 
-    { time: '04:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
+    { time: '04:30 PM', title: 'Lovetoons', category: 'KIDDIES', duration: '60m', host: 'LBN Kids', live: false, image: lovetoons },
+
+    { time: '05:30 PM', title: 'Ignite', category: 'TEENS & YOUTHS', duration: '60m', host: 'LBN Youth', live: false, image: igniteImg },
 
     { time: '06:30 PM', title: 'ROR Travels', category: 'ROR', duration: '30m', host: 'LBN', live: false, image: rhapsodyTv },
 
@@ -309,9 +433,11 @@ export const scheduleData = {
 
     { time: '11:00 PM', title: 'Loveworld Expressions', category: 'SPECIALS', duration: '30m', host: 'LBN Music', live: false, image: loveworldExpressions },
 
-    { time: '11:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '30m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
+    { time: '11:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
-    { time: '12:00 AM', title: 'Documentary', category: 'SPECIALS', duration: '120m', host: 'LBN', live: false, image: documentaryStudio },
+    { time: '12:30 AM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
+
+    { time: '01:30 AM', title: 'ROR Travels', category: 'ROR', duration: '30m', host: 'LBN', live: false, image: rhapsodyTv },
 
     { time: '02:00 AM', title: 'YourLoveworld Specials rebroadcasts', category: 'TEACHING', duration: '210m', host: 'Pastor Chris', live: false, image: yourLoveworldSpecials },
 
@@ -329,13 +455,11 @@ export const scheduleData = {
 
     { time: '11:30 AM', title: 'TEEVABLAZE LIVE', category: 'TEENS & YOUTHS', duration: '30m', host: 'LBN Youth', live: true, image: teevablaze },
 
-    { time: '12:00 PM', title: 'Pray with me', category: 'PRAYER', duration: '30m', host: 'LBN Prayer Team', live: true, image: prayWithMe },
+    { time: '12:00 PM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
+    { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
-    { time: '01:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
-
-    { time: '02:00 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '01:30 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
     { time: '02:30 PM', title: 'Wholeness', category: 'SPECIALS', duration: '30m', host: 'Dr. Prashanti', live: false, image: drPrashanti },
 
@@ -343,7 +467,11 @@ export const scheduleData = {
 
     { time: '04:00 PM', title: 'TEEVABLAZE – REBROADCAST', category: 'ROR', duration: '30m', host: 'LBN Youth', live: false, image: teevablaze },
 
-    { time: '04:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
+    { time: '04:30 PM', title: 'Lovetoons', category: 'KIDDIES', duration: '60m', host: 'LBN Kids', live: false, image: lovetoons },
+
+    { time: '05:30 PM', title: 'Crafting Faith', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: craftingFaith },
+
+    { time: '06:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '06:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
@@ -353,7 +481,7 @@ export const scheduleData = {
 
     { time: '08:00 PM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '30m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
-    { time: '08:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
+    { time: '08:30 PM', title: 'HEALING STREAMS TESTIMONIES LIVE (08:30PM – 10:30PM)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: healingStreams },
 
     { time: '10:30 PM', title: 'Money Matters', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: moneyMatters },
 
@@ -369,7 +497,7 @@ export const scheduleData = {
   Saturday: [
     { time: '06:00 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
 
-    { time: '06:30 AM', title: 'ROR Dailies', category: 'WORSHIP', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
+    { time: '06:30 AM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
     { time: '07:00 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
@@ -379,21 +507,19 @@ export const scheduleData = {
 
     { time: '09:00 AM', title: 'Wholeness', category: 'SPECIALS', duration: '30m', host: 'Dr. Prashanti', live: false, image: drPrashanti },
 
-    { time: '09:30 AM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '09:30 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },
 
-    { time: '10:00 AM', title: 'Enter the Healing School', category: 'HEALING', duration: '30m', host: 'Healing School', live: false, image: healingStreams },
+    { time: '10:00 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
 
-    { time: '10:30 AM', title: 'Pastor Chris Teaching', category: 'TEACHING', duration: '60m', host: 'Pastor Chris', live: false, image: pastorChrisTeaching },
-
-    { time: '11:30 AM', title: 'Lovetoons', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: lovetoons },
+    { time: '11:00 AM', title: 'Lovetoons', category: 'KIDDIES', duration: '60m', host: 'LBN Kids', live: false, image: lovetoons },
 
     { time: '12:00 PM', title: 'Timeless Paragon', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: timelessParagonNew },
 
-    { time: '12:30 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
+    { time: '12:30 PM', title: 'Crafting Faith', category: 'KIDDIES', duration: '30m', host: 'LBN Kids', live: false, image: craftingFaith },
 
-    { time: '01:00 PM', title: 'Fruitful', category: 'TALK SHOWS', duration: '30m', host: 'LBN', live: false, image: wordAtWork },
+    { time: '01:00 PM', title: 'ROR Dailies', category: 'ROR', duration: '30m', host: 'Pastor Chris', live: false, image: RORD },
 
-    { time: '01:30 PM', title: 'Praise and Worship', category: 'WORSHIP', duration: '30m', host: 'LBN', live: false, image: praiseWorship },
+    { time: '01:30 PM', title: 'Fruitful', category: 'TALK SHOWS', duration: '30m', host: 'LBN', live: false, image: wordAtWork },
 
     { time: '02:00 PM', title: 'Documentary', category: 'SPECIALS', duration: '60m', host: 'LBN', live: false, image: documentaryStudio },
 
@@ -403,7 +529,7 @@ export const scheduleData = {
 
     { time: '04:30 PM', title: 'LOVEWORLD EXTRA (04:30PM – 08:30PM)', category: 'SPECIALS', duration: '240m', host: 'LBN Global', live: true, image: loveworldExtra },
 
-    { time: '08:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
+    { time: '08:30 PM', title: 'HEALING STREAMS TESTIMONIES LIVE (08:30PM – 10:30PM)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: healingStreams },
 
     { time: '10:30 PM', title: 'CHRONICLES OF PROPHECY LIVE (10:30PM – 12:30AM)', category: 'SPECIALS', duration: '120m', host: 'LBN Prophetic Team', live: true, image: chroniclesOfProphecy },
 
@@ -453,7 +579,7 @@ export const scheduleData = {
 
     { time: '04:30 PM', title: 'LOVEWORLD EXTRA (04:30PM – 08:30PM)', category: 'SPECIALS', duration: '240m', host: 'LBN Global', live: true, image: loveworldExtra },
 
-    { time: '08:30 PM', title: 'HEALING STREAMS FESTIVAL OF MIRACLES (OCT 26 – NOV 8)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: festivalOfMiracles },
+    { time: '08:30 PM', title: 'HEALING STREAMS TESTIMONIES LIVE (08:30PM – 10:30PM)', category: 'HEALING', duration: '120m', host: 'Pastor Chris & Healing School', live: true, image: healingStreams },
 
     { time: '10:30 PM', title: 'Documentary', category: 'SPECIALS', duration: '30m', host: 'LBN', live: false, image: documentaryStudio },
 

@@ -1,5 +1,5 @@
 import './GlobalProgrammes.css';
-import OCT_GPAF from '../../images/OCT_GPAF.png';
+import GPAF_Nov from '../../images/posters/GPAF_Nov.jpeg';
 import GlobalCommunion_Nov from '../../images/GlobalCommunion_Nov.png';
 
 
@@ -8,7 +8,7 @@ const GlobalPrograms = ({ onOpenHealingStreams }) => {
   const programs = [
    {
       id: 1,
-      image: OCT_GPAF,
+      image: GPAF_Nov,
       title: 'Global Prayer And Fasting with Pastor Chris',
       badge: 'LIVE BROADCAST',
       isSpecialModal: false

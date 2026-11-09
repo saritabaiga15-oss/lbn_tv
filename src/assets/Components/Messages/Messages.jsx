@@ -1,13 +1,13 @@
 import React from 'react';
 import './Messages.css';
-import WOTM from '../../images/WOTM.png';
+import WordOfMonth from '../../images/posters/WordOfMonth.jpeg';
 import yearlyMsg from '../../images/Manifestation_banner.png';
 
 const messages = [
   {
     id: 1,
-    image: WOTM,
-    title: "October – The Month of Mercies",
+    image: WordOfMonth,
+    title: "November – The Month of Comfort",
     badge: "MESSAGE OF THE MONTH",
     objectPosition: "center 58%",
   },
