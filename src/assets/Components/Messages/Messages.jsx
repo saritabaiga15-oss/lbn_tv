@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Messages.css';
-import WOTM from '../../images/WOTM.png';
+import WordOfMonth from '../../images/posters/WordOfMonth.jpeg';
 import yearlyMsg from '../../images/Manifestation_banner.png';
 import { client } from '../../../sanity/client';
 import { urlFor } from '../../../sanity/image';
@@ -9,8 +9,8 @@ import { MESSAGES_QUERY } from '../../../sanity/queries';
 const LOCAL_MESSAGES = [
   {
     id: 1,
-    image: WOTM,
-    title: "October – The Month of Mercies",
+    image: WordOfMonth,
+    title: "November – The Month of Comfort",
     badge: "MESSAGE OF THE MONTH",
     objectPosition: "center 58%",
   },

@@ -1,9 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Schedule.css';
+<<<<<<< HEAD
 import { scheduleData, categories, getSlotStartMinutes } from '../../data/scheduleData';
 import { client } from '../../../sanity/client';
 import { urlFor } from '../../../sanity/image';
 import { SCHEDULE_ITEMS_QUERY } from '../../../sanity/queries';
+=======
+import { getScheduleForDay, getScheduleDateForDay, categories, getSlotStartMinutes } from '../../data/scheduleData';
+>>>>>>> 6e40d3591cabbf73006d16c5cc4772500d9ed637
 
 const getIndiaDay = () => new Date().toLocaleDateString('en-US', { weekday: 'long', timeZone: 'Asia/Kolkata' });
 
@@ -112,9 +116,13 @@ const Schedule = ({ onOpenHealingStreams }) => {
     setReminderSet(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
+<<<<<<< HEAD
   const currentList = (sanitySchedule[selectedDay] && sanitySchedule[selectedDay].length > 0)
     ? sanitySchedule[selectedDay]
     : (scheduleData[selectedDay] || []);
+=======
+  const currentList = getScheduleForDay(selectedDay, getScheduleDateForDay(selectedDay, currentTime));
+>>>>>>> 6e40d3591cabbf73006d16c5cc4772500d9ed637
   const currentDay = currentTime.toLocaleDateString('en-US', { weekday: 'long' });
   const currentSlot = selectedDay === currentDay
     ? getCurrentSlot(currentList, currentTime.getHours() * 60 + currentTime.getMinutes())
@@ -360,20 +368,6 @@ const Schedule = ({ onOpenHealingStreams }) => {
         {/* Top Badge: ELECTRONIC PROGRAMME GUIDE */}
         <div className="epg-top-badge-wrap">
           <span className="epg-badge">ELECTRONIC PROGRAMME GUIDE</span>
-        </div>
-
-        {/* Special Live Broadcast Event Banner */}
-        <div className="epg-special-alert">
-          <div className="epg-special-alert-badge">
-            <span className="epg-special-alert-dot"></span>
-            LIVE BROADCAST
-          </div>
-          <div className="epg-special-alert-content">
-            <span className="epg-special-alert-title">HEALING STREAMS FESTIVAL OF MIRACLES</span>
-            <span className="epg-special-alert-time">
-              OCT 26 – NOV 8, 2026 &bull; Weekdays: 4:30 PM &ndash; 6:30 PM IST &bull; Weekends: 8:30 PM &ndash; 10:30 PM IST
-            </span>
-          </div>
         </div>
 
         {/* ── 3D COVERFLOW SHOWCASE (EPG FRONT PAGE) ── */}

@@ -18,7 +18,11 @@
     "hls.js": "^1.7.2",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+<<<<<<< HEAD
     "react-router-dom": "^7.18.4"
+=======
+    "xlsx": "^0.18.5"
+>>>>>>> 6e40d3591cabbf73006d16c5cc4772500d9ed637
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
