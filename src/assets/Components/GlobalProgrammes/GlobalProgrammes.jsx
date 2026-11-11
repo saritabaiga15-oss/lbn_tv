@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import './GlobalProgrammes.css';
 import GPAF_Nov from '../../images/posters/GPAF_Nov.jpeg';
+<<<<<<< HEAD
 import GlobalCommunion_Nov from '../../images/GlobalCommunion_Nov.png';
 import { client } from '../../../sanity/client';
 import { urlFor } from '../../../sanity/image';
 import { GLOBAL_PROGRAMS_QUERY } from '../../../sanity/queries';
+=======
+import PraiseNight_Nov from '../../images/posters/PraiseNight_Nov.png';
+>>>>>>> fe7ab48 (Update Global Programmes and add Praise Night poster)
 
 const LOCAL_PROGRAMS = [
   {
@@ -50,22 +54,23 @@ const GlobalPrograms = ({ onOpenHealingStreams }) => {
 
 =======
   const programs = [
-   {
+    {
       id: 1,
+      image: PraiseNight_Nov,
+      title: 'Praise Night with Pastor Chris',
+      badge: 'LIVE BROADCAST',
+      isSpecialModal: true
+    },
+    
+   {
+      id: 2,
       image: GPAF_Nov,
       title: 'Global Prayer And Fasting with Pastor Chris',
       badge: 'LIVE BROADCAST',
       isSpecialModal: false
     },
     
-{
-      id: 2,
-      image: GlobalCommunion_Nov,
-      title: 'Global Communion Service with Pastor Chris',
-      badge: 'LIVE BROADCAST',
-      isSpecialModal: true
-    },
-    
+
   ];
 >>>>>>> 6e40d3591cabbf73006d16c5cc4772500d9ed637
 
